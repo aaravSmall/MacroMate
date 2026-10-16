@@ -47,7 +47,28 @@ src/features/logging/
 - Don't copy server data into Zustand; read it through query hooks.
 - Query keys are defined per feature (e.g. `['entries', userId, date]`) and invalidated after mutations.
 - Mutations use optimistic updates where it improves feel (adding or deleting an entry), and roll back on error.
-- The auth session comes from Supabase Auth. A small Zustand slice mirrors the signed-in state for routing guards.
+- The auth session lives in **React context** (`AuthProvider` / `useAuth()` in `src/features/auth`), not Zustand.
+
+### Why auth uses context, not Zustand
+
+Supabase Auth already owns the session: it persists it to AsyncStorage, refreshes tokens, and emits `onAuthStateChange`. The app only needs to mirror that one value and re-render the tree when it changes. That's what context is for:
+
+- **One source of truth.** The provider subscribes once and holds the session Supabase reports. A Zustand store would be a second copy that could drift if something wrote to it directly.
+- **Low-frequency updates.** The session changes only on sign-in, sign-out, and token refresh, so context re-renders cost nothing meaningful. Zustand's selective subscriptions buy nothing here.
+- **Lifecycle tied to the tree.** The subscription is set up and torn down with the provider, which also makes tests easy: wrap a component in a provider with a fake session.
+
+Zustand stays reserved for UI/session state that the app itself owns and updates often.
+
+### Root gate
+
+`src/app/_layout.tsx` decides which route group is reachable, using `Stack.Protected`:
+
+| State                          | Destination                   |
+| ------------------------------ | ----------------------------- |
+| Session still restoring        | Splash screen stays up        |
+| No session                     | `(auth)`                      |
+| Session, onboarding incomplete | `(onboarding)`                |
+| Session, onboarding complete   | `(tabs)` and the modal routes |
 
 ## Data flow: logging a food
 

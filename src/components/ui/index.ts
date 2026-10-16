@@ -4,3 +4,4 @@ export { Divider } from './Divider';
 export { EmptyState, type EmptyStateProps } from './EmptyState';
 export { Screen, type ScreenProps } from './Screen';
 export { Text, type TextProps } from './Text';
+export { TextField, type TextFieldProps } from './TextField';

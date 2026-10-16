@@ -1,8 +1,14 @@
 import { Redirect } from 'expo-router';
 
+import { useAuth } from '@/features/auth';
+import { useOnboardingComplete } from '@/features/onboarding';
+
+/** Entry route: sends the user to the right group (the root layout enforces the same rules). */
 export default function Index() {
-  // TODO(auth): gate here once auth + onboarding exist:
-  //   loading → splash, no session → /(auth)/sign-in,
-  //   onboarding incomplete → /(onboarding)/welcome, otherwise → /(tabs)/today.
-  return <Redirect href="/today" />;
+  const { session } = useAuth();
+  const onboardingComplete = useOnboardingComplete(session?.user.id);
+
+  if (!session) return <Redirect href="/sign-in" />;
+  if (onboardingComplete === null) return null;
+  return <Redirect href={onboardingComplete ? '/today' : '/welcome'} />;
 }
