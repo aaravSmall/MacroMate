@@ -102,10 +102,12 @@ Label scanning follows the same path, with one extra step first: the photo goes 
 
 The safety rules from [PRODUCT.md](PRODUCT.md#safety-rules) live in **`src/features/goals/logic/`** as **pure functions** with no React, no I/O, and no Supabase:
 
-- `calculateBudget(profile, goal, burned)` — daily calorie budget and macro targets
-- `assessPace(goal)` — returns a caring warning for loss > 2 lb/week or gains that are too fast
-- `applyCalorieFloor(budget, profile)` — returns the floor as a recommendation (the floor value is never shown)
-- `evaluateDay(totals, budget)` — near-goal celebration vs. under-goal nudge, never praise for undereating
+- `calculateBMR` / `calculateTDEE`: Mifflin-St Jeor with named activity multipliers, metric or imperial input
+- `calculateDailyTarget({ profile, goalType, weeklyRate })`: TDEE ± ~3,500 kcal per lb, with the calorie floor applied and flagged (`floorApplied`)
+- `assessPace(weeklyRate, goalType)`: `'ok' | 'caution'` for loss > 2 lb/week or gain above the configured threshold, never a block
+- `assessDayStatus(eaten, target)` and `feedbackForDayStatus(status)`: near-goal celebration vs. under-goal nudge, never praise for undereating
+
+Thresholds live in `src/constants/safety.ts`, and user-facing wording in `src/features/goals/copy.ts`. `CareNotice` (`src/features/goals/components`) renders cautions in a calm style with a link to Help & resources.
 
 Why this approach:
 
