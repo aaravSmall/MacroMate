@@ -3,7 +3,7 @@ import {
   isOpenFoodFactsResult,
   createUserFood,
 } from '@/features/food';
-import { startOfLocalDay, startOfNextLocalDay } from '@/lib/dates';
+import { startOfLocalDay, startOfNextLocalDay, toDateKey } from '@/lib/dates';
 import { nutritionFromRow, nutritionToRow, scaleNutrition } from '@/lib/nutrition';
 import { requireUserId, supabase } from '@/lib/supabase';
 import type { Tables, TablesUpdate } from '@/types/database';
@@ -41,6 +41,29 @@ export async function getLogsForDay(date: Date): Promise<LogEntry[]> {
     .order('logged_at');
   if (error) throw error;
   return data.map(mapLogRow);
+}
+
+export async function getLog(id: string): Promise<LogEntry | null> {
+  const { data, error } = await supabase.from('food_logs').select('*').eq('id', id).maybeSingle();
+  if (error) throw error;
+  return data ? mapLogRow(data) : null;
+}
+
+/**
+ * Local `YYYY-MM-DD` keys of days in [from, to) with at least one log.
+ * TODO(server): replace with an RPC returning distinct days; this reads one row per log and
+ * is capped by the API's max rows (1,000 by default).
+ */
+export async function getLoggedDateKeys(from: Date, to: Date): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('food_logs')
+    .select('logged_at')
+    .gte('logged_at', from.toISOString())
+    .lt('logged_at', to.toISOString())
+    .order('logged_at', { ascending: false })
+    .limit(1000);
+  if (error) throw error;
+  return [...new Set(data.map((row) => toDateKey(new Date(row.logged_at))))];
 }
 
 /**

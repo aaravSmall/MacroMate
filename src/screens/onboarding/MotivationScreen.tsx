@@ -1,14 +1,22 @@
-import { router } from 'expo-router';
-import { PlaceholderScreen } from '@/components/PlaceholderScreen';
-import { Button } from '@/components/ui';
+import { TextField } from '@/components/ui';
+import { OnboardingStepLayout, useOnboardingStore } from '@/features/onboarding';
 
 export default function MotivationScreen() {
+  const { form, update } = useOnboardingStore();
   return (
-    <PlaceholderScreen
-      title="Your why"
-      description="What brings you here, so the app can support what matters to you."
+    <OnboardingStepLayout
+      step="motivation"
+      title="What brings you here?"
+      description="Optional. A sentence about your why can be a helpful reminder later."
     >
-      <Button title="Continue" onPress={() => router.push('/diet-restrictions')} />
-    </PlaceholderScreen>
+      <TextField
+        label="Your why"
+        placeholder="e.g. Have more energy for my kids"
+        value={form.motivation}
+        onChangeText={(motivation) => update({ motivation })}
+        multiline
+        style={{ minHeight: 96, textAlignVertical: 'top' }}
+      />
+    </OnboardingStepLayout>
   );
 }

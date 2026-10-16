@@ -1,3 +1,10 @@
+export { FoodResultRow } from './components/FoodResultRow';
+export {
+  EMPTY_FOOD_FORM,
+  type FoodFormErrors,
+  type FoodFormValues,
+  parseFoodForm,
+} from './logic/foodForm';
 export { MIN_SEARCH_LENGTH, useFood, useFoodSearch } from './hooks/useFoods';
 export {
   useCreateUserFood,

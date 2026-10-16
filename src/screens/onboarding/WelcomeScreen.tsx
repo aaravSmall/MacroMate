@@ -1,14 +1,24 @@
-import { router } from 'expo-router';
-import { PlaceholderScreen } from '@/components/PlaceholderScreen';
-import { Button } from '@/components/ui';
+import { Card, Text } from '@/components/ui';
+import { OnboardingStepLayout } from '@/features/onboarding';
 
 export default function WelcomeScreen() {
   return (
-    <PlaceholderScreen
-      title="Welcome"
-      description="A free calorie tracker with every feature included. A few quick questions will set up your daily goal."
+    <OnboardingStepLayout
+      step="welcome"
+      title="Welcome to Tally"
+      description="A free calorie tracker with every feature included."
+      continueLabel="Get started"
     >
-      <Button title="Continue" onPress={() => router.push('/body-stats')} />
-    </PlaceholderScreen>
+      <Card>
+        <Text>
+          A few quick questions will set up a daily calorie target that fits you. It takes about a
+          minute, and you can change any answer later.
+        </Text>
+      </Card>
+      <Text variant="caption" tone="muted">
+        Tally is not medical advice. Talk to a doctor or registered dietitian before making big
+        changes to your diet or weight.
+      </Text>
+    </OnboardingStepLayout>
   );
 }

@@ -22,6 +22,7 @@ export {
   type DailyTarget,
   KCAL_PER_LB,
 } from './logic/energy';
+export { DEFAULT_MACRO_SPLIT, defaultMacroTargets, KCAL_PER_GRAM } from './logic/macros';
 export {
   ageFromBirthDate,
   cmToIn,

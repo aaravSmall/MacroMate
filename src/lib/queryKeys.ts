@@ -16,6 +16,9 @@ export const queryKeys = {
   logs: {
     all: ['logs'] as const,
     day: (dateKey: string) => ['logs', 'day', dateKey] as const,
+    detail: (id: string) => ['logs', 'detail', id] as const,
+    loggedDaysAll: ['logs', 'loggedDays'] as const,
+    loggedDays: (fromKey: string, toKey: string) => ['logs', 'loggedDays', fromKey, toKey] as const,
   },
   exercise: {
     all: ['exercise'] as const,
@@ -24,6 +27,10 @@ export const queryKeys = {
   weighIns: {
     all: ['weighIns'] as const,
     list: () => ['weighIns', 'list'] as const,
+  },
+  userSettings: {
+    all: ['userSettings'] as const,
+    detail: (userId: string) => ['userSettings', userId] as const,
   },
   profile: {
     all: ['profile'] as const,

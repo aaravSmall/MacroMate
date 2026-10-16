@@ -8,6 +8,8 @@ import { buildLogEntry, type NewLogInput } from '../logic/snapshot';
 import {
   addLog,
   deleteLog,
+  getLog,
+  getLoggedDateKeys,
   getLogsForDay,
   type LogUpdate,
   updateLog,
@@ -17,6 +19,23 @@ export function useDayLogs(date: Date) {
   return useQuery({
     queryKey: queryKeys.logs.day(toDateKey(date)),
     queryFn: () => getLogsForDay(date),
+  });
+}
+
+export function useLog(id: string | undefined) {
+  return useQuery({
+    queryKey: queryKeys.logs.detail(id ?? ''),
+    queryFn: () => getLog(id ?? ''),
+    enabled: !!id && !id.startsWith('optimistic-'),
+  });
+}
+
+/** Set of local date keys in [from, to) that have at least one log. */
+export function useLoggedDays(from: Date, to: Date) {
+  return useQuery({
+    queryKey: queryKeys.logs.loggedDays(toDateKey(from), toDateKey(to)),
+    queryFn: () => getLoggedDateKeys(from, to),
+    select: (keys) => new Set(keys),
   });
 }
 
@@ -46,6 +65,7 @@ export function useAddLog() {
       void queryClient.invalidateQueries({
         queryKey: queryKeys.logs.day(toDateKey(input.loggedAt)),
       });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.logs.loggedDaysAll });
       // Logging an Open Food Facts result may have created a My Foods entry.
       if (input.food.kind === 'food') {
         void queryClient.invalidateQueries({ queryKey: queryKeys.userFoods.all });
@@ -78,9 +98,11 @@ export function useDeleteLog() {
     onError: (_error, _entry, context) => {
       if (context) queryClient.setQueryData(context.key, context.previous);
     },
-    onSettled: (_data, _error, entry) =>
-      queryClient.invalidateQueries({
+    onSettled: (_data, _error, entry) => {
+      void queryClient.invalidateQueries({
         queryKey: queryKeys.logs.day(toDateKey(new Date(entry.loggedAt))),
-      }),
+      });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.logs.loggedDaysAll });
+    },
   });
 }
