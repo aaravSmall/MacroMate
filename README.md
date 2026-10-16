@@ -1,5 +1,8 @@
 # Tally
 
+[![CI](https://github.com/aaravSmall/MacroMate/actions/workflows/ci.yml/badge.svg)](https://github.com/aaravSmall/MacroMate/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **A free, open-source calorie tracker — every feature free, no paywall.**
 
 > "Tally" is a placeholder name. The display name lives in one place: `expo.name` in [`app.json`](app.json).
@@ -10,21 +13,21 @@ Most popular calorie trackers lock their most useful features — barcode/label 
 
 ## Features
 
-| Feature                                                                                                            | Status  |
-| ------------------------------------------------------------------------------------------------------------------ | ------- |
-| Accounts with cloud sync                                                                                           | Planned |
-| Food logging, 3 ways: search the food database, create your own food, or scan a nutrition label photo to auto-fill | Planned |
-| Global food database (Open Food Facts + restaurant nutrition)                                                      | Planned |
-| Private "My Foods", optionally shareable to the global database                                                    | Planned |
-| Timestamped entries with auto-suggested, editable meal labels                                                      | Planned |
-| Calories, protein, carbs, fat + micronutrients from the label                                                      | Planned |
-| Goals for losing, maintaining, or gaining weight                                                                   | Planned |
-| Apple Health exercise sync (burned calories add to your daily budget)                                              | Planned |
-| Weigh-ins with configurable reminders                                                                              | Planned |
-| Logging streaks                                                                                                    | Planned |
-| Neutral logging calendar                                                                                           | Planned |
-| Optional "numbers off" habit mode                                                                                  | Planned |
-| Help & resources page                                                                                              | Planned |
+| Feature                                                                                                            | Status      |
+| ------------------------------------------------------------------------------------------------------------------ | ----------- |
+| Accounts with cloud sync                                                                                           | In progress |
+| Food logging, 3 ways: search the food database, create your own food, or scan a nutrition label photo to auto-fill | In progress |
+| Global food database (Open Food Facts + restaurant nutrition)                                                      | In progress |
+| Private "My Foods", optionally shareable to the global database                                                    | In progress |
+| Timestamped entries with auto-suggested, editable meal labels                                                      | In progress |
+| Calories, protein, carbs, fat + micronutrients from the label                                                      | In progress |
+| Goals for losing, maintaining, or gaining weight                                                                   | In progress |
+| Apple Health exercise sync (burned calories add to your daily budget)                                              | Planned     |
+| Weigh-ins with configurable reminders                                                                              | In progress |
+| Logging streaks                                                                                                    | In progress |
+| Neutral logging calendar                                                                                           | In progress |
+| Optional "numbers off" habit mode                                                                                  | In progress |
+| Help & resources page                                                                                              | In progress |
 
 Tally does **not** guess calories from a photo of a meal. Label scanning reads the printed nutrition facts panel, which is accurate; meal-photo estimation isn't.
 
@@ -110,39 +113,41 @@ src/
 
 ## Roadmap
 
-**1. Skeleton**
+Checked items exist in bare-bones form; polish comes in later milestones.
+
+**1. Skeleton** ✅ (v0.1.0)
 
 - [x] Expo + TypeScript + Expo Router project
 - [x] Lint, format, typecheck, and test tooling
 - [x] Project docs
-- [ ] Tab navigation shell (Today, Add, Progress, Account)
-- [ ] Design tokens and UI primitives
-- [ ] Supabase client and environment config
+- [x] Tab navigation shell (Today, Add, Progress, Account)
+- [x] Design tokens and UI primitives
+- [x] Supabase client and environment config
 
 **2. Auth & Onboarding**
 
-- [ ] Sign up / sign in with Supabase Auth
-- [ ] Onboarding survey
-- [ ] Initial goal calculation
+- [x] Sign up / sign in with Supabase Auth
+- [x] Onboarding survey
+- [x] Initial goal calculation
 
 **3. Logging**
 
-- [ ] Today screen: summary card + food timeline
-- [ ] Add, edit, and delete entries
-- [ ] Auto-suggested meal labels
+- [x] Today screen: summary card + food timeline
+- [x] Add, edit, and delete entries
+- [x] Auto-suggested meal labels
 
 **4. Food DB**
 
-- [ ] Open Food Facts search
+- [x] Open Food Facts search
 - [ ] Restaurant nutrition data
 - [ ] My Foods (create, edit, optionally share)
 - [ ] Nutrition label photo scan to auto-fill
 
 **5. Goals & Safety**
 
-- [ ] Lose / maintain / gain goals with macro targets
-- [ ] Pace warnings and the help & resources page
-- [ ] Near-goal and under-goal feedback
+- [x] Lose / maintain / gain goals with macro targets
+- [x] Pace warnings and the help & resources page
+- [x] Near-goal and under-goal feedback
 
 **6. Exercise sync**
 
@@ -152,8 +157,8 @@ src/
 **7. Progress**
 
 - [ ] Weigh-ins, trends, and reminders
-- [ ] Logging streaks
-- [ ] Neutral logging calendar
+- [x] Logging streaks
+- [x] Neutral logging calendar
 
 **8. Polish / TestFlight**
 
