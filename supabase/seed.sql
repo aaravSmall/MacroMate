@@ -1,0 +1,40 @@
+-- Sample global foods for local development (`supabase db reset` runs this after migrations).
+-- Values are per serving, approximated from USDA FoodData Central generic entries.
+
+insert into public.foods (
+  name, brand, source, serving_size, serving_unit, serving_grams,
+  calories, protein_g, carbs_g, fat_g, micronutrients
+) values
+  ('Chicken breast, skinless, roasted', null, 'manual', 100, 'g', 100,
+    165, 31.0, 0.0, 3.6,
+    '{"sodium_mg": 74, "cholesterol_mg": 85, "saturated_fat_g": 1.0}'),
+  ('White rice, long-grain, cooked', null, 'manual', 1, 'cup', 158,
+    205, 4.3, 44.5, 0.4,
+    '{"sodium_mg": 2, "fiber_g": 0.6, "sugar_g": 0.1}'),
+  ('Brown rice, long-grain, cooked', null, 'manual', 1, 'cup', 195,
+    218, 4.5, 45.8, 1.6,
+    '{"sodium_mg": 2, "fiber_g": 3.5, "magnesium_mg": 84}'),
+  ('Turkey breast, deli sliced', null, 'manual', 2, 'oz', 56,
+    60, 10.0, 2.0, 1.0,
+    '{"sodium_mg": 500, "cholesterol_mg": 25, "sugar_g": 1.0, "saturated_fat_g": 0.3}'),
+  ('Egg, whole, large', null, 'manual', 1, 'large', 50,
+    72, 6.3, 0.4, 4.8,
+    '{"sodium_mg": 71, "cholesterol_mg": 186, "saturated_fat_g": 1.6}'),
+  ('Banana, medium', null, 'manual', 1, 'medium', 118,
+    105, 1.3, 27.0, 0.4,
+    '{"fiber_g": 3.1, "sugar_g": 14.4, "potassium_mg": 422}'),
+  ('Apple, medium, with skin', null, 'manual', 1, 'medium', 182,
+    95, 0.5, 25.1, 0.3,
+    '{"fiber_g": 4.4, "sugar_g": 18.9, "potassium_mg": 195}'),
+  ('Rolled oats, dry', null, 'manual', 0.5, 'cup', 40,
+    150, 5.0, 27.0, 3.0,
+    '{"fiber_g": 4.0, "sugar_g": 0.4, "magnesium_mg": 55, "zinc_mg": 1.5}'),
+  ('Milk, whole', null, 'manual', 1, 'cup', 244,
+    149, 7.7, 11.7, 7.9,
+    '{"sodium_mg": 105, "cholesterol_mg": 24, "sugar_g": 12.3, "saturated_fat_g": 4.6, "calcium_mg": 276}'),
+  ('Broccoli, raw, chopped', null, 'manual', 1, 'cup', 91,
+    31, 2.5, 6.0, 0.3,
+    '{"sodium_mg": 30, "fiber_g": 2.4, "sugar_g": 1.5, "potassium_mg": 288}'),
+  ('Peanut butter, smooth', null, 'manual', 2, 'tbsp', 32,
+    190, 7.0, 7.0, 16.0,
+    '{"sodium_mg": 140, "fiber_g": 2.0, "sugar_g": 3.0, "saturated_fat_g": 3.3, "magnesium_mg": 49}');

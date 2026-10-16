@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
 
-/**
- * Whether the user has finished onboarding.
- * TODO(db): read profiles.onboarding_completed_at once the profiles table exists.
- */
-export async function isOnboardingComplete(_userId: string): Promise<boolean> {
-  return false;
-}
+import { isOnboardingComplete } from './services/onboardingService';
 
 /** `null` while loading or when there's no user. */
 export function useOnboardingComplete(userId: string | undefined): boolean | null {
@@ -15,9 +9,13 @@ export function useOnboardingComplete(userId: string | undefined): boolean | nul
   useEffect(() => {
     if (!userId) return;
     let mounted = true;
-    void isOnboardingComplete(userId).then((complete) => {
-      if (mounted) setResult({ userId, complete });
-    });
+    isOnboardingComplete(userId)
+      // If the profile can't be read (e.g. offline), fall back to onboarding rather than
+      // leaving the splash screen up forever.
+      .catch(() => false)
+      .then((complete) => {
+        if (mounted) setResult({ userId, complete });
+      });
     return () => {
       mounted = false;
     };

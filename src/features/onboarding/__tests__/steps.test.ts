@@ -1,4 +1,4 @@
-import { nextOnboardingStep } from '@/features/onboarding';
+import { nextOnboardingStep } from '@/features/onboarding/steps';
 
 describe('nextOnboardingStep', () => {
   it('returns the following step', () => {
