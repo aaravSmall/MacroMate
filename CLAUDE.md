@@ -1,1 +1,49 @@
 @AGENTS.md
+
+# Tally — context for Claude Code
+
+Tally is a free, open-source, iPhone-first calorie tracker. Every feature is free; there is no paywall. "Tally" is a placeholder name, set only in `app.json` → `expo.name`.
+
+Read before feature work: [docs/PRODUCT.md](docs/PRODUCT.md) (decisions, screens, safety rules) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) (layers, state, data flow).
+
+## Stack
+
+Expo (SDK 58) / React Native, Expo Router, TypeScript (strict), Supabase (Postgres + Auth), TanStack Query (server state), Zustand (UI/session state), Open Food Facts. Tests use Jest (jest-expo) and React Native Testing Library.
+
+## Folder conventions
+
+- `src/app/`: routes only. Thin files that render a screen from `src/screens/`.
+- `src/screens/`: screen components.
+- `src/components/`: shared UI; `ui/` holds primitives.
+- `src/features/<name>/`: feature modules (food, logging, goals, exercise, weighins, onboarding, account). Each owns its `hooks/`, `services/`, `logic/`, `components/`, and `types.ts`.
+- `src/lib/`: Supabase client, external API adapters, pure utils.
+- `src/hooks/`, `src/store/` (Zustand), `src/theme/` (tokens), `src/types/`, `src/constants/`.
+- Import with the `@/` alias (`@/*` → `src/*`), not long relative paths.
+
+## Coding rules
+
+- Strict TypeScript. **No `any`**; use `unknown` and narrow it.
+- Functional components and hooks only.
+- Feature modules own their hooks and services. Promote code to shared folders only when two or more features use it.
+- **All Supabase access goes through `src/lib` and feature services.** Never call Supabase from screens or components.
+- Server state goes in TanStack Query and UI/session state in Zustand. Don't duplicate server data in Zustand.
+- Safety rules and goal math are pure functions in `src/features/goals/logic/` and must have unit tests.
+- **Never log PII**: no weights, food logs, emails, or health data in logs.
+- Follow the design principles: never celebrate undereating, no red/green calendar judgment, and warnings are caring, not blocking.
+- Add packages with `npx expo install`, not `npm install`.
+- Use design tokens from `@/theme` instead of hard-coded colors and spacing.
+
+## Before committing
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run format
+```
+
+All must pass. Fix failures; don't suppress them.
+
+## Workflow
+
+After each task: run the checks above, commit to `main` with a [Conventional Commit](https://www.conventionalcommits.org/) message (`feat(logging): …`, `fix: …`, `docs: …`, `chore: …`), and push to `origin main`.
