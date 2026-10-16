@@ -29,3 +29,11 @@ AppState.addEventListener('change', (state) => {
     void supabase.auth.stopAutoRefresh();
   }
 });
+
+/** The signed-in user's id, read from the locally persisted session (no network call). */
+export async function requireUserId(): Promise<string> {
+  const { data } = await supabase.auth.getSession();
+  const userId = data.session?.user.id;
+  if (!userId) throw new Error('Not signed in.');
+  return userId;
+}

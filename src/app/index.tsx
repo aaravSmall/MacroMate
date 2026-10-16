@@ -6,7 +6,7 @@ import { useOnboardingComplete } from '@/features/onboarding';
 /** Entry route: sends the user to the right group (the root layout enforces the same rules). */
 export default function Index() {
   const { session } = useAuth();
-  const onboardingComplete = useOnboardingComplete(session?.user.id);
+  const onboardingComplete = useOnboardingComplete();
 
   if (!session) return <Redirect href="/sign-in" />;
   if (onboardingComplete === null) return null;

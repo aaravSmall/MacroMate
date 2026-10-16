@@ -3,7 +3,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
-import { AuthProvider, useAuth } from '@/features/auth';
+import { AppProviders } from '@/components/AppProviders';
+import { useAuth } from '@/features/auth';
 import { useOnboardingComplete } from '@/features/onboarding';
 import { useTheme } from '@/theme';
 
@@ -13,7 +14,7 @@ const modal = { presentation: 'modal', headerShown: true } as const;
 
 function RootNavigator() {
   const { session, loading } = useAuth();
-  const onboardingComplete = useOnboardingComplete(session?.user.id);
+  const onboardingComplete = useOnboardingComplete();
 
   // Keep the splash screen up until we know where to send the user.
   const ready = !loading && (!session || onboardingComplete !== null);
@@ -64,9 +65,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={navigationTheme}>
-      <AuthProvider>
+      <AppProviders>
         <RootNavigator />
-      </AuthProvider>
+      </AppProviders>
       <StatusBar style="auto" />
     </ThemeProvider>
   );

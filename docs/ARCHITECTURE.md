@@ -29,7 +29,7 @@ A typical feature module:
 ```
 src/features/logging/
 ├── components/      Feature-specific UI (e.g. TimelineRow)
-├── hooks/           useDayLog, useAddEntry, …
+├── hooks/           useDayLogs, useAddLog, …
 ├── services/        entries.ts (Supabase reads/writes)
 ├── logic/           Pure functions (e.g. suggestMealLabel)
 ├── types.ts
@@ -45,7 +45,7 @@ src/features/logging/
 | **Local component state** | `useState`             | Form inputs, transient toggles                                               |
 
 - Don't copy server data into Zustand; read it through query hooks.
-- Query keys are defined per feature (e.g. `['entries', userId, date]`) and invalidated after mutations.
+- All query keys live in `src/lib/queryKeys.ts` (e.g. `queryKeys.logs.day('2026-10-16')`) and are invalidated after mutations. The whole cache is cleared when the signed-in user changes, so keys don't include the user id.
 - Mutations use optimistic updates where it improves feel (adding or deleting an entry), and roll back on error.
 - The auth session lives in **React context** (`AuthProvider` / `useAuth()` in `src/features/auth`), not Zustand.
 
@@ -80,10 +80,10 @@ Add (+) tab
                  ├─ Supabase: global foods + My Foods  src/lib/supabase
                  └─ Open Food Facts adapter            src/lib/openFoodFacts
   user picks a food + serving
-       └─ useAddEntry().mutate(entry)                  features/logging/hooks
+       └─ useAddLog().mutate(input)                    features/logging/hooks
             ├─ suggestMealLabel(timestamp)             features/logging/logic (pure)
-            ├─ optimistic update of ['entries', userId, date]
-            └─ createEntry(entry)                      features/logging/services
+            ├─ optimistic update of queryKeys.logs.day(date)
+            └─ addLog(input)                           features/logging/services
                  └─ Supabase insert into entries       src/lib/supabase
   on success: invalidate day log + daily totals
        └─ TodayScreen re-renders summary card + timeline
@@ -91,8 +91,10 @@ Add (+) tab
 
 1. The user searches. `useFoodSearch` debounces the query and calls the food service, which merges results from the user's My Foods, the shared global foods table, and Open Food Facts.
 2. The user picks a serving. The screen builds an entry draft with the timestamp set to now and a meal label suggested by a pure function. The user can edit both.
-3. `useAddEntry` optimistically adds the entry to the cached day log and calls `createEntry`, which inserts the row through the Supabase client in `src/lib`.
+3. `useAddLog` optimistically adds the entry to the cached day log and calls `addLog`, which inserts the row (with a snapshot of the food) through the Supabase client in `src/lib`.
 4. On success the day-log queries are invalidated, so totals (eaten / remaining) recompute. On error the optimistic update is rolled back and the user sees an error.
+
+**Open Food Facts results** aren't stored in `foods` yet, and clients can't insert there. For now, logging one first looks for an imported copy in `foods` and otherwise saves it to the user's My Foods, then logs that. A future Edge Function will import OFF products into `foods` instead.
 
 Label scanning follows the same path, with one extra step first: the photo goes through the OCR adapter in `src/lib`, which pre-fills the create-food form. The user confirms the food before it's saved.
 

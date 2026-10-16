@@ -1,26 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useProfile } from '@/features/account';
 
-import { isOnboardingComplete } from './services/onboardingService';
-
-/** `null` while loading or when there's no user. */
-export function useOnboardingComplete(userId: string | undefined): boolean | null {
-  const [result, setResult] = useState<{ userId: string; complete: boolean } | null>(null);
-
-  useEffect(() => {
-    if (!userId) return;
-    let mounted = true;
-    isOnboardingComplete(userId)
-      // If the profile can't be read (e.g. offline), fall back to onboarding rather than
-      // leaving the splash screen up forever.
-      .catch(() => false)
-      .then((complete) => {
-        if (mounted) setResult({ userId, complete });
-      });
-    return () => {
-      mounted = false;
-    };
-  }, [userId]);
-
-  // Ignore a stale result from a previous user.
-  return userId && result?.userId === userId ? result.complete : null;
+/**
+ * Whether the signed-in user has finished onboarding (profiles.onboarding_completed_at).
+ * `null` while loading or when signed out.
+ */
+export function useOnboardingComplete(): boolean | null {
+  const { data: profile, isPending, isError } = useProfile();
+  if (isError) {
+    // Signing up needs the network, so a profile read failing (e.g. offline at launch) almost
+    // always means an existing, onboarded user. Let them into the app.
+    return true;
+  }
+  if (isPending) return null;
+  return profile?.onboardingCompletedAt != null;
 }
