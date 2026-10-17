@@ -7,3 +7,4 @@ export {
   validatePasswordConfirmation,
 } from './validation';
 export { DEMO_EMAIL, DEMO_PASSWORD, DEMO_USERNAME, resolveLoginEmail } from './demoAccount';
+export { friendlyAuthError, NETWORK_ERROR_MESSAGE } from './authErrors';
