@@ -6,3 +6,4 @@ export {
   validatePassword,
   validatePasswordConfirmation,
 } from './validation';
+export { DEMO_EMAIL, DEMO_PASSWORD, DEMO_USERNAME, resolveLoginEmail } from './demoAccount';

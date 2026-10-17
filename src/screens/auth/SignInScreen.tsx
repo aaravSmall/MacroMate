@@ -1,8 +1,14 @@
 import { Link } from 'expo-router';
 import { useState } from 'react';
 
-import { Button, Screen, Text, TextField } from '@/components/ui';
-import { useAuth, validateEmail } from '@/features/auth';
+import { Button, Card, Screen, Text, TextField } from '@/components/ui';
+import {
+  DEMO_PASSWORD,
+  DEMO_USERNAME,
+  resolveLoginEmail,
+  useAuth,
+  validateEmail,
+} from '@/features/auth';
 
 export default function SignInScreen() {
   const { signIn } = useAuth();
@@ -13,8 +19,9 @@ export default function SignInScreen() {
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit() {
+    const loginEmail = resolveLoginEmail(email);
     const next = {
-      email: validateEmail(email),
+      email: validateEmail(loginEmail),
       // Only check presence here; length rules apply at sign-up.
       password: password === '' ? 'Enter your password.' : null,
     };
@@ -23,7 +30,7 @@ export default function SignInScreen() {
     if (next.email || next.password) return;
 
     setSubmitting(true);
-    const { error } = await signIn(email.trim(), password);
+    const { error } = await signIn(loginEmail, password);
     setSubmitting(false);
     if (error) setFormError(error);
     // On success the root gate redirects automatically.
@@ -33,8 +40,19 @@ export default function SignInScreen() {
     <Screen scroll>
       <Text variant="title">Sign in</Text>
       <Text tone="muted">Welcome back. Sign in to sync your log across devices.</Text>
+      {__DEV__ ? (
+        <Card>
+          <Text variant="label" tone="muted">
+            Demo account (development builds only)
+          </Text>
+          <Text variant="callout">
+            Username: {DEMO_USERNAME}
+            {'\n'}Password: {DEMO_PASSWORD}
+          </Text>
+        </Card>
+      ) : null}
       <TextField
-        label="Email"
+        label={__DEV__ ? 'Email (or demo)' : 'Email'}
         value={email}
         onChangeText={setEmail}
         error={errors.email}
