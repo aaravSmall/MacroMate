@@ -10,6 +10,20 @@ Read before feature work: [docs/PRODUCT.md](docs/PRODUCT.md) (decisions, screens
 
 Expo (SDK 58) / React Native, Expo Router, TypeScript (strict), Supabase (Postgres + Auth), TanStack Query (server state), Zustand (UI/session state), Open Food Facts. Tests use Jest (jest-expo) and React Native Testing Library.
 
+## Running the app
+
+The app runs in an **Expo development build** (`expo-dev-client`), **not Expo Go**, so native modules can be added. `ios/` and `android/` are generated (CNG) and gitignored; configure native behavior in `app.json` and config plugins.
+
+```bash
+npm run ios            # npx expo run:ios: build the dev client, install in the Simulator, start Metro
+npm run ios:device     # npx expo run:ios --device: same, on a USB-connected iPhone (needs signing)
+npm start              # npx expo start --dev-client: Metro only, for JS changes once the build is installed
+npm run build:dev      # EAS cloud dev build for iPhones (profile "development")
+npm run build:dev:sim  # EAS cloud dev build for the Simulator (profile "development-simulator")
+```
+
+Rebuild with `npm run ios` (or EAS) after adding a package with native code or changing native config. EAS profiles live in `eas.json` (development, development-simulator, preview, production).
+
 ## Folder conventions
 
 - `src/app/`: routes only. Thin files that render a screen from `src/screens/`.

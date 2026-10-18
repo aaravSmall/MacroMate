@@ -2,6 +2,10 @@
 
 Tally is an Expo / React Native app written in strict TypeScript, backed by Supabase (Postgres + Auth). This doc covers how code is layered, where state lives, and where the important rules are enforced.
 
+## Runtime
+
+The app ships as a native iOS app built from `app.json` by Expo's Continuous Native Generation. During development it runs in a **development build** (`expo-dev-client`) rather than Expo Go, so native modules such as on-device text recognition, HealthKit, and notifications can be used. Native projects are generated (`npx expo run:ios`, `eas build`), never edited by hand. Builds are defined in `eas.json`: `development` / `development-simulator` (dev client), `preview` (internal), and `production`. The README lists the commands.
+
 ## Layers
 
 ```

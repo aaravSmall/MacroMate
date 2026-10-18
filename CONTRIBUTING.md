@@ -6,16 +6,16 @@ Before starting on a larger change, please open an issue to discuss it. Read [do
 
 ## Setup
 
-1. Install Node.js 20+ and Xcode (for the iOS Simulator).
+1. Install Node.js 20+, Xcode (with an iOS Simulator), and CocoaPods.
 2. Fork and clone the repo, then:
 
    ```bash
    npm install
    cp .env.example .env   # add your own Supabase URL and anon key
-   npx expo start
+   npm run ios            # builds the dev client and runs it in the Simulator
    ```
 
-3. Apple Health features need a development build (`npx expo run:ios`); they don't work in Expo Go.
+3. The app runs in a development build, not Expo Go. After the first `npm run ios`, `npm start` is enough for JavaScript changes; rebuild with `npm run ios` after adding a native package or changing native config in `app.json`. See the README for physical-device and EAS builds.
 
 Add packages with `npx expo install <package>` rather than `npm install`, so versions stay compatible with the Expo SDK.
 

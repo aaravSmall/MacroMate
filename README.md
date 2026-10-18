@@ -59,7 +59,8 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the pieces fit together
 ### Prerequisites
 
 - Node.js 20+ and npm
-- Xcode with an iOS Simulator (macOS), or the Expo Go app on an iPhone
+- Xcode 26+ with an iOS Simulator and CocoaPods (macOS)
+- For a physical iPhone: an Apple Developer account (needed to sign the dev build)
 - A Supabase project (free tier is fine)
 
 ### Setup
@@ -69,21 +70,39 @@ git clone https://github.com/aaravSmall/MacroMate.git
 cd MacroMate
 npm install
 cp .env.example .env   # then fill in your Supabase URL and anon key
-npx expo start         # press i to open the iOS Simulator
+npm run ios            # builds the dev client, installs it in the Simulator, and starts Metro
 ```
 
-> **Apple Health requires a development build.** Expo Go doesn't include the HealthKit native module. To work on exercise sync, build a dev client with `npx expo run:ios` (local) or `npx eas-cli@latest build --profile development` (cloud).
+### Development builds (not Expo Go)
+
+Tally runs in an [Expo development build](https://docs.expo.dev/develop/development-builds/introduction/), a debug build of this app with `expo-dev-client`, not in Expo Go. That lets us use native modules (text recognition, HealthKit, notifications) that Expo Go doesn't include. Native projects (`ios/`, `android/`) are generated from `app.json` (Continuous Native Generation) and are gitignored, so never edit them by hand.
+
+| Where                         | First time / after native changes                                       | Day to day                                       |
+| ----------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------ |
+| iOS Simulator (local)         | `npm run ios` (`npx expo run:ios`)                                      | `npm start`, then open the installed Tally app   |
+| iPhone over USB (local)       | `npm run ios:device` (`npx expo run:ios --device`); needs signing       | `npm start`; the phone and Mac on the same Wi-Fi |
+| iPhone, built in the cloud    | `npm run build:dev` (EAS, `development` profile), install from the link | `npm start`                                      |
+| Simulator, built in the cloud | `npm run build:dev:sim` (EAS, `development-simulator` profile)          | `npm start`                                      |
+
+Rebuild (`npm run ios` or an EAS build) whenever you add a package with native code or change native config in `app.json`. JavaScript-only changes just need Metro (`npm start`). If native config gets out of sync, run `npm run prebuild:clean` to regenerate `ios/`.
+
+EAS profiles in [`eas.json`](eas.json): `development` (dev client, internal distribution), `development-simulator`, `preview` (internal test build of the release app), and `production` (App Store; `npm run build:prod`).
 
 ### Scripts
 
-| Script              | What it does                                    |
-| ------------------- | ----------------------------------------------- |
-| `npm start`         | Start the Expo dev server                       |
-| `npm run ios`       | Start and open the iOS Simulator                |
-| `npm run lint`      | ESLint (Expo config + Prettier compatibility)   |
-| `npm run typecheck` | `tsc --noEmit`                                  |
-| `npm run format`    | Format the repo with Prettier                   |
-| `npm test`          | Jest (jest-expo + React Native Testing Library) |
+| Script                                 | What it does                                              |
+| -------------------------------------- | --------------------------------------------------------- |
+| `npm start`                            | Start Metro for the dev build (`expo start --dev-client`) |
+| `npm run ios`                          | Build the dev client and run it in the iOS Simulator      |
+| `npm run ios:device`                   | Build the dev client and run it on a connected iPhone     |
+| `npm run build:dev`                    | EAS cloud build of the dev client for iPhones             |
+| `npm run build:dev:sim`                | EAS cloud build of the dev client for the Simulator       |
+| `npm run build:preview` / `build:prod` | EAS preview (internal) / production builds                |
+| `npm run prebuild:clean`               | Regenerate `ios/` and `android/` from `app.json`          |
+| `npm run lint`                         | ESLint (Expo config + Prettier compatibility)             |
+| `npm run typecheck`                    | `tsc --noEmit`                                            |
+| `npm run format`                       | Format the repo with Prettier                             |
+| `npm test`                             | Jest (jest-expo + React Native Testing Library)           |
 
 ## Project structure
 

@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Development builds:** the app now runs in an Expo development build (`expo-dev-client`) instead of Expo Go, so native modules can be added. New `eas.json` profiles (development, development-simulator, preview, production), an iOS bundle identifier, and scripts: `npm run ios`, `npm run ios:device`, `npm run build:dev`, `npm run build:dev:sim`, `npm run build:preview`, `npm run build:prod`, `npm run prebuild:clean`.
+
 - **Password reset:** the link in the reset email now opens a "Choose a new password" screen. It works with implicit-flow tokens, PKCE codes, and token-hash links, and shows a clear message with a way to request a new link when the link is expired or already used. While a reset is in progress, the app stays on that screen instead of jumping to onboarding or Today.
 
 - **Account deletion:** Account → Delete account now permanently deletes your account through the `delete-account` Edge Function. It deletes only the signed-in caller, verified from their session token; your profile, goals, logs, exercise, weigh-ins, label checks, and private foods are removed, and public foods you added stay without your name. The app then signs out on this device and clears its cached data.

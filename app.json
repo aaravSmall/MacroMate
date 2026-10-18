@@ -8,9 +8,11 @@
     "scheme": "calorietracker",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "com.aaravsmall.calorietracker",
       "icon": "./assets/expo.icon"
     },
     "android": {
+      "package": "com.aaravsmall.calorietracker",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

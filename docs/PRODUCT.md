@@ -47,7 +47,7 @@ Tally deliberately does **not** estimate calories from a photo of a meal. That e
 
 ### Exercise
 
-- Apple Health sync for workouts and active energy (requires a development build; it can't run in Expo Go).
+- Apple Health sync for workouts and active energy (uses HealthKit, a native module, available because the app runs as a development build).
 - Exercise appears as its own section on the Today screen.
 
 ### Weigh-ins
