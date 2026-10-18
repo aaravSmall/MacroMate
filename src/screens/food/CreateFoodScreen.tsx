@@ -1,4 +1,4 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 
@@ -9,6 +9,7 @@ import {
   type FoodFormValues,
   parseFoodForm,
   useCreateFood,
+  useLabelScanStore,
 } from '@/features/food';
 import { useTheme } from '@/theme';
 
@@ -23,23 +24,46 @@ const NUTRITION_FIELDS: FieldConfig[] = [
 
 const MICRO_FIELDS: FieldConfig[] = [
   { field: 'fiber', label: 'Fiber (g)' },
-  { field: 'sugar', label: 'Sugar (g)' },
+  { field: 'sugar', label: 'Total sugars (g)' },
+  { field: 'addedSugar', label: 'Added sugars (g)' },
   { field: 'saturatedFat', label: 'Saturated fat (g)' },
+  { field: 'transFat', label: 'Trans fat (g)' },
   { field: 'sodium', label: 'Sodium (mg)' },
   { field: 'cholesterol', label: 'Cholesterol (mg)' },
+  { field: 'vitaminD', label: 'Vitamin D (mcg)' },
+  { field: 'calcium', label: 'Calcium (mg)' },
+  { field: 'iron', label: 'Iron (mg)' },
+  { field: 'potassium', label: 'Potassium (mg)' },
+  { field: 'magnesium', label: 'Magnesium (mg)' },
+  { field: 'zinc', label: 'Zinc (mg)' },
 ];
+
+const CHECK_HINT = 'Check this against your label.';
 
 export default function CreateFoodScreen() {
   const { spacing } = useTheme();
-  const [values, setValues] = useState<FoodFormValues>(EMPTY_FOOD_FORM);
+  const { source } = useLocalSearchParams<{ source?: string }>();
+  const scanned = source === 'label_scan';
+  // A scanned label prefills the form once; the photo itself was never kept.
+  const [prefill] = useState(() => (scanned ? useLabelScanStore.getState().take() : null));
+  const [values, setValues] = useState<FoodFormValues>(prefill?.values ?? EMPTY_FOOD_FORM);
+  const [review, setReview] = useState(() => new Set(prefill?.needsReview ?? []));
   const [errors, setErrors] = useState<FoodFormErrors>({});
   const createFood = useCreateFood();
 
-  const set = (field: keyof FoodFormValues) => (text: string) =>
+  const set = (field: keyof FoodFormValues) => (text: string) => {
     setValues((v) => ({ ...v, [field]: text }));
+    // Editing a highlighted field counts as checking it.
+    setReview((r) => {
+      if (!r.has(field)) return r;
+      const next = new Set(r);
+      next.delete(field);
+      return next;
+    });
+  };
 
   async function handleSave() {
-    const parsed = parseFoodForm(values);
+    const parsed = parseFoodForm(values, { source: scanned ? 'label_scan' : 'user_product' });
     if (!parsed.ok) {
       setErrors(parsed.errors);
       return;
@@ -53,55 +77,66 @@ export default function CreateFoodScreen() {
     }
   }
 
+  const fieldProps = (field: keyof FoodFormValues) => ({
+    value: values[field],
+    onChangeText: set(field),
+    error: errors[field],
+    highlight: review.has(field),
+    hint: review.has(field) && field !== 'name' ? CHECK_HINT : undefined,
+  });
+
   const numberField = ({ field, label, placeholder }: FieldConfig) => (
     <View key={field} style={{ flexBasis: '47%', flexGrow: 1 }}>
       <TextField
         label={label}
         placeholder={placeholder ?? '0'}
-        value={values[field]}
-        onChangeText={set(field)}
         keyboardType="decimal-pad"
-        error={errors[field]}
+        {...fieldProps(field)}
       />
     </View>
   );
 
   return (
     <Screen scroll edges={['bottom', 'left', 'right']}>
-      <Text tone="muted">
-        Saved privately to your My Foods. Enter nutrition per serving, as printed on the label.
-      </Text>
+      {scanned && prefill ? (
+        <Card>
+          <Text variant="subheading">Check the scan</Text>
+          <Text variant="callout" tone="muted">
+            We read your label on this device. Highlighted fields were hard to read or missing, so
+            compare them with the package. Add a name, then save.
+          </Text>
+        </Card>
+      ) : (
+        <Text tone="muted">
+          Saved privately to your My Foods. Enter nutrition per serving, as printed on the label.
+        </Text>
+      )}
       <TextField
         label="Name"
         placeholder="e.g. Homemade granola"
-        value={values.name}
-        onChangeText={set('name')}
-        error={errors.name}
+        autoFocus={scanned}
+        {...fieldProps('name')}
       />
-      <TextField label="Brand (optional)" value={values.brand} onChangeText={set('brand')} />
+      <TextField label="Brand (optional)" {...fieldProps('brand')} />
       <View style={{ flexDirection: 'row', gap: spacing.md }}>
         <View style={{ flex: 1 }}>
           <TextField
             label="Serving size"
-            value={values.servingSize}
-            onChangeText={set('servingSize')}
             keyboardType="decimal-pad"
-            error={errors.servingSize}
+            {...fieldProps('servingSize')}
           />
         </View>
         <View style={{ flex: 1 }}>
           <TextField
             label="Unit"
             placeholder="g, cup, piece"
-            value={values.servingUnit}
-            onChangeText={set('servingUnit')}
             autoCapitalize="none"
-            error={errors.servingUnit}
+            {...fieldProps('servingUnit')}
           />
         </View>
       </View>
 
-      <Text variant="subheading">Nutrition</Text>
+      <Text variant="subheading">Nutrition per serving</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }}>
         {NUTRITION_FIELDS.map(numberField)}
       </View>

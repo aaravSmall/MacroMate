@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Nutrition label scanning:** Add → Scan nutrition label lets you take or choose a photo of a printed Nutrition Facts panel. It's read on the device (Apple Vision via `expo-text-extractor`; free, offline, never uploaded or saved), parsed into serving size, calories, macros, sugars, sodium, cholesterol, and printed vitamins and minerals, and opens the create-food form prefilled, with hard-to-read or missing fields highlighted for you to check. Photos of meals aren't estimated. The create-food form also gains trans fat, added sugars, vitamin D, calcium, iron, potassium, magnesium, and zinc.
+
 - **Development builds:** the app now runs in an Expo development build (`expo-dev-client`) instead of Expo Go, so native modules can be added. New `eas.json` profiles (development, development-simulator, preview, production), an iOS bundle identifier, and scripts: `npm run ios`, `npm run ios:device`, `npm run build:dev`, `npm run build:dev:sim`, `npm run build:preview`, `npm run build:prod`, `npm run prebuild:clean`.
 
 - **Password reset:** the link in the reset email now opens a "Choose a new password" screen. It works with implicit-flow tokens, PKCE codes, and token-hash links, and shows a clear message with a way to request a new link when the link is expired or already used. While a reset is in progress, the app stays on that screen instead of jumping to onboarding or Today.

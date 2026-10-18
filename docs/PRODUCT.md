@@ -24,7 +24,8 @@ A full-featured calorie tracker where every feature is free — no paywall, no p
 
 1. **Search the food database**: global foods (see below) plus the user's own My Foods.
 2. **Create your own food**: enter name, serving size, and nutrition manually.
-3. **Scan a nutrition label photo**: OCR the nutrition facts panel and pre-fill the create-food form for the user to review and save.
+3. **Scan a nutrition label photo**: take a photo (or pick one) of a printed Nutrition Facts panel. Text recognition runs on the device (Apple Vision on iOS); it's free and nothing is uploaded. The photo isn't saved: the app deletes its temporary copy once the text is read. A pure parser (`features/food/logic/labelParser.ts`) reads serving size (with grams/ml), servings per container, calories, fat, saturated and trans fat, cholesterol, sodium, carbs, fiber, total and added sugars, protein, and any printed vitamin D, calcium, iron, potassium, magnesium, and zinc. It ignores %DV columns and repairs common OCR misreads. The create-food form opens prefilled (source `label_scan`), with low-confidence or missing fields highlighted for the user to check against the package. The name is always required.
+   - **Rule: printed labels only.** Tally never estimates calories from a photo of a meal; those estimates aren't reliable. If a photo doesn't look like a Nutrition Facts panel, the user is told so and can enter the food manually.
 
 Tally deliberately does **not** estimate calories from a photo of a meal. That estimate is unreliable, and presenting it as data would undermine trust in every other number.
 

@@ -18,6 +18,14 @@ export type FoodFormValues = {
   sodium: string;
   saturatedFat: string;
   cholesterol: string;
+  transFat: string;
+  addedSugar: string;
+  vitaminD: string;
+  calcium: string;
+  iron: string;
+  potassium: string;
+  magnesium: string;
+  zinc: string;
 };
 
 export const EMPTY_FOOD_FORM: FoodFormValues = {
@@ -34,16 +42,33 @@ export const EMPTY_FOOD_FORM: FoodFormValues = {
   sodium: '',
   saturatedFat: '',
   cholesterol: '',
+  transFat: '',
+  addedSugar: '',
+  vitaminD: '',
+  calcium: '',
+  iron: '',
+  potassium: '',
+  magnesium: '',
+  zinc: '',
 };
 
 export type FoodFormErrors = Partial<Record<keyof FoodFormValues, string>>;
 
-const MICRO_FIELDS: { field: keyof FoodFormValues; key: string }[] = [
+/** Optional label nutrients: form field → micronutrient key (snake_case + unit). */
+export const MICRO_FIELDS: { field: keyof FoodFormValues; key: string }[] = [
   { field: 'fiber', key: 'fiber_g' },
   { field: 'sugar', key: 'sugar_g' },
+  { field: 'addedSugar', key: 'added_sugar_g' },
   { field: 'sodium', key: 'sodium_mg' },
   { field: 'saturatedFat', key: 'sat_fat_g' },
+  { field: 'transFat', key: 'trans_fat_g' },
   { field: 'cholesterol', key: 'cholesterol_mg' },
+  { field: 'vitaminD', key: 'vitamin_d_mcg' },
+  { field: 'calcium', key: 'calcium_mg' },
+  { field: 'iron', key: 'iron_mg' },
+  { field: 'potassium', key: 'potassium_mg' },
+  { field: 'magnesium', key: 'magnesium_mg' },
+  { field: 'zinc', key: 'zinc_mg' },
 ];
 
 /** Units that make a serving a weight or volume, so the food is stored per 100 of them. */
@@ -71,6 +96,7 @@ function scaleNutrition2(facts: NutritionFacts, factor: number): NutritionFacts 
  */
 export function parseFoodForm(
   values: FoodFormValues,
+  { source = 'user_product' }: { source?: NewFoodInput['source'] } = {},
 ): { ok: true; input: NewFoodInput } | { ok: false; errors: FoodFormErrors } {
   const errors: FoodFormErrors = {};
 
@@ -131,7 +157,7 @@ export function parseFoodForm(
   return {
     ok: true,
     input: {
-      source: 'user_product',
+      source,
       name,
       brand: values.brand.trim() || null,
       barcode: null,

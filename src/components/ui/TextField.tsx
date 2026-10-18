@@ -9,13 +9,25 @@ import { Text } from './Text';
 export type TextFieldProps = TextInputProps & {
   label: string;
   error?: string | null;
+  /** Draws attention to the field (e.g. a scanned value to double-check), without an error. */
+  highlight?: boolean;
+  /** Helper text under the field, shown when there's no error. */
+  hint?: string;
 };
 
 /**
  * Labeled text input. Secure fields (`secureTextEntry`) get a show/hide toggle so people can
  * check what they typed.
  */
-export function TextField({ label, error, style, secureTextEntry, ...rest }: TextFieldProps) {
+export function TextField({
+  label,
+  error,
+  highlight = false,
+  hint,
+  style,
+  secureTextEntry,
+  ...rest
+}: TextFieldProps) {
   const { colors, radii, spacing, typography } = useTheme();
   const [revealed, setRevealed] = useState(false);
   const secure = !!secureTextEntry;
@@ -30,8 +42,8 @@ export function TextField({ label, error, style, secureTextEntry, ...rest }: Tex
           flexDirection: 'row',
           alignItems: 'center',
           backgroundColor: colors.surface,
-          borderWidth: 1,
-          borderColor: error ? colors.danger : colors.border,
+          borderWidth: highlight && !error ? 2 : 1,
+          borderColor: error ? colors.danger : highlight ? colors.accent : colors.border,
           borderRadius: radii.md,
         }}
       >
@@ -72,6 +84,10 @@ export function TextField({ label, error, style, secureTextEntry, ...rest }: Tex
       {error ? (
         <Text variant="caption" tone="danger" accessibilityLiveRegion="polite">
           {error}
+        </Text>
+      ) : hint ? (
+        <Text variant="caption" tone={highlight ? 'accent' : 'muted'}>
+          {hint}
         </Text>
       ) : null}
     </View>

@@ -1,4 +1,14 @@
 export { FoodResultRow } from './components/FoodResultRow';
+export { useLabelScan, type LabelScanState } from './hooks/useLabelScan';
+export { useLabelScanStore } from './labelScanStore';
+export { labelToFoodForm, type LabelFormPrefill } from './logic/labelForm';
+export {
+  caloriesMatchMacros,
+  type Confidence,
+  type LabelNutrient,
+  type ParsedLabel,
+  parseNutritionLabel,
+} from './logic/labelParser';
 export {
   EMPTY_FOOD_FORM,
   type FoodFormErrors,

@@ -28,7 +28,7 @@ const OPTIONS: AddOption[] = [
   },
   {
     title: 'Scan nutrition label',
-    description: 'Photograph a nutrition facts panel to auto-fill.',
+    description: 'Photograph a Nutrition Facts panel and check the filled-in food.',
     icon: 'scan-outline',
     href: '/label-scan',
   },
