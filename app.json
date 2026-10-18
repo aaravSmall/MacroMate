@@ -42,6 +42,14 @@
           "cameraPermission": "Tally uses the camera to photograph a Nutrition Facts panel and read it on your device. The photo is never uploaded or saved.",
           "microphonePermission": false
         }
+      ],
+      [
+        "@kingstinct/react-native-healthkit",
+        {
+          "NSHealthShareUsageDescription": "Tally reads your workouts and active energy from Apple Health so the calories you burn can add to your day. Tally never writes to Apple Health.",
+          "NSHealthUpdateUsageDescription": false,
+          "background": false
+        }
       ]
     ],
     "experiments": {

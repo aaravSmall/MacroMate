@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import type { Tables } from '@/types/database';
+import type { Tables, TablesInsert } from '@/types/database';
 import type { ExerciseEntry } from '@/types/domain';
 
 export function mapExerciseRow(row: Tables<'exercise_entries'>): ExerciseEntry {
@@ -30,4 +30,33 @@ export async function getExerciseForDay(dateKey: string): Promise<ExerciseEntry[
     .order('started_at');
   if (error) throw error;
   return data.map(mapExerciseRow);
+}
+
+/** This user's Apple Health entries that started within [from, to] (RLS limits to own rows). */
+export async function listHealthEntries(from: Date, to: Date): Promise<ExerciseEntry[]> {
+  const { data, error } = await supabase
+    .from('exercise_entries')
+    .select('*')
+    .eq('source', 'apple_health')
+    .gte('started_at', from.toISOString())
+    .lte('started_at', to.toISOString());
+  if (error) throw error;
+  return data.map(mapExerciseRow);
+}
+
+/** Inserts or updates synced workouts, keyed on (user_id, external_id). */
+export async function upsertExerciseEntries(
+  rows: TablesInsert<'exercise_entries'>[],
+): Promise<void> {
+  if (rows.length === 0) return;
+  const { error } = await supabase
+    .from('exercise_entries')
+    .upsert(rows, { onConflict: 'user_id,external_id' });
+  if (error) throw error;
+}
+
+export async function deleteExerciseEntries(ids: string[]): Promise<void> {
+  if (ids.length === 0) return;
+  const { error } = await supabase.from('exercise_entries').delete().in('id', ids);
+  if (error) throw error;
 }

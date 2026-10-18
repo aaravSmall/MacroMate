@@ -6,12 +6,20 @@ import { Pressable, View } from 'react-native';
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, EmptyState, Screen, Text } from '@/components/ui';
 import { useProfile } from '@/features/account';
-import { exerciseDurationMin, useDayExercise } from '@/features/exercise';
+import {
+  exerciseDurationMin,
+  refuelPromptFor,
+  useDayExercise,
+  useDismissRefuel,
+  useHealthConnection,
+  useSyncHealth,
+} from '@/features/exercise';
 import {
   assessDayStatus,
   CareNotice,
   feedbackForDayStatus,
   NEAR_GOAL_CELEBRATION,
+  refuelCopy,
   SNACK_IDEAS,
   UNDER_GOAL_NUDGE,
   useActiveGoal,
@@ -70,6 +78,20 @@ export default function TodayScreen() {
   const logs = useDayLogs(dateKey);
   const totals = useDailyTotals(dateKey);
   const exercise = useDayExercise(dateKey);
+  const health = useHealthConnection();
+  const syncHealth = useSyncHealth();
+  const dismissRefuel = useDismissRefuel();
+  const [refreshing, setRefreshing] = useState(false);
+
+  async function handleRefresh() {
+    setRefreshing(true);
+    try {
+      await syncHealth.mutateAsync().catch(() => null);
+      await Promise.all([logs.refetch(), totals.refetch(), exercise.refetch(), goal.refetch()]);
+    } finally {
+      setRefreshing(false);
+    }
+  }
 
   const numbersOff = profile.data?.numbersOff ?? false;
   const target = goal.data?.dailyCalorieTarget ?? 0;
@@ -88,8 +110,14 @@ export default function TodayScreen() {
         )
       : 'none';
 
+  const isToday = dateKey === toDateKey(new Date());
+  const refuel =
+    isToday && exercise.data
+      ? refuelPromptFor(exercise.data, dateKey, new Set(health.data?.dismissedRefuel ?? []))
+      : null;
+
   return (
-    <Screen scroll>
+    <Screen scroll refreshing={refreshing} onRefresh={() => void handleRefresh()}>
       <DateSwitcher />
 
       <SummaryCard
@@ -110,6 +138,19 @@ export default function TodayScreen() {
               • {idea.name} (~{idea.approxCalories} cal)
             </Text>
           ))}
+        </CareNotice>
+      ) : null}
+
+      {refuel ? (
+        <CareNotice
+          {...refuelCopy(refuel.activityType, numbersOff ? null : refuel.activeCalories)}
+          showHelpLink={false}
+        >
+          <Button
+            title="Dismiss"
+            variant="ghost"
+            onPress={() => refuel.externalId && dismissRefuel.mutate(refuel.externalId)}
+          />
         </CareNotice>
       ) : null}
 
@@ -159,8 +200,9 @@ export default function TodayScreen() {
       />
       {exercise.data && exercise.data.length === 0 ? (
         <Text variant="callout" tone="muted">
-          No exercise logged. Apple Health sync is coming soon, and burned calories will add to your
-          budget.
+          {health.data?.connected
+            ? 'No workouts yet. Workouts from Apple Health show up here, and the calories you burn add to your budget. Pull down to sync.'
+            : 'No workouts yet. Connect Apple Health in Settings to bring in workouts from your watch and apps.'}
         </Text>
       ) : null}
       {exercise.data && exercise.data.length > 0 ? (

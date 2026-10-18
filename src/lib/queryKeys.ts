@@ -23,6 +23,9 @@ export const queryKeys = {
     all: ['exercise'] as const,
     day: (dateKey: string) => ['exercise', 'day', dateKey] as const,
   },
+  health: {
+    connection: (userId: string) => ['health', 'connection', userId] as const,
+  },
   weighIns: {
     all: ['weighIns'] as const,
     list: () => ['weighIns', 'list'] as const,

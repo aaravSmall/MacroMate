@@ -3,6 +3,7 @@ export {
   calorieFloorRecommendation,
   NEAR_GOAL_CELEBRATION,
   paceCautionCopy,
+  refuelCopy,
   UNDER_GOAL_NUDGE,
 } from './copy';
 export {

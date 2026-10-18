@@ -84,25 +84,26 @@ Tally runs in an [Expo development build](https://docs.expo.dev/develop/developm
 | iPhone, built in the cloud    | `npm run build:dev` (EAS, `development` profile), install from the link | `npm start`                                      |
 | Simulator, built in the cloud | `npm run build:dev:sim` (EAS, `development-simulator` profile)          | `npm start`                                      |
 
-Rebuild (`npm run ios` or an EAS build) whenever you add a package with native code or change native config in `app.json`. JavaScript-only changes just need Metro (`npm start`). If native config gets out of sync, run `npm run prebuild:clean` to regenerate `ios/`.
+**After adding a package with native code or changing native config in `app.json` (permissions, plugins, entitlements), run `npm run ios:rebuild`.** It regenerates `ios/` and then builds. Plain `npm run ios` reuses an existing `ios/` folder and won't pick up config plugin changes. EAS builds always start fresh. JavaScript-only changes just need Metro (`npm start`).
 
 EAS profiles in [`eas.json`](eas.json): `development` (dev client, internal distribution), `development-simulator`, `preview` (internal test build of the release app), and `production` (App Store; `npm run build:prod`).
 
 ### Scripts
 
-| Script                                 | What it does                                              |
-| -------------------------------------- | --------------------------------------------------------- |
-| `npm start`                            | Start Metro for the dev build (`expo start --dev-client`) |
-| `npm run ios`                          | Build the dev client and run it in the iOS Simulator      |
-| `npm run ios:device`                   | Build the dev client and run it on a connected iPhone     |
-| `npm run build:dev`                    | EAS cloud build of the dev client for iPhones             |
-| `npm run build:dev:sim`                | EAS cloud build of the dev client for the Simulator       |
-| `npm run build:preview` / `build:prod` | EAS preview (internal) / production builds                |
-| `npm run prebuild:clean`               | Regenerate `ios/` and `android/` from `app.json`          |
-| `npm run lint`                         | ESLint (Expo config + Prettier compatibility)             |
-| `npm run typecheck`                    | `tsc --noEmit`                                            |
-| `npm run format`                       | Format the repo with Prettier                             |
-| `npm test`                             | Jest (jest-expo + React Native Testing Library)           |
+| Script                                 | What it does                                                         |
+| -------------------------------------- | -------------------------------------------------------------------- |
+| `npm start`                            | Start Metro for the dev build (`expo start --dev-client`)            |
+| `npm run ios`                          | Build the dev client and run it in the iOS Simulator                 |
+| `npm run ios:device`                   | Build the dev client and run it on a connected iPhone                |
+| `npm run ios:rebuild`                  | Regenerate `ios/` from `app.json`, then build (after native changes) |
+| `npm run build:dev`                    | EAS cloud build of the dev client for iPhones                        |
+| `npm run build:dev:sim`                | EAS cloud build of the dev client for the Simulator                  |
+| `npm run build:preview` / `build:prod` | EAS preview (internal) / production builds                           |
+| `npm run prebuild:clean`               | Regenerate `ios/` and `android/` from `app.json`                     |
+| `npm run lint`                         | ESLint (Expo config + Prettier compatibility)                        |
+| `npm run typecheck`                    | `tsc --noEmit`                                                       |
+| `npm run format`                       | Format the repo with Prettier                                        |
+| `npm test`                             | Jest (jest-expo + React Native Testing Library)                      |
 
 ## Project structure
 

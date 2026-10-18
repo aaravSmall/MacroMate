@@ -15,7 +15,7 @@ Before starting on a larger change, please open an issue to discuss it. Read [do
    npm run ios            # builds the dev client and runs it in the Simulator
    ```
 
-3. The app runs in a development build, not Expo Go. After the first `npm run ios`, `npm start` is enough for JavaScript changes; rebuild with `npm run ios` after adding a native package or changing native config in `app.json`. See the README for physical-device and EAS builds.
+3. The app runs in a development build, not Expo Go. After the first `npm run ios`, `npm start` is enough for JavaScript changes; run `npm run ios:rebuild` after adding a native package or changing native config in `app.json` (plain `npm run ios` reuses the generated `ios/` folder). See the README for physical-device and EAS builds.
 
 Add packages with `npx expo install <package>` rather than `npm install`, so versions stay compatible with the Expo SDK.
 

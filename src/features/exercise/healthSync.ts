@@ -1,36 +1,53 @@
 /**
- * Health data sync (Apple Health on iOS).
+ * Health data sync. The app reads workouts (from any source: Apple Watch, Hevy, Fitbit, … all
+ * arrive through Apple Health) and active energy. It never writes to Health.
  *
- * TODO(healthkit): implement with a HealthKit module. HealthKit is a native module that Expo Go
- * doesn't include, so this needs a development build (`npx expo run:ios` or
- * `eas build --profile development`) plus the HealthKit entitlement and usage strings in
- * app.json. Synced workouts should upsert into exercise_entries keyed by (user_id, external_id).
+ * iOS uses HealthKit (appleHealthSync.ts), which needs a development build. Android and
+ * unsupported builds use noopHealthSync.
  */
+import { Platform } from 'react-native';
 
 export type HealthWorkout = {
-  /** Stable id from the health store; used as exercise_entries.external_id. */
+  /** Stable HealthKit sample UUID; stored as exercise_entries.external_id. */
   externalId: string;
   activityType: string;
   startedAt: Date;
   endedAt: Date;
-  /** Active energy burned, kcal. */
+  /** Active energy burned, kcal (0 when the workout didn't record it). */
   activeCalories: number;
 };
+
+/**
+ * - unavailable: no Health on this device/build
+ * - shouldRequest: the permission sheet hasn't been shown yet
+ * - requested: the sheet was shown (HealthKit never reveals whether reading was allowed)
+ */
+export type HealthPermissionState = 'unavailable' | 'shouldRequest' | 'requested';
 
 export interface HealthSync {
   /** Whether health data is available on this device and build. */
   isAvailable(): Promise<boolean>;
-  /** Prompts for read access to workouts and active energy. Resolves to whether it was granted. */
+  permissionState(): Promise<HealthPermissionState>;
+  /** Shows the read-only permission sheet for workouts and active energy. */
   requestPermissions(): Promise<boolean>;
-  /** Workouts that started within [from, to). */
+  /** Workouts that started within [from, to]. */
   getWorkouts(range: { from: Date; to: Date }): Promise<HealthWorkout[]>;
 }
 
-/** Placeholder used until HealthKit is wired up: reports unavailable and returns nothing. */
+/** Used on Android and unsupported builds: reports unavailable and returns nothing. */
 export const noopHealthSync: HealthSync = {
   isAvailable: async () => false,
+  permissionState: async () => 'unavailable',
   requestPermissions: async () => false,
   getWorkouts: async () => [],
 };
 
-export const healthSync: HealthSync = noopHealthSync;
+function pick(): HealthSync {
+  if (Platform.OS !== 'ios') return noopHealthSync;
+  // Loaded lazily so non-iOS bundles and tests never touch the native module.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { appleHealthSync } = require('./appleHealthSync') as typeof import('./appleHealthSync');
+  return appleHealthSync;
+}
+
+export const healthSync: HealthSync = pick();

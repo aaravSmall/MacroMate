@@ -48,7 +48,7 @@ Tally deliberately does **not** estimate calories from a photo of a meal. That e
 
 ### Exercise
 
-- Apple Health sync for workouts and active energy (uses HealthKit, a native module, available because the app runs as a development build).
+- Apple Health sync for workouts and active energy (HealthKit, read-only; connect or disconnect in Settings). Every source that writes workouts to Health is included. Sync runs on open/foreground and pull-to-refresh on Today, upserts by HealthKit id, and removes workouts deleted in Health within the synced window. After a synced workout, Today shows a gentle, dismissible refuel note once per workout.
 - Exercise appears as its own section on the Today screen.
 
 ### Weigh-ins

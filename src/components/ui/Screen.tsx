@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ScrollView, StyleSheet, View, type ViewStyle } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet, View, type ViewStyle } from 'react-native';
 import { type Edge, SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTheme } from '@/theme';
@@ -11,6 +11,9 @@ export type ScreenProps = {
   /** Safe-area edges to inset. Defaults to top + horizontal (tab bar/headers handle the bottom). */
   edges?: Edge[];
   contentStyle?: ViewStyle;
+  /** Pull-to-refresh (scroll screens only). */
+  refreshing?: boolean;
+  onRefresh?: () => void;
 };
 
 export function Screen({
@@ -18,6 +21,8 @@ export function Screen({
   scroll = false,
   edges = ['top', 'left', 'right'],
   contentStyle,
+  refreshing = false,
+  onRefresh,
 }: ScreenProps) {
   const { colors, spacing } = useTheme();
   const padding = { padding: spacing.lg, gap: spacing.lg };
@@ -28,6 +33,15 @@ export function Screen({
         <ScrollView
           contentContainerStyle={[padding, contentStyle]}
           keyboardShouldPersistTaps="handled"
+          refreshControl={
+            onRefresh ? (
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={colors.accent}
+              />
+            ) : undefined
+          }
         >
           {children}
         </ScrollView>

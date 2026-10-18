@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Apple Health sync:** connect Apple Health in Settings (read-only: workouts and active energy; Tally never writes to Health). Workouts from any app or device that saves to Health (Apple Watch, Hevy, Fitbit, …) sync when the app opens or returns to the foreground and when you pull down on Today, covering the time since the last sync (the last 7 days the first time). Entries are upserted by HealthKit id, and workouts deleted in Health are removed. Burned calories add to the day's budget, and after a workout today a dismissible, once-per-workout refuel note appears (without numbers in numbers-off mode).
+
 - **Nutrition label scanning:** Add → Scan nutrition label lets you take or choose a photo of a printed Nutrition Facts panel. It's read on the device (Apple Vision via `expo-text-extractor`; free, offline, never uploaded or saved), parsed into serving size, calories, macros, sugars, sodium, cholesterol, and printed vitamins and minerals, and opens the create-food form prefilled, with hard-to-read or missing fields highlighted for you to check. Photos of meals aren't estimated. The create-food form also gains trans fat, added sugars, vitamin D, calcium, iron, potassium, magnesium, and zinc.
 
 - **Development builds:** the app now runs in an Expo development build (`expo-dev-client`) instead of Expo Go, so native modules can be added. New `eas.json` profiles (development, development-simulator, preview, production), an iOS bundle identifier, and scripts: `npm run ios`, `npm run ios:device`, `npm run build:dev`, `npm run build:dev:sim`, `npm run build:preview`, `npm run build:prod`, `npm run prebuild:clean`.

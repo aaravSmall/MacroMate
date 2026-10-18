@@ -22,7 +22,7 @@ npm run build:dev      # EAS cloud dev build for iPhones (profile "development")
 npm run build:dev:sim  # EAS cloud dev build for the Simulator (profile "development-simulator")
 ```
 
-Rebuild with `npm run ios` (or EAS) after adding a package with native code or changing native config. EAS profiles live in `eas.json` (development, development-simulator, preview, production).
+After adding a package with native code or changing native config (plugins, permissions, entitlements in `app.json`), run `npm run ios:rebuild` (`expo prebuild --platform ios --clean && expo run:ios`). Plain `npm run ios` reuses the existing generated `ios/` and silently misses config plugin changes. EAS profiles live in `eas.json` (development, development-simulator, preview, production).
 
 ## Folder conventions
 
