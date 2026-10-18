@@ -24,6 +24,10 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- **Label checks** only appear for foods that come from a package label (Open Food Facts and foods people add). Restaurant foods join dining hall foods in skipping the "Does this match your label?" prompt.
+- **Serving edits are recipe-only:** database policies now let owners edit or delete servings only on their own meals (`user_recipe`); products keep their label values. Deleting a private product still removes its servings. `supabase/tests/food_servings_rls_test.sql` checks it.
+- **Allergens on dining foods:** the food page lists flagged allergens with "Allergen info from Purdue Dining. It may not reflect cross-contact; ask dining staff if you have an allergy." Allergen data is only ever used to warn, never to call a food safe (docs/PRODUCT.md).
+
 - **Food search** matches every word in any order across name and brand (e.g. "wingstop lemon pepper") and ranks chain + item matches first.
 - **Logging streak on the server:** the Progress streak now comes from a `current_streak(p_tz)` database function (consecutive days with a log, ending today or yesterday in your time zone; any logged day counts), so it's no longer capped at 120 days. `supabase/tests/current_streak_test.sql` checks it against the client spec.
 - **New database schema:** the app now uses the rebuilt schema (`profiles`, `goals`, `foods`, `food_servings`, `food_verifications`, `log_entries`, `exercise_entries`, `weigh_ins`, and the `daily_totals` view), with types generated from the project.

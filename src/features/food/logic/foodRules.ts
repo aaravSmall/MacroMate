@@ -44,17 +44,33 @@ export function canDeleteFood(food: Pick<Food, 'ownerId' | 'visibility'>, userId
 }
 
 /**
- * Public foods someone else added can be checked against the user's label. Dining hall food
- * has no package label, so it's never asked about.
+ * Sources whose foods come from a package label people can compare against: Open Food Facts
+ * products and user-uploaded foods. Restaurant and dining hall food has no package label.
+ */
+const LABEL_SOURCES: ReadonlySet<Food['source']> = new Set([
+  'open_food_facts',
+  'user_product',
+  'label_scan',
+  'user_recipe',
+]);
+
+/** Whether "Does this match your label?" makes sense for this kind of food at all. */
+export function needsLabelCheck(food: Pick<Food, 'source'>): boolean {
+  return LABEL_SOURCES.has(food.source);
+}
+
+/**
+ * Public foods someone else added can be checked against the user's label, when they come
+ * from a label (see needsLabelCheck). Never the user's own foods or uncached OFF results.
  */
 export function canVerifyFood(
-  food: Pick<Food, 'id' | 'ownerId' | 'visibility'> & { source?: Food['source'] },
+  food: Pick<Food, 'id' | 'ownerId' | 'visibility' | 'source'>,
   userId: string,
 ): boolean {
   return (
     food.visibility === 'public' &&
     food.ownerId !== userId &&
-    food.source !== 'dining_hall' &&
+    needsLabelCheck(food) &&
     !isUncachedOpenFoodFactsResult(food)
   );
 }

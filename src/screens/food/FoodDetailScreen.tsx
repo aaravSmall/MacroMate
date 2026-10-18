@@ -7,7 +7,9 @@ import { Button, Card, Divider, Screen, SegmentedControl, Text, TextField } from
 import { useProfile } from '@/features/account';
 import { useAuth } from '@/features/auth';
 import {
+  allergenNotice,
   canDeleteFood,
+  containsLabel,
   canEditFood,
   canVerifyFood,
   getMyVerification,
@@ -172,6 +174,17 @@ function LogFoodForm({
           <Text variant="caption" tone="muted">
             Nutrition from {diningProviderLabel(food.provider) ?? 'the dining hall'}
           </Text>
+        ) : null}
+        {/* Allergens only ever warn; never present a food as safe (see logic/allergens.ts). */}
+        {containsLabel(food) ? (
+          <View style={{ gap: spacing.xxs }}>
+            <Text variant="callout">{containsLabel(food)}</Text>
+            {allergenNotice(food) ? (
+              <Text variant="caption" tone="muted">
+                {allergenNotice(food)}
+              </Text>
+            ) : null}
+          </View>
         ) : null}
         {food.visibility === 'public' && hasMismatchWarning(food) ? (
           <Text variant="callout" tone="accent">

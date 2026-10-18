@@ -128,6 +128,11 @@ These rules are implemented as pure, unit-tested functions in `src/features/goal
 
 Copy for every warning should be warm and specific. It should say what we noticed, why it matters, and where to get help. It should never shame the user.
 
+### Allergen data
+
+- **Allergen data may only be used to warn about or flag a food** ("Contains: gluten, soy"). It must **never** be used to label a food safe for an allergy: no "allergen-free", no "safe for you", and no reading "nothing flagged" as "safe". Provider data can be incomplete and doesn't cover cross-contact. Implemented in `src/features/food/logic/allergens.ts`.
+- Wherever provider allergens are shown, the source note goes with them. For dining hall foods: "Allergen info from Purdue Dining. It may not reflect cross-contact; ask dining staff if you have an allergy." This applies to the food page now and to any diet-restriction feature later (those features may hide or flag foods that list an allergen, but never promise safety).
+
 ## Non-goals
 
 - Paywalls, premium tiers, or ads that gate features.

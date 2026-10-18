@@ -24,6 +24,7 @@ export {
   type FoodFormValues,
   parseFoodForm,
 } from './logic/foodForm';
+export { allergenNotice, containsLabel } from './logic/allergens';
 export {
   baseServingLabel,
   canDeleteFood,
@@ -33,6 +34,7 @@ export {
   hasMismatchWarning,
   isUncachedOpenFoodFactsResult,
   matchServing,
+  needsLabelCheck,
 } from './logic/foodRules';
 export {
   MIN_SEARCH_LENGTH,

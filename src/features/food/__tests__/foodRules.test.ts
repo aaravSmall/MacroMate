@@ -6,6 +6,7 @@ import {
   defaultServing,
   hasMismatchWarning,
   matchServing,
+  needsLabelCheck,
 } from '@/features/food/logic/foodRules';
 
 const me = 'user-me';
@@ -48,8 +49,18 @@ describe('canDeleteFood', () => {
 
 describe('canVerifyFood', () => {
   it('asks about stored public foods someone else added', () => {
-    expect(canVerifyFood({ id: 'f', ownerId: 'other', visibility: 'public' }, me)).toBe(true);
-    expect(canVerifyFood({ id: 'f', ownerId: null, visibility: 'public' }, me)).toBe(true);
+    expect(
+      canVerifyFood(
+        { id: 'f', ownerId: 'other', visibility: 'public', source: 'user_product' },
+        me,
+      ),
+    ).toBe(true);
+    expect(
+      canVerifyFood(
+        { id: 'f', ownerId: null, visibility: 'public', source: 'open_food_facts' },
+        me,
+      ),
+    ).toBe(true);
   });
 
   it('never asks about dining hall food (there is no package label)', () => {
@@ -59,9 +70,21 @@ describe('canVerifyFood', () => {
   });
 
   it('never asks about the user’s own, private, or uncached foods', () => {
-    expect(canVerifyFood({ id: 'f', ownerId: me, visibility: 'public' }, me)).toBe(false);
-    expect(canVerifyFood({ id: 'f', ownerId: 'other', visibility: 'private' }, me)).toBe(false);
-    expect(canVerifyFood({ id: 'off:123', ownerId: null, visibility: 'public' }, me)).toBe(false);
+    expect(
+      canVerifyFood({ id: 'f', ownerId: me, visibility: 'public', source: 'user_product' }, me),
+    ).toBe(false);
+    expect(
+      canVerifyFood(
+        { id: 'f', ownerId: 'other', visibility: 'private', source: 'user_product' },
+        me,
+      ),
+    ).toBe(false);
+    expect(
+      canVerifyFood(
+        { id: 'off:123', ownerId: null, visibility: 'public', source: 'open_food_facts' },
+        me,
+      ),
+    ).toBe(false);
   });
 });
 
@@ -87,5 +110,28 @@ describe('matchServing', () => {
 
   it('falls back to the default', () => {
     expect(matchServing(servings, { baseMultiplier: 2.5 }).id).toBe('s1');
+  });
+});
+
+describe('needsLabelCheck', () => {
+  it('asks only about foods that come from a package label', () => {
+    expect(needsLabelCheck({ source: 'open_food_facts' })).toBe(true);
+    expect(needsLabelCheck({ source: 'user_product' })).toBe(true);
+    expect(needsLabelCheck({ source: 'label_scan' })).toBe(true);
+    expect(needsLabelCheck({ source: 'user_recipe' })).toBe(true);
+    expect(needsLabelCheck({ source: 'restaurant' })).toBe(false);
+    expect(needsLabelCheck({ source: 'dining_hall' })).toBe(false);
+  });
+
+  it('keeps public restaurant food out of the label prompt', () => {
+    expect(
+      canVerifyFood({ id: 'f', ownerId: null, visibility: 'public', source: 'restaurant' }, me),
+    ).toBe(false);
+    expect(
+      canVerifyFood(
+        { id: 'f', ownerId: null, visibility: 'public', source: 'open_food_facts' },
+        me,
+      ),
+    ).toBe(true);
   });
 });
