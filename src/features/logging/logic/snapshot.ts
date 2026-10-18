@@ -24,15 +24,17 @@ export function portionNutrition(
 
 /**
  * The `log_entries` row for a new log, with the snapshot computed now so later edits to the food
- * never change past logs. Open Food Facts results that aren't stored yet log with food_id = null.
+ * never change past logs. The food must be stored: cache Open Food Facts results first.
  */
 export function buildLogInsert(input: NewLogInput, userId: string): TablesInsert<'log_entries'> {
   const { food, serving, quantity } = input;
-  const stored = !food.id.startsWith(OFF_ID_PREFIX);
+  if (food.id.startsWith(OFF_ID_PREFIX)) {
+    throw new Error('Cache this Open Food Facts product before logging it.');
+  }
   return {
     user_id: userId,
-    food_id: stored ? food.id : null,
-    serving_id: stored ? serving.id : null,
+    food_id: food.id,
+    serving_id: serving.id,
     quantity,
     logged_at: input.loggedAt.toISOString(),
     local_date: input.localDate,

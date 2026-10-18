@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- **Cached Open Food Facts foods:** logging an Open Food Facts result now saves it as a global food through the `cache-off-food` Edge Function, which fetches the nutrition from Open Food Facts itself. Entries link to a real food with portions (`100 g`, `1 g`, `1 oz`, plus the product's own serving), the food can collect label checks, and other users find it in search instead of re-fetching it.
+
 ### Fixed
 
 - **Goals:** changing goals is now atomic. A new `change_goal()` Postgres function ends the active goal and starts the new one in one transaction, so a failure part-way can no longer leave you without an active goal. Onboarding and later goal changes both use it.
@@ -20,7 +24,7 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
-- **Label checks:** logging a public food someone else added asks "Does this match your label?" Search results show both counts and a gentle heads-up when mismatches outnumber matches.
+- **Label checks:** logging a public food someone else added (including cached Open Food Facts foods) asks "Does this match your label?" Search results show both counts and a gentle heads-up when mismatches outnumber matches.
 
 ## [0.1.0] - 2026-10-16 — Skeleton
 

@@ -5,6 +5,7 @@ import {
   canVerifyFood,
   defaultServing,
   hasMismatchWarning,
+  matchServing,
 } from '@/features/food/logic/foodRules';
 
 const me = 'user-me';
@@ -63,5 +64,22 @@ describe('hasMismatchWarning', () => {
     expect(hasMismatchWarning({ verificationCount: 2, mismatchCount: 3 })).toBe(true);
     expect(hasMismatchWarning({ verificationCount: 3, mismatchCount: 3 })).toBe(false);
     expect(hasMismatchWarning({ verificationCount: 0, mismatchCount: 0 })).toBe(false);
+  });
+});
+
+describe('matchServing', () => {
+  const servings = [
+    { id: 's1', label: '1 portion (15 g)', baseMultiplier: 0.15, isDefault: true },
+    { id: 's2', label: '100 g', baseMultiplier: 1, isDefault: false },
+    { id: 's3', label: '1 oz', baseMultiplier: 0.2835, isDefault: false },
+  ];
+
+  it('finds the same-size portion, tolerating column rounding', () => {
+    expect(matchServing(servings, { baseMultiplier: 1 }).id).toBe('s2');
+    expect(matchServing(servings, { baseMultiplier: 0.283495 }).id).toBe('s3');
+  });
+
+  it('falls back to the default', () => {
+    expect(matchServing(servings, { baseMultiplier: 2.5 }).id).toBe('s1');
   });
 });

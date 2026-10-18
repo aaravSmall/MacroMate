@@ -9,7 +9,11 @@ import { useAuth } from '@/features/auth';
 import {
   canDeleteFood,
   canVerifyFood,
+  getMyVerification,
   hasMismatchWarning,
+  isUncachedOpenFoodFactsResult,
+  matchServing,
+  useCacheOpenFoodFactsFood,
   useDeleteFood,
   useFood,
   useMyVerification,
@@ -68,6 +72,7 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
   const [error, setError] = useState<string | null>(null);
   const addLog = useAddLog();
   const deleteFood = useDeleteFood();
+  const cacheFood = useCacheOpenFoodFactsFood();
 
   const verifiable = canVerifyFood(food, userId);
   const myVerification = useMyVerification(food.id, verifiable);
@@ -85,16 +90,39 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
     }
     setError(null);
 
-    if (verifiable && myVerification.data === null) {
-      const matches = await askLabelMatch(food.name);
-      if (matches !== null) verifyFood.mutate({ foodId: food.id, matches });
+    // A live Open Food Facts result becomes a real global food first, so the entry links to it.
+    let target = food;
+    let portion = serving;
+    if (isUncachedOpenFoodFactsResult(food)) {
+      if (!food.externalId) {
+        setError("We couldn't save this food. Try another result.");
+        return;
+      }
+      try {
+        target = await cacheFood.mutateAsync(food.externalId);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "We couldn't save this food right now.");
+        return;
+      }
+      portion = matchServing(target.servings, serving);
+    }
+
+    if (canVerifyFood(target, userId)) {
+      const previous =
+        target.id === food.id
+          ? myVerification.data
+          : await getMyVerification(target.id).catch(() => null);
+      if (previous === null) {
+        const matches = await askLabelMatch(target.name);
+        if (matches !== null) verifyFood.mutate({ foodId: target.id, matches });
+      }
     }
 
     const timezone = profile.data?.timezone;
     try {
       await addLog.mutateAsync({
-        food,
-        serving,
+        food: target,
+        serving: portion,
         quantity,
         loggedAt,
         // The user's timezone at log time; falls back to the device's day if it isn't loaded.
@@ -179,8 +207,17 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
           onChange={setMeal}
         />
       </View>
+      {cacheFood.isPending ? (
+        <Text variant="caption" tone="muted">
+          Saving this food so it can be checked and reused…
+        </Text>
+      ) : null}
       {error ? <Text tone="danger">{error}</Text> : null}
-      <Button title="Log it" onPress={handleLog} loading={addLog.isPending} />
+      <Button
+        title="Log it"
+        onPress={handleLog}
+        loading={cacheFood.isPending || addLog.isPending}
+      />
       {/* Only user_recipe foods are editable (canEditFood); there's no recipe editor yet, so no
           other food shows edit controls. */}
       {canDeleteFood(food, userId) ? (

@@ -47,7 +47,7 @@ The app computes the snapshot when logging, so editing or deleting a food never 
 - other nutrients go in the `nutrients` jsonb
 - `food_name` is copied from the food
 
-`food_id` and `serving_id` are set null if the food or serving is deleted. They're also null for Open Food Facts results that aren't cached in `foods` yet (see below).
+`food_id` and `serving_id` are set null if the food or serving is deleted. The app always logs a stored food, so new entries have both.
 
 ## Security
 
@@ -61,7 +61,7 @@ The app computes the snapshot when logging, so editing or deleting a food never 
 | `food_servings`                                         | Read servings of readable foods. Add to own foods. Edit or delete servings of own private foods or recipes.                                                                                                                                                                |
 | `food_verifications`                                    | Read all. Insert own answer for someone else's public food. Update or delete own answer.                                                                                                                                                                                   |
 
-Open Food Facts and restaurant foods can only be written with the service role. **TODO:** an Edge Function will cache OFF results in `foods`; until then the app shows them uncached and logs them with `food_id = null`.
+Open Food Facts and restaurant foods can only be written with the service role. The `cache-off-food` Edge Function does this for OFF products (see [ARCHITECTURE.md](ARCHITECTURE.md)). It writes each one as a public, unowned food with `source = 'open_food_facts'` and `external_id` = barcode, stored per 100 g, with an OFF serving (if any) plus `100 g`, `1 g` and `1 oz`. The unique index on `(source, external_id)` keeps one row per product.
 
 ### goals: changing goals
 

@@ -2,7 +2,13 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { queryKeys } from '@/lib/queryKeys';
 
-import { createFood, deleteFood, getFood, searchFoods } from '../services/foodService';
+import {
+  cacheOpenFoodFactsFood,
+  createFood,
+  deleteFood,
+  getFood,
+  searchFoods,
+} from '../services/foodService';
 import type { NewFoodInput } from '../services/mappers';
 import { getMyVerification, verifyFood } from '../services/verificationService';
 
@@ -34,6 +40,19 @@ export function useCreateFood() {
     mutationFn: (input: NewFoodInput) => createFood(input),
     onSuccess: (food) => {
       queryClient.setQueryData(queryKeys.foods.detail(food.id), food);
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
+    },
+  });
+}
+
+/** Caches an Open Food Facts product (by barcode) as a global food and returns it. */
+export function useCacheOpenFoodFactsFood() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (code: string) => cacheOpenFoodFactsFood(code),
+    onSuccess: (food) => {
+      queryClient.setQueryData(queryKeys.foods.detail(food.id), food);
+      // Search should now list the cached row (with its counts) instead of the live result.
       void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
     },
   });

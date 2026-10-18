@@ -79,7 +79,11 @@ Add (+) tab
             └─ searchFoods()                           features/food/services
                  ├─ Supabase: foods (public + own)     src/lib/supabase
                  └─ Open Food Facts adapter            src/lib/openFoodFacts
-  user picks a food + serving
+  user picks a food + serving, taps Log
+       ├─ (live OFF result only) useCacheOpenFoodFactsFood(code)
+       │    └─ Edge Function cache-off-food            supabase/functions
+       │         ├─ fetch product from OFF (server-side)
+       │         └─ insert foods + food_servings (service role)
        └─ useAddLog().mutate(input)                    features/logging/hooks
             ├─ suggestMealType(timestamp)              features/logging/logic (pure)
             ├─ optimistic update of queryKeys.logs.day(date)
@@ -89,12 +93,19 @@ Add (+) tab
        └─ TodayScreen re-renders summary card + timeline
 ```
 
-1. The user searches. `useFoodSearch` debounces the query and calls the food service. It searches `foods` (public foods plus the user's own, via RLS) and tops up with Open Food Facts when there are few matches. The screen shows the user's own foods as "My Foods".
-2. The user picks a serving and amount. The meal is suggested from the time of day by a pure function, and the user can change it. For a public food someone else added, the app asks "Does this match your label?" and upserts the answer into `food_verifications`.
+1. The user searches. `useFoodSearch` debounces the query and calls the food service. It searches `foods` (public foods, including Open Food Facts products any user has already cached, plus the user's own, via RLS) and tops up with live Open Food Facts results when there are few matches. Live results already cached are dropped by `external_id`. The screen shows the user's own foods as "My Foods".
+2. The user picks a serving and amount. If the food is a live OFF result (an `off:` id), the app first calls the `cache-off-food` Edge Function with just the barcode, showing a loading state. The function returns the stored food, creating it if needed (see below), and the app keeps the same-size serving. If caching fails, the user sees a friendly message and nothing is logged. The meal is suggested from the time of day by a pure function, and the user can change it. For a public food someone else added (cached OFF foods included, since they have no owner), the app asks "Does this match your label?" and upserts the answer into `food_verifications`.
 3. `useAddLog` optimistically adds the entry to the cached day log and calls `addLog`. That inserts into `log_entries` a snapshot computed by `buildLogInsert`: food value × serving multiplier × quantity, plus `local_date` in the user's timezone.
 4. On success the day log and that day's `daily_totals` are invalidated, so the summary (eaten / remaining) refreshes from the view. On error the optimistic update is rolled back and the user sees an error.
 
-**Open Food Facts results** aren't stored in `foods` yet, and clients can't insert there. They're shown with an `off:` id and logged with `food_id = null` (the snapshot holds everything Today needs). TODO: an Edge Function will cache OFF products in `foods`; see `searchFoods` in `features/food/services/foodService.ts`.
+**Caching Open Food Facts products.** Clients can't insert global foods, so `supabase/functions/cache-off-food` does it. Callers must be signed in: `verify_jwt` is on, and the handler also verifies the user's session JWT, because the gateway admits publishable-key-only requests. The function:
+
+- takes only `{ code }` (4–14 digits)
+- returns the existing `foods` row if that product is already cached
+- otherwise fetches the product from OFF itself (client nutrient values are never trusted), maps it with the pure, unit-tested `offMapping.ts`, and inserts the food and its servings with the secret key
+- handles a race on the `(source, external_id)` unique index by returning the row that won
+
+Every logged food therefore has a real `food_id`. `buildLogInsert` refuses `off:` ids.
 
 Label scanning follows the same path, with one extra step first: the photo goes through the OCR adapter in `src/lib`, which pre-fills the create-food form. The user confirms the food before it's saved.
 

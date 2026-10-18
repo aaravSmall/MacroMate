@@ -13,9 +13,11 @@ export {
   defaultServing,
   hasMismatchWarning,
   isUncachedOpenFoodFactsResult,
+  matchServing,
 } from './logic/foodRules';
 export {
   MIN_SEARCH_LENGTH,
+  useCacheOpenFoodFactsFood,
   useCreateFood,
   useDeleteFood,
   useFood,
@@ -24,6 +26,8 @@ export {
   useVerifyFood,
 } from './hooks/useFoods';
 export {
+  CacheFoodError,
+  cacheOpenFoodFactsFood,
   createFood,
   deleteFood,
   findStoredOpenFoodFactsFood,

@@ -77,12 +77,9 @@ describe('buildLogInsert', () => {
     });
   });
 
-  it('logs an uncached Open Food Facts result without food or serving ids', () => {
+  it('refuses an uncached Open Food Facts result (cache it first)', () => {
     const off: Food = { ...food, id: 'off:0123', brand: null };
-    const row = buildLogInsert({ ...input, food: off }, 'user-1');
-    expect(row.food_id).toBeNull();
-    expect(row.serving_id).toBeNull();
-    expect(row.food_name).toBe('Greek yogurt, plain, nonfat');
+    expect(() => buildLogInsert({ ...input, food: off }, 'user-1')).toThrow(/Cache/);
   });
 
   it('keeps a null serving id for a fallback portion', () => {

@@ -19,6 +19,20 @@ export function defaultServing(food: Pick<Food, 'servings'>): FoodServing {
   return serving;
 }
 
+/**
+ * The serving in `servings` that matches `picked` (same size), else the default. Used after an
+ * Open Food Facts result is cached, so the portion the user chose carries over.
+ */
+export function matchServing(
+  servings: Pick<Food, 'servings'>['servings'],
+  picked: Pick<FoodServing, 'baseMultiplier'>,
+): FoodServing {
+  return (
+    servings.find((s) => Math.abs(s.baseMultiplier - picked.baseMultiplier) < 1e-3) ??
+    defaultServing({ servings })
+  );
+}
+
 /** Only the owner's recipes can be edited (RLS: "foods: edit own recipes"). */
 export function canEditFood(food: Pick<Food, 'ownerId' | 'source'>, userId: string): boolean {
   return food.ownerId === userId && food.source === 'user_recipe';
