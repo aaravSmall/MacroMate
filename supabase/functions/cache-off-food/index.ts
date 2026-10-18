@@ -4,13 +4,16 @@
  *
  * - Callers must be signed in. verify_jwt = true (supabase/config.toml) is the platform check,
  *   but with publishable keys the gateway also admits requests that carry only the `apikey`, so
- *   the handler verifies the caller's session JWT itself (requireSignedInUser).
+ *   the handler verifies the caller's session JWT itself (signedInUserId).
  * - Input is only `{ code }`. Nutrition is always fetched from OFF here, never taken from the
  *   client, because the row becomes a public food everyone sees.
  * - Writes use the project's secret (service role) key, which exists only in this function's
  *   environment and never in the app.
  */
-import { createClient, type SupabaseClient } from 'npm:@supabase/supabase-js@2.118.0';
+import type { SupabaseClient } from 'npm:@supabase/supabase-js@2.118.0';
+
+import { adminClient, corsHeaders, json } from '../_shared/admin.ts';
+import { signedInUserId } from '../_shared/auth.ts';
 
 import {
   mapOffProductToRows,
@@ -22,53 +25,6 @@ import {
 const OFF_USER_AGENT = 'Tally/0.1.0 (https://github.com/aaravSmall/MacroMate)';
 const FOOD_SELECT = '*, food_servings(*)';
 const UNIQUE_VIOLATION = '23505';
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
-function json(body: unknown, status = 200): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-  });
-}
-
-/** The secret key: new-style `SUPABASE_SECRET_KEYS` (JSON, "default"), else the legacy one. */
-function secretKey(): string {
-  const keys = Deno.env.get('SUPABASE_SECRET_KEYS');
-  if (keys) {
-    const parsed: unknown = JSON.parse(keys);
-    if (parsed && typeof parsed === 'object' && 'default' in parsed) {
-      const key = (parsed as Record<string, unknown>).default;
-      if (typeof key === 'string' && key) return key;
-    }
-  }
-  const legacy = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  if (!legacy) throw new Error('No secret key in the function environment.');
-  return legacy;
-}
-
-function adminClient(): SupabaseClient {
-  const url = Deno.env.get('SUPABASE_URL');
-  if (!url) throw new Error('SUPABASE_URL is not set.');
-  return createClient(url, secretKey(), {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-}
-
-/** True when the request carries a valid session JWT for a signed-in (not anon) user. */
-async function requireSignedInUser(req: Request, admin: SupabaseClient): Promise<boolean> {
-  const match = /^Bearer\s+(.+)$/i.exec(req.headers.get('Authorization') ?? '');
-  const token = match?.[1];
-  // Publishable/secret keys aren't JWTs; only a user's session token is accepted.
-  if (!token || token.startsWith('sb_')) return false;
-  const { data, error } = await admin.auth.getClaims(token);
-  const claims = data?.claims;
-  return !error && claims?.role === 'authenticated' && typeof claims.sub === 'string';
-}
 
 async function findCached(admin: SupabaseClient, code: string) {
   const { data, error } = await admin
@@ -116,7 +72,7 @@ Deno.serve(async (req) => {
     console.error('cache-off-food misconfigured', error instanceof Error ? error.message : error);
     return json({ error: 'Could not save this food right now.' }, 500);
   }
-  if (!(await requireSignedInUser(req, admin))) {
+  if (!(await signedInUserId(req, admin))) {
     return json({ error: 'Sign in to save foods.' }, 401);
   }
 

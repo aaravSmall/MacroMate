@@ -15,6 +15,7 @@ module.exports = defineConfig([
       'android/*',
       'coverage/*',
       'supabase/functions/*/index.ts',
+      'supabase/functions/_shared/admin.ts',
     ],
   },
 ]);

@@ -419,3 +419,9 @@ enabled = true
 enabled = true
 verify_jwt = true
 entrypoint = "./functions/cache-off-food/index.ts"
+
+# Deletes the signed-in caller's account. Only signed-in users may call it.
+[functions.delete-account]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/delete-account/index.ts"

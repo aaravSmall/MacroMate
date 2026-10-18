@@ -8,9 +8,13 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Account deletion:** Account → Delete account now permanently deletes your account through the `delete-account` Edge Function. It deletes only the signed-in caller, verified from their session token; your profile, goals, logs, exercise, weigh-ins, label checks, and private foods are removed, and public foods you added stay without your name. The app then signs out on this device and clears its cached data.
+
 - **Cached Open Food Facts foods:** logging an Open Food Facts result now saves it as a global food through the `cache-off-food` Edge Function, which fetches the nutrition from Open Food Facts itself. Entries link to a real food with portions (`100 g`, `1 g`, `1 oz`, plus the product's own serving), the food can collect label checks, and other users find it in search instead of re-fetching it.
 
 ### Fixed
+
+- **Edge Function auth:** `cache-off-food` and `delete-account` share one auth check that verifies the caller's session with `auth.getUser`, since `verify_jwt` alone admitted publishable-key-only requests.
 
 - **Goals:** changing goals is now atomic. A new `change_goal()` Postgres function ends the active goal and starts the new one in one transaction, so a failure part-way can no longer leave you without an active goal. Onboarding and later goal changes both use it.
 

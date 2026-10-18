@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { Alert } from 'react-native';
 
 import { Button, Card, Screen, Text } from '@/components/ui';
-import { deleteAccount } from '@/features/account';
+import { useDeleteAccount } from '@/features/account';
 
 const ERASED = [
   'Your account and sign-in',
@@ -12,20 +11,10 @@ const ERASED = [
 ];
 
 export default function DeleteAccountScreen() {
-  const [deleting, setDeleting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function confirmDelete() {
-    setDeleting(true);
-    setError(null);
-    try {
-      await deleteAccount();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Something went wrong.');
-    } finally {
-      setDeleting(false);
-    }
-  }
+  // On success the hook routes to sign-in; the button stays in its loading state until then,
+  // so there's no flash of the form or an error.
+  const deleteAccount = useDeleteAccount();
+  const error = deleteAccount.error;
 
   function handlePress() {
     Alert.alert(
@@ -33,7 +22,7 @@ export default function DeleteAccountScreen() {
       'All of your data will be permanently erased. This can’t be undone.',
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete everything', style: 'destructive', onPress: () => void confirmDelete() },
+        { text: 'Delete everything', style: 'destructive', onPress: () => deleteAccount.mutate() },
       ],
     );
   }
@@ -49,15 +38,15 @@ export default function DeleteAccountScreen() {
         ))}
       </Card>
       <Text variant="callout" tone="muted">
-        Foods you shared to the global database stay available to others, with your name removed.
-        This can&apos;t be undone.
+        Foods you shared publicly stay available to others, no longer linked to you. This can&apos;t
+        be undone.
       </Text>
-      {error ? <Text tone="danger">{error}</Text> : null}
+      {error && !deleteAccount.isPending ? <Text tone="danger">{error.message}</Text> : null}
       <Button
         title="Delete my account"
         variant="secondary"
         onPress={handlePress}
-        loading={deleting}
+        loading={deleteAccount.isPending || deleteAccount.isSuccess}
       />
     </Screen>
   );

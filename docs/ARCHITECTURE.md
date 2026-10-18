@@ -130,5 +130,5 @@ Why this approach:
 
 - **Never log PII**: no weights, food entries, emails, or health data in `console` or analytics.
 - Supabase Row Level Security restricts every user-owned table to `auth.uid()`.
-- Account deletion removes all user rows. Shared foods are detached from the user and anonymized.
+- Account deletion runs in the `delete-account` Edge Function (service role, caller-only): deleting the auth user cascades all user rows, a trigger removes private foods, and public foods stay with `owner_id` set to null.
 - HealthKit data is read only for exercise / active energy and is used only to adjust the budget.

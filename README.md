@@ -164,7 +164,7 @@ Checked items exist in bare-bones form; polish comes in later milestones.
 
 - [ ] "Numbers off" habit mode
 - [ ] Accessibility and dark mode pass
-- [ ] Account deletion
+- [x] Account deletion
 - [ ] TestFlight release
 
 ## Contributing
