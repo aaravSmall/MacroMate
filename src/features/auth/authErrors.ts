@@ -18,3 +18,11 @@ export function friendlyAuthError(
   }
   return error.message;
 }
+
+/** Message for a password reset link that couldn't be used. */
+export function recoveryLinkError(code: string | null): string {
+  if (code === 'otp_expired') {
+    return 'This reset link has expired. Links work once and for a limited time, so request a new one.';
+  }
+  return "This reset link isn't valid anymore. It may have been used already. Request a new one.";
+}

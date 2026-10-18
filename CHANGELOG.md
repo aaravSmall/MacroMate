@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Password reset:** the link in the reset email now opens a "Choose a new password" screen. It works with implicit-flow tokens, PKCE codes, and token-hash links, and shows a clear message with a way to request a new link when the link is expired or already used. While a reset is in progress, the app stays on that screen instead of jumping to onboarding or Today.
+
 - **Account deletion:** Account → Delete account now permanently deletes your account through the `delete-account` Edge Function. It deletes only the signed-in caller, verified from their session token; your profile, goals, logs, exercise, weigh-ins, label checks, and private foods are removed, and public foods you added stay without your name. The app then signs out on this device and clears its cached data.
 
 - **Cached Open Food Facts foods:** logging an Open Food Facts result now saves it as a global food through the `cache-off-food` Edge Function, which fetches the nutrition from Open Food Facts itself. Entries link to a real food with portions (`100 g`, `1 g`, `1 oz`, plus the product's own serving), the food can collect label checks, and other users find it in search instead of re-fetching it.

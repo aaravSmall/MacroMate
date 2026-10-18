@@ -13,11 +13,12 @@ void SplashScreen.preventAutoHideAsync();
 const modal = { presentation: 'modal', headerShown: true } as const;
 
 function RootNavigator() {
-  const { session, loading } = useAuth();
+  const { session, loading, recovery } = useAuth();
   const onboardingComplete = useOnboardingComplete();
+  const recovering = recovery !== null;
 
   // Keep the splash screen up until we know where to send the user.
-  const ready = !loading && (!session || onboardingComplete !== null);
+  const ready = !loading && (recovering || !session || onboardingComplete !== null);
   useEffect(() => {
     if (ready) SplashScreen.hide();
   }, [ready]);
@@ -26,17 +27,22 @@ function RootNavigator() {
   const signedIn = !!session;
   const onboarded = onboardingComplete === true;
 
-  // Gate: no session → (auth); session but not onboarded → (onboarding); else → (tabs).
-  // Stack.Protected redirects away from any group whose guard is false.
+  // Gate: password reset in progress → only reset-password (the recovery link also signs the
+  // user in, so this must win over the others); no session → (auth); session but not
+  // onboarded → (onboarding); else → (tabs). Stack.Protected redirects away from any group
+  // whose guard is false.
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Protected guard={!signedIn}>
+      <Stack.Protected guard={recovering}>
+        <Stack.Screen name="reset-password" />
+      </Stack.Protected>
+      <Stack.Protected guard={!recovering && !signedIn}>
         <Stack.Screen name="(auth)" />
       </Stack.Protected>
-      <Stack.Protected guard={signedIn && !onboarded}>
+      <Stack.Protected guard={!recovering && signedIn && !onboarded}>
         <Stack.Screen name="(onboarding)" />
       </Stack.Protected>
-      <Stack.Protected guard={signedIn && onboarded}>
+      <Stack.Protected guard={!recovering && signedIn && onboarded}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="food-search" options={{ ...modal, title: 'Search foods' }} />
         <Stack.Screen name="food-detail/[id]" options={{ ...modal, title: 'Food' }} />

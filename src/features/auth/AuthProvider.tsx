@@ -1,24 +1,75 @@
 import type { Session, User } from '@supabase/supabase-js';
-import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from 'react';
+import * as Linking from 'expo-linking';
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
+import { isPasswordResetUrl, parseAuthRedirect } from './logic/authRedirect';
 import * as authService from './services/authService';
+
+/**
+ * A password reset in progress, from opening the email link until the new password is saved
+ * (or the user gives up). While set, the root layout shows only /reset-password.
+ */
+export type PasswordRecovery =
+  { status: 'verifying' } | { status: 'ready' } | { status: 'error'; message: string };
 
 export type AuthContextValue = {
   session: Session | null;
   user: User | null;
-  /** True until the persisted session has been restored. */
+  /** True until the persisted session is restored and the launch URL has been checked. */
   loading: boolean;
   signIn: typeof authService.signIn;
   signUp: typeof authService.signUp;
   signOut: typeof authService.signOut;
   resetPassword: typeof authService.resetPassword;
+  updatePassword: typeof authService.updatePassword;
+  recovery: PasswordRecovery | null;
+  /** Ends the reset flow so normal routing resumes. */
+  finishRecovery: () => void;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [sessionRestored, setSessionRestored] = useState(false);
+  const [initialUrlChecked, setInitialUrlChecked] = useState(false);
+  const [recovery, setRecovery] = useState<PasswordRecovery | null>(null);
+  const handledUrls = useRef(new Set<string>());
+
+  // Password reset links: the URL that launched the app, and any opened while it's running.
+  // (getInitialURL + the url event, rather than useLinkingURL, which is null in Expo Go.)
+  useEffect(() => {
+    let mounted = true;
+    const handle = (url: string | null) => {
+      if (!url || handledUrls.current.has(url) || !isPasswordResetUrl(url)) return;
+      handledUrls.current.add(url);
+      setRecovery({ status: 'verifying' });
+      void authService.beginPasswordRecovery(parseAuthRedirect(url)).then((result) => {
+        if (!mounted) return;
+        setRecovery(
+          result.error ? { status: 'error', message: result.error } : { status: 'ready' },
+        );
+      });
+    };
+    void Linking.getInitialURL()
+      .then(handle)
+      .finally(() => {
+        if (mounted) setInitialUrlChecked(true);
+      });
+    const subscription = Linking.addEventListener('url', (event) => handle(event.url));
+    return () => {
+      mounted = false;
+      subscription.remove();
+    };
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -28,12 +79,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (mounted) setSession(restored);
       })
       .finally(() => {
-        if (mounted) setLoading(false);
+        if (mounted) setSessionRestored(true);
       });
 
-    const unsubscribe = authService.onAuthChange((next) => {
+    const unsubscribe = authService.onAuthChange((next, event) => {
       setSession(next);
-      setLoading(false);
+      setSessionRestored(true);
+      // Emitted when Supabase itself processes a recovery link (e.g. verifyOtp).
+      if (event === 'PASSWORD_RECOVERY') setRecovery({ status: 'ready' });
     });
 
     return () => {
@@ -41,6 +94,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       unsubscribe();
     };
   }, []);
+
+  // Routing waits for both, so a reset link never flashes the sign-in screen first.
+  const loading = !sessionRestored || !initialUrlChecked;
 
   const value = useMemo<AuthContextValue>(
     () => ({
@@ -51,8 +107,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signUp: authService.signUp,
       signOut: authService.signOut,
       resetPassword: authService.resetPassword,
+      updatePassword: authService.updatePassword,
+      recovery,
+      finishRecovery: () => setRecovery(null),
     }),
-    [session, loading],
+    [session, loading, recovery],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
