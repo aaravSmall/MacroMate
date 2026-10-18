@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { View } from 'react-native';
 
@@ -64,6 +65,9 @@ function CalendarCard() {
 
 function WeighInsCard() {
   const { spacing } = useTheme();
+  // Opened from a weigh-in reminder: focus the input. `t` changes per tap to refocus.
+  const { focus, t } = useLocalSearchParams<{ focus?: string; t?: string }>();
+  const focusInput = focus === 'weighin';
   const profile = useProfile().data;
   const units = profile?.unitSystem ?? 'imperial';
   const weighIns = useWeighIns();
@@ -96,6 +100,8 @@ function WeighInsCard() {
       <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: spacing.md }}>
         <View style={{ flex: 1 }}>
           <TextField
+            key={focusInput ? `focus-${t ?? ''}` : 'weight'}
+            autoFocus={focusInput}
             label={`Weight (${units === 'imperial' ? 'lb' : 'kg'})`}
             value={weight}
             onChangeText={setWeight}

@@ -3,6 +3,7 @@ import { Tabs } from 'expo-router/js-tabs';
 import { View } from 'react-native';
 
 import { HealthSyncOnForeground } from '@/features/exercise';
+import { WeighInReminderSync } from '@/features/weighins';
 import { useTheme } from '@/theme';
 
 export default function TabsLayout() {
@@ -12,6 +13,7 @@ export default function TabsLayout() {
   return (
     <>
       <HealthSyncOnForeground />
+      <WeighInReminderSync />
       <Tabs
         screenOptions={{
           headerShown: false,

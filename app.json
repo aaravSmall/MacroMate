@@ -50,6 +50,12 @@
           "NSHealthUpdateUsageDescription": false,
           "background": false
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "enableRemoteNotifications": false
+        }
       ]
     ],
     "experiments": {

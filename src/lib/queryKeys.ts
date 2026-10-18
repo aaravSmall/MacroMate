@@ -26,6 +26,9 @@ export const queryKeys = {
   health: {
     connection: (userId: string) => ['health', 'connection', userId] as const,
   },
+  reminders: {
+    state: (userId: string) => ['reminders', 'state', userId] as const,
+  },
   weighIns: {
     all: ['weighIns'] as const,
     list: () => ['weighIns', 'list'] as const,

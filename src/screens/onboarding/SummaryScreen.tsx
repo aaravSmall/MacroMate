@@ -15,6 +15,7 @@ import {
   OnboardingStepLayout,
   useOnboardingStore,
 } from '@/features/onboarding';
+import { confirmReminders, describeSchedule, useSetRemindersEnabled } from '@/features/weighins';
 import { deviceTimeZone } from '@/lib/dates';
 import { formatGrams, formatKcal } from '@/lib/format';
 import { useTheme } from '@/theme';
@@ -25,6 +26,7 @@ export default function SummaryScreen() {
   const result = useMemo(() => buildOnboardingResult(form, { timezone: deviceTimeZone() }), [form]);
   const changeGoal = useChangeGoal();
   const updateProfile = useUpdateProfile();
+  const setReminders = useSetRemindersEnabled();
   const saving = changeGoal.isPending || updateProfile.isPending;
   const error = changeGoal.error ?? updateProfile.error;
 
@@ -44,15 +46,20 @@ export default function SummaryScreen() {
 
   async function handleFinish() {
     if (!result) return;
+    let saved;
     try {
       // Goal first: setting onboarded_at on the profile is what lets the user into the app.
       await changeGoal.mutateAsync(result.goal);
-      await updateProfile.mutateAsync({
+      saved = await updateProfile.mutateAsync({
         ...result.profileUpdate,
         onboardedAt: new Date().toISOString(),
       });
     } catch {
       return; // Shown from the mutation's error state.
+    }
+    // Offer weigh-in reminders once onboarding is saved: explained first, entirely optional.
+    if (saved && (await confirmReminders(describeSchedule(saved)))) {
+      await setReminders.mutateAsync(true).catch(() => undefined);
     }
     reset();
     // The root gate now allows (tabs).

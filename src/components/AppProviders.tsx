@@ -2,9 +2,13 @@ import { QueryClientProvider, useQueryClient } from '@tanstack/react-query';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 import { AuthProvider, useAuth } from '@/features/auth';
+import { cancelAllLocalNotifications } from '@/lib/localNotifications';
 import { createQueryClient, wireAppStateFocus } from '@/lib/queryClient';
 
-/** Drops all cached server data when the signed-in user changes (including sign-out). */
+/**
+ * Drops all cached server data when the signed-in user changes (including sign-out), and cancels
+ * the previous user's scheduled reminders on this device.
+ */
 function ClearCacheOnUserChange() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -13,6 +17,7 @@ function ClearCacheOnUserChange() {
   useEffect(() => {
     if (previousUserId.current !== user?.id) {
       queryClient.clear();
+      if (previousUserId.current) void cancelAllLocalNotifications().catch(() => undefined);
       previousUserId.current = user?.id;
     }
   }, [user?.id, queryClient]);

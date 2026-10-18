@@ -4,6 +4,12 @@ import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, SegmentedControl, SwitchRow, Text } from '@/components/ui';
 import { useProfile, useUpdateProfile } from '@/features/account';
 import { useHealthConnection, useSetHealthConnected, useSyncHealth } from '@/features/exercise';
+import {
+  confirmReminders,
+  describeSchedule,
+  useReminderState,
+  useSetRemindersEnabled,
+} from '@/features/weighins';
 import { useTheme } from '@/theme';
 import type { UnitSystem, WeighInFrequency } from '@/types/domain';
 
@@ -93,6 +99,15 @@ function AppleHealthCard() {
 export default function SettingsScreen() {
   const profile = useProfile();
   const updateProfile = useUpdateProfile();
+  const reminders = useReminderState();
+  const setReminders = useSetRemindersEnabled();
+
+  async function toggleReminders(enabled: boolean) {
+    if (enabled && profile.data && !(await confirmReminders(describeSchedule(profile.data)))) {
+      return;
+    }
+    setReminders.mutate(enabled);
+  }
 
   return (
     <Screen scroll edges={['bottom', 'left', 'right']}>
@@ -123,12 +138,24 @@ export default function SettingsScreen() {
 
           <AppleHealthCard />
 
-          {/* TODO(reminders): schedule local notifications from this schedule. */}
           <Card>
-            <Text variant="subheading">Weigh-in schedule</Text>
-            <Text variant="callout" tone="muted">
-              Reminder notifications are coming soon. Your schedule is saved now.
-            </Text>
+            <Text variant="subheading">Weigh-ins</Text>
+            <SwitchRow
+              label="Weigh-in reminders"
+              description={
+                reminders.data?.enabled
+                  ? `A gentle reminder ${describeSchedule(profile.data)}.`
+                  : 'Get a gentle reminder on the schedule below. Turn it off anytime.'
+              }
+              value={reminders.data?.enabled ?? false}
+              onValueChange={(enabled) => void toggleReminders(enabled)}
+              disabled={setReminders.isPending}
+            />
+            {setReminders.error ? (
+              <Text variant="caption" tone="danger">
+                {setReminders.error.message}
+              </Text>
+            ) : null}
             <Divider />
             <Section title="How often">
               <SegmentedControl
