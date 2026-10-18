@@ -8,6 +8,90 @@ export type Database = {
   };
   public: {
     Tables: {
+      dining_locations: {
+        Row: {
+          category: string | null;
+          external_id: string;
+          formal_name: string | null;
+          id: string;
+          name: string;
+          provider: string;
+          sort_order: number;
+          updated_at: string;
+        };
+        Insert: {
+          category?: string | null;
+          external_id: string;
+          formal_name?: string | null;
+          id?: string;
+          name: string;
+          provider: string;
+          sort_order?: number;
+          updated_at?: string;
+        };
+        Update: {
+          category?: string | null;
+          external_id?: string;
+          formal_name?: string | null;
+          id?: string;
+          name?: string;
+          provider?: string;
+          sort_order?: number;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      dining_menu_items: {
+        Row: {
+          food_id: string;
+          id: string;
+          location_id: string;
+          meal: string;
+          meal_order: number;
+          served_on: string;
+          sort_order: number;
+          station: string;
+          synced_at: string;
+        };
+        Insert: {
+          food_id: string;
+          id?: string;
+          location_id: string;
+          meal: string;
+          meal_order?: number;
+          served_on: string;
+          sort_order?: number;
+          station: string;
+          synced_at?: string;
+        };
+        Update: {
+          food_id?: string;
+          id?: string;
+          location_id?: string;
+          meal?: string;
+          meal_order?: number;
+          served_on?: string;
+          sort_order?: number;
+          station?: string;
+          synced_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'dining_menu_items_food_id_fkey';
+            columns: ['food_id'];
+            isOneToOne: false;
+            referencedRelation: 'foods';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'dining_menu_items_location_id_fkey';
+            columns: ['location_id'];
+            isOneToOne: false;
+            referencedRelation: 'dining_locations';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       exercise_entries: {
         Row: {
           active_calories: number;
@@ -113,6 +197,7 @@ export type Database = {
       };
       foods: {
         Row: {
+          allergens: string[];
           barcode: string | null;
           base_amount: number;
           base_unit: Database['public']['Enums']['base_unit'];
@@ -121,15 +206,20 @@ export type Database = {
           carbs_g: number;
           cholesterol_mg: number | null;
           created_at: string;
+          diet_tags: string[];
           external_id: string | null;
           fat_g: number;
           fiber_g: number | null;
           id: string;
+          ingredients: string | null;
           micros: Json;
           mismatch_count: number;
           name: string;
           owner_id: string | null;
           protein_g: number;
+          provider: string | null;
+          provider_item_id: string | null;
+          provider_synced_at: string | null;
           sat_fat_g: number | null;
           search_vector: unknown;
           sodium_mg: number | null;
@@ -139,6 +229,7 @@ export type Database = {
           visibility: Database['public']['Enums']['food_visibility'];
         };
         Insert: {
+          allergens?: string[];
           barcode?: string | null;
           base_amount?: number;
           base_unit?: Database['public']['Enums']['base_unit'];
@@ -147,15 +238,20 @@ export type Database = {
           carbs_g?: number;
           cholesterol_mg?: number | null;
           created_at?: string;
+          diet_tags?: string[];
           external_id?: string | null;
           fat_g?: number;
           fiber_g?: number | null;
           id?: string;
+          ingredients?: string | null;
           micros?: Json;
           mismatch_count?: number;
           name: string;
           owner_id?: string | null;
           protein_g?: number;
+          provider?: string | null;
+          provider_item_id?: string | null;
+          provider_synced_at?: string | null;
           sat_fat_g?: number | null;
           search_vector?: unknown;
           sodium_mg?: number | null;
@@ -165,6 +261,7 @@ export type Database = {
           visibility?: Database['public']['Enums']['food_visibility'];
         };
         Update: {
+          allergens?: string[];
           barcode?: string | null;
           base_amount?: number;
           base_unit?: Database['public']['Enums']['base_unit'];
@@ -173,15 +270,20 @@ export type Database = {
           carbs_g?: number;
           cholesterol_mg?: number | null;
           created_at?: string;
+          diet_tags?: string[];
           external_id?: string | null;
           fat_g?: number;
           fiber_g?: number | null;
           id?: string;
+          ingredients?: string | null;
           micros?: Json;
           mismatch_count?: number;
           name?: string;
           owner_id?: string | null;
           protein_g?: number;
+          provider?: string | null;
+          provider_item_id?: string | null;
+          provider_synced_at?: string | null;
           sat_fat_g?: number | null;
           search_vector?: unknown;
           sodium_mg?: number | null;
@@ -462,12 +564,22 @@ export type Database = {
         Args: { p_days: string[]; p_today: string };
         Returns: number;
       };
+      upsert_provider_food: {
+        Args: { food: Json; servings: Json };
+        Returns: string;
+      };
     };
     Enums: {
       activity_level: 'sedentary' | 'light' | 'moderate' | 'active' | 'very_active';
       base_unit: 'g' | 'ml' | 'serving';
       exercise_source: 'apple_health' | 'manual';
-      food_source: 'open_food_facts' | 'restaurant' | 'label_scan' | 'user_product' | 'user_recipe';
+      food_source:
+        | 'open_food_facts'
+        | 'restaurant'
+        | 'label_scan'
+        | 'user_product'
+        | 'user_recipe'
+        | 'dining_hall';
       food_visibility: 'private' | 'public';
       goal_type: 'lose' | 'maintain' | 'gain';
       meal_type: 'breakfast' | 'lunch' | 'dinner' | 'snack';
@@ -598,7 +710,14 @@ export const Constants = {
       activity_level: ['sedentary', 'light', 'moderate', 'active', 'very_active'],
       base_unit: ['g', 'ml', 'serving'],
       exercise_source: ['apple_health', 'manual'],
-      food_source: ['open_food_facts', 'restaurant', 'label_scan', 'user_product', 'user_recipe'],
+      food_source: [
+        'open_food_facts',
+        'restaurant',
+        'label_scan',
+        'user_product',
+        'user_recipe',
+        'dining_hall',
+      ],
       food_visibility: ['private', 'public'],
       goal_type: ['lose', 'maintain', 'gain'],
       meal_type: ['breakfast', 'lunch', 'dinner', 'snack'],

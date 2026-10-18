@@ -27,6 +27,12 @@ const OPTIONS: AddOption[] = [
     href: '/create-food',
   },
   {
+    title: 'Dining halls',
+    description: "Today's menus at campus dining halls, with their nutrition.",
+    icon: 'restaurant-outline',
+    href: '/dining',
+  },
+  {
     title: 'Scan nutrition label',
     description: 'Photograph a Nutrition Facts panel and check the filled-in food.',
     icon: 'scan-outline',
@@ -40,7 +46,7 @@ export default function AddScreen() {
   return (
     <Screen scroll>
       <Text variant="title">Add food</Text>
-      <Text tone="muted">Log what you ate, three ways.</Text>
+      <Text tone="muted">Find it, build it, scan it, or pick it from a dining hall menu.</Text>
       {OPTIONS.map((option) => (
         <Pressable
           key={option.title}

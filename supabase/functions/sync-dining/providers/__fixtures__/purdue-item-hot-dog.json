@@ -1,0 +1,159 @@
+{
+  "Nutrition": [
+    {
+      "Name": "Serving Size",
+      "LabelValue": "Hot Dog",
+      "DailyValue": null,
+      "Ordinal": 0
+    },
+    {
+      "Name": "Calories",
+      "Value": 330.0,
+      "LabelValue": "330",
+      "DailyValue": null,
+      "Ordinal": 1
+    },
+    {
+      "Name": "Calories from fat",
+      "LabelValue": "270",
+      "DailyValue": null,
+      "Ordinal": 2
+    },
+    {
+      "Name": "Total fat",
+      "Value": 30.0,
+      "LabelValue": "30g",
+      "DailyValue": "46%",
+      "Ordinal": 3
+    },
+    {
+      "Name": "Saturated fat",
+      "Value": 12.9999,
+      "LabelValue": "13g",
+      "DailyValue": "65%",
+      "Ordinal": 4
+    },
+    {
+      "Name": "Cholesterol",
+      "Value": 75.0,
+      "LabelValue": "75mg",
+      "DailyValue": "25%",
+      "Ordinal": 5
+    },
+    {
+      "Name": "Sodium",
+      "Value": 1180.0,
+      "LabelValue": "1180mg",
+      "DailyValue": "49%",
+      "Ordinal": 6
+    },
+    {
+      "Name": "Total Carbohydrate",
+      "Value": 2.0,
+      "LabelValue": "2g",
+      "DailyValue": "1%",
+      "Ordinal": 7
+    },
+    {
+      "Name": "Sugar",
+      "Value": 0.9999,
+      "LabelValue": "less than 1 g",
+      "DailyValue": null,
+      "Ordinal": 8
+    },
+    {
+      "Name": "Added Sugar",
+      "Value": 0.0,
+      "LabelValue": "0g",
+      "DailyValue": null,
+      "Ordinal": 9
+    },
+    {
+      "Name": "Dietary Fiber",
+      "Value": 0.0,
+      "LabelValue": "0g",
+      "DailyValue": "",
+      "Ordinal": 10
+    },
+    {
+      "Name": "Protein",
+      "Value": 12.9999,
+      "LabelValue": "13g",
+      "DailyValue": "13%",
+      "Ordinal": 11
+    },
+    {
+      "Name": "Calcium",
+      "Value": 0.0,
+      "LabelValue": null,
+      "DailyValue": "0%",
+      "Ordinal": 12
+    },
+    {
+      "Name": "Iron",
+      "Value": 0.0,
+      "LabelValue": null,
+      "DailyValue": "0%",
+      "Ordinal": 13
+    }
+  ],
+  "Ingredients": "Hot Dog (Beef, Water, Contains 2% Or Less Of Sorbitol, Salt, Flavoring, Sodium Phosphates, Sodium Erthorbate, Sodium Nitrite, Extract Of Paprika.)",
+  "ID": "60d9accc-195f-4514-9530-7da1c08b7d82",
+  "Name": "Super Beef Hot Dog",
+  "IsVegetarian": false,
+  "NutritionReady": true,
+  "Allergens": [
+    {
+      "Name": "Coconut",
+      "Value": false
+    },
+    {
+      "Name": "Eggs",
+      "Value": false
+    },
+    {
+      "Name": "Fish",
+      "Value": false
+    },
+    {
+      "Name": "Gluten",
+      "Value": false
+    },
+    {
+      "Name": "Milk",
+      "Value": false
+    },
+    {
+      "Name": "Peanuts",
+      "Value": false
+    },
+    {
+      "Name": "Sesame",
+      "Value": false
+    },
+    {
+      "Name": "Shellfish",
+      "Value": false
+    },
+    {
+      "Name": "Soy",
+      "Value": false
+    },
+    {
+      "Name": "Tree Nuts",
+      "Value": false
+    },
+    {
+      "Name": "Vegetarian",
+      "Value": false
+    },
+    {
+      "Name": "Vegan",
+      "Value": false
+    },
+    {
+      "Name": "Wheat",
+      "Value": false
+    }
+  ]
+}

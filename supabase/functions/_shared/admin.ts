@@ -19,6 +19,26 @@ function secretKey(): string {
   return legacy;
 }
 
+/** Every secret/service-role key in the environment (new-style and legacy). */
+export function serviceKeys(): string[] {
+  const keys: string[] = [];
+  const raw = Deno.env.get('SUPABASE_SECRET_KEYS');
+  if (raw) {
+    try {
+      const parsed: unknown = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        for (const v of Object.values(parsed as Record<string, unknown>))
+          if (typeof v === 'string') keys.push(v);
+      }
+    } catch {
+      // ignore malformed
+    }
+  }
+  const legacy = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  if (legacy) keys.push(legacy);
+  return keys;
+}
+
 export function adminClient(): SupabaseClient {
   const url = Deno.env.get('SUPABASE_URL');
   if (!url) throw new Error('SUPABASE_URL is not set.');
@@ -29,7 +49,8 @@ export function adminClient(): SupabaseClient {
 
 export const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers':
+    'authorization, x-client-info, apikey, content-type, x-cron-secret',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 

@@ -118,6 +118,9 @@ describe('foodToFormValues', () => {
       externalId: null,
       verificationCount: 0,
       mismatchCount: 0,
+      provider: null,
+      allergens: [],
+      dietTags: [],
       ...parsed.input,
       servings: parsed.input.servings.map((s) => ({ ...s, id: 's1' })),
     };
@@ -148,6 +151,9 @@ describe('foodToFormValues', () => {
       externalId: null,
       verificationCount: 0,
       mismatchCount: 0,
+      provider: null,
+      allergens: [],
+      dietTags: [],
       ...parsed.input,
       servings: parsed.input.servings.map((s) => ({ ...s, id: 's2' })),
     });

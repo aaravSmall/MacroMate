@@ -1,0 +1,902 @@
+{
+  "Location": "Earhart",
+  "Date": "10/19/2026",
+  "IsPublished": true,
+  "Notes": "A dining court supervisor can provide allergen information for menu offerings not posted in the app.",
+  "Meals": [
+    {
+      "ID": "a6f3794f-0fc2-41bf-a237-bb46c834bf31",
+      "Name": "Breakfast",
+      "Order": 0,
+      "Status": "Open",
+      "Type": "Breakfast",
+      "Hours": {
+        "StartTime": "07:00:00",
+        "EndTime": "10:00:00"
+      },
+      "Notes": null,
+      "Stations": [
+        {
+          "Name": "Granite Grill",
+          "Items": [
+            {
+              "ID": "6c883ba0-e283-4086-ab01-e181a6615435",
+              "Name": "Scrambled Eggs",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": true
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": false
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": false
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": false
+                }
+              ]
+            },
+            {
+              "ID": "690a34fd-7111-46d0-b422-f85c8b7871d3",
+              "Name": "Ham and Cheese Quiche",
+              "IsVegetarian": false,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": true
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "ID": "19963588-4653-4ff8-8975-92f4739b2df9",
+              "Name": "Seasoned Fried Potatoes",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": false
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": true
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            }
+          ],
+          "IconUrl": null,
+          "ForegroundColor": null,
+          "BackgroundColor": null,
+          "Notes": null
+        },
+        {
+          "Name": "The Pastry Shop",
+          "Items": [
+            {
+              "ID": "4a236051-6e53-40a9-8fcc-d092398ccfd8",
+              "Name": "Mini Chocolate Chip Muffin",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": true
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "ID": "cb72c75b-72a4-447a-8a5a-ded4a7c9aac1",
+              "Name": "Vanilla Yogurt",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": false
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": false
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": false
+                }
+              ]
+            },
+            {
+              "ID": "5c4c102c-c82b-4676-bc9e-a8c33929c12e",
+              "Name": "Strawberry Yogurt",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": false
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": false
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": false
+                }
+              ]
+            }
+          ],
+          "IconUrl": null,
+          "ForegroundColor": null,
+          "BackgroundColor": null,
+          "Notes": null
+        }
+      ]
+    },
+    {
+      "ID": "d0735fa4-c9d4-4b18-8e6a-5f0c8130415f",
+      "Name": "Lunch",
+      "Order": 1,
+      "Status": "Open",
+      "Type": "Lunch",
+      "Hours": {
+        "StartTime": "11:00:00",
+        "EndTime": "14:00:00"
+      },
+      "Notes": null,
+      "Stations": [
+        {
+          "Name": "Granite Grill",
+          "Items": [
+            {
+              "ID": "246fc462-6197-47fc-a4d7-b5aca108dad2",
+              "Name": "Spicy Chicken Sandwich",
+              "IsVegetarian": false,
+              "NutritionReady": false
+            },
+            {
+              "ID": "59bf1033-2f1d-4a12-abc4-f1b2f7077fe9",
+              "Name": "Cheddar Jalapeno Potato Nugget",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "ID": "d8447f28-4d9f-4971-8db1-27bcd7a97ca0",
+              "Name": "Hidden Valley Ranch Dressing",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": true
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": false
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": false
+                }
+              ]
+            }
+          ],
+          "IconUrl": null,
+          "ForegroundColor": null,
+          "BackgroundColor": null,
+          "Notes": null
+        },
+        {
+          "Name": "Heartland Classics",
+          "Items": [
+            {
+              "ID": "516d0862-3cb8-487d-877f-2192d1d09686",
+              "Name": "Baked Potato Bar",
+              "IsVegetarian": false,
+              "NutritionReady": false
+            }
+          ],
+          "IconUrl": null,
+          "ForegroundColor": null,
+          "BackgroundColor": null,
+          "Notes": null
+        }
+      ]
+    },
+    {
+      "ID": "0ff9750e-5c0e-4fe0-bb4d-c2598a49ce86",
+      "Name": "Dinner",
+      "Order": 2,
+      "Status": "Open",
+      "Type": "Dinner",
+      "Hours": {
+        "StartTime": "17:00:00",
+        "EndTime": "21:00:00"
+      },
+      "Notes": null,
+      "Stations": [
+        {
+          "Name": "Granite Grill",
+          "Items": [
+            {
+              "ID": "246fc462-6197-47fc-a4d7-b5aca108dad2",
+              "Name": "Spicy Chicken Sandwich",
+              "IsVegetarian": false,
+              "NutritionReady": false
+            },
+            {
+              "ID": "59bf1033-2f1d-4a12-abc4-f1b2f7077fe9",
+              "Name": "Cheddar Jalapeno Potato Nugget",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "ID": "d8447f28-4d9f-4971-8db1-27bcd7a97ca0",
+              "Name": "Hidden Valley Ranch Dressing",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": true
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": false
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": false
+                }
+              ]
+            }
+          ],
+          "IconUrl": null,
+          "ForegroundColor": null,
+          "BackgroundColor": null,
+          "Notes": null
+        },
+        {
+          "Name": "Heartland Classics",
+          "Items": [
+            {
+              "ID": "3f0c2d47-04f7-40f9-9881-c76d1dd060df",
+              "Name": "Country Fried Steak",
+              "IsVegetarian": false,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": true
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "ID": "0a0d1e53-9365-48bc-b449-6d37ce0f3ed5",
+              "Name": "Whipped Potatoes",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": false
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": false
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": false
+                }
+              ]
+            },
+            {
+              "ID": "a7c42a7c-2777-49a1-b0e3-a16a96eb84a0",
+              "Name": "Country Gravy",
+              "IsVegetarian": true,
+              "NutritionReady": true,
+              "Allergens": [
+                {
+                  "Name": "Coconut",
+                  "Value": false
+                },
+                {
+                  "Name": "Eggs",
+                  "Value": false
+                },
+                {
+                  "Name": "Fish",
+                  "Value": false
+                },
+                {
+                  "Name": "Gluten",
+                  "Value": true
+                },
+                {
+                  "Name": "Milk",
+                  "Value": true
+                },
+                {
+                  "Name": "Peanuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Sesame",
+                  "Value": false
+                },
+                {
+                  "Name": "Shellfish",
+                  "Value": false
+                },
+                {
+                  "Name": "Soy",
+                  "Value": false
+                },
+                {
+                  "Name": "Tree Nuts",
+                  "Value": false
+                },
+                {
+                  "Name": "Vegetarian",
+                  "Value": true
+                },
+                {
+                  "Name": "Vegan",
+                  "Value": false
+                },
+                {
+                  "Name": "Wheat",
+                  "Value": true
+                }
+              ]
+            }
+          ],
+          "IconUrl": null,
+          "ForegroundColor": null,
+          "BackgroundColor": null,
+          "Notes": null
+        }
+      ]
+    }
+  ]
+}

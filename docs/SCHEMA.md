@@ -32,6 +32,8 @@ erDiagram
 | `exercise_entries`    | Exercise from Apple Health or entered manually, with `local_date`. `(user_id, external_id)` is unique so HealthKit sync is idempotent.                                                                                |
 | `weigh_ins`           | Weight (and optional body-fat %) measurements, with `local_date`.                                                                                                                                                     |
 | `daily_totals` (view) | Per user and `local_date`: entry count and summed calories / protein / carbs / fat from `log_entries`. `security_invoker`, so RLS on `log_entries` applies.                                                           |
+| `dining_locations`    | Campus dining locations per provider (e.g. Purdue), unique on `(provider, external_id)`. Public read; service role writes.                                                                                            |
+| `dining_menu_items`   | What a location serves: `(location_id, served_on, meal, station, food_id)`, unique on all five. Public read; service role writes. See [PURDUE_DINING.md](PURDUE_DINING.md).                                           |
 
 ## Conventions
 
@@ -70,6 +72,10 @@ Open Food Facts and restaurant foods can only be written with the service role. 
 `public.change_goal(p_goal_type, p_start_weight_kg, p_daily_calorie_target, …)` ends the caller's active goal (sets `ended_at = now()`) and inserts the new one **in one transaction**, returning the new row. The two steps succeed or fail together, so a user is never left without an active goal. The app uses it for the first goal at onboarding (there's no old goal to end) and for every later change, via `supabase.rpc('change_goal', …)`.
 
 It's `security invoker`, so RLS on `goals` still applies. It raises `42501` when there's no signed-in user, and only `authenticated` can execute it.
+
+### foods from providers
+
+Synced foods (`source = 'dining_hall'`) carry `provider` + `provider_item_id` (unique together), `provider_synced_at`, `allergens` and `diet_tags` (lowercase arrays, for diet restrictions), and `ingredients`. `public.upsert_provider_food(food jsonb, servings jsonb)` (security definer, empty `search_path`, service role only) inserts or updates one by provider id, with servings matched by label and updated in place (never deleted), so log entries keep their `serving_id`.
 
 ## Triggers
 

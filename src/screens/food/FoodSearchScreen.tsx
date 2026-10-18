@@ -102,6 +102,7 @@ export default function FoodSearchScreen() {
       {active ? (
         <Button title="Create a food" variant="ghost" onPress={() => router.push('/create-food')} />
       ) : null}
+      <Button title="Browse dining halls" variant="ghost" onPress={() => router.push('/dining')} />
     </Screen>
   );
 }

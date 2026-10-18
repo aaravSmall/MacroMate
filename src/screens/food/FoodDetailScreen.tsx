@@ -28,6 +28,7 @@ import {
   suggestMealType,
   useAddLog,
 } from '@/features/logging';
+import { diningProviderLabel } from '@/features/dining';
 import { toDateKey, toDateKeyInTimeZone } from '@/lib/dates';
 import { formatGrams, formatKcal, parseNumber } from '@/lib/format';
 import { logTimeForDateKey, useSelectedDateStore } from '@/store/selectedDateStore';
@@ -63,14 +64,24 @@ function askLabelMatch(foodName: string): Promise<boolean | null> {
   });
 }
 
-function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
+const MEAL_TYPES: readonly MealType[] = ['breakfast', 'lunch', 'dinner', 'snack'];
+
+function LogFoodForm({
+  food,
+  userId,
+  initialMeal,
+}: {
+  food: Food;
+  userId: string;
+  initialMeal?: MealType;
+}) {
   const { spacing } = useTheme();
   const profile = useProfile();
   const dateKey = useSelectedDateStore((s) => s.dateKey);
   const loggedAt = useMemo(() => logTimeForDateKey(dateKey), [dateKey]);
   const [servingIndex, setServingIndex] = useState(0);
   const [quantityText, setQuantityText] = useState('1');
-  const [meal, setMeal] = useState<MealType>(() => suggestMealType(loggedAt));
+  const [meal, setMeal] = useState<MealType>(() => initialMeal ?? suggestMealType(loggedAt));
   const [error, setError] = useState<string | null>(null);
   const [guideOpen, setGuideOpen] = useState(false);
   const addLog = useAddLog();
@@ -157,6 +168,11 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
       <View style={{ gap: spacing.xxs }}>
         <Text variant="title">{food.name}</Text>
         {food.brand ? <Text tone="muted">{food.brand}</Text> : null}
+        {food.source === 'dining_hall' ? (
+          <Text variant="caption" tone="muted">
+            Nutrition from {diningProviderLabel(food.provider) ?? 'the dining hall'}
+          </Text>
+        ) : null}
         {food.visibility === 'public' && hasMismatchWarning(food) ? (
           <Text variant="callout" tone="accent">
             Some people found this doesn&apos;t match their package. It&apos;s worth checking
@@ -265,7 +281,8 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
 }
 
 export default function FoodDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, meal } = useLocalSearchParams<{ id: string; meal?: string }>();
+  const initialMeal = MEAL_TYPES.find((m) => m === meal);
   const food = useFood(id);
   const userId = useAuth().user?.id;
 
@@ -279,7 +296,9 @@ export default function FoodDetailScreen() {
       {!food.isPending && !food.error && !food.data ? (
         <Text tone="muted">We couldn&apos;t find this food.</Text>
       ) : null}
-      {food.data && userId ? <LogFoodForm food={food.data} userId={userId} /> : null}
+      {food.data && userId ? (
+        <LogFoodForm food={food.data} userId={userId} initialMeal={initialMeal} />
+      ) : null}
     </Screen>
   );
 }

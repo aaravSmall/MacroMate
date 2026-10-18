@@ -1,0 +1,558 @@
+{
+  "Types": ["Dining Courts", "Quick Bites", "On-the-GO!"],
+  "Location": [
+    {
+      "LocationId": "EOTG",
+      "Name": "Earhart On-the-GO!",
+      "FormalName": "Earhart On-the-GO!",
+      "Address": {
+        "Street": "1275 First Street",
+        "City": "West Lafayette",
+        "State": "IN",
+        "ZipCode": "47907",
+        "Country": "United States",
+        "CountryCode": "US"
+      },
+      "PhoneNumber": "",
+      "Latitude": 40.425797,
+      "Longitude": -86.924944,
+      "Images": ["c11bb93c-8176-42e5-bc70-ef6f19ccd199"],
+      "ImageUrls": [
+        "https://api.hfs.purdue.edu/Menus/v2/file/c11bb93c-8176-42e5-bc70-ef6f19ccd199"
+      ],
+      "LogoUrl": "https://api.hfs.purdue.edu/Menus/v2/file/1750fecc-1db8-4391-8e7d-7e5989b2c96d",
+      "DarkModeLogoUrl": "https://api.hfs.purdue.edu/Menus/v2/file/925daa9b-deeb-43d4-b9cd-6fa6b7b5cf6e",
+      "NormalHours": [
+        {
+          "Id": "e52b0683-e97b-4236-860f-95eee1bdea13",
+          "Name": "Fall 2026",
+          "EffectiveDate": "2026-08-23T00:00:00",
+          "Days": [
+            {
+              "Name": "Thursday",
+              "DayOfWeek": 4,
+              "Meals": [
+                {
+                  "Name": "Breakfast/Lunch",
+                  "Order": 2,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "06:30:00",
+                    "EndTime": "17:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Monday",
+              "DayOfWeek": 1,
+              "Meals": [
+                {
+                  "Name": "Breakfast/Lunch",
+                  "Order": 2,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "06:30:00",
+                    "EndTime": "17:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Tuesday",
+              "DayOfWeek": 2,
+              "Meals": [
+                {
+                  "Name": "Breakfast/Lunch",
+                  "Order": 2,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "06:30:00",
+                    "EndTime": "17:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Wednesday",
+              "DayOfWeek": 3,
+              "Meals": [
+                {
+                  "Name": "Breakfast/Lunch",
+                  "Order": 2,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "06:30:00",
+                    "EndTime": "17:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Friday",
+              "DayOfWeek": 5,
+              "Meals": [
+                {
+                  "Name": "Breakfast/Lunch",
+                  "Order": 2,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "06:30:00",
+                    "EndTime": "17:00:00"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "UpcomingMeals": [
+        {
+          "ID": "713ffa2b-02fa-43c3-b0c4-317a5f488e2f",
+          "Name": "Breakfast/Lunch",
+          "Type": "Snack",
+          "StartTime": "2026-10-19T06:30:00-04:00",
+          "EndTime": "2026-10-19T17:00:00-04:00"
+        }
+      ],
+      "LineLengthCrowdsourcingEnabled": false,
+      "ShortName": "Earhart On-the-GO!",
+      "Url": "https://dining.purdue.edu/ResidentialDining/On-the-GO/Locations.html",
+      "StreetViewUrl": null,
+      "GooglePlaceId": null,
+      "Type": "On-the-GO!",
+      "TransactMobileOrderId": null
+    },
+    {
+      "LocationId": "PZZA",
+      "Name": "Pete's Za at Tarkington Hall",
+      "FormalName": "Pete's Za at Tarkington Hall",
+      "Address": {
+        "Street": "1165 W Stadium Avenue",
+        "City": "West Lafayette",
+        "State": "IN",
+        "ZipCode": "47906",
+        "Country": "United States",
+        "CountryCode": "US"
+      },
+      "PhoneNumber": "(765) 494-3473",
+      "Latitude": 40.43062,
+      "Longitude": -86.9207,
+      "Images": ["979be1e9-fe12-4d97-9143-883e67e24afc"],
+      "ImageUrls": [
+        "https://api.hfs.purdue.edu/Menus/v2/file/979be1e9-fe12-4d97-9143-883e67e24afc"
+      ],
+      "LogoUrl": "https://api.hfs.purdue.edu/Menus/v2/file/f47041d6-e46f-4694-a070-1403018efb27",
+      "DarkModeLogoUrl": "https://api.hfs.purdue.edu/Menus/v2/file/b73312aa-b3b5-4a23-a863-e7273e44e79e",
+      "NormalHours": [
+        {
+          "Id": "e52b0683-e97b-4236-860f-95eee1bdea13",
+          "Name": "Fall 2026",
+          "EffectiveDate": "2026-08-23T00:00:00",
+          "Days": [
+            {
+              "Name": "Friday",
+              "DayOfWeek": 5,
+              "Meals": [
+                {
+                  "Name": "Lunch/Dinner",
+                  "Order": 4,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "22:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Wednesday",
+              "DayOfWeek": 3,
+              "Meals": [
+                {
+                  "Name": "Lunch/Dinner",
+                  "Order": 4,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "22:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Tuesday",
+              "DayOfWeek": 2,
+              "Meals": [
+                {
+                  "Name": "Lunch/Dinner",
+                  "Order": 4,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "22:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Sunday",
+              "DayOfWeek": 0,
+              "Meals": [
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Monday",
+              "DayOfWeek": 1,
+              "Meals": [
+                {
+                  "Name": "Lunch/Dinner",
+                  "Order": 4,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "22:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Thursday",
+              "DayOfWeek": 4,
+              "Meals": [
+                {
+                  "Name": "Lunch/Dinner",
+                  "Order": 4,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "22:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Saturday",
+              "DayOfWeek": 6,
+              "Meals": [
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "UpcomingMeals": [
+        {
+          "ID": "d3abd0d8-23b8-457e-a751-2728513c6ef8",
+          "Name": "Dinner",
+          "Type": "Dinner",
+          "StartTime": "2026-10-18T17:00:00-04:00",
+          "EndTime": "2026-10-18T21:00:00-04:00"
+        },
+        {
+          "ID": "43df77e7-e3dd-4218-af17-f9b51a5f8658",
+          "Name": "Lunch/Dinner",
+          "Type": "Snack",
+          "StartTime": "2026-10-19T11:00:00-04:00",
+          "EndTime": "2026-10-19T22:00:00-04:00"
+        }
+      ],
+      "LineLengthCrowdsourcingEnabled": false,
+      "ShortName": "Pete's Za",
+      "Url": "https://dining.purdue.edu/ResidentialDining/locations/petes_za-Meredith.html",
+      "StreetViewUrl": null,
+      "GooglePlaceId": "ChIJadlPGcriEogRG6k-5mLOLOQ",
+      "Type": "Quick Bites",
+      "TransactMobileOrderId": 845
+    },
+    {
+      "LocationId": "WILY",
+      "Name": "Wiley",
+      "FormalName": "Wiley Dining Court",
+      "Address": {
+        "Street": "498 North Martin Jischke Drive",
+        "City": "West Lafayette",
+        "State": "IN",
+        "ZipCode": "47906-4277",
+        "Country": "United States",
+        "CountryCode": "US"
+      },
+      "PhoneNumber": "(765) 494-2264",
+      "Latitude": 40.428705,
+      "Longitude": -86.920867,
+      "Images": ["7095364d-d93e-491c-a4ad-d7eedd99adbe"],
+      "ImageUrls": [
+        "https://api.hfs.purdue.edu/Menus/v2/file/7095364d-d93e-491c-a4ad-d7eedd99adbe"
+      ],
+      "LogoUrl": "https://api.hfs.purdue.edu/Menus/v2/file/cbb22e97-c11f-481f-b712-3c4224409b76",
+      "DarkModeLogoUrl": "https://api.hfs.purdue.edu/Menus/v2/file/8ebf515d-082a-4906-8d9e-514b48dcd88a",
+      "NormalHours": [
+        {
+          "Id": "e52b0683-e97b-4236-860f-95eee1bdea13",
+          "Name": "Fall 2026",
+          "EffectiveDate": "2026-08-23T00:00:00",
+          "Days": [
+            {
+              "Name": "Friday",
+              "DayOfWeek": 5,
+              "Meals": [
+                {
+                  "Name": "Breakfast",
+                  "Order": 1,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "07:00:00",
+                    "EndTime": "10:00:00"
+                  }
+                },
+                {
+                  "Name": "Lunch",
+                  "Order": 3,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "14:00:00"
+                  }
+                },
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Wednesday",
+              "DayOfWeek": 3,
+              "Meals": [
+                {
+                  "Name": "Breakfast",
+                  "Order": 1,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "07:00:00",
+                    "EndTime": "10:00:00"
+                  }
+                },
+                {
+                  "Name": "Lunch",
+                  "Order": 3,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "14:00:00"
+                  }
+                },
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Sunday",
+              "DayOfWeek": 0,
+              "Meals": [
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Thursday",
+              "DayOfWeek": 4,
+              "Meals": [
+                {
+                  "Name": "Breakfast",
+                  "Order": 1,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "07:00:00",
+                    "EndTime": "10:00:00"
+                  }
+                },
+                {
+                  "Name": "Lunch",
+                  "Order": 3,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "14:00:00"
+                  }
+                },
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Tuesday",
+              "DayOfWeek": 2,
+              "Meals": [
+                {
+                  "Name": "Breakfast",
+                  "Order": 1,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "07:00:00",
+                    "EndTime": "10:00:00"
+                  }
+                },
+                {
+                  "Name": "Lunch",
+                  "Order": 3,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "14:00:00"
+                  }
+                },
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Monday",
+              "DayOfWeek": 1,
+              "Meals": [
+                {
+                  "Name": "Breakfast",
+                  "Order": 1,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "07:00:00",
+                    "EndTime": "10:00:00"
+                  }
+                },
+                {
+                  "Name": "Lunch",
+                  "Order": 3,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "14:00:00"
+                  }
+                },
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "Saturday",
+              "DayOfWeek": 6,
+              "Meals": [
+                {
+                  "Name": "Lunch",
+                  "Order": 3,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "11:00:00",
+                    "EndTime": "14:00:00"
+                  }
+                },
+                {
+                  "Name": "Dinner",
+                  "Order": 5,
+                  "Status": "Open",
+                  "Hours": {
+                    "StartTime": "17:00:00",
+                    "EndTime": "21:00:00"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "UpcomingMeals": [
+        {
+          "ID": "b3c96e18-5f5f-4032-9c72-a21723011cb2",
+          "Name": "Dinner",
+          "Type": "Dinner",
+          "StartTime": "2026-10-18T17:00:00-04:00",
+          "EndTime": "2026-10-18T21:00:00-04:00"
+        },
+        {
+          "ID": "04ba0a51-cfb4-472b-b536-e1b8e9da1389",
+          "Name": "Breakfast",
+          "Type": "Breakfast",
+          "StartTime": "2026-10-19T07:00:00-04:00",
+          "EndTime": "2026-10-19T10:00:00-04:00"
+        },
+        {
+          "ID": "bd715b0e-2db8-4f44-8a62-b409259a978b",
+          "Name": "Lunch",
+          "Type": "Lunch",
+          "StartTime": "2026-10-19T11:00:00-04:00",
+          "EndTime": "2026-10-19T14:00:00-04:00"
+        },
+        {
+          "ID": "29e9817c-9862-4589-9408-be04730d40ca",
+          "Name": "Dinner",
+          "Type": "Dinner",
+          "StartTime": "2026-10-19T17:00:00-04:00",
+          "EndTime": "2026-10-19T21:00:00-04:00"
+        }
+      ],
+      "LineLengthCrowdsourcingEnabled": false,
+      "ShortName": "WILY",
+      "Url": "https://dining.purdue.edu/ResidentialDining/locations/wiley.html",
+      "StreetViewUrl": "https://www.google.com/maps/@40.4286163,-86.9216711,3a,90y,95.21h,85.4t/data=!3m6!1e1!3m4!1s-qUxJtja-Ni6PShpf-JTyg!2e0!7i3328!8i1664",
+      "GooglePlaceId": "ChIJCaIHWLHiEogRZlqMXbheH1Y",
+      "Type": "Dining Courts",
+      "TransactMobileOrderId": null
+    }
+  ]
+}

@@ -55,6 +55,12 @@ export type Food = {
   servings: FoodServing[];
   verificationCount: number;
   mismatchCount: number;
+  /** Data provider for synced foods (e.g. 'purdue' for Purdue Dining), else null. */
+  provider: string | null;
+  /** Allergens the source flags as present (lowercase, e.g. 'gluten'). Empty when unknown. */
+  allergens: string[];
+  /** Diet traits the source flags (e.g. 'vegetarian', 'vegan'). */
+  dietTags: string[];
 };
 
 export type LogEntry = {

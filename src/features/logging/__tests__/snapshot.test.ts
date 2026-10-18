@@ -32,6 +32,9 @@ const food: Food = {
   ],
   verificationCount: 0,
   mismatchCount: 0,
+  provider: null,
+  allergens: [],
+  dietTags: [],
 };
 
 const [cup] = food.servings;

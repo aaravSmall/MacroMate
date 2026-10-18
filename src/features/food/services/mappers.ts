@@ -52,6 +52,9 @@ export function mapFoodRow(row: FoodRowWithServings): Food {
     servings: orderServings(row),
     verificationCount: row.verification_count,
     mismatchCount: row.mismatch_count,
+    provider: row.provider,
+    allergens: row.allergens,
+    dietTags: row.diet_tags,
   };
 }
 

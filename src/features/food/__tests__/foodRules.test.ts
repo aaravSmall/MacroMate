@@ -52,6 +52,12 @@ describe('canVerifyFood', () => {
     expect(canVerifyFood({ id: 'f', ownerId: null, visibility: 'public' }, me)).toBe(true);
   });
 
+  it('never asks about dining hall food (there is no package label)', () => {
+    expect(
+      canVerifyFood({ id: 'f', ownerId: null, visibility: 'public', source: 'dining_hall' }, me),
+    ).toBe(false);
+  });
+
   it('never asks about the user’s own, private, or uncached foods', () => {
     expect(canVerifyFood({ id: 'f', ownerId: me, visibility: 'public' }, me)).toBe(false);
     expect(canVerifyFood({ id: 'f', ownerId: 'other', visibility: 'private' }, me)).toBe(false);

@@ -43,13 +43,19 @@ export function canDeleteFood(food: Pick<Food, 'ownerId' | 'visibility'>, userId
   return food.ownerId === userId && food.visibility === 'private';
 }
 
-/** Public foods someone else added can be checked against the user's label. */
+/**
+ * Public foods someone else added can be checked against the user's label. Dining hall food
+ * has no package label, so it's never asked about.
+ */
 export function canVerifyFood(
-  food: Pick<Food, 'id' | 'ownerId' | 'visibility'>,
+  food: Pick<Food, 'id' | 'ownerId' | 'visibility'> & { source?: Food['source'] },
   userId: string,
 ): boolean {
   return (
-    food.visibility === 'public' && food.ownerId !== userId && !isUncachedOpenFoodFactsResult(food)
+    food.visibility === 'public' &&
+    food.ownerId !== userId &&
+    food.source !== 'dining_hall' &&
+    !isUncachedOpenFoodFactsResult(food)
   );
 }
 

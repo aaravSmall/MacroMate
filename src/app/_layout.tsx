@@ -48,6 +48,7 @@ function RootNavigator() {
         <Stack.Screen name="food-detail/[id]" options={{ ...modal, title: 'Food' }} />
         <Stack.Screen name="create-food" options={{ ...modal, title: 'Create food' }} />
         <Stack.Screen name="label-scan" options={{ ...modal, title: 'Scan label' }} />
+        <Stack.Screen name="dining" options={{ ...modal, title: 'Dining halls' }} />
         <Stack.Screen name="log-entry/[id]" options={{ ...modal, title: 'Entry' }} />
       </Stack.Protected>
     </Stack>

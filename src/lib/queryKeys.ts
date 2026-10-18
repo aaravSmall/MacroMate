@@ -28,6 +28,10 @@ export const queryKeys = {
   health: {
     connection: (userId: string) => ['health', 'connection', userId] as const,
   },
+  dining: {
+    locations: () => ['dining', 'locations'] as const,
+    menu: (locationId: string, date: string) => ['dining', 'menu', locationId, date] as const,
+  },
   reminders: {
     state: (userId: string) => ['reminders', 'state', userId] as const,
   },
