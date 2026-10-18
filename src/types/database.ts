@@ -453,9 +453,14 @@ export type Database = {
           isSetofReturn: false;
         };
       };
+      current_streak: { Args: { p_tz: string }; Returns: number };
       insert_food_with_servings: {
         Args: { food: Json; servings: Json };
         Returns: string;
+      };
+      streak_from_dates: {
+        Args: { p_days: string[]; p_today: string };
+        Returns: number;
       };
     };
     Enums: {

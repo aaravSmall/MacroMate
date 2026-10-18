@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- **Logging streak on the server:** the Progress streak now comes from a `current_streak(p_tz)` database function (consecutive days with a log, ending today or yesterday in your time zone; any logged day counts), so it's no longer capped at 120 days. `supabase/tests/current_streak_test.sql` checks it against the client spec.
+
 ### Added
 
 - **Weigh-in reminders:** a reminders switch in Settings schedules gentle local notifications from your weigh-in schedule (weekly, every other week from your last weigh-in, or the first chosen weekday of each month), in your time zone and keeping the same local time across daylight saving changes. Notification permission is asked only after an explanation, when you turn reminders on or finish onboarding, never at launch. Reminders reschedule on launch, after a schedule change, and after a weigh-in, and are cancelled on sign-out and account deletion. Tapping one opens Progress with the weigh-in field ready.

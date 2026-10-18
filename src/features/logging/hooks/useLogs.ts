@@ -1,5 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
+import { useProfile } from '@/features/account';
+import { deviceTimeZone } from '@/lib/dates';
 import { queryKeys } from '@/lib/queryKeys';
 import type { LogEntry } from '@/types/domain';
 
@@ -7,6 +9,7 @@ import { buildLogEntry, type NewLogInput } from '../logic/snapshot';
 import {
   addLog,
   deleteLog,
+  getCurrentStreak,
   getDailyTotals,
   getLog,
   getLoggedDateKeys,
@@ -48,6 +51,15 @@ export function useLoggedDays(fromKey: string, toKey: string) {
   });
 }
 
+/** Logging streak from the server (`current_streak`), in the user's time zone. */
+export function useStreak() {
+  const timezone = useProfile().data?.timezone ?? deviceTimeZone();
+  return useQuery({
+    queryKey: queryKeys.logs.streak(timezone),
+    queryFn: () => getCurrentStreak(timezone),
+  });
+}
+
 function byLoggedAt(a: LogEntry, b: LogEntry) {
   return a.loggedAt.localeCompare(b.loggedAt);
 }
@@ -56,6 +68,7 @@ function invalidateDay(queryClient: ReturnType<typeof useQueryClient>, dateKey: 
   void queryClient.invalidateQueries({ queryKey: queryKeys.logs.day(dateKey) });
   void queryClient.invalidateQueries({ queryKey: queryKeys.logs.totals(dateKey) });
   void queryClient.invalidateQueries({ queryKey: queryKeys.logs.loggedDaysAll });
+  void queryClient.invalidateQueries({ queryKey: queryKeys.logs.streakAll });
 }
 
 /** Adds a log, showing it immediately and rolling back if the save fails. */

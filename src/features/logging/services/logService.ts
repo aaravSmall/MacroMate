@@ -112,3 +112,13 @@ export async function deleteLog(id: string): Promise<void> {
   const { error } = await supabase.from('log_entries').delete().eq('id', id);
   if (error) throw error;
 }
+
+/**
+ * The signed-in user's logging streak, from the `current_streak` RPC: consecutive days with a
+ * log, ending today (or yesterday) in `timezone`. Not capped; any logged day counts.
+ */
+export async function getCurrentStreak(timezone: string): Promise<number> {
+  const { data, error } = await supabase.rpc('current_streak', { p_tz: timezone });
+  if (error) throw error;
+  return data;
+}

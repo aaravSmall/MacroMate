@@ -1,27 +1,20 @@
 import { useLocalSearchParams } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { View } from 'react-native';
 
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, Text, TextField } from '@/components/ui';
 import { useProfile } from '@/features/account';
 import { lbToKg } from '@/features/goals';
-import { currentStreak, LoggingCalendar, useLoggedDays } from '@/features/logging';
+import { LoggingCalendar, useLoggedDays, useStreak } from '@/features/logging';
 import { useAddWeighIn, useWeighIns } from '@/features/weighins';
-import { addDays, toDateKey, toDateKeyInTimeZone } from '@/lib/dates';
+import { toDateKey, toDateKeyInTimeZone } from '@/lib/dates';
 import { formatWeight, parseNumber } from '@/lib/format';
 import { useTheme } from '@/theme';
 
-/** How far back the streak looks. TODO(server): compute streaks server-side to lift this cap. */
-const STREAK_LOOKBACK_DAYS = 120;
-
-/** Consecutive dates in `daily_totals` ending today or yesterday. */
+/** Consecutive days with a log, ending today or yesterday (computed on the server, no cap). */
 function StreakCard() {
-  const today = useMemo(() => new Date(), []);
-  const fromKey = toDateKey(addDays(today, -STREAK_LOOKBACK_DAYS));
-  const toKey = toDateKey(addDays(today, 1));
-  const logged = useLoggedDays(fromKey, toKey);
-  const streak = logged.data ? currentStreak(logged.data, today) : null;
+  const streak = useStreak().data ?? null;
 
   return (
     <Card>

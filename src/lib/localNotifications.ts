@@ -22,7 +22,9 @@ export type NotificationPermission = 'granted' | 'denied' | 'undetermined';
  */
 const IOS_STATUS = { NOT_DETERMINED: 0, AUTHORIZED: 2, PROVISIONAL: 3, EPHEMERAL: 4 } as const;
 
-function toPermission(response: Notifications.NotificationPermissionsStatus): NotificationPermission {
+function toPermission(
+  response: Notifications.NotificationPermissionsStatus,
+): NotificationPermission {
   const ios: number | undefined = response.ios?.status;
   if (ios !== undefined) {
     if (

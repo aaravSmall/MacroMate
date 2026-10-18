@@ -8,6 +8,7 @@ export {
   useDeleteLog,
   useLog,
   useLoggedDays,
+  useStreak,
   useUpdateLog,
 } from './hooks/useLogs';
 export { computeDailySummary, type DailySummary } from './logic/dailySummary';
@@ -24,6 +25,7 @@ export { currentStreak } from './logic/streak';
 export {
   addLog,
   deleteLog,
+  getCurrentStreak,
   getDailyTotals,
   getLog,
   getLoggedDateKeys,
