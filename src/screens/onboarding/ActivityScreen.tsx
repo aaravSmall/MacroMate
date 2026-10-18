@@ -4,22 +4,22 @@ import type { ActivityLevel } from '@/types/domain';
 const OPTIONS: { value: ActivityLevel; title: string; description: string }[] = [
   { value: 'sedentary', title: 'Mostly sitting', description: 'Desk job, little exercise.' },
   {
-    value: 'lightly_active',
+    value: 'light',
     title: 'Lightly active',
     description: 'On your feet some of the day, or light exercise 1–3 days a week.',
   },
   {
-    value: 'moderately_active',
+    value: 'moderate',
     title: 'Moderately active',
     description: 'Moderate exercise 3–5 days a week.',
   },
   {
-    value: 'very_active',
+    value: 'active',
     title: 'Very active',
     description: 'Hard exercise 6–7 days a week.',
   },
   {
-    value: 'extra_active',
+    value: 'very_active',
     title: 'Extra active',
     description: 'Physical job plus hard training, or training twice a day.',
   },

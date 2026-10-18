@@ -14,16 +14,17 @@ const valid = {
 };
 
 describe('parseFoodForm', () => {
-  it('parses a valid form', () => {
+  it('stores a count-based serving per 1 serving', () => {
     const result = parseFoodForm(valid);
     expect(result).toEqual({
       ok: true,
       input: {
+        source: 'user_product',
         name: 'Protein bar',
         brand: 'Acme',
-        restaurant: null,
         barcode: null,
-        serving: { size: 1, unit: 'bar', grams: null },
+        baseAmount: 1,
+        baseUnit: 'serving',
         nutrition: {
           calories: 210,
           proteinG: 20,
@@ -31,13 +32,31 @@ describe('parseFoodForm', () => {
           fatG: 0,
           micronutrients: { sodium_mg: 180 },
         },
+        servings: [{ label: '1 bar', baseMultiplier: 1, isDefault: true }],
       },
     });
   });
 
-  it('records grams when the unit is g', () => {
+  it('stores a gram serving per 100 g, with the label serving as a portion', () => {
     const result = parseFoodForm({ ...valid, servingSize: '40', servingUnit: 'g' });
-    expect(result.ok && result.input.serving.grams).toBe(40);
+    if (!result.ok) throw new Error('expected a valid form');
+    expect(result.input).toMatchObject({
+      baseAmount: 100,
+      baseUnit: 'g',
+      nutrition: {
+        calories: 525,
+        proteinG: 50,
+        carbsG: 56.25,
+        fatG: 0,
+        micronutrients: { sodium_mg: 450 },
+      },
+      servings: [{ label: '40 g', baseMultiplier: 0.4, isDefault: true }],
+    });
+  });
+
+  it('maps saturated fat to its foods column key', () => {
+    const result = parseFoodForm({ ...valid, saturatedFat: '3' });
+    expect(result.ok && result.input.nutrition.micronutrients.sat_fat_g).toBe(3);
   });
 
   it('requires name, serving, and calories', () => {

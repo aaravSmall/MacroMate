@@ -1,5 +1,5 @@
 import { round1 } from '@/lib/nutrition';
-import type { ExerciseEntry, LogEntry } from '@/types/domain';
+import type { DailyTotals, ExerciseEntry } from '@/types/domain';
 
 export type DailySummary = {
   /** Daily calorie target from the user's goal (before exercise). */
@@ -15,27 +15,24 @@ export type DailySummary = {
   macros: { proteinG: number; carbsG: number; fatG: number };
 };
 
-/** Totals a day's logs and exercise against the calorie target. Pure. */
+/**
+ * Puts a day's totals (from the `daily_totals` view; null when nothing is logged) and exercise
+ * against the calorie target. Pure.
+ */
 export function computeDailySummary({
-  logs,
+  totals,
   exercise,
   target,
 }: {
-  logs: readonly LogEntry[];
-  exercise: readonly ExerciseEntry[];
+  totals: Pick<DailyTotals, 'calories' | 'proteinG' | 'carbsG' | 'fatG'> | null;
+  exercise: readonly Pick<ExerciseEntry, 'activeCalories'>[];
   target: number;
 }): DailySummary {
-  let eaten = 0;
-  let proteinG = 0;
-  let carbsG = 0;
-  let fatG = 0;
-  for (const log of logs) {
-    eaten += log.totals.calories;
-    proteinG += log.totals.proteinG;
-    carbsG += log.totals.carbsG;
-    fatG += log.totals.fatG;
-  }
-  const burned = exercise.reduce((sum, entry) => sum + entry.caloriesBurned, 0);
+  const eaten = totals?.calories ?? 0;
+  const proteinG = totals?.proteinG ?? 0;
+  const carbsG = totals?.carbsG ?? 0;
+  const fatG = totals?.fatG ?? 0;
+  const burned = exercise.reduce((sum, entry) => sum + entry.activeCalories, 0);
   const budget = target + burned;
 
   return {

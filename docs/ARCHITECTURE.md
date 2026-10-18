@@ -77,11 +77,11 @@ Add (+) tab
   └─ FoodSearchScreen
        └─ useFoodSearch(query)                         features/food/hooks
             └─ searchFoods()                           features/food/services
-                 ├─ Supabase: global foods + My Foods  src/lib/supabase
+                 ├─ Supabase: foods (public + own)     src/lib/supabase
                  └─ Open Food Facts adapter            src/lib/openFoodFacts
   user picks a food + serving
        └─ useAddLog().mutate(input)                    features/logging/hooks
-            ├─ suggestMealLabel(timestamp)             features/logging/logic (pure)
+            ├─ suggestMealType(timestamp)              features/logging/logic (pure)
             ├─ optimistic update of queryKeys.logs.day(date)
             └─ addLog(input)                           features/logging/services
                  └─ Supabase insert into entries       src/lib/supabase
@@ -89,12 +89,12 @@ Add (+) tab
        └─ TodayScreen re-renders summary card + timeline
 ```
 
-1. The user searches. `useFoodSearch` debounces the query and calls the food service, which merges results from the user's My Foods, the shared global foods table, and Open Food Facts.
-2. The user picks a serving. The screen builds an entry draft with the timestamp set to now and a meal label suggested by a pure function. The user can edit both.
-3. `useAddLog` optimistically adds the entry to the cached day log and calls `addLog`, which inserts the row (with a snapshot of the food) through the Supabase client in `src/lib`.
-4. On success the day-log queries are invalidated, so totals (eaten / remaining) recompute. On error the optimistic update is rolled back and the user sees an error.
+1. The user searches. `useFoodSearch` debounces the query and calls the food service. It searches `foods` (public foods plus the user's own, via RLS) and tops up with Open Food Facts when there are few matches. The screen shows the user's own foods as "My Foods".
+2. The user picks a serving and amount. The meal is suggested from the time of day by a pure function, and the user can change it. For a public food someone else added, the app asks "Does this match your label?" and upserts the answer into `food_verifications`.
+3. `useAddLog` optimistically adds the entry to the cached day log and calls `addLog`. That inserts into `log_entries` a snapshot computed by `buildLogInsert`: food value × serving multiplier × quantity, plus `local_date` in the user's timezone.
+4. On success the day log and that day's `daily_totals` are invalidated, so the summary (eaten / remaining) refreshes from the view. On error the optimistic update is rolled back and the user sees an error.
 
-**Open Food Facts results** aren't stored in `foods` yet, and clients can't insert there. For now, logging one first looks for an imported copy in `foods` and otherwise saves it to the user's My Foods, then logs that. A future Edge Function will import OFF products into `foods` instead.
+**Open Food Facts results** aren't stored in `foods` yet, and clients can't insert there. They're shown with an `off:` id and logged with `food_id = null` (the snapshot holds everything Today needs). TODO: an Edge Function will cache OFF products in `foods`; see `searchFoods` in `features/food/services/foodService.ts`.
 
 Label scanning follows the same path, with one extra step first: the photo goes through the OCR adapter in `src/lib`, which pre-fills the create-food form. The user confirms the food before it's saved.
 

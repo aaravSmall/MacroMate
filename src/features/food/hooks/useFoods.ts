@@ -1,8 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { queryKeys } from '@/lib/queryKeys';
 
-import { getFood, searchFoods } from '../services/foodService';
+import { createFood, deleteFood, getFood, searchFoods } from '../services/foodService';
+import type { NewFoodInput } from '../services/mappers';
+import { getMyVerification, verifyFood } from '../services/verificationService';
 
 export const MIN_SEARCH_LENGTH = 2;
 
@@ -23,5 +25,50 @@ export function useFood(id: string | undefined) {
     queryFn: ({ signal }) => getFood(id ?? '', signal),
     enabled: !!id,
     staleTime: 30 * 60_000,
+  });
+}
+
+export function useCreateFood() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: NewFoodInput) => createFood(input),
+    onSuccess: (food) => {
+      queryClient.setQueryData(queryKeys.foods.detail(food.id), food);
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
+    },
+  });
+}
+
+export function useDeleteFood() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => deleteFood(id),
+    onSuccess: (_data, id) => {
+      queryClient.removeQueries({ queryKey: queryKeys.foods.detail(id) });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
+    },
+  });
+}
+
+/** The user's earlier answer to "Does this match your label?", or null. */
+export function useMyVerification(foodId: string, enabled: boolean) {
+  return useQuery({
+    queryKey: queryKeys.foods.verification(foodId),
+    queryFn: () => getMyVerification(foodId),
+    enabled,
+  });
+}
+
+export function useVerifyFood() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ foodId, matches }: { foodId: string; matches: boolean }) =>
+      verifyFood(foodId, matches),
+    onSuccess: (_data, { foodId, matches }) => {
+      queryClient.setQueryData(queryKeys.foods.verification(foodId), matches);
+      // Counts changed on the food.
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.detail(foodId) });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
+    },
   });
 }

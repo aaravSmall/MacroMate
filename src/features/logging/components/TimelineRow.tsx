@@ -37,9 +37,9 @@ export function TimelineRow({ entry, onPress, showCalories }: TimelineRowProps) 
       </Text>
       <View style={{ flex: 1 }}>
         <Text variant="callout">{entry.foodName}</Text>
-        {entry.servings !== 1 ? (
+        {entry.quantity !== 1 ? (
           <Text variant="caption" tone="muted">
-            {entry.servings} servings
+            × {entry.quantity}
           </Text>
         ) : null}
       </View>

@@ -4,20 +4,29 @@ import { View } from 'react-native';
 
 import { Button, Card, Divider, Text } from '@/components/ui';
 import { useUpdateProfile } from '@/features/account';
-import { calorieFloorRecommendation, CareNotice, paceCautionCopy } from '@/features/goals';
+import {
+  calorieFloorRecommendation,
+  CareNotice,
+  paceCautionCopy,
+  useSetGoal,
+} from '@/features/goals';
 import {
   buildOnboardingResult,
   OnboardingStepLayout,
   useOnboardingStore,
 } from '@/features/onboarding';
+import { deviceTimeZone } from '@/lib/dates';
 import { formatGrams, formatKcal } from '@/lib/format';
 import { useTheme } from '@/theme';
 
 export default function SummaryScreen() {
   const { spacing } = useTheme();
   const { form, reset } = useOnboardingStore();
-  const result = useMemo(() => buildOnboardingResult(form), [form]);
+  const result = useMemo(() => buildOnboardingResult(form, { timezone: deviceTimeZone() }), [form]);
+  const setGoal = useSetGoal();
   const updateProfile = useUpdateProfile();
+  const saving = setGoal.isPending || updateProfile.isPending;
+  const error = setGoal.error ?? updateProfile.error;
 
   if (!result) {
     return (
@@ -30,15 +39,21 @@ export default function SummaryScreen() {
     );
   }
 
-  const { dailyTarget, pace, profileUpdate } = result;
-  const macros = profileUpdate.macroTargets;
+  const { dailyTarget, pace, goal } = result;
+  const macros = goal.macroTargets;
 
   async function handleFinish() {
     if (!result) return;
-    await updateProfile.mutateAsync({
-      ...result.profileUpdate,
-      onboardingCompletedAt: new Date().toISOString(),
-    });
+    try {
+      // Goal first: setting onboarded_at on the profile is what lets the user into the app.
+      await setGoal.mutateAsync(result.goal);
+      await updateProfile.mutateAsync({
+        ...result.profileUpdate,
+        onboardedAt: new Date().toISOString(),
+      });
+    } catch {
+      return; // Shown from the mutation's error state.
+    }
     reset();
     // The root gate now allows (tabs).
     router.replace('/today');
@@ -50,8 +65,8 @@ export default function SummaryScreen() {
       title="Your daily target"
       footer={
         <>
-          {updateProfile.error ? <Text tone="danger">{updateProfile.error.message}</Text> : null}
-          <Button title="Start logging" onPress={handleFinish} loading={updateProfile.isPending} />
+          {error ? <Text tone="danger">{error.message}</Text> : null}
+          <Button title="Start logging" onPress={handleFinish} loading={saving} />
         </>
       }
     >
@@ -64,18 +79,14 @@ export default function SummaryScreen() {
             and you can adjust it anytime.
           </Text>
         ) : null}
-        {macros ? (
-          <View style={{ gap: spacing.xs }}>
-            <Divider />
-            <Text variant="callout">Protein {formatGrams(macros.proteinG ?? 0)}</Text>
-            <Text variant="callout">Carbs {formatGrams(macros.carbsG ?? 0)}</Text>
-            <Text variant="callout">Fat {formatGrams(macros.fatG ?? 0)}</Text>
-          </View>
-        ) : null}
+        <View style={{ gap: spacing.xs }}>
+          <Divider />
+          <Text variant="callout">Protein {formatGrams(macros.proteinG ?? 0)}</Text>
+          <Text variant="callout">Carbs {formatGrams(macros.carbsG ?? 0)}</Text>
+          <Text variant="callout">Fat {formatGrams(macros.fatG ?? 0)}</Text>
+        </View>
       </Card>
-      {pace === 'caution' && profileUpdate.goalType ? (
-        <CareNotice {...paceCautionCopy(profileUpdate.goalType)} />
-      ) : null}
+      {pace === 'caution' ? <CareNotice {...paceCautionCopy(goal.goalType)} /> : null}
       <Text variant="caption" tone="muted">
         This is an estimate from your answers, using the Mifflin-St Jeor equation and about 3,500
         calories per pound. Bodies vary, so treat it as a starting point.

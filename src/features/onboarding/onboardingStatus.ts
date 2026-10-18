@@ -1,7 +1,7 @@
 import { useProfile } from '@/features/account';
 
 /**
- * Whether the signed-in user has finished onboarding (profiles.onboarding_completed_at).
+ * Whether the signed-in user has finished onboarding (profiles.onboarded_at).
  * `null` while loading or when signed out.
  */
 export function useOnboardingComplete(): boolean | null {
@@ -12,5 +12,5 @@ export function useOnboardingComplete(): boolean | null {
     return true;
   }
   if (isPending) return null;
-  return profile?.onboardingCompletedAt != null;
+  return profile?.onboardedAt != null;
 }

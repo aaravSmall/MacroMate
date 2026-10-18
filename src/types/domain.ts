@@ -4,13 +4,16 @@
  */
 import type { Enums } from './database';
 
-export type MealLabel = Enums<'meal_label'>;
+export type MealType = Enums<'meal_type'>;
 export type FoodSource = Enums<'food_source'>;
+export type FoodVisibility = Enums<'food_visibility'>;
+export type BaseUnit = Enums<'base_unit'>;
 export type ExerciseSource = Enums<'exercise_source'>;
 export type GoalType = Enums<'goal_type'>;
 export type ActivityLevel = Enums<'activity_level'>;
-export type Sex = Enums<'sex'>;
+export type Sex = Enums<'sex_for_bmr'>;
 export type UnitSystem = Enums<'unit_system'>;
+export type WeighInFrequency = Enums<'weigh_in_freq'>;
 
 /** Micronutrient amounts keyed by snake_case name + unit, e.g. `sodium_mg`, `fiber_g`. */
 export type Micronutrients = Record<string, number>;
@@ -23,67 +26,61 @@ export type NutritionFacts = {
   micronutrients: Micronutrients;
 };
 
-export type Serving = {
-  size: number;
-  unit: string;
-  /** Weight of one serving in grams, when known. */
-  grams: number | null;
+/** A named portion of a food, e.g. "1 cup (240 g)". */
+export type FoodServing = {
+  /** Database id, or null for a portion that isn't stored (Open Food Facts results, fallbacks). */
+  id: string | null;
+  label: string;
+  /** How many of the food's base amounts this portion is. */
+  baseMultiplier: number;
+  isDefault: boolean;
 };
 
-/** A food from the global database, or a not-yet-imported Open Food Facts result. */
+/** A stored food, or a not-yet-cached Open Food Facts result. */
 export type Food = {
-  /** Database id, or `off:<barcode>` for an Open Food Facts result that isn't stored yet. */
+  /** Database id, or `off:<barcode>` for an Open Food Facts result that isn't stored. */
   id: string;
-  kind: 'food';
-  name: string;
-  brand: string | null;
-  restaurant: string | null;
+  ownerId: string | null;
+  visibility: FoodVisibility;
   source: FoodSource;
   externalId: string | null;
   barcode: string | null;
-  serving: Serving;
-  /** Per serving. */
-  nutrition: NutritionFacts;
-};
-
-/** A food from the user's private "My Foods". */
-export type UserFood = {
-  id: string;
-  kind: 'userFood';
   name: string;
   brand: string | null;
-  restaurant: string | null;
-  barcode: string | null;
-  serving: Serving;
-  /** Per serving. */
+  baseAmount: number;
+  baseUnit: BaseUnit;
+  /** Per `baseAmount` of `baseUnit`. */
   nutrition: NutritionFacts;
-  isShared: boolean;
-  sharedFoodId: string | null;
+  /** Never empty; the default serving comes first. */
+  servings: FoodServing[];
+  verificationCount: number;
+  mismatchCount: number;
 };
-
-export type AnyFood = Food | UserFood;
-
-export type LogEntrySource =
-  | { kind: 'food'; foodId: string }
-  | { kind: 'userFood'; userFoodId: string }
-  /** The original food was deleted; the snapshot remains. */
-  | null;
 
 export type LogEntry = {
   id: string;
   /** ISO timestamp. */
   loggedAt: string;
-  mealLabel: MealLabel;
-  source: LogEntrySource;
-  servings: number;
+  /** `YYYY-MM-DD` in the user's timezone at log time. */
+  localDate: string;
+  meal: MealType;
+  /** Null when the food wasn't stored (Open Food Facts) or has since been deleted. */
+  foodId: string | null;
+  servingId: string | null;
+  quantity: number;
   /** Snapshot taken at log time. */
   foodName: string;
-  foodBrand: string | null;
-  serving: Omit<Serving, 'grams'>;
-  /** Snapshot, per serving. */
-  nutritionPerServing: NutritionFacts;
-  /** `nutritionPerServing × servings`. */
+  /** Snapshot totals for the whole entry (food × serving × quantity). */
   totals: NutritionFacts;
+};
+
+export type DailyTotals = {
+  localDate: string;
+  entryCount: number;
+  calories: number;
+  proteinG: number;
+  carbsG: number;
+  fatG: number;
 };
 
 export type ExerciseEntry = {
@@ -93,14 +90,17 @@ export type ExerciseEntry = {
   activityType: string;
   /** ISO timestamp. */
   startedAt: string;
-  durationMin: number;
-  caloriesBurned: number;
+  /** ISO timestamp. */
+  endedAt: string;
+  localDate: string;
+  activeCalories: number;
 };
 
 export type WeighIn = {
   id: string;
   /** ISO timestamp. */
   measuredAt: string;
+  localDate: string;
   weightKg: number;
   bodyFatPct: number | null;
 };
@@ -111,6 +111,21 @@ export type MacroTargets = {
   fatG: number | null;
 };
 
+/** The user's active goal. Changing goals ends this one and starts a new one. */
+export type Goal = {
+  id: string;
+  goalType: GoalType;
+  startWeightKg: number;
+  targetWeightKg: number | null;
+  targetBodyFatPct: number | null;
+  /** Always >= 0; direction comes from goalType. */
+  paceKgPerWeek: number;
+  dailyCalorieTarget: number;
+  macroTargets: MacroTargets;
+  /** ISO timestamp. */
+  startedAt: string;
+};
+
 export type Profile = {
   id: string;
   displayName: string | null;
@@ -119,17 +134,18 @@ export type Profile = {
   birthDate: string | null;
   heightCm: number | null;
   activityLevel: ActivityLevel | null;
-  goalType: GoalType | null;
-  targetWeightKg: number | null;
-  /** Always >= 0; direction comes from goalType. */
-  weeklyRateKg: number | null;
-  dailyCalorieTarget: number | null;
-  macroTargets: MacroTargets;
-  numbersOffMode: boolean;
-  units: UnitSystem;
+  unitSystem: UnitSystem;
+  /** IANA timezone, e.g. `America/New_York`. Sets each log's local date. */
+  timezone: string;
   motivation: string | null;
   dietaryRestrictions: string[];
   allergies: string[];
+  numbersOff: boolean;
+  weighInFrequency: WeighInFrequency;
+  /** 0 = Sunday … 6 = Saturday. */
+  weighInWeekday: number;
+  /** `HH:MM[:SS]` local time. */
+  weighInReminderTime: string;
   /** ISO timestamp, or null while onboarding is incomplete. */
-  onboardingCompletedAt: string | null;
+  onboardedAt: string | null;
 };

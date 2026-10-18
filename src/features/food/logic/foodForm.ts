@@ -1,7 +1,8 @@
 import { parseNumber } from '@/lib/format';
-import type { Micronutrients } from '@/types/domain';
+import { round2 } from '@/lib/nutrition';
+import type { Micronutrients, NutritionFacts } from '@/types/domain';
 
-import type { UserFoodInput } from '../services/mappers';
+import type { NewFoodInput } from '../services/mappers';
 
 export type FoodFormValues = {
   name: string;
@@ -41,14 +42,36 @@ const MICRO_FIELDS: { field: keyof FoodFormValues; key: string }[] = [
   { field: 'fiber', key: 'fiber_g' },
   { field: 'sugar', key: 'sugar_g' },
   { field: 'sodium', key: 'sodium_mg' },
-  { field: 'saturatedFat', key: 'saturated_fat_g' },
+  { field: 'saturatedFat', key: 'sat_fat_g' },
   { field: 'cholesterol', key: 'cholesterol_mg' },
 ];
 
-/** Validates the create-food form and converts it to a UserFoodInput. */
+/** Units that make a serving a weight or volume, so the food is stored per 100 of them. */
+const MEASURED_UNITS: Record<string, 'g' | 'ml'> = { g: 'g', gram: 'g', grams: 'g', ml: 'ml' };
+
+/** Like scaleNutrition, but keeps the database's two-decimal precision. */
+function scaleNutrition2(facts: NutritionFacts, factor: number): NutritionFacts {
+  const micronutrients: Micronutrients = {};
+  for (const [key, amount] of Object.entries(facts.micronutrients)) {
+    micronutrients[key] = round2(amount * factor);
+  }
+  return {
+    calories: round2(facts.calories * factor),
+    proteinG: round2(facts.proteinG * factor),
+    carbsG: round2(facts.carbsG * factor),
+    fatG: round2(facts.fatG * factor),
+    micronutrients,
+  };
+}
+
+/**
+ * Validates the create-food form (nutrition as printed on the label, per serving) and converts
+ * it to a NewFoodInput. Servings measured in g or ml are stored per 100 g/ml, like packaged
+ * foods; anything else ("1 bar") is stored per 1 serving.
+ */
 export function parseFoodForm(
   values: FoodFormValues,
-): { ok: true; input: UserFoodInput } | { ok: false; errors: FoodFormErrors } {
+): { ok: true; input: NewFoodInput } | { ok: false; errors: FoodFormErrors } {
   const errors: FoodFormErrors = {};
 
   const name = values.name.trim();
@@ -88,19 +111,31 @@ export function parseFoodForm(
     return { ok: false, errors };
   }
 
+  const perServing: NutritionFacts = { calories, proteinG, carbsG, fatG, micronutrients };
+  const label = `${servingSize} ${servingUnit}`;
+  const measured = MEASURED_UNITS[servingUnit.toLowerCase()];
+  const base = measured
+    ? {
+        baseAmount: 100,
+        baseUnit: measured,
+        nutrition: scaleNutrition2(perServing, 100 / servingSize),
+        servings: [{ label, baseMultiplier: servingSize / 100, isDefault: true }],
+      }
+    : {
+        baseAmount: 1,
+        baseUnit: 'serving' as const,
+        nutrition: perServing,
+        servings: [{ label, baseMultiplier: 1, isDefault: true }],
+      };
+
   return {
     ok: true,
     input: {
+      source: 'user_product',
       name,
       brand: values.brand.trim() || null,
-      restaurant: null,
       barcode: null,
-      serving: {
-        size: servingSize,
-        unit: servingUnit,
-        grams: servingUnit.toLowerCase() === 'g' ? servingSize : null,
-      },
-      nutrition: { calories, proteinG, carbsG, fatG, micronutrients },
+      ...base,
     },
   };
 }

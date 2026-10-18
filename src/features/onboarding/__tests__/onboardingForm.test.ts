@@ -10,6 +10,7 @@ import {
 } from '@/features/onboarding/logic/onboardingForm';
 
 const now = new Date(2026, 9, 16, 12, 0);
+const opts = { now, timezone: 'America/Chicago' };
 
 const imperial: OnboardingForm = {
   ...INITIAL_ONBOARDING_FORM,
@@ -19,7 +20,7 @@ const imperial: OnboardingForm = {
   weight: '198.4', // ≈ 90 kg
   heightFt: '5',
   heightIn: '11', // 71 in ≈ 180.3 cm
-  activityLevel: 'moderately_active',
+  activityLevel: 'moderate',
   goalType: 'lose',
   weeklyRate: 1,
   motivation: '  Feel better  ',
@@ -79,41 +80,46 @@ describe('assessFormPace', () => {
 
 describe('buildOnboardingResult', () => {
   it('returns null when answers are missing', () => {
-    expect(buildOnboardingResult(INITIAL_ONBOARDING_FORM, now)).toBeNull();
-    expect(buildOnboardingResult({ ...imperial, weeklyRate: null }, now)).toBeNull();
-    expect(buildOnboardingResult({ ...imperial, activityLevel: null }, now)).toBeNull();
+    expect(buildOnboardingResult(INITIAL_ONBOARDING_FORM, opts)).toBeNull();
+    expect(buildOnboardingResult({ ...imperial, weeklyRate: null }, opts)).toBeNull();
+    expect(buildOnboardingResult({ ...imperial, activityLevel: null }, opts)).toBeNull();
   });
 
-  it('builds the profile update and daily target', () => {
-    const result = buildOnboardingResult(imperial, now);
+  it('builds the profile update, goal, and daily target', () => {
+    const result = buildOnboardingResult(imperial, opts);
     expect(result).not.toBeNull();
     // BMR ≈ 10×90 + 6.25×180.34 − 200 + 5 ≈ 1832; ×1.55 ≈ 2840; −500 → 2340
     expect(result?.dailyTarget.target).toBe(2340);
     expect(result?.pace).toBe('ok');
-    expect(result?.profileUpdate).toMatchObject({
+    expect(result?.profileUpdate).toEqual({
       sex: 'male',
       birthDate: '1986-10-16',
       heightCm: 180.3,
-      activityLevel: 'moderately_active',
-      goalType: 'lose',
-      targetWeightKg: null,
-      weeklyRateKg: 0.45,
-      dailyCalorieTarget: 2340,
-      units: 'imperial',
+      activityLevel: 'moderate',
+      unitSystem: 'imperial',
+      timezone: 'America/Chicago',
       motivation: 'Feel better',
       dietaryRestrictions: ['Vegetarian'],
       allergies: [],
-      onboardingCompletedAt: now.toISOString(),
+      onboardedAt: now.toISOString(),
     });
-    expect(result?.profileUpdate.macroTargets).toEqual({ proteinG: 146, carbsG: 263, fatG: 78 });
+    expect(result?.goal).toEqual({
+      goalType: 'lose',
+      startWeightKg: 89.99,
+      targetWeightKg: null,
+      targetBodyFatPct: null,
+      paceKgPerWeek: 0.45,
+      dailyCalorieTarget: 2340,
+      macroTargets: { proteinG: 146, carbsG: 263, fatG: 78 },
+    });
   });
 
   it('stores a zero rate for maintain', () => {
     const result = buildOnboardingResult(
       { ...imperial, goalType: 'maintain', weeklyRate: null },
-      now,
+      opts,
     );
-    expect(result?.profileUpdate.weeklyRateKg).toBe(0);
+    expect(result?.goal.paceKgPerWeek).toBe(0);
     expect(result?.dailyTarget.dailyAdjustment).toBe(0);
   });
 
@@ -129,7 +135,7 @@ describe('buildOnboardingResult', () => {
         activityLevel: 'sedentary',
         weeklyRate: 2.5,
       },
-      now,
+      opts,
     );
     expect(result?.dailyTarget.floorApplied).toBe(true);
     expect(result?.dailyTarget.target).toBe(CALORIE_FLOOR_KCAL.female);
@@ -137,7 +143,7 @@ describe('buildOnboardingResult', () => {
   });
 
   it('converts an optional target weight to kg', () => {
-    const result = buildOnboardingResult({ ...imperial, targetWeight: '180' }, now);
-    expect(result?.profileUpdate.targetWeightKg).toBe(81.6);
+    const result = buildOnboardingResult({ ...imperial, targetWeight: '180' }, opts);
+    expect(result?.goal.targetWeightKg).toBe(81.65);
   });
 });

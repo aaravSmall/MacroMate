@@ -8,8 +8,8 @@
  */
 import Constants from 'expo-constants';
 
-import { round1 } from '@/lib/nutrition';
-import type { Food, Micronutrients, NutritionFacts, Serving } from '@/types/domain';
+import { round2 } from '@/lib/nutrition';
+import type { Food, FoodServing, Micronutrients, NutritionFacts } from '@/types/domain';
 
 const BASE_URL = 'https://world.openfoodfacts.org';
 const FIELDS = [
@@ -45,7 +45,8 @@ export type OffProduct = {
 
 /**
  * OFF nutriment key → our micronutrient key and the factor to convert from OFF's unit.
- * OFF reports minerals and vitamins in grams; we store mg/mcg.
+ * OFF reports minerals and vitamins in grams; we store mg/mcg. Keys that match a `foods`
+ * column (FOOD_NUTRIENT_COLUMNS) are stored there; the rest go in `micros`.
  */
 const MICRONUTRIENT_MAP: Record<string, { key: string; factor: number }> = {
   sodium: { key: 'sodium_mg', factor: 1000 },
@@ -53,7 +54,7 @@ const MICRONUTRIENT_MAP: Record<string, { key: string; factor: number }> = {
   fiber: { key: 'fiber_g', factor: 1 },
   sugars: { key: 'sugar_g', factor: 1 },
   'added-sugars': { key: 'added_sugar_g', factor: 1 },
-  'saturated-fat': { key: 'saturated_fat_g', factor: 1 },
+  'saturated-fat': { key: 'sat_fat_g', factor: 1 },
   'trans-fat': { key: 'trans_fat_g', factor: 1 },
   potassium: { key: 'potassium_mg', factor: 1000 },
   calcium: { key: 'calcium_mg', factor: 1000 },
@@ -74,57 +75,79 @@ function nutriment(n: OffNutriments, name: string, basis: 'serving' | '100g'): n
   return toNumber(n[`${name}_${basis}`]);
 }
 
-function calories(n: OffNutriments, basis: 'serving' | '100g'): number | undefined {
+function energyKcal(n: OffNutriments, basis: 'serving' | '100g'): number | undefined {
   const kcal = nutriment(n, 'energy-kcal', basis);
   if (kcal !== undefined) return kcal;
   const kj = nutriment(n, 'energy-kj', basis) ?? nutriment(n, 'energy', basis);
   return kj === undefined ? undefined : kj / KJ_PER_KCAL;
 }
 
+export type OffNutrition = {
+  baseUnit: 'g' | 'ml';
+  /** Per 100 g (or 100 ml). */
+  nutrition: NutritionFacts;
+  servings: FoodServing[];
+};
+
 /**
- * Maps OFF nutriments to per-serving NutritionFacts. Uses OFF's per-serving values when the
- * product has them; otherwise falls back to per-100 g with a 100 g serving.
+ * Maps OFF nutriments to nutrition per 100 g (or ml), the base our `foods` table uses for
+ * packaged foods. When OFF only has per-serving values, they're scaled up from the serving size.
+ * The product's own serving (when known) becomes the default portion, with 100 g as a second.
  * Returns null when calories are unknown, since the product isn't loggable without them.
  */
-export function mapOffNutrition(
-  product: OffProduct,
-): { serving: Serving; nutrition: NutritionFacts } | null {
+export function mapOffNutrition(product: OffProduct): OffNutrition | null {
   const n = product.nutriments ?? {};
-  const servingGrams = toNumber(product.serving_quantity);
-  const servingUnit = product.serving_quantity_unit ?? 'g';
-  const perServingKcal = calories(n, 'serving');
+  const quantity = toNumber(product.serving_quantity);
+  const servingQuantity = quantity !== undefined && quantity > 0 ? quantity : undefined;
+  const baseUnit = product.serving_quantity_unit?.toLowerCase() === 'ml' ? 'ml' : 'g';
 
-  const basis: 'serving' | '100g' =
-    perServingKcal !== undefined && servingGrams !== undefined && servingGrams > 0
-      ? 'serving'
-      : '100g';
-  const kcal = basis === 'serving' ? perServingKcal : calories(n, '100g');
+  /** Per-100 value: OFF's own, or the per-serving value scaled to 100. */
+  const per100 = (read: (basis: 'serving' | '100g') => number | undefined) => {
+    const direct = read('100g');
+    if (direct !== undefined) return direct;
+    if (servingQuantity === undefined) return undefined;
+    const perServing = read('serving');
+    return perServing === undefined ? undefined : (perServing * 100) / servingQuantity;
+  };
+
+  const kcal = per100((basis) => energyKcal(n, basis));
   if (kcal === undefined) return null;
 
   const micronutrients: Micronutrients = {};
   for (const [offKey, { key, factor }] of Object.entries(MICRONUTRIENT_MAP)) {
-    const value = nutriment(n, offKey, basis);
-    if (value !== undefined) micronutrients[key] = round1(value * factor);
+    const value = per100((basis) => nutriment(n, offKey, basis));
+    if (value !== undefined) micronutrients[key] = round2(value * factor);
   }
 
-  const serving: Serving =
-    basis === 'serving' && servingGrams !== undefined
-      ? {
-          size: servingGrams,
-          unit: servingUnit,
-          grams: servingUnit === 'g' ? servingGrams : null,
-        }
-      : { size: 100, unit: 'g', grams: 100 };
+  const hundred: FoodServing = {
+    id: null,
+    label: `100 ${baseUnit}`,
+    baseMultiplier: 1,
+    isDefault: servingQuantity === undefined,
+  };
+  const servings: FoodServing[] =
+    servingQuantity !== undefined
+      ? [
+          {
+            id: null,
+            label: product.serving_size?.trim() || `${servingQuantity} ${baseUnit}`,
+            baseMultiplier: servingQuantity / 100,
+            isDefault: true,
+          },
+          hundred,
+        ]
+      : [hundred];
 
   return {
-    serving,
+    baseUnit,
     nutrition: {
-      calories: round1(kcal),
-      proteinG: round1(nutriment(n, 'proteins', basis) ?? 0),
-      carbsG: round1(nutriment(n, 'carbohydrates', basis) ?? 0),
-      fatG: round1(nutriment(n, 'fat', basis) ?? 0),
+      calories: round2(kcal),
+      proteinG: round2(per100((basis) => nutriment(n, 'proteins', basis)) ?? 0),
+      carbsG: round2(per100((basis) => nutriment(n, 'carbohydrates', basis)) ?? 0),
+      fatG: round2(per100((basis) => nutriment(n, 'fat', basis)) ?? 0),
       micronutrients,
     },
+    servings,
   };
 }
 
@@ -136,18 +159,21 @@ export function mapOffProduct(product: OffProduct): Food | null {
   const mapped = mapOffNutrition(product);
   if (!mapped) return null;
 
-  const brand = product.brands?.split(',')[0]?.trim() || null;
   return {
     id: `${OFF_ID_PREFIX}${code}`,
-    kind: 'food',
-    name,
-    brand,
-    restaurant: null,
+    ownerId: null,
+    visibility: 'public',
     source: 'open_food_facts',
     externalId: code,
     barcode: code,
-    serving: mapped.serving,
+    name,
+    brand: product.brands?.split(',')[0]?.trim() || null,
+    baseAmount: 100,
+    baseUnit: mapped.baseUnit,
     nutrition: mapped.nutrition,
+    servings: mapped.servings,
+    verificationCount: 0,
+    mismatchCount: 0,
   };
 }
 

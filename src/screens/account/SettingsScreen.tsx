@@ -3,14 +3,8 @@ import { View } from 'react-native';
 import { QueryStatus } from '@/components/QueryStatus';
 import { Card, Divider, Screen, SegmentedControl, SwitchRow, Text } from '@/components/ui';
 import { useProfile, useUpdateProfile } from '@/features/account';
-import {
-  useUpdateUserSettings,
-  useUserSettings,
-  type Weekday,
-  type WeighInFrequency,
-} from '@/features/weighins';
 import { useTheme } from '@/theme';
-import type { UnitSystem } from '@/types/domain';
+import type { UnitSystem, WeighInFrequency } from '@/types/domain';
 
 const UNIT_OPTIONS: { value: UnitSystem; label: string }[] = [
   { value: 'imperial', label: 'lb / ft' },
@@ -23,15 +17,11 @@ const FREQUENCY_OPTIONS: { value: WeighInFrequency; label: string }[] = [
   { value: 'monthly', label: 'Monthly' },
 ];
 
-const DAY_OPTIONS: { value: Weekday; label: string }[] = [
-  { value: 'sunday', label: 'Sun' },
-  { value: 'monday', label: 'Mon' },
-  { value: 'tuesday', label: 'Tue' },
-  { value: 'wednesday', label: 'Wed' },
-  { value: 'thursday', label: 'Thu' },
-  { value: 'friday', label: 'Fri' },
-  { value: 'saturday', label: 'Sat' },
-];
+/** `profiles.weigh_in_weekday`: 0 = Sunday … 6 = Saturday. */
+const DAY_OPTIONS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((label, day) => ({
+  value: String(day),
+  label,
+}));
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   const { spacing } = useTheme();
@@ -47,68 +37,61 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export default function SettingsScreen() {
   const profile = useProfile();
-  const settings = useUserSettings();
   const updateProfile = useUpdateProfile();
-  const updateSettings = useUpdateUserSettings();
-  const error = updateProfile.error ?? updateSettings.error;
 
   return (
     <Screen scroll edges={['bottom', 'left', 'right']}>
       <QueryStatus
-        loading={profile.isPending || settings.isPending}
-        error={profile.error ?? settings.error}
-        onRetry={() => {
-          void profile.refetch();
-          void settings.refetch();
-        }}
+        loading={profile.isPending}
+        error={profile.error}
+        onRetry={() => void profile.refetch()}
       />
-      {profile.data && settings.data ? (
+      {profile.data ? (
         <>
           <Card>
             <Section title="Units">
               <SegmentedControl
                 accessibilityLabel="Units"
                 options={UNIT_OPTIONS}
-                value={profile.data.units}
-                onChange={(units) => updateProfile.mutate({ units })}
+                value={profile.data.unitSystem}
+                onChange={(unitSystem) => updateProfile.mutate({ unitSystem })}
               />
             </Section>
             <Divider />
             <SwitchRow
               label="Numbers off"
               description="Hide calorie numbers and focus on the habit of logging. Your data is still saved."
-              value={profile.data.numbersOffMode}
-              onValueChange={(numbersOffMode) => updateProfile.mutate({ numbersOffMode })}
+              value={profile.data.numbersOff}
+              onValueChange={(numbersOff) => updateProfile.mutate({ numbersOff })}
             />
           </Card>
 
+          {/* TODO(reminders): schedule local notifications from this schedule. */}
           <Card>
-            <SwitchRow
-              label="Weigh-in reminders"
-              description="Reminder notifications are coming soon. Your schedule is saved now."
-              value={settings.data.remindersEnabled}
-              onValueChange={(remindersEnabled) => updateSettings.mutate({ remindersEnabled })}
-            />
+            <Text variant="subheading">Weigh-in schedule</Text>
+            <Text variant="callout" tone="muted">
+              Reminder notifications are coming soon. Your schedule is saved now.
+            </Text>
             <Divider />
             <Section title="How often">
               <SegmentedControl
                 accessibilityLabel="Weigh-in frequency"
                 options={FREQUENCY_OPTIONS}
-                value={settings.data.weighInFrequency}
-                onChange={(weighInFrequency) => updateSettings.mutate({ weighInFrequency })}
+                value={profile.data.weighInFrequency}
+                onChange={(weighInFrequency) => updateProfile.mutate({ weighInFrequency })}
               />
             </Section>
             <Section title="Day">
               <SegmentedControl
                 accessibilityLabel="Weigh-in day"
                 options={DAY_OPTIONS}
-                value={settings.data.weighInDay}
-                onChange={(weighInDay) => updateSettings.mutate({ weighInDay })}
+                value={String(profile.data.weighInWeekday)}
+                onChange={(day) => updateProfile.mutate({ weighInWeekday: Number(day) })}
                 wrap
               />
             </Section>
           </Card>
-          {error ? <Text tone="danger">{error.message}</Text> : null}
+          {updateProfile.error ? <Text tone="danger">{updateProfile.error.message}</Text> : null}
         </>
       ) : null}
     </Screen>

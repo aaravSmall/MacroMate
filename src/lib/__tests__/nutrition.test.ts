@@ -1,4 +1,11 @@
-import { parseMicronutrients, scaleNutrition } from '@/lib/nutrition';
+import {
+  nutritionFromFoodRow,
+  nutritionFromLogRow,
+  nutritionToFoodRow,
+  nutritionToLogRow,
+  parseMicronutrients,
+  scaleNutrition,
+} from '@/lib/nutrition';
 
 describe('parseMicronutrients', () => {
   it('keeps finite numbers only', () => {
@@ -29,5 +36,48 @@ describe('scaleNutrition', () => {
       fatG: 0.1,
       micronutrients: { fiber_g: 1 },
     });
+  });
+});
+
+describe('food nutrient columns', () => {
+  const facts = {
+    calories: 190,
+    proteinG: 7,
+    carbsG: 7,
+    fatG: 16,
+    micronutrients: { sodium_mg: 140, sat_fat_g: 3.3, magnesium_mg: 49 },
+  };
+
+  it('splits label nutrients into columns and the rest into micros', () => {
+    expect(nutritionToFoodRow(facts)).toEqual({
+      calories: 190,
+      protein_g: 7,
+      carbs_g: 7,
+      fat_g: 16,
+      fiber_g: null,
+      sugar_g: null,
+      sat_fat_g: 3.3,
+      sodium_mg: 140,
+      cholesterol_mg: null,
+      micros: { magnesium_mg: 49 },
+    });
+  });
+
+  it('round-trips through a row', () => {
+    expect(nutritionFromFoodRow(nutritionToFoodRow(facts))).toEqual(facts);
+  });
+});
+
+describe('log nutrients', () => {
+  it('stores extra nutrients in the nutrients jsonb', () => {
+    const facts = { calories: 90, proteinG: 1, carbsG: 2, fatG: 3, micronutrients: { fiber_g: 4 } };
+    expect(nutritionToLogRow(facts)).toEqual({
+      calories: 90,
+      protein_g: 1,
+      carbs_g: 2,
+      fat_g: 3,
+      nutrients: { fiber_g: 4 },
+    });
+    expect(nutritionFromLogRow(nutritionToLogRow(facts))).toEqual(facts);
   });
 });

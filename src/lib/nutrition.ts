@@ -24,6 +24,11 @@ export function round1(value: number): number {
   return Math.round(value * 10) / 10;
 }
 
+/** Rounds to two decimal places, the precision of the database's nutrient columns. */
+export function round2(value: number): number {
+  return Math.round(value * 100) / 100;
+}
+
 export function scaleNutrition(facts: NutritionFacts, factor: number): NutritionFacts {
   const micronutrients: Micronutrients = {};
   for (const [key, amount] of Object.entries(facts.micronutrients)) {
@@ -38,30 +43,81 @@ export function scaleNutrition(facts: NutritionFacts, factor: number): Nutrition
   };
 }
 
-type NutritionRow = {
+/** Label nutrients that `foods` stores in their own columns; anything else goes in `micros`. */
+export const FOOD_NUTRIENT_COLUMNS = [
+  'fiber_g',
+  'sugar_g',
+  'sat_fat_g',
+  'sodium_mg',
+  'cholesterol_mg',
+] as const;
+
+type FoodNutrientColumn = (typeof FOOD_NUTRIENT_COLUMNS)[number];
+
+type FoodNutritionColumns = {
   calories: number;
   protein_g: number;
   carbs_g: number;
   fat_g: number;
-  micronutrients: Json;
-};
+  micros: Json;
+} & Record<FoodNutrientColumn, number | null>;
 
-export function nutritionFromRow(row: NutritionRow): NutritionFacts {
+export function nutritionFromFoodRow(row: FoodNutritionColumns): NutritionFacts {
+  const micronutrients = parseMicronutrients(row.micros);
+  for (const column of FOOD_NUTRIENT_COLUMNS) {
+    const amount = row[column];
+    if (amount !== null) micronutrients[column] = amount;
+  }
   return {
     calories: row.calories,
     proteinG: row.protein_g,
     carbsG: row.carbs_g,
     fatG: row.fat_g,
-    micronutrients: parseMicronutrients(row.micronutrients),
+    micronutrients,
   };
 }
 
-export function nutritionToRow(facts: NutritionFacts): NutritionRow {
+export function nutritionToFoodRow(facts: NutritionFacts): FoodNutritionColumns {
+  const micros: Micronutrients = { ...facts.micronutrients };
+  const columns = {} as Record<FoodNutrientColumn, number | null>;
+  for (const column of FOOD_NUTRIENT_COLUMNS) {
+    columns[column] = micros[column] ?? null;
+    delete micros[column];
+  }
   return {
     calories: facts.calories,
     protein_g: facts.proteinG,
     carbs_g: facts.carbsG,
     fat_g: facts.fatG,
-    micronutrients: facts.micronutrients,
+    micros,
+    ...columns,
+  };
+}
+
+type LogNutritionColumns = {
+  calories: number;
+  protein_g: number;
+  carbs_g: number;
+  fat_g: number;
+  nutrients: Json;
+};
+
+export function nutritionFromLogRow(row: LogNutritionColumns): NutritionFacts {
+  return {
+    calories: row.calories,
+    proteinG: row.protein_g,
+    carbsG: row.carbs_g,
+    fatG: row.fat_g,
+    micronutrients: parseMicronutrients(row.nutrients),
+  };
+}
+
+export function nutritionToLogRow(facts: NutritionFacts): LogNutritionColumns {
+  return {
+    calories: facts.calories,
+    protein_g: facts.proteinG,
+    carbs_g: facts.carbsG,
+    fat_g: facts.fatG,
+    nutrients: facts.micronutrients,
   };
 }

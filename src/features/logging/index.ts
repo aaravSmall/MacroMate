@@ -3,6 +3,7 @@ export { SummaryCard, type SummaryCardProps } from './components/SummaryCard';
 export { TimelineRow, type TimelineRowProps } from './components/TimelineRow';
 export {
   useAddLog,
+  useDailyTotals,
   useDayLogs,
   useDeleteLog,
   useLog,
@@ -11,16 +12,24 @@ export {
 } from './hooks/useLogs';
 export { computeDailySummary, type DailySummary } from './logic/dailySummary';
 export { groupByMeal } from './logic/groupByMeal';
-export { MEAL_LABEL_NAMES, MEAL_LABELS, MEAL_WINDOWS, suggestMealLabel } from './logic/mealLabel';
-export { buildLogEntry, type NewLogInput } from './logic/snapshot';
+export { MEAL_LABEL_NAMES, MEAL_LABELS, MEAL_WINDOWS, suggestMealType } from './logic/mealLabel';
+export {
+  buildLogEntry,
+  buildLogInsert,
+  type NewLogInput,
+  portionNutrition,
+  rescaleTotals,
+} from './logic/snapshot';
 export { currentStreak } from './logic/streak';
 export {
   addLog,
   deleteLog,
+  getDailyTotals,
   getLog,
   getLoggedDateKeys,
   getLogsForDay,
   type LogUpdate,
+  mapDailyTotalsRow,
   mapLogRow,
   updateLog,
 } from './services/logService';

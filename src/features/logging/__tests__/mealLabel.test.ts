@@ -1,8 +1,8 @@
-import { suggestMealLabel } from '@/features/logging/logic/mealLabel';
+import { suggestMealType } from '@/features/logging/logic/mealLabel';
 
 const at = (hours: number, minutes = 0) => new Date(2026, 9, 16, hours, minutes);
 
-describe('suggestMealLabel', () => {
+describe('suggestMealType', () => {
   it.each([
     [at(5), 'breakfast'],
     [at(7, 30), 'breakfast'],
@@ -17,6 +17,6 @@ describe('suggestMealLabel', () => {
     [at(0), 'snack'],
     [at(4, 59), 'snack'],
   ] as const)('%s → %s', (date, expected) => {
-    expect(suggestMealLabel(date)).toBe(expected);
+    expect(suggestMealType(date)).toBe(expected);
   });
 });

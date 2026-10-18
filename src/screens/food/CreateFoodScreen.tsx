@@ -8,7 +8,7 @@ import {
   type FoodFormErrors,
   type FoodFormValues,
   parseFoodForm,
-  useCreateUserFood,
+  useCreateFood,
 } from '@/features/food';
 import { useTheme } from '@/theme';
 
@@ -33,7 +33,7 @@ export default function CreateFoodScreen() {
   const { spacing } = useTheme();
   const [values, setValues] = useState<FoodFormValues>(EMPTY_FOOD_FORM);
   const [errors, setErrors] = useState<FoodFormErrors>({});
-  const createFood = useCreateUserFood();
+  const createFood = useCreateFood();
 
   const set = (field: keyof FoodFormValues) => (text: string) =>
     setValues((v) => ({ ...v, [field]: text }));
@@ -45,8 +45,12 @@ export default function CreateFoodScreen() {
       return;
     }
     setErrors({});
-    const food = await createFood.mutateAsync(parsed.input);
-    router.replace({ pathname: '/food-detail/[id]', params: { id: food.id, kind: 'userFood' } });
+    try {
+      const food = await createFood.mutateAsync(parsed.input);
+      router.replace({ pathname: '/food-detail/[id]', params: { id: food.id } });
+    } catch {
+      // Shown from createFood.error.
+    }
   }
 
   const numberField = ({ field, label, placeholder }: FieldConfig) => (
@@ -64,7 +68,9 @@ export default function CreateFoodScreen() {
 
   return (
     <Screen scroll edges={['bottom', 'left', 'right']}>
-      <Text tone="muted">Saved to your My Foods. Nutrition is per serving.</Text>
+      <Text tone="muted">
+        Saved privately to your My Foods. Enter nutrition per serving, as printed on the label.
+      </Text>
       <TextField
         label="Name"
         placeholder="e.g. Homemade granola"

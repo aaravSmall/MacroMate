@@ -11,9 +11,9 @@ import {
   useLog,
   useUpdateLog,
 } from '@/features/logging';
-import { formatGrams, formatKcal, formatServing, formatTime, parseNumber } from '@/lib/format';
+import { formatGrams, formatKcal, formatTime, parseNumber } from '@/lib/format';
 import { useTheme } from '@/theme';
-import type { LogEntry, MealLabel } from '@/types/domain';
+import type { LogEntry, MealType } from '@/types/domain';
 
 const MEAL_OPTIONS = MEAL_LABELS.map((value) => ({ value, label: MEAL_LABEL_NAMES[value] }));
 
@@ -39,21 +39,25 @@ function Row({ label, value }: { label: string; value: string }) {
 
 function EntryEditor({ entry }: { entry: LogEntry }) {
   const { spacing } = useTheme();
-  const [servings, setServings] = useState(String(entry.servings));
-  const [mealLabel, setMealLabel] = useState<MealLabel>(entry.mealLabel);
-  const [servingsError, setServingsError] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState(String(entry.quantity));
+  const [meal, setMeal] = useState<MealType>(entry.meal);
+  const [quantityError, setQuantityError] = useState<string | null>(null);
   const updateLog = useUpdateLog();
   const deleteLog = useDeleteLog();
 
   async function handleSave() {
-    const value = parseNumber(servings);
+    const value = parseNumber(quantity);
     if (value === null || value <= 0) {
-      setServingsError('Enter a number of servings above 0.');
+      setQuantityError('Enter an amount above 0.');
       return;
     }
-    setServingsError(null);
-    await updateLog.mutateAsync({ id: entry.id, update: { servings: value, mealLabel } });
-    router.back();
+    setQuantityError(null);
+    try {
+      await updateLog.mutateAsync({ entry, update: { quantity: value, meal } });
+      router.back();
+    } catch {
+      // Shown from updateLog.error.
+    }
   }
 
   function handleDelete() {
@@ -76,9 +80,7 @@ function EntryEditor({ entry }: { entry: LogEntry }) {
       <View style={{ gap: spacing.xxs }}>
         <Text variant="title">{entry.foodName}</Text>
         <Text tone="muted">
-          {[entry.foodBrand, formatTime(entry.loggedAt), MEAL_LABEL_NAMES[entry.mealLabel]]
-            .filter(Boolean)
-            .join(' · ')}
+          {formatTime(entry.loggedAt)} · {MEAL_LABEL_NAMES[entry.meal]}
         </Text>
       </View>
 
@@ -94,22 +96,22 @@ function EntryEditor({ entry }: { entry: LogEntry }) {
           return <Row key={key} label={name} value={value} />;
         })}
         <Text variant="caption" tone="muted">
-          {entry.servings} × {formatServing(entry.serving.size, entry.serving.unit)}
+          Saved as logged. Changing the amount scales these numbers.
         </Text>
       </Card>
 
       <TextField
-        label="Servings"
-        value={servings}
-        onChangeText={setServings}
+        label="Amount (× the serving you logged)"
+        value={quantity}
+        onChangeText={setQuantity}
         keyboardType="decimal-pad"
-        error={servingsError}
+        error={quantityError}
       />
       <SegmentedControl
         accessibilityLabel="Meal"
         options={MEAL_OPTIONS}
-        value={mealLabel}
-        onChange={setMealLabel}
+        value={meal}
+        onChange={setMeal}
       />
       {updateLog.error ? <Text tone="danger">{updateLog.error.message}</Text> : null}
       <Button title="Save changes" onPress={handleSave} loading={updateLog.isPending} />

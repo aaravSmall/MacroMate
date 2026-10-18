@@ -7,39 +7,67 @@ const base: OffProduct = {
 };
 
 describe('mapOffNutrition', () => {
-  it('uses per-serving values when serving data exists', () => {
+  it('stores per-100 g values, with the product serving as the default portion', () => {
     const result = mapOffNutrition({
       ...base,
+      serving_size: '1 cup (45 g)',
       serving_quantity: 45,
       nutriments: {
-        'energy-kcal_serving': 200,
-        proteins_serving: 5,
-        carbohydrates_serving: 30,
-        fat_serving: 7,
-        sodium_serving: 0.12,
-        fiber_serving: 3,
         'energy-kcal_100g': 444,
+        proteins_100g: 11,
+        carbohydrates_100g: 66.7,
+        fat_100g: 15.6,
+        sodium_100g: 0.27,
+        fiber_100g: 6.7,
+        'energy-kcal_serving': 200,
       },
     });
     expect(result).toEqual({
-      serving: { size: 45, unit: 'g', grams: 45 },
+      baseUnit: 'g',
       nutrition: {
-        calories: 200,
-        proteinG: 5,
-        carbsG: 30,
-        fatG: 7,
-        micronutrients: { sodium_mg: 120, fiber_g: 3 },
+        calories: 444,
+        proteinG: 11,
+        carbsG: 66.7,
+        fatG: 15.6,
+        micronutrients: { sodium_mg: 270, fiber_g: 6.7 },
       },
+      servings: [
+        { id: null, label: '1 cup (45 g)', baseMultiplier: 0.45, isDefault: true },
+        { id: null, label: '100 g', baseMultiplier: 1, isDefault: false },
+      ],
     });
   });
 
-  it('falls back to per-100g with a 100 g serving', () => {
+  it('scales per-serving values to 100 g when that is all OFF has', () => {
     const result = mapOffNutrition({
       ...base,
-      nutriments: { 'energy-kcal_100g': 380, proteins_100g: '10.5', fat_100g: 4 },
+      serving_quantity: 50,
+      nutriments: { 'energy-kcal_serving': 200, proteins_serving: 5 },
     });
-    expect(result?.serving).toEqual({ size: 100, unit: 'g', grams: 100 });
-    expect(result?.nutrition).toMatchObject({ calories: 380, proteinG: 10.5, carbsG: 0, fatG: 4 });
+    expect(result?.nutrition).toMatchObject({ calories: 400, proteinG: 10 });
+    expect(result?.servings[0]).toMatchObject({ label: '50 g', baseMultiplier: 0.5 });
+  });
+
+  it('uses only a 100 g portion without a serving quantity', () => {
+    const result = mapOffNutrition({
+      ...base,
+      nutriments: { 'energy-kcal_serving': 999, 'energy-kcal_100g': 250, proteins_100g: '10.5' },
+    });
+    expect(result?.nutrition).toMatchObject({ calories: 250, proteinG: 10.5, carbsG: 0, fatG: 0 });
+    expect(result?.servings).toEqual([
+      { id: null, label: '100 g', baseMultiplier: 1, isDefault: true },
+    ]);
+  });
+
+  it('uses 100 ml for liquids', () => {
+    const result = mapOffNutrition({
+      ...base,
+      serving_quantity: 250,
+      serving_quantity_unit: 'ml',
+      nutriments: { 'energy-kcal_100g': 42 },
+    });
+    expect(result?.baseUnit).toBe('ml');
+    expect(result?.servings.map((s) => s.label)).toEqual(['250 ml', '100 ml']);
   });
 
   it('converts kJ to kcal when kcal is missing', () => {
@@ -47,15 +75,7 @@ describe('mapOffNutrition', () => {
     expect(result?.nutrition.calories).toBe(100);
   });
 
-  it('ignores per-serving values without a serving quantity', () => {
-    const result = mapOffNutrition({
-      ...base,
-      nutriments: { 'energy-kcal_serving': 999, 'energy-kcal_100g': 250 },
-    });
-    expect(result?.nutrition.calories).toBe(250);
-  });
-
-  it('converts minerals and vitamins to mg / mcg', () => {
+  it('converts minerals and vitamins to mg / mcg and uses foods column keys', () => {
     const result = mapOffNutrition({
       ...base,
       nutriments: {
@@ -63,12 +83,14 @@ describe('mapOffNutrition', () => {
         calcium_100g: 0.25,
         'vitamin-d_100g': 0.000002,
         cholesterol_100g: 0.03,
+        'saturated-fat_100g': 1.5,
       },
     });
     expect(result?.nutrition.micronutrients).toEqual({
       calcium_mg: 250,
       vitamin_d_mcg: 2,
       cholesterol_mg: 30,
+      sat_fat_g: 1.5,
     });
   });
 
@@ -78,16 +100,21 @@ describe('mapOffNutrition', () => {
 });
 
 describe('mapOffProduct', () => {
-  it('maps to a Food with an off: id and the first brand', () => {
+  it('maps to a public, unowned Food with an off: id and the first brand', () => {
     const food = mapOffProduct({ ...base, nutriments: { 'energy-kcal_100g': 444 } });
     expect(food).toMatchObject({
       id: 'off:0123456789012',
-      kind: 'food',
+      ownerId: null,
+      visibility: 'public',
       name: 'Crunchy Granola',
       brand: 'Acme Foods',
       source: 'open_food_facts',
       externalId: '0123456789012',
       barcode: '0123456789012',
+      baseAmount: 100,
+      baseUnit: 'g',
+      verificationCount: 0,
+      mismatchCount: 0,
     });
   });
 

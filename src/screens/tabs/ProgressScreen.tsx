@@ -7,18 +7,19 @@ import { useProfile } from '@/features/account';
 import { lbToKg } from '@/features/goals';
 import { currentStreak, LoggingCalendar, useLoggedDays } from '@/features/logging';
 import { useAddWeighIn, useWeighIns } from '@/features/weighins';
-import { addDays, startOfLocalDay, startOfNextLocalDay } from '@/lib/dates';
+import { addDays, toDateKey, toDateKeyInTimeZone } from '@/lib/dates';
 import { formatWeight, parseNumber } from '@/lib/format';
 import { useTheme } from '@/theme';
 
 /** How far back the streak looks. TODO(server): compute streaks server-side to lift this cap. */
 const STREAK_LOOKBACK_DAYS = 120;
 
+/** Consecutive dates in `daily_totals` ending today or yesterday. */
 function StreakCard() {
   const today = useMemo(() => new Date(), []);
-  const from = useMemo(() => addDays(startOfLocalDay(today), -STREAK_LOOKBACK_DAYS), [today]);
-  const to = useMemo(() => startOfNextLocalDay(today), [today]);
-  const logged = useLoggedDays(from, to);
+  const fromKey = toDateKey(addDays(today, -STREAK_LOOKBACK_DAYS));
+  const toKey = toDateKey(addDays(today, 1));
+  const logged = useLoggedDays(fromKey, toKey);
   const streak = logged.data ? currentStreak(logged.data, today) : null;
 
   return (
@@ -37,9 +38,9 @@ function StreakCard() {
 function CalendarCard() {
   const now = new Date();
   const [view, setView] = useState({ year: now.getFullYear(), month: now.getMonth() });
-  const from = useMemo(() => new Date(view.year, view.month, 1), [view]);
-  const to = useMemo(() => new Date(view.year, view.month + 1, 1), [view]);
-  const logged = useLoggedDays(from, to);
+  const fromKey = toDateKey(new Date(view.year, view.month, 1));
+  const toKey = toDateKey(new Date(view.year, view.month + 1, 1));
+  const logged = useLoggedDays(fromKey, toKey);
 
   const shift = (delta: number) =>
     setView(({ year, month }) => {
@@ -63,7 +64,8 @@ function CalendarCard() {
 
 function WeighInsCard() {
   const { spacing } = useTheme();
-  const units = useProfile().data?.units ?? 'imperial';
+  const profile = useProfile().data;
+  const units = profile?.unitSystem ?? 'imperial';
   const weighIns = useWeighIns();
   const addWeighIn = useAddWeighIn();
   const [weight, setWeight] = useState('');
@@ -77,7 +79,14 @@ function WeighInsCard() {
       return;
     }
     setError(null);
-    await addWeighIn.mutateAsync({ weightKg: Math.round(kg * 100) / 100 });
+    const measuredAt = new Date();
+    await addWeighIn.mutateAsync({
+      weightKg: Math.round(kg * 100) / 100,
+      measuredAt,
+      localDate: profile
+        ? toDateKeyInTimeZone(measuredAt, profile.timezone)
+        : toDateKey(measuredAt),
+    });
     setWeight('');
   }
 

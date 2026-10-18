@@ -5,24 +5,30 @@ export {
   type FoodFormValues,
   parseFoodForm,
 } from './logic/foodForm';
-export { MIN_SEARCH_LENGTH, useFood, useFoodSearch } from './hooks/useFoods';
 export {
-  useCreateUserFood,
-  useDeleteUserFood,
-  useUpdateUserFood,
-  useUserFoods,
-} from './hooks/useUserFoods';
+  baseServingLabel,
+  canDeleteFood,
+  canEditFood,
+  canVerifyFood,
+  defaultServing,
+  hasMismatchWarning,
+  isUncachedOpenFoodFactsResult,
+} from './logic/foodRules';
 export {
+  MIN_SEARCH_LENGTH,
+  useCreateFood,
+  useDeleteFood,
+  useFood,
+  useFoodSearch,
+  useMyVerification,
+  useVerifyFood,
+} from './hooks/useFoods';
+export {
+  createFood,
+  deleteFood,
   findStoredOpenFoodFactsFood,
   getFood,
-  isOpenFoodFactsResult,
   searchFoods,
 } from './services/foodService';
-export {
-  createUserFood,
-  deleteUserFood,
-  listUserFoods,
-  shareToGlobal,
-  updateUserFood,
-  type UserFoodInput,
-} from './services/userFoodService';
+export { type NewFoodInput } from './services/mappers';
+export { getMyVerification, verifyFood } from './services/verificationService';

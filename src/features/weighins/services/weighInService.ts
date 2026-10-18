@@ -6,6 +6,7 @@ export function mapWeighInRow(row: Tables<'weigh_ins'>): WeighIn {
   return {
     id: row.id,
     measuredAt: row.measured_at,
+    localDate: row.local_date,
     weightKg: row.weight_kg,
     bodyFatPct: row.body_fat_pct,
   };
@@ -23,8 +24,11 @@ export async function listWeighIns({ limit = 100 }: { limit?: number } = {}): Pr
 }
 
 export type NewWeighIn = {
+  /** Always kg; convert from the user's units before saving. */
   weightKg: number;
-  measuredAt?: Date;
+  measuredAt: Date;
+  /** `YYYY-MM-DD` of measuredAt in the user's timezone. */
+  localDate: string;
   bodyFatPct?: number | null;
 };
 
@@ -35,7 +39,8 @@ export async function addWeighIn(input: NewWeighIn): Promise<WeighIn> {
     .insert({
       user_id: userId,
       weight_kg: input.weightKg,
-      measured_at: (input.measuredAt ?? new Date()).toISOString(),
+      measured_at: input.measuredAt.toISOString(),
+      local_date: input.localDate,
       body_fat_pct: input.bodyFatPct ?? null,
     })
     .select()

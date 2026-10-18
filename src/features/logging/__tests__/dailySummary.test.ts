@@ -1,37 +1,16 @@
 import { computeDailySummary } from '@/features/logging/logic/dailySummary';
-import type { ExerciseEntry, LogEntry, NutritionFacts } from '@/types/domain';
 
-function log(totals: Partial<NutritionFacts>): LogEntry {
-  const facts = { calories: 0, proteinG: 0, carbsG: 0, fatG: 0, micronutrients: {}, ...totals };
-  return {
-    id: Math.random().toString(),
-    loggedAt: '2026-10-16T12:00:00.000Z',
-    mealLabel: 'lunch',
-    source: null,
-    servings: 1,
-    foodName: 'Food',
-    foodBrand: null,
-    serving: { size: 1, unit: 'serving' },
-    nutritionPerServing: facts,
-    totals: facts,
-  };
-}
-
-function exercise(caloriesBurned: number): ExerciseEntry {
-  return {
-    id: Math.random().toString(),
-    source: 'manual',
-    externalId: null,
-    activityType: 'walk',
-    startedAt: '2026-10-16T08:00:00.000Z',
-    durationMin: 30,
-    caloriesBurned,
-  };
-}
+const totals = (calories: number, proteinG = 0, carbsG = 0, fatG = 0) => ({
+  calories,
+  proteinG,
+  carbsG,
+  fatG,
+});
+const exercise = (activeCalories: number) => ({ activeCalories });
 
 describe('computeDailySummary', () => {
-  it('returns the full target as remaining on an empty day', () => {
-    expect(computeDailySummary({ logs: [], exercise: [], target: 2000 })).toEqual({
+  it('returns the full target as remaining on a day with no totals row', () => {
+    expect(computeDailySummary({ totals: null, exercise: [], target: 2000 })).toEqual({
       target: 2000,
       eaten: 0,
       burned: 0,
@@ -41,12 +20,9 @@ describe('computeDailySummary', () => {
     });
   });
 
-  it('sums calories and macros across logs', () => {
+  it('uses the day totals for eaten and macros', () => {
     const summary = computeDailySummary({
-      logs: [
-        log({ calories: 300, proteinG: 20, carbsG: 30, fatG: 10 }),
-        log({ calories: 450.5, proteinG: 35.5, carbsG: 40, fatG: 12.2 }),
-      ],
+      totals: totals(750.5, 55.5, 70, 22.2),
       exercise: [],
       target: 2000,
     });
@@ -57,7 +33,7 @@ describe('computeDailySummary', () => {
 
   it('adds burned calories to the budget', () => {
     const summary = computeDailySummary({
-      logs: [log({ calories: 1000 })],
+      totals: totals(1000),
       exercise: [exercise(250), exercise(150)],
       target: 1800,
     });
@@ -67,21 +43,18 @@ describe('computeDailySummary', () => {
   });
 
   it('allows a negative remaining value when over budget', () => {
-    const summary = computeDailySummary({
-      logs: [log({ calories: 2300 })],
-      exercise: [],
-      target: 2000,
-    });
+    const summary = computeDailySummary({ totals: totals(2300), exercise: [], target: 2000 });
     expect(summary.remaining).toBe(-300);
   });
 
   it('avoids floating-point noise', () => {
     const summary = computeDailySummary({
-      logs: [log({ calories: 0.1, proteinG: 0.1 }), log({ calories: 0.2, proteinG: 0.2 })],
-      exercise: [],
+      totals: totals(0.1 + 0.2, 0.1 + 0.2),
+      exercise: [exercise(0.1), exercise(0.2)],
       target: 0,
     });
     expect(summary.eaten).toBe(0.3);
+    expect(summary.burned).toBe(0.3);
     expect(summary.macros.proteinG).toBe(0.3);
   });
 });

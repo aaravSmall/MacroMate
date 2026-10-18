@@ -67,16 +67,16 @@ describe('calculateTDEE', () => {
   it('uses the standard multipliers', () => {
     expect(ACTIVITY_MULTIPLIERS).toEqual({
       sedentary: 1.2,
-      lightly_active: 1.375,
-      moderately_active: 1.55,
-      very_active: 1.725,
-      extra_active: 1.9,
+      light: 1.375,
+      moderate: 1.55,
+      active: 1.725,
+      very_active: 1.9,
     });
   });
 });
 
 describe('calculateDailyTarget', () => {
-  const male = { ...maleMetric, activityLevel: 'moderately_active' as const }; // TDEE 2836.5
+  const male = { ...maleMetric, activityLevel: 'moderate' as const }; // TDEE 2836.5
 
   it('uses ~3500 kcal per lb', () => {
     expect(KCAL_PER_LB).toBe(3500);
@@ -125,11 +125,11 @@ describe('calculateDailyTarget', () => {
     const args = { goalType: 'lose' as const, weeklyRate: { amount: 0.5, unit: 'lb' as const } };
     const metric = calculateDailyTarget({
       ...args,
-      profile: { ...femaleMetric, activityLevel: 'lightly_active' },
+      profile: { ...femaleMetric, activityLevel: 'light' },
     });
     const imperial = calculateDailyTarget({
       ...args,
-      profile: { ...femaleImperial, activityLevel: 'lightly_active' },
+      profile: { ...femaleImperial, activityLevel: 'light' },
     });
     expect(imperial.target).toBe(metric.target);
   });

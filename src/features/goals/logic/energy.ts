@@ -34,10 +34,10 @@ export function calculateBMR(stats: BodyStats): number {
 /** Standard activity multipliers applied to BMR. */
 export const ACTIVITY_MULTIPLIERS: Record<ActivityLevel, number> = {
   sedentary: 1.2,
-  lightly_active: 1.375,
-  moderately_active: 1.55,
-  very_active: 1.725,
-  extra_active: 1.9,
+  light: 1.375,
+  moderate: 1.55,
+  active: 1.725,
+  very_active: 1.9,
 };
 
 /** Total daily energy expenditure (kcal/day) = BMR × activity multiplier. */

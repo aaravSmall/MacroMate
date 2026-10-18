@@ -12,8 +12,9 @@ export type HealthWorkout = {
   externalId: string;
   activityType: string;
   startedAt: Date;
-  durationMin: number;
-  caloriesBurned: number;
+  endedAt: Date;
+  /** Active energy burned, kcal. */
+  activeCalories: number;
 };
 
 export interface HealthSync {

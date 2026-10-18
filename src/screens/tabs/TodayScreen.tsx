@@ -1,12 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, EmptyState, Screen, Text } from '@/components/ui';
 import { useProfile } from '@/features/account';
-import { useDayExercise } from '@/features/exercise';
+import { exerciseDurationMin, useDayExercise } from '@/features/exercise';
 import {
   assessDayStatus,
   CareNotice,
@@ -14,6 +14,7 @@ import {
   NEAR_GOAL_CELEBRATION,
   SNACK_IDEAS,
   UNDER_GOAL_NUDGE,
+  useActiveGoal,
 } from '@/features/goals';
 import {
   computeDailySummary,
@@ -21,6 +22,7 @@ import {
   MEAL_LABEL_NAMES,
   SummaryCard,
   TimelineRow,
+  useDailyTotals,
   useDayLogs,
 } from '@/features/logging';
 import { fromDateKey, toDateKey } from '@/lib/dates';
@@ -61,17 +63,18 @@ function DateSwitcher() {
 export default function TodayScreen() {
   const { spacing } = useTheme();
   const dateKey = useSelectedDateStore((s) => s.dateKey);
-  const date = useMemo(() => fromDateKey(dateKey), [dateKey]);
   const [expanded, setExpanded] = useState(false);
 
   const profile = useProfile();
-  const logs = useDayLogs(date);
-  const exercise = useDayExercise(date);
+  const goal = useActiveGoal();
+  const logs = useDayLogs(dateKey);
+  const totals = useDailyTotals(dateKey);
+  const exercise = useDayExercise(dateKey);
 
-  const numbersOff = profile.data?.numbersOffMode ?? false;
-  const target = profile.data?.dailyCalorieTarget ?? 0;
+  const numbersOff = profile.data?.numbersOff ?? false;
+  const target = goal.data?.dailyCalorieTarget ?? 0;
   const summary = computeDailySummary({
-    logs: logs.data ?? [],
+    totals: totals.data ?? null,
     exercise: exercise.data ?? [],
     target,
   });
@@ -91,7 +94,7 @@ export default function TodayScreen() {
 
       <SummaryCard
         summary={summary}
-        macroTargets={profile.data?.macroTargets ?? { proteinG: null, carbsG: null, fatG: null }}
+        macroTargets={goal.data?.macroTargets ?? { proteinG: null, carbsG: null, fatG: null }}
         expanded={expanded}
         onToggle={() => setExpanded((e) => !e)}
         numbersOff={numbersOff}
@@ -128,10 +131,10 @@ export default function TodayScreen() {
       {logs.data && logs.data.length > 0 ? (
         <Card>
           {groupByMeal(logs.data).map((group, index) => (
-            <View key={group.mealLabel} style={{ gap: spacing.xxs }}>
+            <View key={group.meal} style={{ gap: spacing.xxs }}>
               {index > 0 ? <Divider style={{ marginVertical: spacing.sm }} /> : null}
               <Text variant="label" tone="muted">
-                {MEAL_LABEL_NAMES[group.mealLabel]}
+                {MEAL_LABEL_NAMES[group.meal]}
               </Text>
               {group.entries.map((entry) => (
                 <TimelineRow
@@ -171,10 +174,10 @@ export default function TodayScreen() {
                 {formatTime(entry.startedAt)}
               </Text>
               <Text variant="callout" style={{ flex: 1 }}>
-                {entry.activityType} · {Math.round(entry.durationMin)} min
+                {entry.activityType} · {exerciseDurationMin(entry)} min
               </Text>
               {!numbersOff ? (
-                <Text variant="callout">{formatKcal(entry.caloriesBurned)}</Text>
+                <Text variant="callout">{formatKcal(entry.activeCalories)}</Text>
               ) : null}
             </View>
           ))}

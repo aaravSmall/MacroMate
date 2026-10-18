@@ -9,6 +9,7 @@ import {
   inToCm,
   kgToLb,
   lbToKg,
+  type NewGoal,
   type PaceAssessment,
   type WeeklyRate,
 } from '@/features/goals';
@@ -166,16 +167,22 @@ export function assessFormPace(form: OnboardingForm): PaceAssessment {
 export type OnboardingResult = {
   dailyTarget: DailyTarget;
   pace: PaceAssessment;
+  /** Saved to `profiles` (the row already exists; it's created at sign-up). */
   profileUpdate: ProfileUpdate;
+  /** Saved to `goals` as the user's first active goal. */
+  goal: NewGoal;
 };
 
+const roundTo1 = (n: number) => Math.round(n * 10) / 10;
+const roundTo2 = (n: number) => Math.round(n * 100) / 100;
+
 /**
- * Computes the daily target and the profile fields to save.
- * Returns null if required answers are missing.
+ * Computes the daily target, the profile fields, and the goal to save. Everything is stored
+ * metric. Returns null if required answers are missing.
  */
 export function buildOnboardingResult(
   form: OnboardingForm,
-  now: Date = new Date(),
+  { now = new Date(), timezone }: { now?: Date; timezone: string },
 ): OnboardingResult | null {
   if (Object.keys(validateBodyStats(form)).length > 0) return null;
   if (!form.sex || !form.activityLevel || !form.goalType) return null;
@@ -205,21 +212,25 @@ export function buildOnboardingResult(
     profileUpdate: {
       sex: form.sex,
       birthDate: birthDateForAge(age, now),
-      heightCm: Math.round(heightCm * 10) / 10,
+      heightCm: roundTo1(heightCm),
       activityLevel: form.activityLevel,
-      goalType: form.goalType,
-      targetWeightKg: targetWeightKg === null ? null : Math.round(targetWeightKg * 10) / 10,
-      weeklyRateKg:
-        Math.round(
-          (weeklyRate.unit === 'kg' ? weeklyRate.amount : lbToKg(weeklyRate.amount)) * 100,
-        ) / 100,
-      dailyCalorieTarget: dailyTarget.target,
-      macroTargets: defaultMacroTargets(dailyTarget.target),
-      units: form.units,
+      unitSystem: form.units,
+      timezone,
       motivation: form.motivation.trim() || null,
       dietaryRestrictions: form.dietaryRestrictions,
       allergies: form.allergies,
-      onboardingCompletedAt: now.toISOString(),
+      onboardedAt: now.toISOString(),
+    },
+    goal: {
+      goalType: form.goalType,
+      startWeightKg: roundTo2(weightKg),
+      targetWeightKg: targetWeightKg === null ? null : roundTo2(targetWeightKg),
+      targetBodyFatPct: null,
+      paceKgPerWeek: roundTo2(
+        weeklyRate.unit === 'kg' ? weeklyRate.amount : lbToKg(weeklyRate.amount),
+      ),
+      dailyCalorieTarget: dailyTarget.target,
+      macroTargets: defaultMacroTargets(dailyTarget.target),
     },
   };
 }

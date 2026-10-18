@@ -6,17 +6,16 @@
 export const queryKeys = {
   foods: {
     all: ['foods'] as const,
+    searchAll: ['foods', 'search'] as const,
     search: (query: string) => ['foods', 'search', query] as const,
     detail: (id: string) => ['foods', 'detail', id] as const,
-  },
-  userFoods: {
-    all: ['userFoods'] as const,
-    list: () => ['userFoods', 'list'] as const,
+    verification: (id: string) => ['foods', 'verification', id] as const,
   },
   logs: {
     all: ['logs'] as const,
     day: (dateKey: string) => ['logs', 'day', dateKey] as const,
     detail: (id: string) => ['logs', 'detail', id] as const,
+    totals: (dateKey: string) => ['logs', 'totals', dateKey] as const,
     loggedDaysAll: ['logs', 'loggedDays'] as const,
     loggedDays: (fromKey: string, toKey: string) => ['logs', 'loggedDays', fromKey, toKey] as const,
   },
@@ -28,12 +27,12 @@ export const queryKeys = {
     all: ['weighIns'] as const,
     list: () => ['weighIns', 'list'] as const,
   },
-  userSettings: {
-    all: ['userSettings'] as const,
-    detail: (userId: string) => ['userSettings', userId] as const,
-  },
   profile: {
     all: ['profile'] as const,
     detail: (userId: string) => ['profile', userId] as const,
+  },
+  goals: {
+    all: ['goals'] as const,
+    active: (userId: string) => ['goals', 'active', userId] as const,
   },
 } as const;

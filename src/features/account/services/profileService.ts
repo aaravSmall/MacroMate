@@ -10,49 +10,46 @@ export function mapProfileRow(row: Tables<'profiles'>): Profile {
     birthDate: row.birth_date,
     heightCm: row.height_cm,
     activityLevel: row.activity_level,
-    goalType: row.goal_type,
-    targetWeightKg: row.target_weight_kg,
-    weeklyRateKg: row.weekly_rate_kg,
-    dailyCalorieTarget: row.daily_calorie_target,
-    macroTargets: { proteinG: row.protein_g, carbsG: row.carbs_g, fatG: row.fat_g },
-    numbersOffMode: row.numbers_off_mode,
-    units: row.units,
+    unitSystem: row.unit_system,
+    timezone: row.timezone,
     motivation: row.motivation,
     dietaryRestrictions: row.dietary_restrictions,
     allergies: row.allergies,
-    onboardingCompletedAt: row.onboarding_completed_at,
+    numbersOff: row.numbers_off,
+    weighInFrequency: row.weigh_in_frequency,
+    weighInWeekday: row.weigh_in_weekday,
+    weighInReminderTime: row.weigh_in_reminder_time,
+    onboardedAt: row.onboarded_at,
   };
 }
 
 export type ProfileUpdate = Partial<Omit<Profile, 'id'>>;
 
+const COLUMNS: { [K in keyof ProfileUpdate]-?: keyof TablesUpdate<'profiles'> } = {
+  displayName: 'display_name',
+  sex: 'sex',
+  birthDate: 'birth_date',
+  heightCm: 'height_cm',
+  activityLevel: 'activity_level',
+  unitSystem: 'unit_system',
+  timezone: 'timezone',
+  motivation: 'motivation',
+  dietaryRestrictions: 'dietary_restrictions',
+  allergies: 'allergies',
+  numbersOff: 'numbers_off',
+  weighInFrequency: 'weigh_in_frequency',
+  weighInWeekday: 'weigh_in_weekday',
+  weighInReminderTime: 'weigh_in_reminder_time',
+  onboardedAt: 'onboarded_at',
+};
+
 export function profileUpdateToRow(update: ProfileUpdate): TablesUpdate<'profiles'> {
-  const row: TablesUpdate<'profiles'> = {};
-  if (update.displayName !== undefined) row.display_name = update.displayName;
-  if (update.sex !== undefined) row.sex = update.sex;
-  if (update.birthDate !== undefined) row.birth_date = update.birthDate;
-  if (update.heightCm !== undefined) row.height_cm = update.heightCm;
-  if (update.activityLevel !== undefined) row.activity_level = update.activityLevel;
-  if (update.goalType !== undefined) row.goal_type = update.goalType;
-  if (update.targetWeightKg !== undefined) row.target_weight_kg = update.targetWeightKg;
-  if (update.weeklyRateKg !== undefined) row.weekly_rate_kg = update.weeklyRateKg;
-  if (update.dailyCalorieTarget !== undefined) row.daily_calorie_target = update.dailyCalorieTarget;
-  if (update.macroTargets !== undefined) {
-    row.protein_g = update.macroTargets.proteinG;
-    row.carbs_g = update.macroTargets.carbsG;
-    row.fat_g = update.macroTargets.fatG;
+  const row: Record<string, unknown> = {};
+  for (const [key, column] of Object.entries(COLUMNS)) {
+    const value = update[key as keyof ProfileUpdate];
+    if (value !== undefined) row[column] = value;
   }
-  if (update.numbersOffMode !== undefined) row.numbers_off_mode = update.numbersOffMode;
-  if (update.units !== undefined) row.units = update.units;
-  if (update.motivation !== undefined) row.motivation = update.motivation;
-  if (update.dietaryRestrictions !== undefined) {
-    row.dietary_restrictions = update.dietaryRestrictions;
-  }
-  if (update.allergies !== undefined) row.allergies = update.allergies;
-  if (update.onboardingCompletedAt !== undefined) {
-    row.onboarding_completed_at = update.onboardingCompletedAt;
-  }
-  return row;
+  return row as TablesUpdate<'profiles'>;
 }
 
 export async function getProfile(userId: string): Promise<Profile | null> {
@@ -65,6 +62,10 @@ export async function getProfile(userId: string): Promise<Profile | null> {
   return data ? mapProfileRow(data) : null;
 }
 
+/**
+ * Updates the user's profile. The row is created by a trigger at sign-up, so the app never
+ * inserts into `profiles`.
+ */
 export async function updateProfile(userId: string, update: ProfileUpdate): Promise<Profile> {
   const { data, error } = await supabase
     .from('profiles')

@@ -6,6 +6,18 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+
+- **New database schema:** the app now uses the rebuilt schema (`profiles`, `goals`, `foods`, `food_servings`, `food_verifications`, `log_entries`, `exercise_entries`, `weigh_ins`, and the `daily_totals` view), with types generated from the project.
+- **Goals:** onboarding saves body stats to `profiles` and targets to a new `goals` row. Changing goals ends the active one and starts a new one.
+- **Foods:** nutrition is stored per base amount (100 g/ml or 1 serving) with named servings. Foods you create are private and can be deleted; only recipes are editable.
+- **Logging:** entries store a snapshot (food × serving × amount) and a `local_date` in your timezone. Today's totals and the streak come from `daily_totals`.
+- **Settings:** the weigh-in schedule lives on the profile. The reminders on/off toggle is removed until reminders ship.
+
+### Added
+
+- **Label checks:** logging a public food someone else added asks "Does this match your label?" Search results show both counts and a gentle heads-up when mismatches outnumber matches.
+
 ## [0.1.0] - 2026-10-16 — Skeleton
 
 The first working skeleton: every main flow exists in bare-bones form, backed by a real schema.

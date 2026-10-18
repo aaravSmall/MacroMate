@@ -1,32 +1,68 @@
-import { scaleNutrition } from '@/lib/nutrition';
-import type { AnyFood, LogEntry, MealLabel } from '@/types/domain';
+import { nutritionToLogRow, scaleNutrition } from '@/lib/nutrition';
+import { OFF_ID_PREFIX } from '@/lib/openFoodFacts';
+import type { TablesInsert } from '@/types/database';
+import type { Food, FoodServing, LogEntry, MealType, NutritionFacts } from '@/types/domain';
 
 export type NewLogInput = {
-  food: AnyFood;
-  servings: number;
+  food: Food;
+  serving: FoodServing;
+  quantity: number;
   loggedAt: Date;
-  mealLabel: MealLabel;
+  /** `YYYY-MM-DD` of loggedAt in the user's timezone. */
+  localDate: string;
+  meal: MealType;
 };
 
+/** Nutrition for `quantity` of `serving`: food value × serving.baseMultiplier × quantity. */
+export function portionNutrition(
+  food: Pick<Food, 'nutrition'>,
+  serving: Pick<FoodServing, 'baseMultiplier'>,
+  quantity: number,
+): NutritionFacts {
+  return scaleNutrition(food.nutrition, serving.baseMultiplier * quantity);
+}
+
 /**
- * Builds the LogEntry a new log will become, from the food as it is right now.
- * Used for the database snapshot and for optimistic updates.
+ * The `log_entries` row for a new log, with the snapshot computed now so later edits to the food
+ * never change past logs. Open Food Facts results that aren't stored yet log with food_id = null.
  */
+export function buildLogInsert(input: NewLogInput, userId: string): TablesInsert<'log_entries'> {
+  const { food, serving, quantity } = input;
+  const stored = !food.id.startsWith(OFF_ID_PREFIX);
+  return {
+    user_id: userId,
+    food_id: stored ? food.id : null,
+    serving_id: stored ? serving.id : null,
+    quantity,
+    logged_at: input.loggedAt.toISOString(),
+    local_date: input.localDate,
+    meal: input.meal,
+    food_name: food.brand ? `${food.name} (${food.brand})` : food.name,
+    ...nutritionToLogRow(portionNutrition(food, serving, quantity)),
+  };
+}
+
+/** The LogEntry a new log will become. Used for optimistic updates. */
 export function buildLogEntry(input: NewLogInput, id: string): LogEntry {
-  const { food, servings } = input;
+  const row = buildLogInsert(input, '');
   return {
     id,
     loggedAt: input.loggedAt.toISOString(),
-    mealLabel: input.mealLabel,
-    source:
-      food.kind === 'food'
-        ? { kind: 'food', foodId: food.id }
-        : { kind: 'userFood', userFoodId: food.id },
-    servings,
-    foodName: food.name,
-    foodBrand: food.brand,
-    serving: { size: food.serving.size, unit: food.serving.unit },
-    nutritionPerServing: food.nutrition,
-    totals: scaleNutrition(food.nutrition, servings),
+    localDate: input.localDate,
+    meal: input.meal,
+    foodId: row.food_id ?? null,
+    servingId: row.serving_id ?? null,
+    quantity: input.quantity,
+    foodName: row.food_name,
+    totals: portionNutrition(input.food, input.serving, input.quantity),
   };
+}
+
+/** Snapshot totals for a new quantity of the same portion. */
+export function rescaleTotals(
+  totals: NutritionFacts,
+  fromQuantity: number,
+  toQuantity: number,
+): NutritionFacts {
+  return scaleNutrition(totals, toQuantity / fromQuantity);
 }
