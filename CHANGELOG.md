@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- **Goals:** changing goals is now atomic. A new `change_goal()` Postgres function ends the active goal and starts the new one in one transaction, so a failure part-way can no longer leave you without an active goal. Onboarding and later goal changes both use it.
+
 ### Changed
 
 - **New database schema:** the app now uses the rebuilt schema (`profiles`, `goals`, `foods`, `food_servings`, `food_verifications`, `log_entries`, `exercise_entries`, `weigh_ins`, and the `daily_totals` view), with types generated from the project.

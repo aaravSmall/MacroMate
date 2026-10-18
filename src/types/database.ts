@@ -418,7 +418,41 @@ export type Database = {
       };
     };
     Functions: {
-      [_ in never]: never;
+      change_goal: {
+        Args: {
+          p_carbs_target_g?: number;
+          p_daily_calorie_target: number;
+          p_fat_target_g?: number;
+          p_goal_type: Database['public']['Enums']['goal_type'];
+          p_pace_kg_per_week?: number;
+          p_protein_target_g?: number;
+          p_start_weight_kg: number;
+          p_target_body_fat_pct?: number;
+          p_target_weight_kg?: number;
+        };
+        Returns: {
+          carbs_target_g: number | null;
+          created_at: string;
+          daily_calorie_target: number;
+          ended_at: string | null;
+          fat_target_g: number | null;
+          goal_type: Database['public']['Enums']['goal_type'];
+          id: string;
+          pace_kg_per_week: number;
+          protein_target_g: number | null;
+          start_weight_kg: number;
+          started_at: string;
+          target_body_fat_pct: number | null;
+          target_weight_kg: number | null;
+          user_id: string;
+        };
+        SetofOptions: {
+          from: '*';
+          to: 'goals';
+          isOneToOne: true;
+          isSetofReturn: false;
+        };
+      };
     };
     Enums: {
       activity_level: 'sedentary' | 'light' | 'moderate' | 'active' | 'very_active';

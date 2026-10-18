@@ -34,11 +34,12 @@ export {
   weeklyRateInLb,
 } from './logic/units';
 export { SNACK_IDEAS, type SnackIdea } from './snackIdeas';
-export { useActiveGoal, useSetGoal } from './hooks/useGoal';
+export { useActiveGoal, useChangeGoal } from './hooks/useGoal';
 export {
+  changeGoal,
+  type ChangeGoalArgs,
   getActiveGoal,
+  goalToChangeGoalArgs,
   mapGoalRow,
   type NewGoal,
-  newGoalToRow,
-  setGoal,
 } from './services/goalService';

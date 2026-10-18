@@ -21,17 +21,17 @@ erDiagram
 
 ## Tables
 
-| Table                 | Purpose                                                                                                                                                                                |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `profiles`            | One per user, created by trigger at sign-up. Body stats, `unit_system`, `timezone`, `numbers_off`, weigh-in schedule (`weigh_in_weekday` is 0 = Sunday … 6), and `onboarded_at`.       |
-| `goals`               | Goal type, start/target weight, pace, daily calorie and macro targets. **One active goal per user** (`ended_at is null`, enforced by a unique index).                                  |
-| `foods`               | Every food: global (Open Food Facts, restaurants) and user-created (`user_product`, `user_recipe`, `label_scan`). `owner_id` + `visibility` (`private` / `public`) decide who sees it. |
-| `food_servings`       | Named portions of a food. `base_multiplier` = how many of the food's base amounts the portion is. At most one `is_default` per food.                                                   |
-| `food_verifications`  | One row per (food, user): "Does this match your label?" A trigger keeps `foods.verification_count` / `mismatch_count` in sync.                                                         |
-| `log_entries`         | Food log entries with `local_date`, `meal`, `quantity`, and a snapshot of the name and nutrition at log time.                                                                          |
-| `exercise_entries`    | Exercise from Apple Health or entered manually, with `local_date`. `(user_id, external_id)` is unique so HealthKit sync is idempotent.                                                 |
-| `weigh_ins`           | Weight (and optional body-fat %) measurements, with `local_date`.                                                                                                                      |
-| `daily_totals` (view) | Per user and `local_date`: entry count and summed calories / protein / carbs / fat from `log_entries`. `security_invoker`, so RLS on `log_entries` applies.                            |
+| Table                 | Purpose                                                                                                                                                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `profiles`            | One per user, created by trigger at sign-up. Body stats, `unit_system`, `timezone`, `numbers_off`, weigh-in schedule (`weigh_in_weekday` is 0 = Sunday … 6), and `onboarded_at`.                                      |
+| `goals`               | Goal type, start/target weight, pace, daily calorie and macro targets. **One active goal per user** (`ended_at is null`, enforced by a unique index). The app changes goals only through `change_goal()` (see below). |
+| `foods`               | Every food: global (Open Food Facts, restaurants) and user-created (`user_product`, `user_recipe`, `label_scan`). `owner_id` + `visibility` (`private` / `public`) decide who sees it.                                |
+| `food_servings`       | Named portions of a food. `base_multiplier` = how many of the food's base amounts the portion is. At most one `is_default` per food.                                                                                  |
+| `food_verifications`  | One row per (food, user): "Does this match your label?" A trigger keeps `foods.verification_count` / `mismatch_count` in sync.                                                                                        |
+| `log_entries`         | Food log entries with `local_date`, `meal`, `quantity`, and a snapshot of the name and nutrition at log time.                                                                                                         |
+| `exercise_entries`    | Exercise from Apple Health or entered manually, with `local_date`. `(user_id, external_id)` is unique so HealthKit sync is idempotent.                                                                                |
+| `weigh_ins`           | Weight (and optional body-fat %) measurements, with `local_date`.                                                                                                                                                     |
+| `daily_totals` (view) | Per user and `local_date`: entry count and summed calories / protein / carbs / fat from `log_entries`. `security_invoker`, so RLS on `log_entries` applies.                                                           |
 
 ## Conventions
 
@@ -62,6 +62,12 @@ The app computes the snapshot when logging, so editing or deleting a food never 
 | `food_verifications`                                    | Read all. Insert own answer for someone else's public food. Update or delete own answer.                                                                                                                                                                                   |
 
 Open Food Facts and restaurant foods can only be written with the service role. **TODO:** an Edge Function will cache OFF results in `foods`; until then the app shows them uncached and logs them with `food_id = null`.
+
+### goals: changing goals
+
+`public.change_goal(p_goal_type, p_start_weight_kg, p_daily_calorie_target, …)` ends the caller's active goal (sets `ended_at = now()`) and inserts the new one **in one transaction**, returning the new row. The two steps succeed or fail together, so a user is never left without an active goal. The app uses it for the first goal at onboarding (there's no old goal to end) and for every later change, via `supabase.rpc('change_goal', …)`.
+
+It's `security invoker`, so RLS on `goals` still applies. It raises `42501` when there's no signed-in user, and only `authenticated` can execute it.
 
 ## Triggers
 

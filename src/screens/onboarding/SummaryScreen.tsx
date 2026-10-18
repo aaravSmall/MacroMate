@@ -8,7 +8,7 @@ import {
   calorieFloorRecommendation,
   CareNotice,
   paceCautionCopy,
-  useSetGoal,
+  useChangeGoal,
 } from '@/features/goals';
 import {
   buildOnboardingResult,
@@ -23,10 +23,10 @@ export default function SummaryScreen() {
   const { spacing } = useTheme();
   const { form, reset } = useOnboardingStore();
   const result = useMemo(() => buildOnboardingResult(form, { timezone: deviceTimeZone() }), [form]);
-  const setGoal = useSetGoal();
+  const changeGoal = useChangeGoal();
   const updateProfile = useUpdateProfile();
-  const saving = setGoal.isPending || updateProfile.isPending;
-  const error = setGoal.error ?? updateProfile.error;
+  const saving = changeGoal.isPending || updateProfile.isPending;
+  const error = changeGoal.error ?? updateProfile.error;
 
   if (!result) {
     return (
@@ -46,7 +46,7 @@ export default function SummaryScreen() {
     if (!result) return;
     try {
       // Goal first: setting onboarded_at on the profile is what lets the user into the app.
-      await setGoal.mutateAsync(result.goal);
+      await changeGoal.mutateAsync(result.goal);
       await updateProfile.mutateAsync({
         ...result.profileUpdate,
         onboardedAt: new Date().toISOString(),

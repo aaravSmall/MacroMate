@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import type { Tables, TablesInsert } from '@/types/database';
+import type { Database, Tables } from '@/types/database';
 import type { Goal } from '@/types/domain';
 
 export function mapGoalRow(row: Tables<'goals'>): Goal {
@@ -22,19 +22,25 @@ export function mapGoalRow(row: Tables<'goals'>): Goal {
 
 export type NewGoal = Omit<Goal, 'id' | 'startedAt'>;
 
-export function newGoalToRow(goal: NewGoal, userId: string): TablesInsert<'goals'> {
-  return {
-    user_id: userId,
-    goal_type: goal.goalType,
-    start_weight_kg: goal.startWeightKg,
-    target_weight_kg: goal.targetWeightKg,
-    target_body_fat_pct: goal.targetBodyFatPct,
-    pace_kg_per_week: goal.paceKgPerWeek,
-    daily_calorie_target: goal.dailyCalorieTarget,
-    protein_target_g: goal.macroTargets.proteinG,
-    carbs_target_g: goal.macroTargets.carbsG,
-    fat_target_g: goal.macroTargets.fatG,
+export type ChangeGoalArgs = Database['public']['Functions']['change_goal']['Args'];
+
+/**
+ * Arguments for the `change_goal` RPC. Optional values that are null are left out so the
+ * function's `default null` applies.
+ */
+export function goalToChangeGoalArgs(goal: NewGoal): ChangeGoalArgs {
+  const args: ChangeGoalArgs = {
+    p_goal_type: goal.goalType,
+    p_start_weight_kg: goal.startWeightKg,
+    p_daily_calorie_target: goal.dailyCalorieTarget,
+    p_pace_kg_per_week: goal.paceKgPerWeek,
   };
+  if (goal.targetWeightKg !== null) args.p_target_weight_kg = goal.targetWeightKg;
+  if (goal.targetBodyFatPct !== null) args.p_target_body_fat_pct = goal.targetBodyFatPct;
+  if (goal.macroTargets.proteinG !== null) args.p_protein_target_g = goal.macroTargets.proteinG;
+  if (goal.macroTargets.carbsG !== null) args.p_carbs_target_g = goal.macroTargets.carbsG;
+  if (goal.macroTargets.fatG !== null) args.p_fat_target_g = goal.macroTargets.fatG;
+  return args;
 }
 
 /** The user's active goal (the one with no ended_at), or null before onboarding. */
@@ -50,24 +56,12 @@ export async function getActiveGoal(userId: string): Promise<Goal | null> {
 }
 
 /**
- * Starts a new goal. The database allows one active goal per user, so the current one is ended
- * first, then the new one is inserted.
- * TODO(server): make this one transaction (an RPC) so a failed insert can't leave the user with
- * no active goal. Retrying is safe in the meantime.
+ * Starts a new goal for the signed-in user: the first one at onboarding, or a change later.
+ * `change_goal` ends the active goal and inserts the new one in a single transaction, so the
+ * user is never left without an active goal. It runs as the user, so RLS on `goals` applies.
  */
-export async function setGoal(userId: string, goal: NewGoal): Promise<Goal> {
-  const { error: endError } = await supabase
-    .from('goals')
-    .update({ ended_at: new Date().toISOString() })
-    .eq('user_id', userId)
-    .is('ended_at', null);
-  if (endError) throw endError;
-
-  const { data, error } = await supabase
-    .from('goals')
-    .insert(newGoalToRow(goal, userId))
-    .select()
-    .single();
+export async function changeGoal(goal: NewGoal): Promise<Goal> {
+  const { data, error } = await supabase.rpc('change_goal', goalToChangeGoalArgs(goal));
   if (error) throw error;
   return mapGoalRow(data);
 }
