@@ -453,6 +453,10 @@ export type Database = {
           isSetofReturn: false;
         };
       };
+      insert_food_with_servings: {
+        Args: { food: Json; servings: Json };
+        Returns: string;
+      };
     };
     Enums: {
       activity_level: 'sedentary' | 'light' | 'moderate' | 'active' | 'very_active';

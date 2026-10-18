@@ -24,7 +24,6 @@ import {
 
 const OFF_USER_AGENT = 'Tally/0.1.0 (https://github.com/aaravSmall/MacroMate)';
 const FOOD_SELECT = '*, food_servings(*)';
-const UNIQUE_VIOLATION = '23505';
 
 async function findCached(admin: SupabaseClient, code: string) {
   const { data, error } = await admin
@@ -81,37 +80,27 @@ Deno.serve(async (req) => {
 
   try {
     const cached = await findCached(admin, code);
-    if (cached) return json({ food: cached, created: false });
+    if (cached) return json({ food: cached });
 
     const product = await fetchOffProduct(code);
     const rows = product ? mapOffProductToRows(code, product) : null;
     if (!rows) return json({ error: 'Product not found, or it has no calories per 100 g.' }, 404);
 
-    const { data: inserted, error: insertError } = await admin
+    // One transaction: the food and its servings, or nothing. If another request cached the
+    // same product first, the RPC returns that food's id instead of failing.
+    const { data: foodId, error: insertError } = await admin.rpc('insert_food_with_servings', {
+      food: rows.food,
+      servings: rows.servings,
+    });
+    if (insertError || typeof foodId !== 'string') throw insertError ?? new Error('No food id.');
+
+    const { data: food, error: readError } = await admin
       .from('foods')
-      .insert(rows.food)
-      .select('id')
+      .select(FOOD_SELECT)
+      .eq('id', foodId)
       .single();
-    if (insertError) {
-      // Someone cached the same product at the same moment: return their row.
-      if (insertError.code === UNIQUE_VIOLATION) {
-        const existing = await findCached(admin, code);
-        if (existing) return json({ food: existing, created: false });
-      }
-      throw insertError;
-    }
-
-    const { error: servingsError } = await admin
-      .from('food_servings')
-      .insert(rows.servings.map((serving) => ({ ...serving, food_id: inserted.id })));
-    if (servingsError) {
-      // Don't leave a global food without portions; the next call will retry from scratch.
-      await admin.from('foods').delete().eq('id', inserted.id);
-      throw servingsError;
-    }
-
-    const food = await findCached(admin, code);
-    return json({ food, created: true }, 201);
+    if (readError) throw readError;
+    return json({ food });
   } catch (error) {
     // No PII here: the only input is a barcode.
     console.error('cache-off-food failed', code, error instanceof Error ? error.message : error);

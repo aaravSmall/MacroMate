@@ -2,8 +2,9 @@
  * Pure Open Food Facts → `foods` / `food_servings` mapping for the cache-off-food Edge Function.
  * No Deno or Supabase imports, so the app's Jest suite can test it.
  *
- * OFF nutriments are per 100 g. Sodium, cholesterol, and minerals are reported in grams; the
- * database stores milligrams.
+ * OFF's `*_100g` nutriments are per 100 g, or per 100 ml for liquids (OFF keeps the `_100g` key
+ * names either way). Sodium, cholesterol, and minerals are reported in grams; the database stores
+ * milligrams.
  */
 
 export type OffNutriments = Record<string, number | string | undefined>;
@@ -16,6 +17,11 @@ export type OffProduct = {
   serving_size?: string;
   serving_quantity?: number | string;
   serving_quantity_unit?: string;
+  /** '100g', '100ml', or 'serving'. Often '100g' even for drinks, so it isn't decisive alone. */
+  nutrition_data_per?: string;
+  /** Package size as printed, e.g. "330 ml", "1.5 l", "16 fl oz", "292 g". */
+  quantity?: string;
+  product_quantity_unit?: string;
   nutriments?: OffNutriments;
 };
 
@@ -29,7 +35,7 @@ export type OffFoodRow = {
   name: string;
   brand: string | null;
   base_amount: 100;
-  base_unit: 'g';
+  base_unit: 'g' | 'ml';
   calories: number;
   protein_g: number;
   carbs_g: number;
@@ -61,11 +67,36 @@ export const OFF_FIELDS = [
   'serving_size',
   'serving_quantity',
   'serving_quantity_unit',
+  'nutrition_data_per',
+  'quantity',
+  'product_quantity_unit',
   'nutriments',
 ].join(',');
 
 /** 1 oz = 28.3495 g. The column keeps 4 decimals, so Postgres stores 0.2835. */
 const OUNCE_MULTIPLIER = 0.283495;
+/** 1 US fl oz = 29.57 ml. */
+const FLUID_OUNCE_MULTIPLIER = 0.2957;
+/** 1 cup = 240 ml (US nutrition labeling cup). */
+const CUP_MULTIPLIER = 2.4;
+
+const VOLUME_UNIT = /^(ml|cl|dl|l|fl\.? ?oz)$/i;
+const VOLUME_IN_TEXT = /\d\s*(ml|cl|dl|l|fl\.? ?oz)\b/i;
+
+/**
+ * Whether OFF's nutrition is per 100 ml. `nutrition_data_per = '100ml'` decides it; otherwise a
+ * serving measured in grams means solid (e.g. ice cream sold in a "16 fl oz" tub but served as
+ * "141 g"), and it's liquid only when the package is a volume and any serving is in ml.
+ */
+export function isLiquid(product: OffProduct): boolean {
+  if (product.nutrition_data_per?.trim().toLowerCase() === '100ml') return true;
+  const servingUnit = product.serving_quantity_unit?.trim().toLowerCase();
+  if (servingUnit === 'g') return false;
+  const packageIsVolume =
+    VOLUME_UNIT.test(product.product_quantity_unit?.trim() ?? '') ||
+    VOLUME_IN_TEXT.test(product.quantity ?? '');
+  return packageIsVolume && (servingUnit === undefined || servingUnit === 'ml');
+}
 
 /** Minerals stored in `micros` as `<name>_mg`. */
 const MICRO_MINERALS = ['potassium', 'calcium', 'iron', 'magnesium', 'zinc'] as const;
@@ -102,6 +133,7 @@ export function mapOffProductToRows(
   if (calories === undefined || name === '') return null;
 
   const optional = (value: number | undefined) => (value === undefined ? null : round2(value));
+  const baseUnit = isLiquid(product) ? 'ml' : 'g';
   const micros: Record<string, number> = {};
   for (const mineral of MICRO_MINERALS) {
     const mg = mgPer100g(n, mineral);
@@ -117,7 +149,7 @@ export function mapOffProductToRows(
     name,
     brand: product.brands?.split(',')[0]?.trim() || null,
     base_amount: 100,
-    base_unit: 'g',
+    base_unit: baseUnit,
     calories: round2(calories),
     protein_g: round2(per100g(n, 'proteins') ?? 0),
     carbs_g: round2(per100g(n, 'carbohydrates') ?? 0),
@@ -130,21 +162,29 @@ export function mapOffProductToRows(
     micros,
   };
 
-  // The product's own serving, only when it's measured in grams (our base unit).
-  const servingGrams = toNumber(product.serving_quantity);
+  // The product's own serving, only when it's measured in the base unit (g or ml).
+  const servingAmount = toNumber(product.serving_quantity);
   const servingUnit = product.serving_quantity_unit?.trim().toLowerCase() || 'g';
   const servingLabel = product.serving_size?.trim();
   const offServing: OffServingRow | null =
-    servingLabel && servingGrams !== undefined && servingGrams > 0 && servingUnit === 'g'
-      ? { label: servingLabel, base_multiplier: round4(servingGrams / 100), is_default: true }
+    servingLabel && servingAmount !== undefined && servingAmount > 0 && servingUnit === baseUnit
+      ? { label: servingLabel, base_multiplier: round4(servingAmount / 100), is_default: true }
       : null;
 
-  const servings: OffServingRow[] = [
-    ...(offServing ? [offServing] : []),
-    { label: '100 g', base_multiplier: 1, is_default: offServing === null },
-    { label: '1 g', base_multiplier: 0.01, is_default: false },
-    { label: '1 oz', base_multiplier: OUNCE_MULTIPLIER, is_default: false },
-  ];
+  const standard: OffServingRow[] =
+    baseUnit === 'ml'
+      ? [
+          { label: '100 ml', base_multiplier: 1, is_default: offServing === null },
+          { label: '1 ml', base_multiplier: 0.01, is_default: false },
+          { label: '1 fl oz', base_multiplier: FLUID_OUNCE_MULTIPLIER, is_default: false },
+          { label: '1 cup (240 ml)', base_multiplier: CUP_MULTIPLIER, is_default: false },
+        ]
+      : [
+          { label: '100 g', base_multiplier: 1, is_default: offServing === null },
+          { label: '1 g', base_multiplier: 0.01, is_default: false },
+          { label: '1 oz', base_multiplier: OUNCE_MULTIPLIER, is_default: false },
+        ];
+  const servings: OffServingRow[] = [...(offServing ? [offServing] : []), ...standard];
 
   return { food, servings };
 }

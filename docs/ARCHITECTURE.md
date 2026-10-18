@@ -102,8 +102,8 @@ Add (+) tab
 
 - takes only `{ code }` (4–14 digits)
 - returns the existing `foods` row if that product is already cached
-- otherwise fetches the product from OFF itself (client nutrient values are never trusted), maps it with the pure, unit-tested `offMapping.ts`, and inserts the food and its servings with the secret key
-- handles a race on the `(source, external_id)` unique index by returning the row that won
+- otherwise fetches the product from OFF itself (client nutrient values are never trusted) and maps it with the pure, unit-tested `offMapping.ts` (per 100 ml for drinks, per 100 g otherwise)
+- inserts the food and its servings atomically through the `insert_food_with_servings` RPC (service role only); if another request cached the same product first, the RPC returns that row
 
 Every logged food therefore has a real `food_id`. `buildLogInsert` refuses `off:` ids.
 

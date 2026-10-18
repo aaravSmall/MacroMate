@@ -16,6 +16,9 @@ All notable changes to this project are documented here. The format follows
 
 ### Fixed
 
+- **Drinks from Open Food Facts:** drinks are now stored per 100 ml with ml portions (the can or bottle, `100 ml`, `1 fl oz`, `1 cup`) instead of per 100 g. Products sold by volume but served by weight, like ice cream tubs, stay per 100 g.
+- **Caching is atomic:** a cached Open Food Facts food and its portions are inserted in one transaction (`insert_food_with_servings`), so a food is never visible without its servings, and simultaneous requests share one row.
+
 - **Edge Function auth:** `cache-off-food` and `delete-account` share one auth check that verifies the caller's session with `auth.getUser`, since `verify_jwt` alone admitted publishable-key-only requests.
 
 - **Goals:** changing goals is now atomic. A new `change_goal()` Postgres function ends the active goal and starts the new one in one transaction, so a failure part-way can no longer leave you without an active goal. Onboarding and later goal changes both use it.

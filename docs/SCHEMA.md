@@ -61,7 +61,9 @@ The app computes the snapshot when logging, so editing or deleting a food never 
 | `food_servings`                                         | Read servings of readable foods. Add to own foods. Edit or delete servings of own private foods or recipes.                                                                                                                                                                |
 | `food_verifications`                                    | Read all. Insert own answer for someone else's public food. Update or delete own answer.                                                                                                                                                                                   |
 
-Open Food Facts and restaurant foods can only be written with the service role. The `cache-off-food` Edge Function does this for OFF products (see [ARCHITECTURE.md](ARCHITECTURE.md)). It writes each one as a public, unowned food with `source = 'open_food_facts'` and `external_id` = barcode, stored per 100 g, with an OFF serving (if any) plus `100 g`, `1 g` and `1 oz`. The unique index on `(source, external_id)` keeps one row per product.
+Open Food Facts and restaurant foods can only be written with the service role. The `cache-off-food` Edge Function does this for OFF products (see [ARCHITECTURE.md](ARCHITECTURE.md)). It writes each one as a public, unowned food with `source = 'open_food_facts'` and `external_id` = barcode. Solids are stored per 100 g, with the product's gram serving (if any) plus `100 g`, `1 g` and `1 oz`. Drinks are stored per 100 ml, with the product's ml serving plus `100 ml`, `1 ml`, `1 fl oz` and `1 cup (240 ml)`. The unique index on `(source, external_id)` keeps one row per product.
+
+`public.insert_food_with_servings(food jsonb, servings jsonb)` inserts a food and its servings in one transaction and returns the food's id. If `(source, external_id)` already exists, it inserts nothing and returns the existing id, so concurrent callers share one row. It's `security definer` with an empty `search_path`, and only `service_role` can execute it.
 
 ### goals: changing goals
 
