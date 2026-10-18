@@ -1,4 +1,12 @@
 export { FoodResultRow } from './components/FoodResultRow';
+export { PortionGuideSheet, type PortionGuideSheetProps } from './components/PortionGuideSheet';
+export {
+  applicableGuides,
+  friendlyQuantity,
+  quantityForGuide,
+  servingLabelMeasures,
+  servingMeasures,
+} from './logic/portion';
 export { useLabelScan, type LabelScanState } from './hooks/useLabelScan';
 export { useLabelScanStore } from './labelScanStore';
 export { labelToFoodForm, type LabelFormPrefill } from './logic/labelForm';

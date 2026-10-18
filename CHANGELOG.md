@@ -12,6 +12,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Portion helper:** "Not sure how much?" on the log form opens visual references (a deck of cards or your palm for meat, two dice for cheese, a fist for a cup, your thumb for a tablespoon, shares of a 10-inch plate) and fills in the amount in the food's serving, which you can still adjust. Only references that convert honestly for that serving are shown. Sources: NIH NHLBI, the Academy of Nutrition and Dietetics, and USDA MyPlate.
+
 - **Meals you made:** Create food now asks "Packaged product" or "Meal I made". Meals are stored per serving and can be edited later from their food page (Edit meal); packaged, scanned, Open Food Facts, and restaurant foods keep their label values and can't be edited. Editing a meal never changes entries you already logged, since each entry keeps its own snapshot. Saving changes to a shared meal warns that its label checks will reset.
 
 - **Weigh-in reminders:** a reminders switch in Settings schedules gentle local notifications from your weigh-in schedule (weekly, every other week from your last weigh-in, or the first chosen weekday of each month), in your time zone and keeping the same local time across daylight saving changes. Notification permission is asked only after an explanation, when you turn reminders on or finish onboarding, never at launch. Reminders reschedule on launch, after a schedule change, and after a weigh-in, and are cancelled on sign-out and account deletion. Tapping one opens Progress with the weigh-in field ready.

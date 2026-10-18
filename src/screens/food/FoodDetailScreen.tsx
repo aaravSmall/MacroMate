@@ -1,6 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, Pressable, View } from 'react-native';
 
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, SegmentedControl, Text, TextField } from '@/components/ui';
@@ -14,6 +14,7 @@ import {
   hasMismatchWarning,
   isUncachedOpenFoodFactsResult,
   matchServing,
+  PortionGuideSheet,
   useCacheOpenFoodFactsFood,
   useDeleteFood,
   useFood,
@@ -71,6 +72,7 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
   const [quantityText, setQuantityText] = useState('1');
   const [meal, setMeal] = useState<MealType>(() => suggestMealType(loggedAt));
   const [error, setError] = useState<string | null>(null);
+  const [guideOpen, setGuideOpen] = useState(false);
   const addLog = useAddLog();
   const deleteFood = useDeleteFood();
   const cacheFood = useCacheOpenFoodFactsFood();
@@ -197,6 +199,28 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
         keyboardType="decimal-pad"
         selectTextOnFocus
       />
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => setGuideOpen(true)}
+        hitSlop={8}
+        style={{ alignSelf: 'flex-start' }}
+      >
+        <Text variant="callout" tone="accent">
+          Not sure how much?
+        </Text>
+      </Pressable>
+      {serving ? (
+        <PortionGuideSheet
+          visible={guideOpen}
+          food={food}
+          serving={serving}
+          onPick={(q) => {
+            setQuantityText(String(q));
+            setGuideOpen(false);
+          }}
+          onClose={() => setGuideOpen(false)}
+        />
+      ) : null}
       <View style={{ gap: spacing.xs }}>
         <Text variant="label" tone="muted">
           Meal
