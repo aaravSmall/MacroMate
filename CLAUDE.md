@@ -32,6 +32,8 @@ After adding a package with native code or changing native config (plugins, perm
 - `src/features/<name>/`: feature modules (food, logging, goals, exercise, weighins, onboarding, account). Each owns its `hooks/`, `services/`, `logic/`, `components/`, and `types.ts`.
 - `src/lib/`: Supabase client, external API adapters, pure utils.
 - `src/hooks/`, `src/store/` (Zustand), `src/theme/` (tokens), `src/types/`, `src/constants/`.
+- `supabase/`: migrations, Edge Functions (`functions/`, Deno; pure helpers are Jest-tested), SQL checks (`tests/`).
+- `scripts/`: local Node tooling, not shipped (e.g. `scripts/restaurants/` nutrition import; own tsconfig).
 - Import with the `@/` alias (`@/*` → `src/*`), not long relative paths.
 
 ## Coding rules

@@ -1,0 +1,3860 @@
+{
+  "chain": "fiveguys",
+  "name": "Five Guys",
+  "source": {
+    "url": "https://www.fiveguys.com/wp-content/uploads/2026/09/Five-Guys-US-Nutrition-Allergen-Guide-English-September-2026.pdf",
+    "note": "US Nutrition & Allergen Guide, September 2026 (official, fiveguys.com).",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "extractedAt": "2026-10-18T23:06:05.659Z",
+  "counts": {
+    "items": 69,
+    "flagged": 11
+  },
+  "review": "Check items against the PDF. Flagged items are not uploaded unless you set \"approved\": true on them.",
+  "items": [
+    {
+      "externalId": "fiveguys:meat:bacon-2-pieces",
+      "section": "MEAT",
+      "sourceName": "Bacon (2 pieces) (Supplier S)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:bacon-2-pieces",
+        "barcode": null,
+        "name": "Five Guys – Bacon (2 pieces)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 5,
+        "carbs_g": 0,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 210,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 pieces (14 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:meat:bacon-1-piece",
+      "section": "MEAT",
+      "sourceName": "Bacon (1 piece) (Supplier D)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:bacon-1-piece",
+        "barcode": null,
+        "name": "Five Guys – Bacon (1 piece)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 36,
+        "protein_g": 3,
+        "carbs_g": 0,
+        "fat_g": 3,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 106,
+        "cholesterol_mg": 5,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 piece (7 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 4.05,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 14.2857,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:meat:hot-dog",
+      "section": "MEAT",
+      "sourceName": "Hot Dog (Supplier H)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:hot-dog",
+        "barcode": null,
+        "name": "Five Guys – Hot Dog",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 11,
+        "carbs_g": 1,
+        "fat_g": 26,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 12,
+        "sodium_mg": 800,
+        "cholesterol_mg": 56,
+        "micros": {
+          "trans_fat_g": 1
+        }
+      },
+      "servings": [
+        {
+          "label": "90 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.315,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1111,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:bun:mini-bun",
+      "section": "BUN",
+      "sourceName": "Mini Bun",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:bun:mini-bun",
+        "barcode": null,
+        "name": "Five Guys – Mini Bun",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 3,
+        "carbs_g": 20,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 4,
+        "sat_fat_g": 1,
+        "sodium_mg": 170,
+        "cholesterol_mg": 2,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "37 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7662,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.7027,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:bun:hamburger-bun",
+      "section": "BUN",
+      "sourceName": "Hamburger Bun",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:bun:hamburger-bun",
+        "barcode": null,
+        "name": "Five Guys – Hamburger Bun",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 240,
+        "protein_g": 7,
+        "carbs_g": 35,
+        "fat_g": 8,
+        "fiber_g": 1,
+        "sugar_g": 6,
+        "sat_fat_g": 3,
+        "sodium_mg": 310,
+        "cholesterol_mg": 5,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "77 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3682,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.2987,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:bun:hot-dog-buns",
+      "section": "BUN",
+      "sourceName": "Hot Dog Buns",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:bun:hot-dog-buns",
+        "barcode": null,
+        "name": "Five Guys – Hot Dog Buns",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 220,
+        "protein_g": 6,
+        "carbs_g": 33,
+        "fat_g": 7,
+        "fiber_g": 1,
+        "sugar_g": 6,
+        "sat_fat_g": 2,
+        "sodium_mg": 290,
+        "cholesterol_mg": 4,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "71 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3993,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.4085,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:mini-five-guys-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Mini Five Guys Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:mini-five-guys-style",
+        "barcode": null,
+        "name": "Five Guys – Mini Five Guys Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 405,
+        "protein_g": 6,
+        "carbs_g": 55,
+        "fat_g": 17,
+        "fiber_g": 6,
+        "sugar_g": 1.5,
+        "sat_fat_g": 3,
+        "sodium_mg": 409,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "175 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.162,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.5714,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:little-five-guys-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Little Five Guys Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:little-five-guys-style",
+        "barcode": null,
+        "name": "Five Guys – Little Five Guys Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 526,
+        "protein_g": 8,
+        "carbs_g": 72,
+        "fat_g": 23,
+        "fiber_g": 8,
+        "sugar_g": 2,
+        "sat_fat_g": 4,
+        "sodium_mg": 531,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "227 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1249,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4405,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:regular-five-guys-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Regular Five Guys Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:regular-five-guys-style",
+        "barcode": null,
+        "name": "Five Guys – Regular Five Guys Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 953,
+        "protein_g": 15,
+        "carbs_g": 131,
+        "fat_g": 41,
+        "fiber_g": 15,
+        "sugar_g": 4,
+        "sat_fat_g": 7,
+        "sodium_mg": 962,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "411 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.069,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.2433,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:large-five-guys-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Large Five Guys Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:large-five-guys-style",
+        "barcode": null,
+        "name": "Five Guys – Large Five Guys Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 1314,
+        "protein_g": 20,
+        "carbs_g": 181,
+        "fat_g": 57,
+        "fiber_g": 21,
+        "sugar_g": 6,
+        "sat_fat_g": 10,
+        "sodium_mg": 1327,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "567 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.05,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.1764,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:mini-five-guys-style:178-g",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Mini Five Guys Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:mini-five-guys-style:178-g",
+        "barcode": null,
+        "name": "Five Guys – Mini Five Guys Style Fries (178 g)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 413,
+        "protein_g": 6,
+        "carbs_g": 56,
+        "fat_g": 17,
+        "fiber_g": 6,
+        "sugar_g": 1.5,
+        "sat_fat_g": 3,
+        "sodium_mg": 417,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "178 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1593,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.5618,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:little-cajun-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Little Cajun Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:little-cajun-style",
+        "barcode": null,
+        "name": "Five Guys – Little Cajun Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 540,
+        "protein_g": 8,
+        "carbs_g": 75,
+        "fat_g": 28,
+        "fiber_g": 8,
+        "sugar_g": 2,
+        "sat_fat_g": 4,
+        "sodium_mg": 862,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "232 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1222,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.431,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:regular-cajun-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Regular Cajun Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:regular-cajun-style",
+        "barcode": null,
+        "name": "Five Guys – Regular Cajun Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 967,
+        "protein_g": 15,
+        "carbs_g": 134,
+        "fat_g": 41,
+        "fiber_g": 15,
+        "sugar_g": 4,
+        "sat_fat_g": 7,
+        "sodium_mg": 1293,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "416 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0681,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.2404,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:fries:large-cajun-style",
+      "section": "FRIES - COOKED IN 100% PEANUT OIL",
+      "sourceName": "Large Cajun Style",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:fries:large-cajun-style",
+        "barcode": null,
+        "name": "Five Guys – Large Cajun Style Fries",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 1328,
+        "protein_g": 20,
+        "carbs_g": 184,
+        "fat_g": 57,
+        "fiber_g": 21,
+        "sugar_g": 6,
+        "sat_fat_g": 10,
+        "sodium_mg": 1658,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "572 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0496,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.1748,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:a-1-sauce",
+      "section": "TOPPINGS",
+      "sourceName": "A.1.® Sauce",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:a-1-sauce",
+        "barcode": null,
+        "name": "Five Guys – A.1.® Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 15,
+        "protein_g": 0,
+        "carbs_g": 3,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 0,
+        "sodium_mg": 280,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "17 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.6676,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 5.8824,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:cheese-1-slice",
+      "section": "TOPPINGS",
+      "sourceName": "Cheese (1 slice) (Supplier K)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:cheese-1-slice",
+        "barcode": null,
+        "name": "Five Guys – Cheese (1 slice)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 4,
+        "carbs_g": 0.5,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 0.5,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 300,
+        "cholesterol_mg": 20,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 slice (19 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.4921,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 5.2632,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:cheese-1-2-slice",
+      "section": "TOPPINGS",
+      "sourceName": "Cheese (1/2 slice) (Supplier S)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:cheese-1-2-slice",
+        "barcode": null,
+        "name": "Five Guys – Cheese (1/2 slice)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 35,
+        "protein_g": 2,
+        "carbs_g": 0.5,
+        "fat_g": 3,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 165,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "9 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 3.15,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 11.1111,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:green-peppers",
+      "section": "TOPPINGS",
+      "sourceName": "Green Peppers",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:green-peppers",
+        "barcode": null,
+        "name": "Five Guys – Green Peppers",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 3,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 0.5,
+        "sat_fat_g": 0,
+        "sodium_mg": 1,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "25 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.134,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:grilled-mushrooms",
+      "section": "TOPPINGS",
+      "sourceName": "Grilled Mushrooms",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:grilled-mushrooms",
+        "barcode": null,
+        "name": "Five Guys – Grilled Mushrooms",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 6,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 50,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "21 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.35,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4.7619,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:hot-sauce",
+      "section": "TOPPINGS",
+      "sourceName": "Hot Sauce",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:hot-sauce",
+        "barcode": null,
+        "name": "Five Guys – Hot Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 200,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "5 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 5.67,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 20,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:jalapeno-peppers",
+      "section": "TOPPINGS",
+      "sourceName": "Jalapeño Peppers",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:jalapeno-peppers",
+        "barcode": null,
+        "name": "Five Guys – Jalapeño Peppers",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 3,
+        "protein_g": 0,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "11 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.5773,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 9.0909,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:ketchup",
+      "section": "TOPPINGS",
+      "sourceName": "Ketchup",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:ketchup",
+        "barcode": null,
+        "name": "Five Guys – Ketchup",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 30,
+        "protein_g": 0,
+        "carbs_g": 5,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 4,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "17 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.6676,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 5.8824,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:lettuce",
+      "section": "TOPPINGS",
+      "sourceName": "Lettuce",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:lettuce",
+        "barcode": null,
+        "name": "Five Guys – Lettuce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 3,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 0.5,
+        "sat_fat_g": 0,
+        "sodium_mg": 3,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "30 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.945,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:mayonnaise",
+      "section": "TOPPINGS",
+      "sourceName": "Mayonnaise (Supplier K)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:mayonnaise",
+        "barcode": null,
+        "name": "Five Guys – Mayonnaise",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 111,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 11,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 70,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "14 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:mustard",
+      "section": "TOPPINGS",
+      "sourceName": "Mustard",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:mustard",
+        "barcode": null,
+        "name": "Five Guys – Mustard",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 55,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "5 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 5.67,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 20,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:onions-grilled-onions",
+      "section": "TOPPINGS",
+      "sourceName": "Onions / Grilled Onions",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:onions-grilled-onions",
+        "barcode": null,
+        "name": "Five Guys – Onions / Grilled Onions",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 11,
+        "protein_g": 0,
+        "carbs_g": 2,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 1,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "26 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0904,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.8462,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:pickles",
+      "section": "TOPPINGS",
+      "sourceName": "Pickles (Supplier M)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:pickles",
+        "barcode": null,
+        "name": "Five Guys – Pickles",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 260,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "28 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5714,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:relish",
+      "section": "TOPPINGS",
+      "sourceName": "Relish",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:relish",
+        "barcode": null,
+        "name": "Five Guys – Relish",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 16,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 0,
+        "sodium_mg": 85,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "15 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.89,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 6.6667,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:toppings:tomatoes",
+      "section": "TOPPINGS",
+      "sourceName": "Tomatoes",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:tomatoes",
+        "barcode": null,
+        "name": "Five Guys – Tomatoes",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 8,
+        "protein_g": 0.5,
+        "carbs_g": 2,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 3,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "52 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5452,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.9231,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:vanilla-shake-base",
+      "section": "MILKSHAKES",
+      "sourceName": "Vanilla Shake Base",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:vanilla-shake-base",
+        "barcode": null,
+        "name": "Five Guys – Vanilla Shake Base",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 524,
+        "protein_g": 10,
+        "carbs_g": 65,
+        "fat_g": 25,
+        "fiber_g": 0,
+        "sugar_g": 64,
+        "sat_fat_g": 16,
+        "sodium_mg": 317,
+        "cholesterol_mg": 96,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "315 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.09,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3175,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:blackberry-sauce",
+      "section": "MILKSHAKES",
+      "sourceName": "Blackberry Sauce",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:blackberry-sauce",
+        "barcode": null,
+        "name": "Five Guys – Blackberry Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 0,
+        "carbs_g": 20,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 18,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "60 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4725,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.6667,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:bacon-2-pieces",
+      "section": "MILKSHAKES",
+      "sourceName": "Bacon (2 pieces)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:bacon-2-pieces",
+        "barcode": null,
+        "name": "Five Guys – Bacon (2 pieces)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 5,
+        "carbs_g": 0,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 210,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 pieces (14 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:banana-marinade",
+      "section": "MILKSHAKES",
+      "sourceName": "Banana Marinade",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:banana-marinade",
+        "barcode": null,
+        "name": "Five Guys – Banana Marinade",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 174,
+        "protein_g": 0.5,
+        "carbs_g": 43,
+        "fat_g": 0,
+        "fiber_g": 2,
+        "sugar_g": 33,
+        "sat_fat_g": 0,
+        "sodium_mg": 31,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "120 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.2363,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:chocolate",
+      "section": "MILKSHAKES",
+      "sourceName": "Chocolate",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:chocolate",
+        "barcode": null,
+        "name": "Five Guys – Chocolate",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 133,
+        "protein_g": 2,
+        "carbs_g": 30,
+        "fat_g": 2,
+        "fiber_g": 2,
+        "sugar_g": 22,
+        "sat_fat_g": 2,
+        "sodium_mg": 30,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "50 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.567,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:coffee",
+      "section": "MILKSHAKES",
+      "sourceName": "Coffee",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:coffee",
+        "barcode": null,
+        "name": "Five Guys – Coffee",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 27,
+        "protein_g": 0.5,
+        "carbs_g": 7,
+        "fat_g": 0.5,
+        "fiber_g": 0.5,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 105,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "17 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.6676,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 5.8824,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:oreo-creme",
+      "section": "MILKSHAKES",
+      "sourceName": "Oreo® Crème",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:oreo-creme",
+        "barcode": null,
+        "name": "Five Guys – Oreo® Crème",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 320,
+        "protein_g": 0,
+        "carbs_g": 23,
+        "fat_g": 25,
+        "fiber_g": 0,
+        "sugar_g": 23,
+        "sat_fat_g": 7,
+        "sodium_mg": 48,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "50 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.567,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:oreo-cookie-pieces",
+      "section": "MILKSHAKES",
+      "sourceName": "Oreo® Cookie Pieces",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:oreo-cookie-pieces",
+        "barcode": null,
+        "name": "Five Guys – Oreo® Cookie Pieces",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 1,
+        "carbs_g": 18,
+        "fat_g": 5,
+        "fiber_g": 0.5,
+        "sugar_g": 10,
+        "sat_fat_g": 1,
+        "sodium_mg": 86,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "25 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.134,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:peanut-butter",
+      "section": "MILKSHAKES",
+      "sourceName": "Peanut Butter",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:peanut-butter",
+        "barcode": null,
+        "name": "Five Guys – Peanut Butter",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 322,
+        "protein_g": 9,
+        "carbs_g": 9,
+        "fat_g": 29,
+        "fiber_g": 3,
+        "sugar_g": 4,
+        "sat_fat_g": 5,
+        "sodium_mg": 218,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "50 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.567,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:reese-s-peanut-butter-cup",
+      "section": "MILKSHAKES",
+      "sourceName": "Reese’s® Peanut Butter Cup",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:reese-s-peanut-butter-cup",
+        "barcode": null,
+        "name": "Five Guys – Reese’s® Peanut Butter Cup",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 3,
+        "carbs_g": 15,
+        "fat_g": 8,
+        "fiber_g": 1,
+        "sugar_g": 14,
+        "sat_fat_g": 3,
+        "sodium_mg": 98,
+        "cholesterol_mg": 2,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "28 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5714,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:salted-caramel",
+      "section": "MILKSHAKES",
+      "sourceName": "Salted Caramel",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:salted-caramel",
+        "barcode": null,
+        "name": "Five Guys – Salted Caramel",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 155,
+        "protein_g": 0.5,
+        "carbs_g": 37,
+        "fat_g": 0.5,
+        "fiber_g": 0,
+        "sugar_g": 28,
+        "sat_fat_g": 0.5,
+        "sodium_mg": 290,
+        "cholesterol_mg": 2,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "50 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.567,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:milkshakes:strawberry",
+      "section": "MILKSHAKES",
+      "sourceName": "Strawberry",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:strawberry",
+        "barcode": null,
+        "name": "Five Guys – Strawberry",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 107,
+        "protein_g": 0.5,
+        "carbs_g": 28,
+        "fat_g": 0.5,
+        "fiber_g": 1,
+        "sugar_g": 24,
+        "sat_fat_g": 0,
+        "sodium_mg": 12,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "80 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3544,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.25,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:mini-vanilla-shake-base",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Mini Vanilla Shake Base",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:mini-vanilla-shake-base",
+        "barcode": null,
+        "name": "Five Guys – Mini Vanilla Shake Base",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 250,
+        "protein_g": 5,
+        "carbs_g": 33,
+        "fat_g": 12,
+        "fiber_g": 0,
+        "sugar_g": 32,
+        "sat_fat_g": 8,
+        "sodium_mg": 157,
+        "cholesterol_mg": 48,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "155 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1829,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.6452,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:whipped-cream",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Whipped Cream (Supplier S)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:whipped-cream",
+        "barcode": null,
+        "name": "Five Guys – Whipped Cream",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 4,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0.5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 2,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 7.0875,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 25,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:whipped-cream:3-g",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Whipped Cream (Supplier A)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:whipped-cream:3-g",
+        "barcode": null,
+        "name": "Five Guys – Whipped Cream (3 g)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 3,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0.5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 2,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "3 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 9.45,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 33.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:blackberry-sauce",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Blackberry Sauce",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:blackberry-sauce",
+        "barcode": null,
+        "name": "Five Guys – Blackberry Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 40,
+        "protein_g": 0,
+        "carbs_g": 10,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 9,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "30 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.945,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:bacon-2-pieces",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Bacon (2 pieces)",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:bacon-2-pieces",
+        "barcode": null,
+        "name": "Five Guys – Bacon (2 pieces)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 35,
+        "protein_g": 2,
+        "carbs_g": 0,
+        "fat_g": 3,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 105,
+        "cholesterol_mg": 7,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 pieces (7 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 4.05,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 14.2857,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:banana-marinade",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Banana Marinade",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:banana-marinade",
+        "barcode": null,
+        "name": "Five Guys – Banana Marinade",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 87,
+        "protein_g": 0,
+        "carbs_g": 21,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 16,
+        "sat_fat_g": 0,
+        "sodium_mg": 15,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "60 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4725,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.6667,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:chocolate",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Chocolate",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:chocolate",
+        "barcode": null,
+        "name": "Five Guys – Chocolate",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 66,
+        "protein_g": 1,
+        "carbs_g": 15,
+        "fat_g": 1,
+        "fiber_g": 1,
+        "sugar_g": 11,
+        "sat_fat_g": 1,
+        "sodium_mg": 15,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "25 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.134,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:coffee",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Coffee",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:coffee",
+        "barcode": null,
+        "name": "Five Guys – Coffee",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 13,
+        "protein_g": 0,
+        "carbs_g": 3,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0.5,
+        "sat_fat_g": 0,
+        "sodium_mg": 52,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "8 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 3.5438,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 12.5,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:oreo-creme",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Oreo® Crème",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:oreo-creme",
+        "barcode": null,
+        "name": "Five Guys – Oreo® Crème",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 160,
+        "protein_g": 0,
+        "carbs_g": 11,
+        "fat_g": 12,
+        "fiber_g": 0,
+        "sugar_g": 11,
+        "sat_fat_g": 3,
+        "sodium_mg": 24,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "25 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.134,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:oreo-cookie-pieces",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Oreo® Cookie Pieces",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:oreo-cookie-pieces",
+        "barcode": null,
+        "name": "Five Guys – Oreo® Cookie Pieces",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 60,
+        "protein_g": 0.5,
+        "carbs_g": 9,
+        "fat_g": 2,
+        "fiber_g": 0,
+        "sugar_g": 5,
+        "sat_fat_g": 0.5,
+        "sodium_mg": 43,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "12 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.3625,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 8.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:peanut-butter",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Peanut Butter",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:peanut-butter",
+        "barcode": null,
+        "name": "Five Guys – Peanut Butter",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 161,
+        "protein_g": 4,
+        "carbs_g": 4,
+        "fat_g": 14,
+        "fiber_g": 1,
+        "sugar_g": 2,
+        "sat_fat_g": 2,
+        "sodium_mg": 109,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "25 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.134,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:reese-s-peanut-butter-cup",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Reese’s® Peanut Butter Cup",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:reese-s-peanut-butter-cup",
+        "barcode": null,
+        "name": "Five Guys – Reese’s® Peanut Butter Cup",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 75,
+        "protein_g": 1,
+        "carbs_g": 7,
+        "fat_g": 4,
+        "fiber_g": 0.5,
+        "sugar_g": 7,
+        "sat_fat_g": 1,
+        "sodium_mg": 49,
+        "cholesterol_mg": 1,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "14 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:salted-caramel",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Salted Caramel",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:salted-caramel",
+        "barcode": null,
+        "name": "Five Guys – Salted Caramel",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 77,
+        "protein_g": 0,
+        "carbs_g": 18,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 14,
+        "sat_fat_g": 0,
+        "sodium_mg": 145,
+        "cholesterol_mg": 1,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "25 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.134,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 4,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:mini-milkshakes:strawberry",
+      "section": "MINI MILKSHAKES",
+      "sourceName": "Strawberry",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:mini-milkshakes:strawberry",
+        "barcode": null,
+        "name": "Five Guys – Strawberry",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 53,
+        "protein_g": 0,
+        "carbs_g": 14,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 12,
+        "sat_fat_g": 0,
+        "sodium_mg": 6,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "40 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7088,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:drinks:chocolate-milk",
+      "section": "DRINKS",
+      "sourceName": "Chocolate Milk",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:drinks:chocolate-milk",
+        "barcode": null,
+        "name": "Five Guys – Chocolate Milk",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 8,
+        "carbs_g": 23,
+        "fat_g": 2.5,
+        "fiber_g": 0,
+        "sugar_g": 22,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 180,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "245 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1157,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4082,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:drinks:low-fat-milk",
+      "section": "DRINKS",
+      "sourceName": "Low Fat Milk",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:drinks:low-fat-milk",
+        "barcode": null,
+        "name": "Five Guys – Low Fat Milk",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 7,
+        "carbs_g": 10,
+        "fat_g": 2,
+        "fiber_g": 0,
+        "sugar_g": 10,
+        "sat_fat_g": 1,
+        "sodium_mg": 90,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "213 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1331,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4695,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:drinks:apple-juice",
+      "section": "DRINKS",
+      "sourceName": "Apple Juice",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:drinks:apple-juice",
+        "barcode": null,
+        "name": "Five Guys – Apple Juice",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 35,
+        "protein_g": 0,
+        "carbs_g": 9,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 8,
+        "sat_fat_g": 0,
+        "sodium_mg": 15,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "177 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1602,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.565,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:drinks:orange-juice-blend",
+      "section": "DRINKS",
+      "sourceName": "Orange Juice Blend",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:drinks:orange-juice-blend",
+        "barcode": null,
+        "name": "Five Guys – Orange Juice Blend",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 140,
+        "protein_g": 1,
+        "carbs_g": 34,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 33,
+        "sat_fat_g": 0,
+        "sodium_mg": 5,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "300 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0945,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:sauces:cheese-sauce",
+      "section": "SAUCES",
+      "sourceName": "Cheese Sauce",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:sauces:cheese-sauce",
+        "barcode": null,
+        "name": "Five Guys – Cheese Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 92,
+        "protein_g": 4,
+        "carbs_g": 7,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 3,
+        "sodium_mg": 622,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0.5
+        }
+      },
+      "servings": [
+        {
+          "label": "90 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.315,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1111,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:sauces:five-guys-sauce",
+      "section": "SAUCES",
+      "sourceName": "Five Guys Sauce",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:sauces:five-guys-sauce",
+        "barcode": null,
+        "name": "Five Guys – Five Guys Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 169,
+        "protein_g": 0.5,
+        "carbs_g": 4,
+        "fat_g": 15,
+        "fiber_g": 0.5,
+        "sugar_g": 3,
+        "sat_fat_g": 2.8,
+        "sodium_mg": 300,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "35 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.81,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.8571,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:peanuts:bulk-peanuts-1oz",
+      "section": "PEANUTS",
+      "sourceName": "Bulk Peanuts (1oz.)",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:peanuts:bulk-peanuts-1oz",
+        "barcode": null,
+        "name": "Five Guys – Bulk Peanuts (1oz.)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 7,
+        "carbs_g": 5,
+        "fat_g": 14,
+        "fiber_g": 3,
+        "sugar_g": 1,
+        "sat_fat_g": 2,
+        "sodium_mg": 180,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "30 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.945,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:peanuts:cajun-peanuts",
+      "section": "PEANUTS",
+      "sourceName": "Cajun Peanuts",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:peanuts:cajun-peanuts",
+        "barcode": null,
+        "name": "Five Guys – Cajun Peanuts",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 7,
+        "carbs_g": 5,
+        "fat_g": 14,
+        "fiber_g": 3,
+        "sugar_g": 1,
+        "sat_fat_g": 2,
+        "sodium_mg": 180,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "30 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.945,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.3333,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:other-items:fry-sauce-bulk",
+      "section": "OTHER ITEMS",
+      "sourceName": "Fry Sauce Bulk",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:fry-sauce-bulk",
+        "barcode": null,
+        "name": "Five Guys – Fry Sauce Bulk",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 0,
+        "carbs_g": 6,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 4,
+        "sat_fat_g": 2,
+        "sodium_mg": 294,
+        "cholesterol_mg": 8,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "28 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5714,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:other-items:fry-sauce-pc",
+      "section": "OTHER ITEMS",
+      "sourceName": "Fry Sauce PC",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:fry-sauce-pc",
+        "barcode": null,
+        "name": "Five Guys – Fry Sauce PC",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 0,
+        "carbs_g": 5,
+        "fat_g": 9,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 2,
+        "sodium_mg": 240,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "35 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.81,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.8571,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:other-items:malt-vinegar-1tbs",
+      "section": "OTHER ITEMS",
+      "sourceName": "Malt Vinegar (1tbs)",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:malt-vinegar-1tbs",
+        "barcode": null,
+        "name": "Five Guys – Malt Vinegar (1tbs)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 2,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "15 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.89,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 6.6667,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:other-items:eggs-2",
+      "section": "OTHER ITEMS",
+      "sourceName": "Eggs (2)",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:eggs-2",
+        "barcode": null,
+        "name": "Five Guys – Eggs (2)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 160,
+        "protein_g": 13,
+        "carbs_g": 1,
+        "fat_g": 11,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 130,
+        "cholesterol_mg": 400,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "105 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.27,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.9524,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:other-items:liquid-butter-flavored-oil",
+      "section": "OTHER ITEMS",
+      "sourceName": "Liquid Butter Flavored Oil",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:liquid-butter-flavored-oil",
+        "barcode": null,
+        "name": "Five Guys – Liquid Butter Flavored Oil",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 14,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 110,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0.5
+        }
+      },
+      "servings": [
+        {
+          "label": "14 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "fiveguys:other-items:lemons-1-slice",
+      "section": "OTHER ITEMS",
+      "sourceName": "Lemons (1 slice)",
+      "servingText": null,
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:lemons-1-slice",
+        "barcode": null,
+        "name": "Five Guys – Lemons (1 slice)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 3,
+        "protein_g": 0.5,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 0.5,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 slice (10 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.835,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 10,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    }
+  ],
+  "flagged": [
+    {
+      "externalId": "fiveguys:meat:bacon-2-pieces:dup-1",
+      "section": "MEAT",
+      "sourceName": "Bacon (2 pieces) (Supplier D)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:bacon-2-pieces:dup-1",
+        "barcode": null,
+        "name": "Five Guys – Bacon (2 pieces)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 73,
+        "protein_g": 6,
+        "carbs_g": 0,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 213,
+        "cholesterol_mg": 11,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 pieces (14 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Duplicate of \"Bacon (2 pieces) (Supplier S)\" (same natural key); first kept."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:meat:mini-patty",
+      "section": "MEAT",
+      "sourceName": "Mini Patty",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:mini-patty",
+        "barcode": null,
+        "name": "Five Guys – Mini Patty",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 163,
+        "protein_g": 9,
+        "carbs_g": 0,
+        "fat_g": 9,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 4,
+        "sodium_mg": 27,
+        "cholesterol_mg": 32,
+        "micros": {
+          "trans_fat_g": 1
+        }
+      },
+      "servings": [
+        {
+          "label": "35 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.81,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.8571,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Calories (163) are 39% off 4/4/9 macros (117)."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:meat:hamburger-patty",
+      "section": "MEAT",
+      "sourceName": "Hamburger Patty",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:hamburger-patty",
+        "barcode": null,
+        "name": "Five Guys – Hamburger Patty",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 302,
+        "protein_g": 16,
+        "carbs_g": 0,
+        "fat_g": 17,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 8,
+        "sodium_mg": 50,
+        "cholesterol_mg": 60,
+        "micros": {
+          "trans_fat_g": 1
+        }
+      },
+      "servings": [
+        {
+          "label": "65 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4362,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.5385,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Calories (302) are 39% off 4/4/9 macros (217)."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:meat:hot-dog:dup-1",
+      "section": "MEAT",
+      "sourceName": "Hot Dog (Supplier K)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:meat:hot-dog:dup-1",
+        "barcode": null,
+        "name": "Five Guys – Hot Dog",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 260,
+        "protein_g": 11,
+        "carbs_g": 1,
+        "fat_g": 24,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 9,
+        "sodium_mg": 750,
+        "cholesterol_mg": 60,
+        "micros": {
+          "trans_fat_g": 1
+        }
+      },
+      "servings": [
+        {
+          "label": "90 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.315,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1111,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Duplicate of \"Hot Dog (Supplier H)\" (same natural key); first kept."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:toppings:bbq-sauce",
+      "section": "TOPPINGS",
+      "sourceName": "BBQ Sauce",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:bbq-sauce",
+        "barcode": null,
+        "name": "Five Guys – BBQ Sauce",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 49,
+        "protein_g": 0.5,
+        "carbs_g": 15,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 10,
+        "sat_fat_g": 0,
+        "sodium_mg": 400,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "28 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5714,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Calories (49) are 21% off 4/4/9 macros (62)."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:toppings:cheese-1-slice:dup-1",
+      "section": "TOPPINGS",
+      "sourceName": "Cheese (1 slice) (Supplier S)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:cheese-1-slice:dup-1",
+        "barcode": null,
+        "name": "Five Guys – Cheese (1 slice)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 3,
+        "carbs_g": 1,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 0.5,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 330,
+        "cholesterol_mg": 20,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 slice (19 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.4921,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 5.2632,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Duplicate of \"Cheese (1 slice) (Supplier K)\" (same natural key); first kept."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:toppings:mayonnaise:dup-1",
+      "section": "TOPPINGS",
+      "sourceName": "Mayonnaise (Supplier S)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:mayonnaise:dup-1",
+        "barcode": null,
+        "name": "Five Guys – Mayonnaise",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 103,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 11,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 69,
+        "cholesterol_mg": 7,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "14 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 2.025,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 7.1429,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Duplicate of \"Mayonnaise (Supplier K)\" (same natural key); first kept."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:toppings:pickles:dup-1",
+      "section": "TOPPINGS",
+      "sourceName": "Pickles (Supplier B)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:toppings:pickles:dup-1",
+        "barcode": null,
+        "name": "Five Guys – Pickles",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 240,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "28 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5714,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Duplicate of \"Pickles (Supplier M)\" (same natural key); first kept."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:milkshakes:whipped-cream",
+      "section": "MILKSHAKES",
+      "sourceName": "Whipped Cream (Supplier S)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:whipped-cream",
+        "barcode": null,
+        "name": "Five Guys – Whipped Cream",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 7,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 1.5,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 1,
+        "sodium_mg": 0,
+        "cholesterol_mg": 5,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "7 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 4.05,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 14.2857,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Calories (7) are 60% off 4/4/9 macros (18)."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:milkshakes:whipped-cream:6-g",
+      "section": "MILKSHAKES",
+      "sourceName": "Whipped Cream (Supplier A)",
+      "servingText": null,
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:milkshakes:whipped-cream:6-g",
+        "barcode": null,
+        "name": "Five Guys – Whipped Cream (6 g)",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 6,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 1.5,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 1,
+        "sodium_mg": 0,
+        "cholesterol_mg": 5,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "6 g",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 4.725,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 16.6667,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Calories (6) are 66% off 4/4/9 macros (18)."],
+      "approved": false
+    },
+    {
+      "externalId": "fiveguys:other-items:chives-seasoning",
+      "section": "OTHER ITEMS",
+      "sourceName": "Chives Seasoning",
+      "servingText": "1-2",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "fiveguys:other-items:chives-seasoning",
+        "barcode": null,
+        "name": "Five Guys – Chives Seasoning",
+        "brand": "Five Guys",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1-2",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": ["Columns didn’t line up with the header; values were placed by position."],
+      "approved": false
+    }
+  ]
+}

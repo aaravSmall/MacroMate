@@ -1,0 +1,5130 @@
+{
+  "chain": "chipotle",
+  "name": "Chipotle",
+  "source": {
+    "url": "https://www.chipotle.com/content/dam/chipotle/menu/nutrition/US-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+    "note": "US Nutrition Facts, March 2025 (official, chipotle.com).",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "extractedAt": "2026-10-18T23:06:05.430Z",
+  "counts": {
+    "items": 116,
+    "flagged": 7
+  },
+  "review": "Check items against the PDF. Flagged items are not uploaded unless you set \"approved\": true on them.",
+  "items": [
+    {
+      "externalId": "chipotle:menu:flour-tortilla-burrito",
+      "section": null,
+      "sourceName": "Flour Tortilla (burrito)",
+      "servingText": "1 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:flour-tortilla-burrito",
+        "barcode": null,
+        "name": "Chipotle – Flour Tortilla (burrito)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 320,
+        "protein_g": 8,
+        "carbs_g": 50,
+        "fat_g": 9,
+        "fiber_g": 3,
+        "sugar_g": 0,
+        "sat_fat_g": 0.5,
+        "sodium_mg": 600,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:flour-tortilla-taco",
+      "section": null,
+      "sourceName": "Flour Tortilla (taco)",
+      "servingText": "1 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:flour-tortilla-taco",
+        "barcode": null,
+        "name": "Chipotle – Flour Tortilla (taco)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 2,
+        "carbs_g": 13,
+        "fat_g": 2.5,
+        "fiber_g": 0.5,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:crispy-corn-tortilla",
+      "section": null,
+      "sourceName": "Crispy Corn Tortilla",
+      "servingText": "1 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:crispy-corn-tortilla",
+        "barcode": null,
+        "name": "Chipotle – Crispy Corn Tortilla",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 1,
+        "carbs_g": 10,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:cilantro-lime-brown-rice",
+      "section": null,
+      "sourceName": "Cilantro-Lime Brown Rice",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:cilantro-lime-brown-rice",
+        "barcode": null,
+        "name": "Chipotle – Cilantro-Lime Brown Rice",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 210,
+        "protein_g": 4,
+        "carbs_g": 36,
+        "fat_g": 6,
+        "fiber_g": 2,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 190,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:cilantro-lime-white-rice",
+      "section": null,
+      "sourceName": "Cilantro-Lime White Rice",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:cilantro-lime-white-rice",
+        "barcode": null,
+        "name": "Chipotle – Cilantro-Lime White Rice",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 210,
+        "protein_g": 4,
+        "carbs_g": 40,
+        "fat_g": 4,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 350,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:black-beans",
+      "section": null,
+      "sourceName": "Black Beans",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:black-beans",
+        "barcode": null,
+        "name": "Chipotle – Black Beans",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 130,
+        "protein_g": 8,
+        "carbs_g": 22,
+        "fat_g": 1.5,
+        "fiber_g": 7,
+        "sugar_g": 2,
+        "sat_fat_g": 0,
+        "sodium_mg": 210,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:pinto-beans",
+      "section": null,
+      "sourceName": "Pinto Beans",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:pinto-beans",
+        "barcode": null,
+        "name": "Chipotle – Pinto Beans",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 130,
+        "protein_g": 8,
+        "carbs_g": 21,
+        "fat_g": 1.5,
+        "fiber_g": 8,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 210,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:fajita-vegetables",
+      "section": null,
+      "sourceName": "Fajita Vegetables",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:fajita-vegetables",
+        "barcode": null,
+        "name": "Chipotle – Fajita Vegetables",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 20,
+        "protein_g": 1,
+        "carbs_g": 5,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 2,
+        "sat_fat_g": 0,
+        "sodium_mg": 150,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:barbacoa",
+      "section": null,
+      "sourceName": "Barbacoa",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:barbacoa",
+        "barcode": null,
+        "name": "Chipotle – Barbacoa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 24,
+        "carbs_g": 2,
+        "fat_g": 7,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 530,
+        "cholesterol_mg": 65,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chicken",
+      "section": null,
+      "sourceName": "Chicken",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chicken",
+        "barcode": null,
+        "name": "Chipotle – Chicken",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 180,
+        "protein_g": 32,
+        "carbs_g": 0,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 3,
+        "sodium_mg": 310,
+        "cholesterol_mg": 125,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:carnitas",
+      "section": null,
+      "sourceName": "Carnitas",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:carnitas",
+        "barcode": null,
+        "name": "Chipotle – Carnitas",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 210,
+        "protein_g": 23,
+        "carbs_g": 0,
+        "fat_g": 12,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 7,
+        "sodium_mg": 450,
+        "cholesterol_mg": 65,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:steak",
+      "section": null,
+      "sourceName": "Steak",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:steak",
+        "barcode": null,
+        "name": "Chipotle – Steak",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 21,
+        "carbs_g": 1,
+        "fat_g": 6,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 330,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sofritas",
+      "section": null,
+      "sourceName": "Sofritas",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sofritas",
+        "barcode": null,
+        "name": "Chipotle – Sofritas",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 8,
+        "carbs_g": 9,
+        "fat_g": 10,
+        "fiber_g": 3,
+        "sugar_g": 5,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 560,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:fresh-tomato-salsa",
+      "section": null,
+      "sourceName": "Fresh Tomato Salsa",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:fresh-tomato-salsa",
+        "barcode": null,
+        "name": "Chipotle – Fresh Tomato Salsa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 25,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 550,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:roasted-chili-corn-salsa",
+      "section": null,
+      "sourceName": "Roasted Chili-Corn Salsa",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:roasted-chili-corn-salsa",
+        "barcode": null,
+        "name": "Chipotle – Roasted Chili-Corn Salsa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 3,
+        "carbs_g": 16,
+        "fat_g": 1.5,
+        "fiber_g": 3,
+        "sugar_g": 4,
+        "sat_fat_g": 0,
+        "sodium_mg": 330,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tomatillo-green-chili-salsa",
+      "section": null,
+      "sourceName": "Tomatillo-Green Chili Salsa",
+      "servingText": "2 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tomatillo-green-chili-salsa",
+        "barcode": null,
+        "name": "Chipotle – Tomatillo-Green Chili Salsa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 15,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 0,
+        "sodium_mg": 260,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:cheese",
+      "section": null,
+      "sourceName": "Cheese",
+      "servingText": "1 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:cheese",
+        "barcode": null,
+        "name": "Chipotle – Cheese",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 6,
+        "carbs_g": 1,
+        "fat_g": 8,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 5,
+        "sodium_mg": 190,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9982,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5211,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sour-cream",
+      "section": null,
+      "sourceName": "Sour Cream",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sour-cream",
+        "barcode": null,
+        "name": "Chipotle – Sour Cream",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 2,
+        "carbs_g": 2,
+        "fat_g": 9,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 7,
+        "sodium_mg": 30,
+        "cholesterol_mg": 40,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:guacamole-topping-side",
+      "section": null,
+      "sourceName": "Guacamole (topping/side)",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:guacamole-topping-side",
+        "barcode": null,
+        "name": "Chipotle – Guacamole (topping/side)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 230,
+        "protein_g": 2,
+        "carbs_g": 8,
+        "fat_g": 22,
+        "fiber_g": 6,
+        "sugar_g": 1,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 370,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:guacamole-large",
+      "section": null,
+      "sourceName": "Guacamole (large)",
+      "servingText": "8 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:guacamole-large",
+        "barcode": null,
+        "name": "Chipotle – Guacamole (large)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 460,
+        "protein_g": 4,
+        "carbs_g": 16,
+        "fat_g": 44,
+        "fiber_g": 12,
+        "sugar_g": 2,
+        "sat_fat_g": 7,
+        "sodium_mg": 740,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "8 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4409,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:queso-blanco-entree",
+      "section": null,
+      "sourceName": "Queso Blanco (entreé)",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:queso-blanco-entree",
+        "barcode": null,
+        "name": "Chipotle – Queso Blanco (entreé)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 5,
+        "carbs_g": 4,
+        "fat_g": 9,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 6,
+        "sodium_mg": 250,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:queso-blanco-side",
+      "section": null,
+      "sourceName": "Queso Blanco (side)",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:queso-blanco-side",
+        "barcode": null,
+        "name": "Chipotle – Queso Blanco (side)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 240,
+        "protein_g": 10,
+        "carbs_g": 7,
+        "fat_g": 18,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 12,
+        "sodium_mg": 490,
+        "cholesterol_mg": 60,
+        "micros": {
+          "trans_fat_g": 1
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:queso-blanco-large",
+      "section": null,
+      "sourceName": "Queso Blanco (large)",
+      "servingText": "8 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:queso-blanco-large",
+        "barcode": null,
+        "name": "Chipotle – Queso Blanco (large)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 480,
+        "protein_g": 20,
+        "carbs_g": 14,
+        "fat_g": 37,
+        "fiber_g": 0.5,
+        "sugar_g": 5,
+        "sat_fat_g": 23,
+        "sodium_mg": 980,
+        "cholesterol_mg": 120,
+        "micros": {
+          "trans_fat_g": 1.5
+        }
+      },
+      "servings": [
+        {
+          "label": "8 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4409,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:supergreens-salad-mix",
+      "section": null,
+      "sourceName": "Supergreens Salad Mix",
+      "servingText": "3 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:supergreens-salad-mix",
+        "barcode": null,
+        "name": "Chipotle – Supergreens Salad Mix",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 15,
+        "protein_g": 1,
+        "carbs_g": 3,
+        "fat_g": 0,
+        "fiber_g": 2,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 15,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "3 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3331,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1751,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:romaine-lettuce-tacos",
+      "section": null,
+      "sourceName": "Romaine Lettuce (tacos)",
+      "servingText": "1 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:romaine-lettuce-tacos",
+        "barcode": null,
+        "name": "Chipotle – Romaine Lettuce (tacos)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 5,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9982,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5211,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chips-regular",
+      "section": null,
+      "sourceName": "Chips (regular)",
+      "servingText": "4 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chips-regular",
+        "barcode": null,
+        "name": "Chipotle – Chips (regular)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 540,
+        "protein_g": 7,
+        "carbs_g": 73,
+        "fat_g": 25,
+        "fiber_g": 7,
+        "sugar_g": 1,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 390,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "4 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.25,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.8818,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chips-large",
+      "section": null,
+      "sourceName": "Chips (large)",
+      "servingText": "6 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chips-large",
+        "barcode": null,
+        "name": "Chipotle – Chips (large)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 810,
+        "protein_g": 11,
+        "carbs_g": 110,
+        "fat_g": 38,
+        "fiber_g": 11,
+        "sugar_g": 2,
+        "sat_fat_g": 5,
+        "sodium_mg": 590,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "6 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1667,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.5879,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-honey-vinaigrette",
+      "section": null,
+      "sourceName": "Chipotle-Honey Vinaigrette",
+      "servingText": "2 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-honey-vinaigrette",
+        "barcode": null,
+        "name": "Chipotle – Chipotle-Honey Vinaigrette",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 220,
+        "protein_g": 1,
+        "carbs_g": 18,
+        "fat_g": 16,
+        "fiber_g": 1,
+        "sugar_g": 12,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 850,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:barq-s-root-beer",
+      "section": null,
+      "sourceName": "Barq's Root Beer",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:barq-s-root-beer",
+        "barcode": null,
+        "name": "Chipotle – Barq's Root Beer",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 85,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 85,
+        "sat_fat_g": 0,
+        "sodium_mg": 130,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:barq-s-root-beer:32-fl-oz",
+      "section": null,
+      "sourceName": "Barq's Root Beer",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:barq-s-root-beer:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Barq's Root Beer (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 430,
+        "protein_g": 0,
+        "carbs_g": 120,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 120,
+        "sat_fat_g": 0,
+        "sodium_mg": 180,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:coca-cola-classic",
+      "section": null,
+      "sourceName": "Coca-Cola Classic",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:coca-cola-classic",
+        "barcode": null,
+        "name": "Chipotle – Coca-Cola Classic",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 260,
+        "protein_g": 0,
+        "carbs_g": 70,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 70,
+        "sat_fat_g": 0,
+        "sodium_mg": 85,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:coca-cola-classic:32-fl-oz",
+      "section": null,
+      "sourceName": "Coca-Cola Classic",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:coca-cola-classic:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Coca-Cola Classic (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 380,
+        "protein_g": 0,
+        "carbs_g": 105,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 105,
+        "sat_fat_g": 0,
+        "sodium_mg": 120,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:coca-cola-life",
+      "section": null,
+      "sourceName": "Coca Cola Life",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:coca-cola-life",
+        "barcode": null,
+        "name": "Chipotle – Coca Cola Life",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 0,
+        "carbs_g": 44,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 44,
+        "sat_fat_g": 0,
+        "sodium_mg": 70,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:coca-cola-life:32-fl-oz",
+      "section": null,
+      "sourceName": "Coca Cola Life",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:coca-cola-life:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Coca Cola Life (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 250,
+        "protein_g": 0,
+        "carbs_g": 64,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 64,
+        "sat_fat_g": 0,
+        "sodium_mg": 105,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:coca-cola-zero",
+      "section": null,
+      "sourceName": "Coca-Cola Zero",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:coca-cola-zero",
+        "barcode": null,
+        "name": "Chipotle – Coca-Cola Zero",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 75,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:coca-cola-zero:32-fl-oz",
+      "section": null,
+      "sourceName": "Coca-Cola Zero",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:coca-cola-zero:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Coca-Cola Zero (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 115,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-coke",
+      "section": null,
+      "sourceName": "Diet Coke",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-coke",
+        "barcode": null,
+        "name": "Chipotle – Diet Coke",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 75,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-coke:32-fl-oz",
+      "section": null,
+      "sourceName": "Diet Coke",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-coke:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Diet Coke (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 115,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-coke-caffeine-free",
+      "section": null,
+      "sourceName": "Diet Coke, Caffeine Free",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-coke-caffeine-free",
+        "barcode": null,
+        "name": "Chipotle – Diet Coke, Caffeine Free",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 90,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-coke-caffeine-free:32-fl-oz",
+      "section": null,
+      "sourceName": "Diet Coke, Caffeine Free",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-coke-caffeine-free:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Diet Coke, Caffeine Free (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 130,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:pibb-xtra",
+      "section": null,
+      "sourceName": "Pibb Xtra",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:pibb-xtra",
+        "barcode": null,
+        "name": "Chipotle – Pibb Xtra",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 260,
+        "protein_g": 0,
+        "carbs_g": 70,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 70,
+        "sat_fat_g": 0,
+        "sodium_mg": 75,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:pibb-xtra:32-fl-oz",
+      "section": null,
+      "sourceName": "Pibb Xtra",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:pibb-xtra:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Pibb Xtra (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 380,
+        "protein_g": 0,
+        "carbs_g": 105,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 105,
+        "sat_fat_g": 0,
+        "sodium_mg": 115,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sprite",
+      "section": null,
+      "sourceName": "Sprite",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sprite",
+        "barcode": null,
+        "name": "Chipotle – Sprite",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 260,
+        "protein_g": 0,
+        "carbs_g": 70,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 70,
+        "sat_fat_g": 0,
+        "sodium_mg": 120,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sprite:32-fl-oz",
+      "section": null,
+      "sourceName": "Sprite",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sprite:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Sprite (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 380,
+        "protein_g": 0,
+        "carbs_g": 105,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 105,
+        "sat_fat_g": 0,
+        "sodium_mg": 180,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:fanta-orange",
+      "section": null,
+      "sourceName": "Fanta Orange",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:fanta-orange",
+        "barcode": null,
+        "name": "Chipotle – Fanta Orange",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 290,
+        "protein_g": 0,
+        "carbs_g": 80,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 80,
+        "sat_fat_g": 0,
+        "sodium_mg": 80,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:fanta-orange:32-fl-oz",
+      "section": null,
+      "sourceName": "Fanta Orange",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:fanta-orange:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Fanta Orange (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 430,
+        "protein_g": 0,
+        "carbs_g": 120,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 120,
+        "sat_fat_g": 0,
+        "sodium_mg": 140,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:minute-maid-lemonade",
+      "section": null,
+      "sourceName": "Minute Maid Lemonade",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:minute-maid-lemonade",
+        "barcode": null,
+        "name": "Chipotle – Minute Maid Lemonade",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 75,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 75,
+        "sat_fat_g": 0,
+        "sodium_mg": 95,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:minute-maid-lemonade:32-fl-oz",
+      "section": null,
+      "sourceName": "Minute Maid Lemonade",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:minute-maid-lemonade:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Minute Maid Lemonade (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 110,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 110,
+        "sat_fat_g": 0,
+        "sodium_mg": 140,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:powerade-mountain-berry-blast",
+      "section": null,
+      "sourceName": "Powerade Mountain Berry Blast",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:powerade-mountain-berry-blast",
+        "barcode": null,
+        "name": "Chipotle – Powerade Mountain Berry Blast",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 75,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 75,
+        "sat_fat_g": 0,
+        "sodium_mg": 95,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:powerade-mountain-berry-blast:32-fl-oz",
+      "section": null,
+      "sourceName": "Powerade Mountain Berry Blast",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:powerade-mountain-berry-blast:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Powerade Mountain Berry Blast (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 110,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 110,
+        "sat_fat_g": 0,
+        "sodium_mg": 140,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mello-yello",
+      "section": null,
+      "sourceName": "Mello Yello",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mello-yello",
+        "barcode": null,
+        "name": "Chipotle – Mello Yello",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 290,
+        "protein_g": 0,
+        "carbs_g": 80,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 100,
+        "sat_fat_g": 0,
+        "sodium_mg": 100,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mello-yello:32-fl-oz",
+      "section": null,
+      "sourceName": "Mello Yello",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mello-yello:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Mello Yello (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 420,
+        "protein_g": 0,
+        "carbs_g": 116,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 140,
+        "sat_fat_g": 0,
+        "sodium_mg": 140,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:lemonade-blue-sky",
+      "section": null,
+      "sourceName": "Lemonade - Blue Sky",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:lemonade-blue-sky",
+        "barcode": null,
+        "name": "Chipotle – Lemonade - Blue Sky",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 300,
+        "protein_g": 0,
+        "carbs_g": 78,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 74,
+        "sat_fat_g": 0,
+        "sodium_mg": 95,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:lemonade-blue-sky:32-fl-oz",
+      "section": null,
+      "sourceName": "Lemonade - Blue Sky",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:lemonade-blue-sky:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Lemonade - Blue Sky (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 440,
+        "protein_g": 0,
+        "carbs_g": 113,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 108,
+        "sat_fat_g": 0,
+        "sodium_mg": 135,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mango-orange-blue-sky",
+      "section": null,
+      "sourceName": "Mango Orange - Blue Sky",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mango-orange-blue-sky",
+        "barcode": null,
+        "name": "Chipotle – Mango Orange - Blue Sky",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 300,
+        "protein_g": 0,
+        "carbs_g": 75,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 74,
+        "sat_fat_g": 0,
+        "sodium_mg": 80,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mango-orange-blue-sky:32-fl-oz",
+      "section": null,
+      "sourceName": "Mango Orange - Blue Sky",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mango-orange-blue-sky:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Mango Orange - Blue Sky (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 430,
+        "protein_g": 0,
+        "carbs_g": 109,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 108,
+        "sat_fat_g": 0,
+        "sodium_mg": 120,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-iced-tea",
+      "section": null,
+      "sourceName": "Chipotle Iced Tea",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-iced-tea",
+        "barcode": null,
+        "name": "Chipotle – Chipotle Iced Tea",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 10,
+        "protein_g": 0,
+        "carbs_g": 3,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-iced-tea:32-fl-oz",
+      "section": null,
+      "sourceName": "Chipotle Iced Tea",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-iced-tea:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Chipotle Iced Tea (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 15,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-sweet-iced-tea",
+      "section": null,
+      "sourceName": "Chipotle Sweet Iced Tea",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-sweet-iced-tea",
+        "barcode": null,
+        "name": "Chipotle – Chipotle Sweet Iced Tea",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 0,
+        "carbs_g": 45,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 45,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-sweet-iced-tea:32-fl-oz",
+      "section": null,
+      "sourceName": "Chipotle Sweet Iced Tea",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-sweet-iced-tea:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Chipotle Sweet Iced Tea (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 220,
+        "protein_g": 0,
+        "carbs_g": 65,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 65,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-berry-agua-fresca",
+      "section": null,
+      "sourceName": "Tractor Berry Agua Fresca",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-berry-agua-fresca",
+        "barcode": null,
+        "name": "Chipotle – Tractor Berry Agua Fresca",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 0,
+        "carbs_g": 50,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 49,
+        "sat_fat_g": 0,
+        "sodium_mg": 10,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-berry-agua-fresca:32-fl-oz",
+      "section": null,
+      "sourceName": "Tractor Berry Agua Fresca",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-berry-agua-fresca:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Tractor Berry Agua Fresca (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 290,
+        "protein_g": 0,
+        "carbs_g": 72,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 72,
+        "sat_fat_g": 0,
+        "sodium_mg": 15,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-watermelon-limeade",
+      "section": null,
+      "sourceName": "Tractor Watermelon Limeade",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-watermelon-limeade",
+        "barcode": null,
+        "name": "Chipotle – Tractor Watermelon Limeade",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 230,
+        "protein_g": 0,
+        "carbs_g": 56,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 50,
+        "sat_fat_g": 0,
+        "sodium_mg": 5,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-watermelon-limeade:32-fl-oz",
+      "section": null,
+      "sourceName": "Tractor Watermelon Limeade",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-watermelon-limeade:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Tractor Watermelon Limeade (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 330,
+        "protein_g": 0,
+        "carbs_g": 82,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 72,
+        "sat_fat_g": 0,
+        "sodium_mg": 10,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-lemonade",
+      "section": null,
+      "sourceName": "Tractor Lemonade",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-lemonade",
+        "barcode": null,
+        "name": "Chipotle – Tractor Lemonade",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 0,
+        "carbs_g": 43,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 37,
+        "sat_fat_g": 0,
+        "sodium_mg": 10,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-lemonade:32-fl-oz",
+      "section": null,
+      "sourceName": "Tractor Lemonade",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-lemonade:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Tractor Lemonade (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 250,
+        "protein_g": 0,
+        "carbs_g": 62,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 53,
+        "sat_fat_g": 0,
+        "sodium_mg": 15,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-mandarin-agua-fresca",
+      "section": null,
+      "sourceName": "Tractor Mandarin Agua Fresca",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-mandarin-agua-fresca",
+        "barcode": null,
+        "name": "Chipotle – Tractor Mandarin Agua Fresca",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 190,
+        "protein_g": 0,
+        "carbs_g": 47,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 47,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tractor-mandarin-agua-fresca:32-fl-oz",
+      "section": null,
+      "sourceName": "Tractor Mandarin Agua Fresca",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tractor-mandarin-agua-fresca:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Tractor Mandarin Agua Fresca (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 69,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 69,
+        "sat_fat_g": 0,
+        "sodium_mg": 5,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:flour-tortilla-taco:2-each",
+      "section": null,
+      "sourceName": "Flour Tortilla (taco)",
+      "servingText": "2 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:flour-tortilla-taco:2-each",
+        "barcode": null,
+        "name": "Chipotle – Flour Tortilla (taco) (2 each)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 5,
+        "carbs_g": 27,
+        "fat_g": 5,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 320,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:flour-tortilla-quesadilla",
+      "section": null,
+      "sourceName": "Flour Tortilla (quesadilla)",
+      "servingText": "1 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:flour-tortilla-quesadilla",
+        "barcode": null,
+        "name": "Chipotle – Flour Tortilla (quesadilla)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 2,
+        "carbs_g": 13,
+        "fat_g": 2.5,
+        "fiber_g": 0.5,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:crispy-corn-tortilla:2-each",
+      "section": null,
+      "sourceName": "Crispy Corn Tortilla",
+      "servingText": "2 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:crispy-corn-tortilla:2-each",
+        "barcode": null,
+        "name": "Chipotle – Crispy Corn Tortilla (2 each)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 130,
+        "protein_g": 2,
+        "carbs_g": 19,
+        "fat_g": 6,
+        "fiber_g": 2,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:cilantro-lime-brown-rice:2-oz",
+      "section": null,
+      "sourceName": "Cilantro-Lime Brown Rice",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:cilantro-lime-brown-rice:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Cilantro-Lime Brown Rice (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 2,
+        "carbs_g": 18,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 95,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:cilantro-lime-white-rice:2-oz",
+      "section": null,
+      "sourceName": "Cilantro-Lime White Rice",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:cilantro-lime-white-rice:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Cilantro-Lime White Rice (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 2,
+        "carbs_g": 20,
+        "fat_g": 2,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0.5,
+        "sodium_mg": 170,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:black-beans:3-oz",
+      "section": null,
+      "sourceName": "Black Beans",
+      "servingText": "3 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:black-beans:3-oz",
+        "barcode": null,
+        "name": "Chipotle – Black Beans (3 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 6,
+        "carbs_g": 16,
+        "fat_g": 1,
+        "fiber_g": 5,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "3 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3331,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1751,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:pinto-beans:3-oz",
+      "section": null,
+      "sourceName": "Pinto Beans",
+      "servingText": "3 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:pinto-beans:3-oz",
+        "barcode": null,
+        "name": "Chipotle – Pinto Beans (3 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 6,
+        "carbs_g": 15,
+        "fat_g": 1,
+        "fiber_g": 6,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "3 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3331,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1751,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:barbacoa:2-oz",
+      "section": null,
+      "sourceName": "Barbacoa",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:barbacoa:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Barbacoa (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 12,
+        "carbs_g": 1,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 260,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chicken:2-oz",
+      "section": null,
+      "sourceName": "Chicken",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chicken:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Chicken (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 15,
+        "carbs_g": 0,
+        "fat_g": 3,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 150,
+        "cholesterol_mg": 65,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:carnitas:2-oz",
+      "section": null,
+      "sourceName": "Carnitas",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:carnitas:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Carnitas (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 12,
+        "carbs_g": 0,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 3,
+        "sodium_mg": 220,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:steak:2-oz",
+      "section": null,
+      "sourceName": "Steak",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:steak:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Steak (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 10,
+        "carbs_g": 0.5,
+        "fat_g": 3,
+        "fiber_g": 0.5,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 160,
+        "cholesterol_mg": 40,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sofritas:2-oz",
+      "section": null,
+      "sourceName": "Sofritas",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sofritas:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Sofritas (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 70,
+        "protein_g": 4,
+        "carbs_g": 5,
+        "fat_g": 5,
+        "fiber_g": 2,
+        "sugar_g": 2,
+        "sat_fat_g": 1,
+        "sodium_mg": 280,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:roasted-chili-corn-salsa:2-oz",
+      "section": null,
+      "sourceName": "Roasted Chili-Corn Salsa",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:roasted-chili-corn-salsa:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Roasted Chili-Corn Salsa (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 40,
+        "protein_g": 1,
+        "carbs_g": 9,
+        "fat_g": 1,
+        "fiber_g": 1,
+        "sugar_g": 3,
+        "sat_fat_g": 0,
+        "sodium_mg": 190,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sour-cream:1-oz",
+      "section": null,
+      "sourceName": "Sour Cream",
+      "servingText": "1 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sour-cream:1-oz",
+        "barcode": null,
+        "name": "Chipotle – Sour Cream (1 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 60,
+        "protein_g": 1,
+        "carbs_g": 1,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 15,
+        "cholesterol_mg": 20,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9982,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5211,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:guacamole",
+      "section": null,
+      "sourceName": "Guacamole",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:guacamole",
+        "barcode": null,
+        "name": "Chipotle – Guacamole",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 1,
+        "carbs_g": 3,
+        "fat_g": 11,
+        "fiber_g": 3,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 190,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:queso-blanco",
+      "section": null,
+      "sourceName": "Queso Blanco",
+      "servingText": "1 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:queso-blanco",
+        "barcode": null,
+        "name": "Chipotle – Queso Blanco",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 60,
+        "protein_g": 2,
+        "carbs_g": 2,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 0.5,
+        "sat_fat_g": 3,
+        "sodium_mg": 125,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9982,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5211,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:romaine-lettuce",
+      "section": null,
+      "sourceName": "Romaine Lettuce",
+      "servingText": "1 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:romaine-lettuce",
+        "barcode": null,
+        "name": "Chipotle – Romaine Lettuce",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 5,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9982,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5211,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mandarins",
+      "section": null,
+      "sourceName": "Mandarins",
+      "servingText": "1 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mandarins",
+        "barcode": null,
+        "name": "Chipotle – Mandarins",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 35,
+        "protein_g": 1,
+        "carbs_g": 9,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 7,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:blueberries",
+      "section": null,
+      "sourceName": "Blueberries",
+      "servingText": "1 ea",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:blueberries",
+        "barcode": null,
+        "name": "Chipotle – Blueberries",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 20,
+        "protein_g": 1,
+        "carbs_g": 5,
+        "fat_g": 0,
+        "fiber_g": 0.5,
+        "sugar_g": 3,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chips",
+      "section": null,
+      "sourceName": "Chips",
+      "servingText": "1 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chips",
+        "barcode": null,
+        "name": "Chipotle – Chips",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 140,
+        "protein_g": 2,
+        "carbs_g": 18,
+        "fat_g": 6,
+        "fiber_g": 2,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 95,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9982,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.5211,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:organic-milk",
+      "section": null,
+      "sourceName": "Organic Milk",
+      "servingText": "8oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:organic-milk",
+        "barcode": null,
+        "name": "Chipotle – Organic Milk",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 8,
+        "carbs_g": 12,
+        "fat_g": 2.5,
+        "fiber_g": 0,
+        "sugar_g": 12,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 125,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "8 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4409,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:organic-chocolate-milk",
+      "section": null,
+      "sourceName": "Organic Chocolate Milk",
+      "servingText": "8oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:organic-chocolate-milk",
+        "barcode": null,
+        "name": "Chipotle – Organic Chocolate Milk",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 160,
+        "protein_g": 9,
+        "carbs_g": 24,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 22,
+        "sat_fat_g": 2,
+        "sodium_mg": 220,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "8 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.125,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4409,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:organic-apple-juice",
+      "section": null,
+      "sourceName": "Organic Apple Juice",
+      "servingText": "6.75oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:organic-apple-juice",
+        "barcode": null,
+        "name": "Chipotle – Organic Apple Juice",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 0,
+        "carbs_g": 25,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 22,
+        "sat_fat_g": 0,
+        "sodium_mg": 10,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "6.75 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1481,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.5225,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:pepsi",
+      "section": null,
+      "sourceName": "Pepsi",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:pepsi",
+        "barcode": null,
+        "name": "Chipotle – Pepsi",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 77,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 77,
+        "sat_fat_g": 0,
+        "sodium_mg": 55,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:pepsi:32-fl-oz",
+      "section": null,
+      "sourceName": "Pepsi",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:pepsi:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Pepsi (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 112,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 112,
+        "sat_fat_g": 0,
+        "sodium_mg": 80,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-pepsi",
+      "section": null,
+      "sourceName": "Diet Pepsi",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-pepsi",
+        "barcode": null,
+        "name": "Chipotle – Diet Pepsi",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 70,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-pepsi:32-fl-oz",
+      "section": null,
+      "sourceName": "Diet Pepsi",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-pepsi:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Diet Pepsi (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 100,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mountain-dew",
+      "section": null,
+      "sourceName": "Mountain Dew",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mountain-dew",
+        "barcode": null,
+        "name": "Chipotle – Mountain Dew",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 300,
+        "protein_g": 0,
+        "carbs_g": 80,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 80,
+        "sat_fat_g": 0,
+        "sodium_mg": 95,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mountain-dew:32-fl-oz",
+      "section": null,
+      "sourceName": "Mountain Dew",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mountain-dew:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Mountain Dew (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 440,
+        "protein_g": 0,
+        "carbs_g": 116,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 116,
+        "sat_fat_g": 0,
+        "sodium_mg": 140,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-mountain-dew",
+      "section": null,
+      "sourceName": "Diet Mountain Dew",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-mountain-dew",
+        "barcode": null,
+        "name": "Chipotle – Diet Mountain Dew",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 110,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-mountain-dew:32-fl-oz",
+      "section": null,
+      "sourceName": "Diet Mountain Dew",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-mountain-dew:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Diet Mountain Dew (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tropicana-lemonade",
+      "section": null,
+      "sourceName": "Tropicana Lemonade",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tropicana-lemonade",
+        "barcode": null,
+        "name": "Chipotle – Tropicana Lemonade",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 74,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 74,
+        "sat_fat_g": 0,
+        "sodium_mg": 290,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:tropicana-lemonade:32-fl-oz",
+      "section": null,
+      "sourceName": "Tropicana Lemonade",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tropicana-lemonade:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Tropicana Lemonade (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 108,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 108,
+        "sat_fat_g": 0,
+        "sodium_mg": 420,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sierra-mist",
+      "section": null,
+      "sourceName": "Sierra Mist",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sierra-mist",
+        "barcode": null,
+        "name": "Chipotle – Sierra Mist",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 74,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 74,
+        "sat_fat_g": 0,
+        "sodium_mg": 55,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sierra-mist:32-fl-oz",
+      "section": null,
+      "sourceName": "Sierra Mist",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sierra-mist:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Sierra Mist (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 108,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 108,
+        "sat_fat_g": 0,
+        "sodium_mg": 80,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mug-root-beer",
+      "section": null,
+      "sourceName": "Mug Root Beer",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mug-root-beer",
+        "barcode": null,
+        "name": "Chipotle – Mug Root Beer",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 72,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 72,
+        "sat_fat_g": 0,
+        "sodium_mg": 40,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:mug-root-beer:32-fl-oz",
+      "section": null,
+      "sourceName": "Mug Root Beer",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:mug-root-beer:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Mug Root Beer (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 104,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 104,
+        "sat_fat_g": 0,
+        "sodium_mg": 60,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:lipton-raspberry-brisk-iced-tea",
+      "section": null,
+      "sourceName": "Lipton Raspberry Brisk Iced Tea",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:lipton-raspberry-brisk-iced-tea",
+        "barcode": null,
+        "name": "Chipotle – Lipton Raspberry Brisk Iced Tea",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 220,
+        "protein_g": 0,
+        "carbs_g": 58,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 58,
+        "sat_fat_g": 0,
+        "sodium_mg": 70,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:lipton-raspberry-brisk-iced-tea:32-fl-oz",
+      "section": null,
+      "sourceName": "Lipton Raspberry Brisk Iced Tea",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:lipton-raspberry-brisk-iced-tea:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Lipton Raspberry Brisk Iced Tea (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 320,
+        "protein_g": 0,
+        "carbs_g": 84,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 84,
+        "sat_fat_g": 0,
+        "sodium_mg": 100,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:dr-pepper",
+      "section": null,
+      "sourceName": "Dr. Pepper",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:dr-pepper",
+        "barcode": null,
+        "name": "Chipotle – Dr. Pepper",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 73,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 70,
+        "sat_fat_g": 0,
+        "sodium_mg": 110,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:dr-pepper:32-fl-oz",
+      "section": null,
+      "sourceName": "Dr. Pepper",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:dr-pepper:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Dr. Pepper (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 106,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 102,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-dr-pepper",
+      "section": null,
+      "sourceName": "Diet Dr. Pepper",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-dr-pepper",
+        "barcode": null,
+        "name": "Chipotle – Diet Dr. Pepper",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 110,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:diet-dr-pepper:32-fl-oz",
+      "section": null,
+      "sourceName": "Diet Dr. Pepper",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:diet-dr-pepper:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Diet Dr. Pepper (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 160,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:crush-orange",
+      "section": null,
+      "sourceName": "Crush Orange",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:crush-orange",
+        "barcode": null,
+        "name": "Chipotle – Crush Orange",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 300,
+        "protein_g": 0,
+        "carbs_g": 79,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 78,
+        "sat_fat_g": 0,
+        "sodium_mg": 130,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:crush-orange:32-fl-oz",
+      "section": null,
+      "sourceName": "Crush Orange",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:crush-orange:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Crush Orange (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 430,
+        "protein_g": 0,
+        "carbs_g": 115,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 114,
+        "sat_fat_g": 0,
+        "sodium_mg": 190,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sobe-yumberry-pomegranate",
+      "section": null,
+      "sourceName": "Sobe Yumberry Pomegranate",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sobe-yumberry-pomegranate",
+        "barcode": null,
+        "name": "Chipotle – Sobe Yumberry Pomegranate",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 85,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:sobe-yumberry-pomegranate:32-fl-oz",
+      "section": null,
+      "sourceName": "Sobe Yumberry Pomegranate",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:sobe-yumberry-pomegranate:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Sobe Yumberry Pomegranate (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 120,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-iced-tea-10w:32-fl-oz",
+      "section": null,
+      "sourceName": "Chipotle Iced Tea 10w",
+      "servingText": "32 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-iced-tea-10w:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Chipotle Iced Tea 10w (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 15,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    }
+  ],
+  "flagged": [
+    {
+      "externalId": "chipotle:menu:tomatillo-red-chili-salsa",
+      "section": null,
+      "sourceName": "Tomatillo-Red Chili Salsa",
+      "servingText": "2 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tomatillo-red-chili-salsa",
+        "barcode": null,
+        "name": "Chipotle – Tomatillo-Red Chili Salsa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 30,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 500,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": ["Calories (30) are 88% off 4/4/9 macros (16)."],
+      "approved": false
+    },
+    {
+      "externalId": "chipotle:menu:maine-root-root-beer",
+      "section": null,
+      "sourceName": "Maine Root Root Beer",
+      "servingText": "22 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:maine-root-root-beer",
+        "barcode": null,
+        "name": "Chipotle – Maine Root Root Beer",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 0,
+        "carbs_g": 62,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 62,
+        "sat_fat_g": 0,
+        "sodium_mg": 45,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": ["Calories (170) are 31% off 4/4/9 macros (248)."],
+      "approved": false
+    },
+    {
+      "externalId": "chipotle:menu:maine-root-root-beer:32-fl-oz",
+      "section": null,
+      "sourceName": "Maine Root Root Beer",
+      "servingText": "32 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:maine-root-root-beer:32-fl-oz",
+        "barcode": null,
+        "name": "Chipotle – Maine Root Root Beer (32 fl oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 240,
+        "protein_g": 0,
+        "carbs_g": 90,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 90,
+        "sat_fat_g": 0,
+        "sodium_mg": 65,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "32 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": ["Calories (240) are 33% off 4/4/9 macros (360)."],
+      "approved": false
+    },
+    {
+      "externalId": "chipotle:menu:fresh-tomato-salsa:2-oz",
+      "section": null,
+      "sourceName": "Fresh Tomato Salsa",
+      "servingText": "2 oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:fresh-tomato-salsa:2-oz",
+        "barcode": null,
+        "name": "Chipotle – Fresh Tomato Salsa (2 oz)",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 15,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0.5,
+        "sat_fat_g": 0,
+        "sodium_mg": 310,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7637,
+          "is_default": false
+        }
+      ],
+      "reasons": ["Calories (15) are 275% off 4/4/9 macros (4)."],
+      "approved": false
+    },
+    {
+      "externalId": "chipotle:menu:tomatillo-red-chili-salsa:dup-1",
+      "section": null,
+      "sourceName": "Tomatillo-Red Chili Salsa",
+      "servingText": "2 fl oz",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tomatillo-red-chili-salsa:dup-1",
+        "barcode": null,
+        "name": "Chipotle – Tomatillo-Red Chili Salsa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 30,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 2,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 500,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": [
+        "Duplicate of \"Tomatillo-Red Chili Salsa\" (same natural key); first kept.",
+        "Calories (30) are 88% off 4/4/9 macros (16)."
+      ],
+      "approved": false
+    },
+    {
+      "externalId": "chipotle:menu:chipotle-iced-tea-10w",
+      "section": null,
+      "sourceName": "Chipotle Iced Tea 10w",
+      "servingText": "22 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:chipotle-iced-tea-10w",
+        "barcode": null,
+        "name": "Chipotle – Chipotle Iced Tea 10w",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 3,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "22 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": [
+        "Columns didn’t line up with the header; values were placed by position.",
+        "No calories found.",
+        "Calories (0) are 100% off 4/4/9 macros (12)."
+      ],
+      "approved": false
+    },
+    {
+      "externalId": "chipotle:menu:tomatillo-red-chili-salsa:dup-2",
+      "section": null,
+      "sourceName": "Tomatillo-Red Chili Salsa",
+      "servingText": "2 fl oz",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "chipotle:menu:tomatillo-red-chili-salsa:dup-2",
+        "barcode": null,
+        "name": "Chipotle – Tomatillo-Red Chili Salsa",
+        "brand": "Chipotle",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 30,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 0,
+        "fiber_g": 2,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 500,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "2 fl oz",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": [
+        "Duplicate of \"Tomatillo-Red Chili Salsa\" (same natural key); first kept.",
+        "Calories (30) are 88% off 4/4/9 macros (16)."
+      ],
+      "approved": false
+    }
+  ]
+}

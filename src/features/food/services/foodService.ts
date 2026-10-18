@@ -10,9 +10,9 @@ import {
   type NewFoodInput,
   newFoodToRow,
 } from './mappers';
-import { buildIlikeOrFilter } from './searchFilter';
+import { buildTermFilters, rankFoods } from './searchFilter';
 
-const LOCAL_LIMIT = 25;
+const LOCAL_LIMIT = 50;
 /** Fewer local matches than this triggers the Open Food Facts fallback. */
 export const MIN_LOCAL_RESULTS = 5;
 
@@ -26,20 +26,18 @@ export async function searchFoods(
   query: string,
   { signal }: { signal?: AbortSignal } = {},
 ): Promise<Food[]> {
-  const filter = buildIlikeOrFilter(['name', 'brand'], query);
-  if (!filter) return [];
+  // Every word must match the name or brand, in any order ("wingstop lemon pepper").
+  const filters = buildTermFilters(['name', 'brand'], query);
+  if (filters.length === 0) return [];
 
-  let request = supabase
-    .from('foods')
-    .select(FOOD_SELECT)
-    .or(filter)
-    .order('name')
-    .limit(LOCAL_LIMIT);
-  if (signal) request = request.abortSignal(signal);
-  const { data, error } = await request;
+  let request = supabase.from('foods').select(FOOD_SELECT);
+  for (const filter of filters) request = request.or(filter);
+  let limited = request.order('name').limit(LOCAL_LIMIT);
+  if (signal) limited = limited.abortSignal(signal);
+  const { data, error } = await limited;
   if (error) throw error;
 
-  const local = data.map(mapFoodRow);
+  const local = rankFoods(query, data.map(mapFoodRow));
   if (local.length >= MIN_LOCAL_RESULTS) return local;
 
   let remote: Food[] = [];

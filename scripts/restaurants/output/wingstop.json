@@ -1,0 +1,5203 @@
+{
+  "chain": "wingstop",
+  "name": "Wingstop",
+  "source": {
+    "url": "https://s3.amazonaws.com/wingstop.com/assets/static/WSR18-0009-Corporate-NutritionalGuide-JumboWings-HR_OFFICAL.pdf",
+    "note": "Official guide on Wingstop’s asset host, linked from wingstop.com. The file name suggests 2018 (WSR18); check wingstop.com/nutrition for a newer guide before uploading.",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "extractedAt": "2026-10-18T23:06:05.337Z",
+  "counts": {
+    "items": 97,
+    "flagged": 0
+  },
+  "review": "Check items against the PDF. Flagged items are not uploaded unless you set \"approved\": true on them.",
+  "items": [
+    {
+      "externalId": "wingstop:classic-wings:atomic",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Atomic",
+      "servingText": "1ea (38.77g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:atomic",
+        "barcode": null,
+        "name": "Wingstop – Atomic Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 10,
+        "carbs_g": 1,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 220,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 10,
+          "iron_mg": 0,
+          "potassium_mg": 94
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (39 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7312,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5793,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:cajun",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Cajun",
+      "servingText": "1ea (38.86g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:cajun",
+        "barcode": null,
+        "name": "Wingstop – Cajun Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 10,
+        "carbs_g": 0,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 310,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 14,
+          "iron_mg": 0,
+          "potassium_mg": 100
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (39 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7295,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5733,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:garlic-parmesan",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Garlic Parmesan",
+      "servingText": "1ea (35.65g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:garlic-parmesan",
+        "barcode": null,
+        "name": "Wingstop – Garlic Parmesan Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 10,
+        "carbs_g": 1,
+        "fat_g": 8,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 75,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 15,
+          "iron_mg": 0,
+          "potassium_mg": 90
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (36 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7952,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.805,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:hawaiian",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Hawaiian",
+      "servingText": "1ea (39.28g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:hawaiian",
+        "barcode": null,
+        "name": "Wingstop – Hawaiian Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 10,
+        "carbs_g": 3,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 85,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 88
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (39 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7217,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5458,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:hickory-smoked-bbq",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Hickory Smoked BBQ",
+      "servingText": "1ea (39.78g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:hickory-smoked-bbq",
+        "barcode": null,
+        "name": "Wingstop – Hickory Smoked BBQ Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 10,
+        "carbs_g": 4,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 150,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 3,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 11,
+          "iron_mg": 0,
+          "potassium_mg": 122
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (40 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7127,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5138,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:hot-honey-rub",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Hot Honey Rub",
+      "servingText": "1ea (36g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:hot-honey-rub",
+        "barcode": null,
+        "name": "Wingstop – Hot Honey Rub Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 10,
+        "carbs_g": 2,
+        "fat_g": 8,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 2,
+        "sodium_mg": 160,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 1,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 10,
+          "iron_mg": 0,
+          "potassium_mg": 89
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (36 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7875,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.7778,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:lemon-pepper",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Lemon Pepper",
+      "servingText": "1ea (34.91g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:lemon-pepper",
+        "barcode": null,
+        "name": "Wingstop – Lemon Pepper Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 10,
+        "carbs_g": 0,
+        "fat_g": 8,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 210,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 16,
+          "iron_mg": 0,
+          "potassium_mg": 84
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (35 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8121,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.8645,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:louisiana-rub",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Louisiana Rub",
+      "servingText": "1ea (33.99g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:louisiana-rub",
+        "barcode": null,
+        "name": "Wingstop – Louisiana Rub Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 10,
+        "carbs_g": 0,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 140,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 14,
+          "iron_mg": 0,
+          "potassium_mg": 91
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8341,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.942,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:mango-habanero",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Mango Habanero",
+      "servingText": "1ea (39.28g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:mango-habanero",
+        "barcode": null,
+        "name": "Wingstop – Mango Habanero Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 10,
+        "carbs_g": 4,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 80,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 3,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 84
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (39 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7217,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5458,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:mild",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Mild",
+      "servingText": "1ea (38.04g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:mild",
+        "barcode": null,
+        "name": "Wingstop – Mild Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 10,
+        "carbs_g": 0,
+        "fat_g": 8,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 160,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 86
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (38 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7453,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.6288,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:original-hot",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Original Hot",
+      "servingText": "1ea (38.29g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:original-hot",
+        "barcode": null,
+        "name": "Wingstop – Original Hot Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 10,
+        "carbs_g": 0,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 230,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 92
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (38 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7404,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.6116,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:plain",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Plain",
+      "servingText": "1ea (30.78g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:plain",
+        "barcode": null,
+        "name": "Wingstop – Plain Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 10,
+        "carbs_g": 0,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 30,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 80
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (31 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9211,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.2489,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:classic-wings:spicy-korean-q",
+      "section": "CLASSIC WINGS",
+      "sourceName": "Spicy Korean Q",
+      "servingText": "1ea (39.11g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:classic-wings:spicy-korean-q",
+        "barcode": null,
+        "name": "Wingstop – Spicy Korean Q Classic Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 10,
+        "carbs_g": 3,
+        "fat_g": 5,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 135,
+        "cholesterol_mg": 45,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 10,
+          "iron_mg": 0,
+          "potassium_mg": 93
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (39 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.7249,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.5569,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:atomic",
+      "section": "BONELESS WINGS",
+      "sourceName": "Atomic",
+      "servingText": "1ea (33.53g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:atomic",
+        "barcode": null,
+        "name": "Wingstop – Atomic Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 4,
+        "carbs_g": 7,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 380,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 73
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8455,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.9824,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:cajun",
+      "section": "BONELESS WINGS",
+      "sourceName": "Cajun",
+      "servingText": "1ea (33.6g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:cajun",
+        "barcode": null,
+        "name": "Wingstop – Cajun Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 450,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 11,
+          "iron_mg": 0,
+          "potassium_mg": 77
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8438,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.9762,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:garlic-parmesan",
+      "section": "BONELESS WINGS",
+      "sourceName": "Garlic Parmesan",
+      "servingText": "1ea (31.04g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:garlic-parmesan",
+        "barcode": null,
+        "name": "Wingstop – Garlic Parmesan Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 260,
+        "cholesterol_mg": 15,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 12,
+          "iron_mg": 0,
+          "potassium_mg": 70
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (31 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9133,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.2216,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:hawaiian",
+      "section": "BONELESS WINGS",
+      "sourceName": "Hawaiian",
+      "servingText": "1ea (33.94g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:hawaiian",
+        "barcode": null,
+        "name": "Wingstop – Hawaiian Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 4,
+        "carbs_g": 8,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 1,
+        "sodium_mg": 270,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 7,
+          "iron_mg": 0,
+          "potassium_mg": 68
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8353,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.9464,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:hickory-smoked-bbq",
+      "section": "BONELESS WINGS",
+      "sourceName": "Hickory Smoked BBQ",
+      "servingText": "1ea (34.34g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:hickory-smoked-bbq",
+        "barcode": null,
+        "name": "Wingstop – Hickory Smoked BBQ Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 5,
+        "carbs_g": 9,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 1,
+        "sodium_mg": 330,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 95
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8256,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.9121,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:hot-honey-rub",
+      "section": "BONELESS WINGS",
+      "sourceName": "Hot Honey Rub",
+      "servingText": "1ea (32g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:hot-honey-rub",
+        "barcode": null,
+        "name": "Wingstop – Hot Honey Rub Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 4,
+        "carbs_g": 8,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 360,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 1,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 71
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (32 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8859,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.125,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:lemon-pepper",
+      "section": "BONELESS WINGS",
+      "sourceName": "Lemon Pepper",
+      "servingText": "1ea (29.98g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:lemon-pepper",
+        "barcode": null,
+        "name": "Wingstop – Lemon Pepper Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 290,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 63
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (30 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9456,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.3356,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:louisiana-rub",
+      "section": "BONELESS WINGS",
+      "sourceName": "Louisiana Rub",
+      "servingText": "1ea (29.25g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:louisiana-rub",
+        "barcode": null,
+        "name": "Wingstop – Louisiana Rub Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 100,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 6,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 260,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 65
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (29 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.9692,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.4188,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:mango-habanero",
+      "section": "BONELESS WINGS",
+      "sourceName": "Mango Habanero",
+      "servingText": "1ea (33.94g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:mango-habanero",
+        "barcode": null,
+        "name": "Wingstop – Mango Habanero Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 4,
+        "carbs_g": 9,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 1,
+        "sodium_mg": 270,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 7,
+          "iron_mg": 0,
+          "potassium_mg": 65
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8353,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.9464,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:mild",
+      "section": "BONELESS WINGS",
+      "sourceName": "Mild",
+      "servingText": "1ea (32.94g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:mild",
+        "barcode": null,
+        "name": "Wingstop – Mild Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 110,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 330,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 7,
+          "iron_mg": 0,
+          "potassium_mg": 66
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (33 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8607,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.0358,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:original-hot",
+      "section": "BONELESS WINGS",
+      "sourceName": "Original Hot",
+      "servingText": "1ea (33.15g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:original-hot",
+        "barcode": null,
+        "name": "Wingstop – Original Hot Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 390,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 7,
+          "iron_mg": 0,
+          "potassium_mg": 71
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (33 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8552,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.0166,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:plain",
+      "section": "BONELESS WINGS",
+      "sourceName": "Plain",
+      "servingText": "1ea (27.14g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:plain",
+        "barcode": null,
+        "name": "Wingstop – Plain Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 80,
+        "protein_g": 4,
+        "carbs_g": 6,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 230,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 7,
+          "iron_mg": 0,
+          "potassium_mg": 62
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (27 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 1.0446,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 3.6846,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:boneless-wings:spicy-korean-q",
+      "section": "BONELESS WINGS",
+      "sourceName": "Spicy Korean Q",
+      "servingText": "1ea (33.81g)",
+      "page": 1,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:boneless-wings:spicy-korean-q",
+        "barcode": null,
+        "name": "Wingstop – Spicy Korean Q Boneless Wings",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 90,
+        "protein_g": 5,
+        "carbs_g": 8,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 1,
+        "sodium_mg": 320,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 72
+        }
+      },
+      "servings": [
+        {
+          "label": "1 wing (34 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "6 pc",
+          "base_multiplier": 6,
+          "is_default": false
+        },
+        {
+          "label": "8 pc",
+          "base_multiplier": 8,
+          "is_default": false
+        },
+        {
+          "label": "10 pc",
+          "base_multiplier": 10,
+          "is_default": false
+        },
+        {
+          "label": "15 pc",
+          "base_multiplier": 15,
+          "is_default": false
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.8385,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 2.9577,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:atomic",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Atomic",
+      "servingText": "1ea (73.81g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:atomic",
+        "barcode": null,
+        "name": "Wingstop – Atomic Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 10,
+        "carbs_g": 12,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 850,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 12,
+          "iron_mg": 0,
+          "potassium_mg": 199
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (74 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3841,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.3548,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:cajun",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Cajun",
+      "servingText": "1ea (74g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:cajun",
+        "barcode": null,
+        "name": "Wingstop – Cajun Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 150,
+        "protein_g": 10,
+        "carbs_g": 11,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 1020,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 18,
+          "iron_mg": 0,
+          "potassium_mg": 210
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (74 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3831,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.3514,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:garlic-parmesan",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Garlic Parmesan",
+      "servingText": "1ea (67.58g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:garlic-parmesan",
+        "barcode": null,
+        "name": "Wingstop – Garlic Parmesan Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 210,
+        "protein_g": 10,
+        "carbs_g": 11,
+        "fat_g": 14,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 550,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 20,
+          "iron_mg": 0,
+          "potassium_mg": 191
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (68 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4195,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.4797,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:hawaiian",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Hawaiian",
+      "servingText": "1ea (74.85g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:hawaiian",
+        "barcode": null,
+        "name": "Wingstop – Hawaiian Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 160,
+        "protein_g": 10,
+        "carbs_g": 16,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 5,
+        "sat_fat_g": 1,
+        "sodium_mg": 580,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 5,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 10,
+          "iron_mg": 0,
+          "potassium_mg": 187
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (75 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3788,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.336,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:hickory-smoked-bbq",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Hickory Smoked BBQ",
+      "servingText": "1ea (75.84g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:hickory-smoked-bbq",
+        "barcode": null,
+        "name": "Wingstop – Hickory Smoked BBQ Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 10,
+        "carbs_g": 17,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 6,
+        "sat_fat_g": 1,
+        "sodium_mg": 710,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 6,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 13,
+          "iron_mg": 1,
+          "potassium_mg": 255
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (76 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3738,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.3186,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:hot-honey-rub",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Hot Honey Rub",
+      "servingText": "1ea (70g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:hot-honey-rub",
+        "barcode": null,
+        "name": "Wingstop – Hot Honey Rub Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 220,
+        "protein_g": 10,
+        "carbs_g": 14,
+        "fat_g": 14,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 780,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 3,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 11,
+          "iron_mg": 0,
+          "potassium_mg": 193
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (70 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.405,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.4286,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:lemon-pepper",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Lemon Pepper",
+      "servingText": "1ea (64.93g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:lemon-pepper",
+        "barcode": null,
+        "name": "Wingstop – Lemon Pepper Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 10,
+        "carbs_g": 10,
+        "fat_g": 13,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 620,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 13,
+          "iron_mg": 0,
+          "potassium_mg": 173
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (65 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4366,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.5401,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:louisiana-rub",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Louisiana Rub",
+      "servingText": "1ea (63.12g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:louisiana-rub",
+        "barcode": null,
+        "name": "Wingstop – Louisiana Rub Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 180,
+        "protein_g": 10,
+        "carbs_g": 10,
+        "fat_g": 12,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2,
+        "sodium_mg": 540,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 10,
+          "iron_mg": 0,
+          "potassium_mg": 178
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (63 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4491,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.5843,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:mango-habanero",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Mango Habanero",
+      "servingText": "1ea (74.85g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:mango-habanero",
+        "barcode": null,
+        "name": "Wingstop – Mango Habanero Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 10,
+        "carbs_g": 17,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 7,
+        "sat_fat_g": 1,
+        "sodium_mg": 570,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 6,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 179
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (75 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3788,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.336,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:mild",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Mild",
+      "servingText": "1ea (72.35g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:mild",
+        "barcode": null,
+        "name": "Wingstop – Mild Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 10,
+        "carbs_g": 10,
+        "fat_g": 14,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 2.5,
+        "sodium_mg": 730,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 183
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (72 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3918,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.3822,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:original-hot",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Original Hot",
+      "servingText": "1ea (72.86g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:original-hot",
+        "barcode": null,
+        "name": "Wingstop – Original Hot Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 140,
+        "protein_g": 10,
+        "carbs_g": 10,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 870,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 9,
+          "iron_mg": 0,
+          "potassium_mg": 195
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (73 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3891,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.3725,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:plain",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Plain",
+      "servingText": "1ea (57.84g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:plain",
+        "barcode": null,
+        "name": "Wingstop – Plain Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 140,
+        "protein_g": 10,
+        "carbs_g": 10,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sat_fat_g": 1,
+        "sodium_mg": 470,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 8,
+          "iron_mg": 0,
+          "potassium_mg": 171
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (58 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4901,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7289,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:tender:spicy-korean-q",
+      "section": "CHICKEN TENDERS",
+      "sourceName": "Spicy Korean Q",
+      "servingText": "1ea (74.51g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:tender:spicy-korean-q",
+        "barcode": null,
+        "name": "Wingstop – Spicy Korean Q Tender",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 170,
+        "protein_g": 10,
+        "carbs_g": 16,
+        "fat_g": 7,
+        "fiber_g": 0,
+        "sugar_g": 6,
+        "sat_fat_g": 1,
+        "sodium_mg": 680,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 5,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 12,
+          "iron_mg": 0,
+          "potassium_mg": 196
+        }
+      },
+      "servings": [
+        {
+          "label": "1 tender (75 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3805,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.3421,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:atomic",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Atomic",
+      "servingText": "1ea (305g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:atomic",
+        "barcode": null,
+        "name": "Wingstop – Atomic Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 650,
+        "protein_g": 33,
+        "carbs_g": 74,
+        "fat_g": 24,
+        "fiber_g": 2,
+        "sugar_g": 11,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 3230,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 144,
+          "iron_mg": 4,
+          "potassium_mg": 598
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (305 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.093,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3279,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:cajun",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Cajun",
+      "servingText": "1ea (306g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:cajun",
+        "barcode": null,
+        "name": "Wingstop – Cajun Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 640,
+        "protein_g": 33,
+        "carbs_g": 70,
+        "fat_g": 25,
+        "fiber_g": 2,
+        "sugar_g": 11,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 3940,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 170,
+          "iron_mg": 4,
+          "potassium_mg": 641
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (306 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0926,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3268,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:garlic-parmesan",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Garlic Parmesan",
+      "servingText": "1ea (280g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:garlic-parmesan",
+        "barcode": null,
+        "name": "Wingstop – Garlic Parmesan Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 890,
+        "protein_g": 34,
+        "carbs_g": 71,
+        "fat_g": 52,
+        "fiber_g": 2,
+        "sugar_g": 11,
+        "sat_fat_g": 10,
+        "sodium_mg": 2060,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 179,
+          "iron_mg": 3,
+          "potassium_mg": 565
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (280 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1013,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3571,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:hawaiian",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Hawaiian",
+      "servingText": "1ea (309g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:hawaiian",
+        "barcode": null,
+        "name": "Wingstop – Hawaiian Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 710,
+        "protein_g": 33,
+        "carbs_g": 90,
+        "fat_g": 24,
+        "fiber_g": 2,
+        "sugar_g": 30,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 2150,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 28,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 136,
+          "iron_mg": 3,
+          "potassium_mg": 549
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (309 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0917,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3236,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:hickory-smoked-bbq",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Hickory Smoked BBQ",
+      "servingText": "1ea (313g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:hickory-smoked-bbq",
+        "barcode": null,
+        "name": "Wingstop – Hickory Smoked BBQ Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 730,
+        "protein_g": 34,
+        "carbs_g": 96,
+        "fat_g": 24,
+        "fiber_g": 2,
+        "sugar_g": 36,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 2680,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 32,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 149,
+          "iron_mg": 6,
+          "potassium_mg": 821
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (313 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0906,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3195,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:hot-honey-rub",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Hot Honey Rub",
+      "servingText": "1ea (289g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:hot-honey-rub",
+        "barcode": null,
+        "name": "Wingstop – Hot Honey Rub Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 930,
+        "protein_g": 33,
+        "carbs_g": 81,
+        "fat_g": 51,
+        "fiber_g": 3,
+        "sugar_g": 23,
+        "sat_fat_g": 10,
+        "sodium_mg": 2970,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 21,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 142,
+          "iron_mg": 4,
+          "potassium_mg": 572
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (289 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0981,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.346,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:lemon-pepper",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Lemon Pepper",
+      "servingText": "1ea (270g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:lemon-pepper",
+        "barcode": null,
+        "name": "Wingstop – Lemon Pepper Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 850,
+        "protein_g": 32,
+        "carbs_g": 67,
+        "fat_g": 50,
+        "fiber_g": 2,
+        "sugar_g": 10,
+        "sat_fat_g": 9,
+        "sodium_mg": 2320,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 148,
+          "iron_mg": 3,
+          "potassium_mg": 493
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (270 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.105,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3704,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:louisiana-rub",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Louisiana Rub",
+      "servingText": "1ea (263g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:louisiana-rub",
+        "barcode": null,
+        "name": "Wingstop – Louisiana Rub Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 790,
+        "protein_g": 32,
+        "carbs_g": 67,
+        "fat_g": 43,
+        "fiber_g": 2,
+        "sugar_g": 10,
+        "sat_fat_g": 8,
+        "sodium_mg": 2020,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 139,
+          "iron_mg": 4,
+          "potassium_mg": 513
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (263 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1078,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3802,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:mango-habanero",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Mango Habanero",
+      "servingText": "1ea (309g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:mango-habanero",
+        "barcode": null,
+        "name": "Wingstop – Mango Habanero Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 740,
+        "protein_g": 32,
+        "carbs_g": 94,
+        "fat_g": 24,
+        "fiber_g": 2,
+        "sugar_g": 36,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 2120,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 31,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 132,
+          "iron_mg": 3,
+          "potassium_mg": 516
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (309 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0917,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3236,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:mild",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Mild",
+      "servingText": "1ea (299g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:mild",
+        "barcode": null,
+        "name": "Wingstop – Mild Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 870,
+        "protein_g": 32,
+        "carbs_g": 67,
+        "fat_g": 52,
+        "fiber_g": 2,
+        "sugar_g": 10,
+        "sat_fat_g": 10,
+        "sodium_mg": 2750,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 130,
+          "iron_mg": 3,
+          "potassium_mg": 531
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (299 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0948,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3344,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:original-hot",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Original Hot",
+      "servingText": "1ea (301g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:original-hot",
+        "barcode": null,
+        "name": "Wingstop – Original Hot Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 630,
+        "protein_g": 33,
+        "carbs_g": 68,
+        "fat_g": 25,
+        "fiber_g": 2,
+        "sugar_g": 10,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 3340,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 132,
+          "iron_mg": 3,
+          "potassium_mg": 580
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (301 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0942,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3322,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:plain",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Plain",
+      "servingText": "1ea (241g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:plain",
+        "barcode": null,
+        "name": "Wingstop – Plain Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 610,
+        "protein_g": 32,
+        "carbs_g": 66,
+        "fat_g": 24,
+        "fiber_g": 2,
+        "sugar_g": 10,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 1720,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 8,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 128,
+          "iron_mg": 3,
+          "potassium_mg": 483
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (241 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1176,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.4149,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:chicken-sandwich:spicy-korean-q",
+      "section": "CHICKEN SANDWICH",
+      "sourceName": "Spicy Korean Q",
+      "servingText": "1ea (308g)",
+      "page": 2,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:chicken-sandwich:spicy-korean-q",
+        "barcode": null,
+        "name": "Wingstop – Spicy Korean Q Chicken Sandwich",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 720,
+        "protein_g": 34,
+        "carbs_g": 90,
+        "fat_g": 24,
+        "fiber_g": 2,
+        "sugar_g": 32,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 2570,
+        "cholesterol_mg": 80,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 27,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 145,
+          "iron_mg": 4,
+          "potassium_mg": 585
+        }
+      },
+      "servings": [
+        {
+          "label": "1 sandwich (308 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.092,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3247,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:veggie-sticks-celery",
+      "section": "SIDES",
+      "sourceName": "Veggie Sticks Celery",
+      "servingText": "5 Sticks (56g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:veggie-sticks-celery",
+        "barcode": null,
+        "name": "Wingstop – Veggie Sticks Celery",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 10,
+        "protein_g": 1,
+        "carbs_g": 1.5,
+        "fat_g": 0,
+        "fiber_g": 1,
+        "sugar_g": 0.5,
+        "sat_fat_g": 0,
+        "sodium_mg": 45,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 23,
+          "iron_mg": 0,
+          "potassium_mg": 145
+        }
+      },
+      "servings": [
+        {
+          "label": "5 Sticks (56g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.5063,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.7857,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:veggie-sticks-carrots",
+      "section": "SIDES",
+      "sourceName": "Veggie Sticks Carrots",
+      "servingText": "5 Sticks (66g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:veggie-sticks-carrots",
+        "barcode": null,
+        "name": "Wingstop – Veggie Sticks Carrots",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 25,
+        "protein_g": 1,
+        "carbs_g": 6.5,
+        "fat_g": 0,
+        "fiber_g": 2,
+        "sugar_g": 3,
+        "sat_fat_g": 0,
+        "sodium_mg": 45,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 22,
+          "iron_mg": 0,
+          "potassium_mg": 210
+        }
+      },
+      "servings": [
+        {
+          "label": "5 Sticks (66g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.4295,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.5152,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:ranch-dip",
+      "section": "SIDES",
+      "sourceName": "Ranch Dip",
+      "servingText": "3.25oz Cup (85g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:ranch-dip",
+        "barcode": null,
+        "name": "Wingstop – Ranch Dip",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 320,
+        "protein_g": 1,
+        "carbs_g": 2,
+        "fat_g": 34,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 5,
+        "sodium_mg": 870,
+        "cholesterol_mg": 35,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 1,
+          "calcium_mg": 61,
+          "iron_mg": 0,
+          "potassium_mg": 79
+        }
+      },
+      "servings": [
+        {
+          "label": "3.25oz Cup (85g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3335,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1765,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:blue-cheese-dip",
+      "section": "SIDES",
+      "sourceName": "Blue Cheese Dip",
+      "servingText": "3.25oz Cup (86g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:blue-cheese-dip",
+        "barcode": null,
+        "name": "Wingstop – Blue Cheese Dip",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 330,
+        "protein_g": 4,
+        "carbs_g": 4,
+        "fat_g": 33,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 7,
+        "sodium_mg": 570,
+        "cholesterol_mg": 40,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 103,
+          "iron_mg": 0,
+          "potassium_mg": 85
+        }
+      },
+      "servings": [
+        {
+          "label": "3.25oz Cup (86g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3297,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.1628,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:honey-mustard-dip",
+      "section": "SIDES",
+      "sourceName": "Honey Mustard Dip",
+      "servingText": "3.25oz Cup (93g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:honey-mustard-dip",
+        "barcode": null,
+        "name": "Wingstop – Honey Mustard Dip",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 390,
+        "protein_g": 0,
+        "carbs_g": 18,
+        "fat_g": 33,
+        "fiber_g": 0,
+        "sugar_g": 18,
+        "sat_fat_g": 4.5,
+        "sodium_mg": 660,
+        "cholesterol_mg": 30,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 18,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 0,
+          "iron_mg": 0,
+          "potassium_mg": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "3.25oz Cup (93g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.3048,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.0753,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:cheddar-cheese-sauce-dip",
+      "section": "SIDES",
+      "sourceName": "Cheddar Cheese Sauce Dip",
+      "servingText": "3.25oz Cup (96g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:cheddar-cheese-sauce-dip",
+        "barcode": null,
+        "name": "Wingstop – Cheddar Cheese Sauce Dip",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 120,
+        "protein_g": 2,
+        "carbs_g": 8,
+        "fat_g": 9,
+        "fiber_g": 0,
+        "sugar_g": 2,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 850,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 48,
+          "iron_mg": 0,
+          "potassium_mg": 39
+        }
+      },
+      "servings": [
+        {
+          "label": "3.25oz Cup (96g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.2953,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.0417,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:seasoned-fries-regular",
+      "section": "SIDES",
+      "sourceName": "Seasoned Fries Regular",
+      "servingText": "10oz (191g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:seasoned-fries-regular",
+        "barcode": null,
+        "name": "Wingstop – Seasoned Fries Regular",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 500,
+        "protein_g": 8,
+        "carbs_g": 69,
+        "fat_g": 21,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sat_fat_g": 3.5,
+        "sodium_mg": 620,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 67,
+          "iron_mg": 2,
+          "potassium_mg": 1530
+        }
+      },
+      "servings": [
+        {
+          "label": "10 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3527,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:seasoned-fries-large",
+      "section": "SIDES",
+      "sourceName": "Seasoned Fries Large",
+      "servingText": "18oz (346g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:seasoned-fries-large",
+        "barcode": null,
+        "name": "Wingstop – Seasoned Fries Large",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 900,
+        "protein_g": 14,
+        "carbs_g": 126,
+        "fat_g": 37,
+        "fiber_g": 0,
+        "sugar_g": 6,
+        "sat_fat_g": 7,
+        "sodium_mg": 1060,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 3,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 121,
+          "iron_mg": 3,
+          "potassium_mg": 2782
+        }
+      },
+      "servings": [
+        {
+          "label": "18 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0556,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.196,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:cheese-fries-regular",
+      "section": "SIDES",
+      "sourceName": "Cheese Fries Regular",
+      "servingText": "10oz (255g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:cheese-fries-regular",
+        "barcode": null,
+        "name": "Wingstop – Cheese Fries Regular",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 580,
+        "protein_g": 9,
+        "carbs_g": 75,
+        "fat_g": 27,
+        "fiber_g": 0,
+        "sugar_g": 4,
+        "sat_fat_g": 5,
+        "sodium_mg": 1190,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 99,
+          "iron_mg": 2,
+          "potassium_mg": 1556
+        }
+      },
+      "servings": [
+        {
+          "label": "10 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3527,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:cheese-fries-large",
+      "section": "SIDES",
+      "sourceName": "Cheese Fries Large",
+      "servingText": "18oz (442g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:cheese-fries-large",
+        "barcode": null,
+        "name": "Wingstop – Cheese Fries Large",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 1020,
+        "protein_g": 15,
+        "carbs_g": 134,
+        "fat_g": 47,
+        "fiber_g": 0,
+        "sugar_g": 8,
+        "sat_fat_g": 8,
+        "sodium_mg": 1910,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 3,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 169,
+          "iron_mg": 3,
+          "potassium_mg": 2820
+        }
+      },
+      "servings": [
+        {
+          "label": "18 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0556,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.196,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:buffalo-ranch-fries-regular",
+      "section": "SIDES",
+      "sourceName": "Buffalo Ranch Fries Regular",
+      "servingText": "10oz (249g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:buffalo-ranch-fries-regular",
+        "barcode": null,
+        "name": "Wingstop – Buffalo Ranch Fries Regular",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 610,
+        "protein_g": 8,
+        "carbs_g": 71,
+        "fat_g": 32,
+        "fiber_g": 0,
+        "sugar_g": 4,
+        "sat_fat_g": 6,
+        "sodium_mg": 1720,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 2,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 89,
+          "iron_mg": 2,
+          "potassium_mg": 1604
+        }
+      },
+      "servings": [
+        {
+          "label": "10 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3527,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:buffalo-ranch-fries-large",
+      "section": "SIDES",
+      "sourceName": "Buffalo Ranch Fries Large",
+      "servingText": "18oz (434g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:buffalo-ranch-fries-large",
+        "barcode": null,
+        "name": "Wingstop – Buffalo Ranch Fries Large",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 1070,
+        "protein_g": 15,
+        "carbs_g": 129,
+        "fat_g": 55,
+        "fiber_g": 0,
+        "sugar_g": 8,
+        "sat_fat_g": 9,
+        "sodium_mg": 2710,
+        "cholesterol_mg": 20,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 3,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 154,
+          "iron_mg": 3,
+          "potassium_mg": 2893
+        }
+      },
+      "servings": [
+        {
+          "label": "18 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0556,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.196,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:louisiana-voodoo-fries-regular",
+      "section": "SIDES",
+      "sourceName": "Louisiana Voodoo Fries Regular",
+      "servingText": "10oz (283g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:louisiana-voodoo-fries-regular",
+        "barcode": null,
+        "name": "Wingstop – Louisiana Voodoo Fries Regular",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 680,
+        "protein_g": 9,
+        "carbs_g": 75,
+        "fat_g": 38,
+        "fiber_g": 0,
+        "sugar_g": 4,
+        "sat_fat_g": 7,
+        "sodium_mg": 1270,
+        "cholesterol_mg": 10,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 139,
+          "iron_mg": 2,
+          "potassium_mg": 1617
+        }
+      },
+      "servings": [
+        {
+          "label": "10 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3527,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:louisiana-voodoo-fries-large",
+      "section": "SIDES",
+      "sourceName": "Louisiana Voodoo Fries Large",
+      "servingText": "18oz (483g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:louisiana-voodoo-fries-large",
+        "barcode": null,
+        "name": "Wingstop – Louisiana Voodoo Fries Large",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 1180,
+        "protein_g": 16,
+        "carbs_g": 133,
+        "fat_g": 64,
+        "fiber_g": 0,
+        "sugar_g": 6,
+        "sat_fat_g": 11,
+        "sodium_mg": 1870,
+        "cholesterol_mg": 20,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 226,
+          "iron_mg": 4,
+          "potassium_mg": 2908
+        }
+      },
+      "servings": [
+        {
+          "label": "18 oz",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.0556,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.196,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:fried-corn-regular",
+      "section": "SIDES",
+      "sourceName": "Fried Corn Regular",
+      "servingText": "5ea (154g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:fried-corn-regular",
+        "barcode": null,
+        "name": "Wingstop – Fried Corn Regular",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 6,
+        "carbs_g": 24,
+        "fat_g": 9,
+        "fiber_g": 0,
+        "sugar_g": 10,
+        "sat_fat_g": 1.5,
+        "sodium_mg": 300,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 16,
+          "iron_mg": 0,
+          "potassium_mg": 380
+        }
+      },
+      "servings": [
+        {
+          "label": "5 each (154 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.1841,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.6494,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:fried-corn-large",
+      "section": "SIDES",
+      "sourceName": "Fried Corn Large",
+      "servingText": "10ea (308g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:fried-corn-large",
+        "barcode": null,
+        "name": "Wingstop – Fried Corn Large",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 12,
+        "carbs_g": 48,
+        "fat_g": 18,
+        "fiber_g": 0,
+        "sugar_g": 19,
+        "sat_fat_g": 3,
+        "sodium_mg": 600,
+        "cholesterol_mg": 0,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 1,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 31,
+          "iron_mg": 0,
+          "potassium_mg": 759
+        }
+      },
+      "servings": [
+        {
+          "label": "10 each (308 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.092,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 0.3247,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:sides:brownie",
+      "section": "SIDES",
+      "sourceName": "Brownie",
+      "servingText": "1ea (98g)",
+      "page": 3,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:sides:brownie",
+        "barcode": null,
+        "name": "Wingstop – Brownie",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 430,
+        "protein_g": 6,
+        "carbs_g": 49,
+        "fat_g": 24,
+        "fiber_g": 3,
+        "sugar_g": 33,
+        "sat_fat_g": 10,
+        "sodium_mg": 160,
+        "cholesterol_mg": 85,
+        "micros": {
+          "trans_fat_g": 0,
+          "added_sugar_g": 0,
+          "vitamin_d_mcg": 0,
+          "calcium_mg": 0,
+          "iron_mg": 0,
+          "potassium_mg": 0
+        }
+      },
+      "servings": [
+        {
+          "label": "1 each (98 g)",
+          "base_multiplier": 1,
+          "is_default": true
+        },
+        {
+          "label": "1 oz",
+          "base_multiplier": 0.2893,
+          "is_default": false
+        },
+        {
+          "label": "100 g",
+          "base_multiplier": 1.0204,
+          "is_default": false
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:dr-pepper-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Dr Pepper 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:dr-pepper-20oz",
+        "barcode": null,
+        "name": "Wingstop – Dr Pepper 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 230,
+        "protein_g": 0,
+        "carbs_g": 65,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 65,
+        "sat_fat_g": 0,
+        "sodium_mg": 75,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:dr-pepper-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Dr Pepper 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:dr-pepper-32oz",
+        "barcode": null,
+        "name": "Wingstop – Dr Pepper 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 360,
+        "protein_g": 0,
+        "carbs_g": 104,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 104,
+        "sat_fat_g": 0,
+        "sodium_mg": 120,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:coke-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Coke 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:coke-20oz",
+        "barcode": null,
+        "name": "Wingstop – Coke 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 250,
+        "protein_g": 0,
+        "carbs_g": 68,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 68,
+        "sat_fat_g": 0,
+        "sodium_mg": 5,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:coke-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Coke 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:coke-32oz",
+        "barcode": null,
+        "name": "Wingstop – Coke 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 400,
+        "protein_g": 0,
+        "carbs_g": 108,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 108,
+        "sat_fat_g": 0,
+        "sodium_mg": 8,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:diet-coke-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Diet Coke 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:diet-coke-20oz",
+        "barcode": null,
+        "name": "Wingstop – Diet Coke 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 1,
+        "sat_fat_g": 0,
+        "sodium_mg": 25,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:diet-coke-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Diet Coke 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:diet-coke-32oz",
+        "barcode": null,
+        "name": "Wingstop – Diet Coke 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 2,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 2,
+        "sat_fat_g": 0,
+        "sodium_mg": 40,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:sprite-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Sprite 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:sprite-20oz",
+        "barcode": null,
+        "name": "Wingstop – Sprite 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 240,
+        "protein_g": 0,
+        "carbs_g": 65,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 65,
+        "sat_fat_g": 0,
+        "sodium_mg": 55,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:sprite-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Sprite 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:sprite-32oz",
+        "barcode": null,
+        "name": "Wingstop – Sprite 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 390,
+        "protein_g": 0,
+        "carbs_g": 104,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 104,
+        "sat_fat_g": 0,
+        "sodium_mg": 88,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:fanta-orange-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Fanta Orange 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:fanta-orange-20oz",
+        "barcode": null,
+        "name": "Wingstop – Fanta Orange 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 75,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 75,
+        "sat_fat_g": 0,
+        "sodium_mg": 35,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:fanta-orange-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Fanta Orange 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:fanta-orange-32oz",
+        "barcode": null,
+        "name": "Wingstop – Fanta Orange 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 440,
+        "protein_g": 0,
+        "carbs_g": 120,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 120,
+        "sat_fat_g": 0,
+        "sodium_mg": 56,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:fanta-strawberry-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Fanta Strawberry 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:fanta-strawberry-20oz",
+        "barcode": null,
+        "name": "Wingstop – Fanta Strawberry 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 78,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 78,
+        "sat_fat_g": 0,
+        "sodium_mg": 23,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:fanta-strawberry-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Fanta Strawberry 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:fanta-strawberry-32oz",
+        "barcode": null,
+        "name": "Wingstop – Fanta Strawberry 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 450,
+        "protein_g": 0,
+        "carbs_g": 124,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 124,
+        "sat_fat_g": 0,
+        "sodium_mg": 36,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:lipton-tea-sweet-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Lipton Tea - Sweet 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:lipton-tea-sweet-20oz",
+        "barcode": null,
+        "name": "Wingstop – Lipton Tea - Sweet 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 180,
+        "protein_g": 0,
+        "carbs_g": 45,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 45,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:lipton-tea-sweet-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Lipton Tea - Sweet 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:lipton-tea-sweet-32oz",
+        "barcode": null,
+        "name": "Wingstop – Lipton Tea - Sweet 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 280,
+        "protein_g": 0,
+        "carbs_g": 72,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 72,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:lipton-tea-plain-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Lipton Tea - Plain 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:lipton-tea-plain-20oz",
+        "barcode": null,
+        "name": "Wingstop – Lipton Tea - Plain 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:lipton-tea-plain-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Lipton Tea - Plain 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:lipton-tea-plain-32oz",
+        "barcode": null,
+        "name": "Wingstop – Lipton Tea - Plain 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 0,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:minute-maid-lemonade-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Minute Maid Lemonade 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:minute-maid-lemonade-20oz",
+        "barcode": null,
+        "name": "Wingstop – Minute Maid Lemonade 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 240,
+        "protein_g": 0,
+        "carbs_g": 65,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 63,
+        "sat_fat_g": 0,
+        "sodium_mg": 103,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:minute-maid-lemonade-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Minute Maid Lemonade 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:minute-maid-lemonade-32oz",
+        "barcode": null,
+        "name": "Wingstop – Minute Maid Lemonade 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 390,
+        "protein_g": 0,
+        "carbs_g": 104,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 100,
+        "sat_fat_g": 0,
+        "sodium_mg": 164,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:nestea-raspberry-tea-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Nestea Raspberry Tea 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:nestea-raspberry-tea-20oz",
+        "barcode": null,
+        "name": "Wingstop – Nestea Raspberry Tea 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 0,
+        "carbs_g": 52,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 52,
+        "sat_fat_g": 0,
+        "sodium_mg": 20,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:nestea-raspberry-tea-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Nestea Raspberry Tea 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:nestea-raspberry-tea-32oz",
+        "barcode": null,
+        "name": "Wingstop – Nestea Raspberry Tea 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 310,
+        "protein_g": 0,
+        "carbs_g": 84,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 84,
+        "sat_fat_g": 0,
+        "sodium_mg": 32,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:gold-peak-sweet-green-tea-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Gold Peak Sweet Green Tea 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:gold-peak-sweet-green-tea-20oz",
+        "barcode": null,
+        "name": "Wingstop – Gold Peak Sweet Green Tea 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 0,
+        "carbs_g": 55,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 55,
+        "sat_fat_g": 0,
+        "sodium_mg": 19,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:gold-peak-sweet-green-tea-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Gold Peak Sweet Green Tea 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:gold-peak-sweet-green-tea-32oz",
+        "barcode": null,
+        "name": "Wingstop – Gold Peak Sweet Green Tea 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 320,
+        "protein_g": 0,
+        "carbs_g": 88,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 88,
+        "sat_fat_g": 0,
+        "sodium_mg": 30,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:gold-peak-unsweet-tea-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Gold Peak Unsweet Tea 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:gold-peak-unsweet-tea-20oz",
+        "barcode": null,
+        "name": "Wingstop – Gold Peak Unsweet Tea 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 1,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 20,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:gold-peak-unsweet-tea-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Gold Peak Unsweet Tea 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:gold-peak-unsweet-tea-32oz",
+        "barcode": null,
+        "name": "Wingstop – Gold Peak Unsweet Tea 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 0,
+        "protein_g": 0,
+        "carbs_g": 2,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 0,
+        "sat_fat_g": 0,
+        "sodium_mg": 32,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:gold-peak-southern-tea-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Gold Peak Southern Tea 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:gold-peak-southern-tea-20oz",
+        "barcode": null,
+        "name": "Wingstop – Gold Peak Southern Tea 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 260,
+        "protein_g": 0,
+        "carbs_g": 66,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 65,
+        "sat_fat_g": 0,
+        "sodium_mg": 20,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:gold-peak-southern-tea-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Gold Peak Southern Tea 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:gold-peak-southern-tea-32oz",
+        "barcode": null,
+        "name": "Wingstop – Gold Peak Southern Tea 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 390,
+        "protein_g": 0,
+        "carbs_g": 105,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 104,
+        "sat_fat_g": 0,
+        "sodium_mg": 32,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:nestea-peach-tea-20oz",
+      "section": "BEVERAGES",
+      "sourceName": "Nestea Peach Tea 20oz",
+      "servingText": "Regular",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:nestea-peach-tea-20oz",
+        "barcode": null,
+        "name": "Wingstop – Nestea Peach Tea 20oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 200,
+        "protein_g": 0,
+        "carbs_g": 50,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 50,
+        "sat_fat_g": 0,
+        "sodium_mg": 20,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Regular (600 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    },
+    {
+      "externalId": "wingstop:beverages:nestea-peach-tea-32oz",
+      "section": "BEVERAGES",
+      "sourceName": "Nestea Peach Tea 32oz",
+      "servingText": "Large",
+      "page": 4,
+      "food": {
+        "source": "restaurant",
+        "visibility": "public",
+        "owner_id": null,
+        "external_id": "wingstop:beverages:nestea-peach-tea-32oz",
+        "barcode": null,
+        "name": "Wingstop – Nestea Peach Tea 32oz",
+        "brand": "Wingstop",
+        "base_amount": 1,
+        "base_unit": "serving",
+        "calories": 310,
+        "protein_g": 0,
+        "carbs_g": 80,
+        "fat_g": 0,
+        "fiber_g": null,
+        "sugar_g": 80,
+        "sat_fat_g": 0,
+        "sodium_mg": 30,
+        "cholesterol_mg": null,
+        "micros": {}
+      },
+      "servings": [
+        {
+          "label": "Large (900 ml)",
+          "base_multiplier": 1,
+          "is_default": true
+        }
+      ],
+      "reasons": []
+    }
+  ],
+  "flagged": []
+}

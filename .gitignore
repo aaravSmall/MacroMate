@@ -26,6 +26,7 @@ android/
 # env files (keep the example)
 .env*
 !.env.example
+!scripts/restaurants/.env.local.example
 
 # testing
 coverage/
@@ -41,3 +42,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Restaurant import: downloaded PDFs
+scripts/restaurants/.cache/
