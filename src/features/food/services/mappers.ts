@@ -1,5 +1,5 @@
 import { nutritionFromFoodRow, nutritionToFoodRow } from '@/lib/nutrition';
-import type { Tables, TablesInsert } from '@/types/database';
+import type { Tables, TablesInsert, TablesUpdate } from '@/types/database';
 import type { Food, FoodServing, FoodSource, NutritionFacts } from '@/types/domain';
 
 import { baseServingLabel } from '../logic/foodRules';
@@ -67,6 +67,20 @@ export type NewFoodInput = {
   nutrition: NutritionFacts;
   servings: Omit<FoodServing, 'id'>[];
 };
+
+/**
+ * The update for an edited recipe: name, brand, base amount, and nutrition. Never source,
+ * owner, visibility, or verification counts (RLS and column grants enforce this too).
+ */
+export function foodEditToRow(input: NewFoodInput): TablesUpdate<'foods'> {
+  return {
+    name: input.name.trim(),
+    brand: input.brand?.trim() || null,
+    base_amount: input.baseAmount,
+    base_unit: input.baseUnit,
+    ...nutritionToFoodRow(input.nutrition),
+  };
+}
 
 /**
  * The insert row for a new food. Never includes verification_count / mismatch_count: they're

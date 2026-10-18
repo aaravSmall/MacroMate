@@ -1,6 +1,6 @@
 import { parseNumber } from '@/lib/format';
 import { round2 } from '@/lib/nutrition';
-import type { Micronutrients, NutritionFacts } from '@/types/domain';
+import type { Food, Micronutrients, NutritionFacts } from '@/types/domain';
 
 import type { NewFoodInput } from '../services/mappers';
 
@@ -71,6 +71,42 @@ export const MICRO_FIELDS: { field: keyof FoodFormValues; key: string }[] = [
   { field: 'zinc', key: 'zinc_mg' },
 ];
 
+/** Splits a serving label like "1.5 cup" or "2/3 cup (55 g)" into size and unit. */
+function splitServingLabel(label: string): { size: string; unit: string } {
+  const m = /^\s*(\d+(?:\.\d+)?)\s*(.*)$/.exec(label);
+  if (!m) return { size: '1', unit: label.trim() || 'serving' };
+  return { size: m[1] ?? '1', unit: (m[2] ?? '').trim() || 'serving' };
+}
+
+const formNumber = (n: number) => String(Math.round(n * 100) / 100);
+
+/**
+ * Form values for editing an existing food: nutrition per its default serving, as the form
+ * expects (food value × serving multiplier).
+ */
+export function foodToFormValues(food: Food): FoodFormValues {
+  const serving = food.servings.find((s) => s.isDefault) ?? food.servings[0];
+  const multiplier = serving?.baseMultiplier ?? 1;
+  const per = (n: number) => formNumber(n * multiplier);
+  const { size, unit } = splitServingLabel(serving?.label ?? '1 serving');
+  const values: FoodFormValues = {
+    ...EMPTY_FOOD_FORM,
+    name: food.name,
+    brand: food.brand ?? '',
+    servingSize: size,
+    servingUnit: unit,
+    calories: per(food.nutrition.calories),
+    protein: per(food.nutrition.proteinG),
+    carbs: per(food.nutrition.carbsG),
+    fat: per(food.nutrition.fatG),
+  };
+  for (const { field, key } of MICRO_FIELDS) {
+    const amount = food.nutrition.micronutrients[key];
+    if (amount !== undefined) values[field] = per(amount);
+  }
+  return values;
+}
+
 /** Units that make a serving a weight or volume, so the food is stored per 100 of them. */
 const MEASURED_UNITS: Record<string, 'g' | 'ml'> = { g: 'g', gram: 'g', grams: 'g', ml: 'ml' };
 
@@ -139,7 +175,9 @@ export function parseFoodForm(
 
   const perServing: NutritionFacts = { calories, proteinG, carbsG, fatG, micronutrients };
   const label = `${servingSize} ${servingUnit}`;
-  const measured = MEASURED_UNITS[servingUnit.toLowerCase()];
+  // Meals and recipes are always stored per 1 serving (their nutrition is entered per serving);
+  // packaged foods measured in g/ml are stored per 100, like Open Food Facts products.
+  const measured = source === 'user_recipe' ? undefined : MEASURED_UNITS[servingUnit.toLowerCase()];
   const base = measured
     ? {
         baseAmount: 100,

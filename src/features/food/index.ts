@@ -12,6 +12,7 @@ export {
 export {
   EMPTY_FOOD_FORM,
   type FoodFormErrors,
+  foodToFormValues,
   type FoodFormValues,
   parseFoodForm,
 } from './logic/foodForm';
@@ -33,6 +34,7 @@ export {
   useFood,
   useFoodSearch,
   useMyVerification,
+  useUpdateFood,
   useVerifyFood,
 } from './hooks/useFoods';
 export {
@@ -43,6 +45,7 @@ export {
   findStoredOpenFoodFactsFood,
   getFood,
   searchFoods,
+  updateFood,
 } from './services/foodService';
 export { type NewFoodInput } from './services/mappers';
 export { getMyVerification, verifyFood } from './services/verificationService';

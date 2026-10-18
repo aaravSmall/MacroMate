@@ -1,17 +1,53 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 
-import { Button, Card, Screen, SwitchRow, Text, TextField } from '@/components/ui';
+import { QueryStatus } from '@/components/QueryStatus';
 import {
+  Button,
+  Card,
+  Screen,
+  SegmentedControl,
+  SwitchRow,
+  Text,
+  TextField,
+} from '@/components/ui';
+import { useAuth } from '@/features/auth';
+import {
+  canEditFood,
   EMPTY_FOOD_FORM,
   type FoodFormErrors,
   type FoodFormValues,
+  foodToFormValues,
   parseFoodForm,
   useCreateFood,
+  useFood,
   useLabelScanStore,
+  useUpdateFood,
 } from '@/features/food';
 import { useTheme } from '@/theme';
+import type { Food } from '@/types/domain';
+
+type Kind = 'product' | 'recipe';
+
+const KIND_OPTIONS: { value: Kind; label: string }[] = [
+  { value: 'product', label: 'Packaged product' },
+  { value: 'recipe', label: 'Meal I made' },
+];
+
+/** Before saving a public recipe: its label checks reset because the nutrition changed. */
+function confirmResetChecks(food: Food): Promise<boolean> {
+  return new Promise((resolve) => {
+    Alert.alert(
+      'Reset label checks?',
+      `${food.name} is shared, and ${food.verificationCount + food.mismatchCount} label checks will reset because the nutrition changed. Past logs don't change.`,
+      [
+        { text: 'Cancel', style: 'cancel', onPress: () => resolve(false) },
+        { text: 'Save changes', onPress: () => resolve(true) },
+      ],
+    );
+  });
+}
 
 type FieldConfig = { field: keyof FoodFormValues; label: string; placeholder?: string };
 
@@ -40,16 +76,57 @@ const MICRO_FIELDS: FieldConfig[] = [
 
 const CHECK_HINT = 'Check this against your label.';
 
+/** Create a food (product, meal, or scanned label), or `?edit=<id>` to edit one of your recipes. */
 export default function CreateFoodScreen() {
+  const { edit } = useLocalSearchParams<{ edit?: string }>();
+  return edit ? <EditRecipe id={edit} /> : <FoodForm />;
+}
+
+function EditRecipe({ id }: { id: string }) {
+  const food = useFood(id);
+  const userId = useAuth().user?.id;
+  if (!food.data) {
+    return (
+      <Screen scroll edges={['bottom', 'left', 'right']}>
+        <QueryStatus
+          loading={food.isPending}
+          error={food.error}
+          onRetry={() => void food.refetch()}
+        />
+        {!food.isPending && !food.error ? (
+          <Text tone="muted">We couldn&apos;t find this food.</Text>
+        ) : null}
+      </Screen>
+    );
+  }
+  if (!userId || !canEditFood(food.data, userId)) {
+    return (
+      <Screen scroll edges={['bottom', 'left', 'right']}>
+        <Text tone="muted">
+          Only meals you made can be edited. Packaged and scanned foods keep their label values.
+        </Text>
+      </Screen>
+    );
+  }
+  return <FoodForm editing={food.data} />;
+}
+
+function FoodForm({ editing }: { editing?: Food }) {
   const { spacing } = useTheme();
   const { source } = useLocalSearchParams<{ source?: string }>();
-  const scanned = source === 'label_scan';
+  const scanned = !editing && source === 'label_scan';
   // A scanned label prefills the form once; the photo itself was never kept.
   const [prefill] = useState(() => (scanned ? useLabelScanStore.getState().take() : null));
-  const [values, setValues] = useState<FoodFormValues>(prefill?.values ?? EMPTY_FOOD_FORM);
+  const [values, setValues] = useState<FoodFormValues>(() =>
+    editing ? foodToFormValues(editing) : (prefill?.values ?? EMPTY_FOOD_FORM),
+  );
   const [review, setReview] = useState(() => new Set(prefill?.needsReview ?? []));
   const [errors, setErrors] = useState<FoodFormErrors>({});
+  const [kind, setKind] = useState<Kind>(editing ? 'recipe' : 'product');
   const createFood = useCreateFood();
+  const updateFood = useUpdateFood();
+  const saving = createFood.isPending || updateFood.isPending;
+  const saveError = createFood.error ?? updateFood.error;
 
   const set = (field: keyof FoodFormValues) => (text: string) => {
     setValues((v) => ({ ...v, [field]: text }));
@@ -63,17 +140,25 @@ export default function CreateFoodScreen() {
   };
 
   async function handleSave() {
-    const parsed = parseFoodForm(values, { source: scanned ? 'label_scan' : 'user_product' });
+    const source =
+      editing || kind === 'recipe' ? 'user_recipe' : scanned ? 'label_scan' : 'user_product';
+    const parsed = parseFoodForm(values, { source });
     if (!parsed.ok) {
       setErrors(parsed.errors);
       return;
     }
     setErrors({});
     try {
+      if (editing) {
+        if (editing.visibility === 'public' && !(await confirmResetChecks(editing))) return;
+        await updateFood.mutateAsync({ food: editing, input: parsed.input });
+        router.back();
+        return;
+      }
       const food = await createFood.mutateAsync(parsed.input);
       router.replace({ pathname: '/food-detail/[id]', params: { id: food.id } });
     } catch {
-      // Shown from createFood.error.
+      // Shown from the mutation's error state.
     }
   }
 
@@ -96,8 +181,18 @@ export default function CreateFoodScreen() {
     </View>
   );
 
+  const recipe = !!editing || kind === 'recipe';
   return (
     <Screen scroll edges={['bottom', 'left', 'right']}>
+      {editing ? <Stack.Screen options={{ title: 'Edit meal' }} /> : null}
+      {!editing && !scanned ? (
+        <SegmentedControl
+          accessibilityLabel="What are you adding?"
+          options={KIND_OPTIONS}
+          value={kind}
+          onChange={setKind}
+        />
+      ) : null}
       {scanned && prefill ? (
         <Card>
           <Text variant="subheading">Check the scan</Text>
@@ -106,14 +201,21 @@ export default function CreateFoodScreen() {
             compare them with the package. Add a name, then save.
           </Text>
         </Card>
+      ) : recipe ? (
+        <Text tone="muted">
+          {editing
+            ? 'Update this meal. Entries you already logged keep the nutrition they had.'
+            : 'Something you cooked or put together. Enter nutrition for one serving; you can edit it later.'}
+        </Text>
       ) : (
         <Text tone="muted">
           Saved privately to your My Foods. Enter nutrition per serving, as printed on the label.
+          Packaged foods keep their label values, so they can&apos;t be edited later.
         </Text>
       )}
       <TextField
         label="Name"
-        placeholder="e.g. Homemade granola"
+        placeholder={recipe ? 'e.g. Chicken stir-fry' : 'e.g. Greek yogurt'}
         autoFocus={scanned}
         {...fieldProps('name')}
       />
@@ -155,8 +257,12 @@ export default function CreateFoodScreen() {
         />
       </Card>
 
-      {createFood.error ? <Text tone="danger">{createFood.error.message}</Text> : null}
-      <Button title="Save food" onPress={handleSave} loading={createFood.isPending} />
+      {saveError ? <Text tone="danger">{saveError.message}</Text> : null}
+      <Button
+        title={editing ? 'Save changes' : recipe ? 'Save meal' : 'Save food'}
+        onPress={handleSave}
+        loading={saving}
+      />
     </Screen>
   );
 }

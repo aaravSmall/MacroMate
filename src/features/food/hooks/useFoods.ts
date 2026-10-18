@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { queryKeys } from '@/lib/queryKeys';
+import type { Food } from '@/types/domain';
 
 import {
   cacheOpenFoodFactsFood,
@@ -8,6 +9,7 @@ import {
   deleteFood,
   getFood,
   searchFoods,
+  updateFood,
 } from '../services/foodService';
 import type { NewFoodInput } from '../services/mappers';
 import { getMyVerification, verifyFood } from '../services/verificationService';
@@ -54,6 +56,19 @@ export function useCacheOpenFoodFactsFood() {
       queryClient.setQueryData(queryKeys.foods.detail(food.id), food);
       // Search should now list the cached row (with its counts) instead of the live result.
       void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
+    },
+  });
+}
+
+/** Saves edits to a recipe. Log entries aren't refreshed: they keep their own snapshot. */
+export function useUpdateFood() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ food, input }: { food: Food; input: NewFoodInput }) => updateFood(food, input),
+    onSuccess: (food) => {
+      queryClient.setQueryData(queryKeys.foods.detail(food.id), food);
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.verification(food.id) });
     },
   });
 }

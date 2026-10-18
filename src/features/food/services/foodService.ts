@@ -4,6 +4,7 @@ import type { Food } from '@/types/domain';
 
 import {
   FOOD_SELECT,
+  foodEditToRow,
   type FoodRowWithServings,
   mapFoodRow,
   type NewFoodInput,
@@ -143,6 +144,48 @@ export async function createFood(input: NewFoodInput): Promise<Food> {
   const created = await getFood(food.id);
   if (!created) throw new Error('Could not load the food you just created.');
   return created;
+}
+
+/**
+ * Saves edits to one of the user's recipes (only `user_recipe` foods are editable; RLS enforces
+ * it). Updates the food's nutrition and its default serving. Past log entries are unaffected:
+ * each entry stores its own snapshot. If the recipe is public, a trigger resets its label checks.
+ */
+export async function updateFood(food: Food, input: NewFoodInput): Promise<Food> {
+  // Products keep their label values. RLS blocks the food update anyway, but it would still let
+  // an owner relabel a private product's servings, so refuse before touching anything.
+  if (food.source !== 'user_recipe') {
+    throw new Error('Only meals you made can be edited.');
+  }
+  const { data: updatedRows, error } = await supabase
+    .from('foods')
+    .update(foodEditToRow(input))
+    .eq('id', food.id)
+    .select('id');
+  if (error) throw error;
+  // RLS filters rows instead of erroring: no row means it isn't the user's recipe.
+  if (updatedRows.length === 0) throw new Error('Only meals you made can be edited.');
+
+  const serving = input.servings.find((s) => s.isDefault) ?? input.servings[0];
+  const current = food.servings.find((s) => s.isDefault && s.id !== null);
+  if (serving) {
+    const { error: servingError } = current?.id
+      ? await supabase
+          .from('food_servings')
+          .update({ label: serving.label, base_multiplier: serving.baseMultiplier })
+          .eq('id', current.id)
+      : await supabase.from('food_servings').insert({
+          food_id: food.id,
+          label: serving.label,
+          base_multiplier: serving.baseMultiplier,
+          is_default: true,
+        });
+    if (servingError) throw servingError;
+  }
+
+  const updated = await getFood(food.id);
+  if (!updated) throw new Error('Could not load the food you just saved.');
+  return updated;
 }
 
 /** Deletes one of the user's private foods. Past logs keep their snapshot. */

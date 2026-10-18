@@ -111,3 +111,36 @@ describe('rescaleTotals', () => {
     expect(rescaleTotals(totals, 1, 2).calories).toBe(200.6);
   });
 });
+
+describe('editing a meal after logging it', () => {
+  it('never changes entries already logged: they keep their own snapshot', () => {
+    const meal: Food = {
+      ...food,
+      id: 'meal-1',
+      source: 'user_recipe',
+      ownerId: 'user-1',
+      visibility: 'private',
+      baseAmount: 1,
+      baseUnit: 'serving',
+      nutrition: { calories: 500, proteinG: 30, carbsG: 50, fatG: 20, micronutrients: {} },
+      servings: [{ id: 'serving-1', label: '1 bowl', baseMultiplier: 1, isDefault: true }],
+    };
+    const [bowl] = meal.servings;
+    if (!bowl) throw new Error('fixture needs a serving');
+    const logged = buildLogInsert({ ...input, food: meal, serving: bowl, quantity: 1 }, 'user-1');
+    const snapshot = { ...logged };
+
+    // The recipe is edited: new nutrition on the same food id.
+    const edited: Food = { ...meal, nutrition: { ...meal.nutrition, calories: 650, fatG: 35 } };
+
+    // The stored row is a value, not a reference to the food: nothing about it changes...
+    expect(logged).toEqual(snapshot);
+    expect(logged.calories).toBe(500);
+    // ...while new logs use the edited values.
+    expect(
+      buildLogInsert({ ...input, food: edited, serving: bowl, quantity: 1 }, 'user-1').calories,
+    ).toBe(650);
+    // Changing an old entry's amount rescales its own snapshot, not the edited recipe.
+    expect(rescaleTotals(portionNutrition(meal, bowl, 1), 1, 2).calories).toBe(1000);
+  });
+});

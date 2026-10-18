@@ -12,6 +12,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Meals you made:** Create food now asks "Packaged product" or "Meal I made". Meals are stored per serving and can be edited later from their food page (Edit meal); packaged, scanned, Open Food Facts, and restaurant foods keep their label values and can't be edited. Editing a meal never changes entries you already logged, since each entry keeps its own snapshot. Saving changes to a shared meal warns that its label checks will reset.
+
 - **Weigh-in reminders:** a reminders switch in Settings schedules gentle local notifications from your weigh-in schedule (weekly, every other week from your last weigh-in, or the first chosen weekday of each month), in your time zone and keeping the same local time across daylight saving changes. Notification permission is asked only after an explanation, when you turn reminders on or finish onboarding, never at launch. Reminders reschedule on launch, after a schedule change, and after a weigh-in, and are cancelled on sign-out and account deletion. Tapping one opens Progress with the weigh-in field ready.
 
 - **Apple Health sync:** connect Apple Health in Settings (read-only: workouts and active energy; Tally never writes to Health). Workouts from any app or device that saves to Health (Apple Watch, Hevy, Fitbit, …) sync when the app opens or returns to the foreground and when you pull down on Today, covering the time since the last sync (the last 7 days the first time). Entries are upserted by HealthKit id, and workouts deleted in Health are removed. Burned calories add to the day's budget, and after a workout today a dismissible, once-per-workout refuel note appears (without numbers in numbers-off mode).

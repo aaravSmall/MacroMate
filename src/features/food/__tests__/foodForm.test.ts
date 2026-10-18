@@ -1,4 +1,4 @@
-import { EMPTY_FOOD_FORM, parseFoodForm } from '@/features/food/logic/foodForm';
+import { EMPTY_FOOD_FORM, foodToFormValues, parseFoodForm } from '@/features/food/logic/foodForm';
 
 const valid = {
   ...EMPTY_FOOD_FORM,
@@ -84,5 +84,73 @@ describe('parseFoodForm', () => {
 
   it('allows zero-calorie foods', () => {
     expect(parseFoodForm({ ...valid, calories: '0' }).ok).toBe(true);
+  });
+});
+
+describe('meals (user_recipe)', () => {
+  it('are stored per 1 serving even when the serving is in grams', () => {
+    const result = parseFoodForm(
+      { ...valid, name: 'Chicken stir-fry', servingSize: '350', servingUnit: 'g', calories: '520' },
+      { source: 'user_recipe' },
+    );
+    if (!result.ok) throw new Error('expected a valid form');
+    expect(result.input).toMatchObject({
+      source: 'user_recipe',
+      baseAmount: 1,
+      baseUnit: 'serving',
+      nutrition: { calories: 520 },
+      servings: [{ label: '350 g', baseMultiplier: 1, isDefault: true }],
+    });
+  });
+});
+
+describe('foodToFormValues', () => {
+  it('round-trips a meal through the form for editing', () => {
+    const parsed = parseFoodForm(
+      { ...valid, name: 'Oat bowl', servingSize: '1', servingUnit: 'bowl', fiber: '6' },
+      { source: 'user_recipe' },
+    );
+    if (!parsed.ok) throw new Error('expected a valid form');
+    const food = {
+      id: 'f1',
+      ownerId: 'me',
+      visibility: 'private' as const,
+      externalId: null,
+      verificationCount: 0,
+      mismatchCount: 0,
+      ...parsed.input,
+      servings: parsed.input.servings.map((s) => ({ ...s, id: 's1' })),
+    };
+    const values = foodToFormValues(food);
+    expect(values).toMatchObject({
+      name: 'Oat bowl',
+      brand: 'Acme',
+      servingSize: '1',
+      servingUnit: 'bowl',
+      calories: '210',
+      protein: '20',
+      carbs: '22.5',
+      fat: '0',
+      fiber: '6',
+      sodium: '180',
+    });
+    const again = parseFoodForm(values, { source: 'user_recipe' });
+    expect(again.ok && again.input.nutrition).toEqual(parsed.input.nutrition);
+  });
+
+  it('shows per-serving values for a food stored per 100 g', () => {
+    const parsed = parseFoodForm({ ...valid, servingSize: '40', servingUnit: 'g' });
+    if (!parsed.ok) throw new Error('expected a valid form');
+    const values = foodToFormValues({
+      id: 'f2',
+      ownerId: 'me',
+      visibility: 'private',
+      externalId: null,
+      verificationCount: 0,
+      mismatchCount: 0,
+      ...parsed.input,
+      servings: parsed.input.servings.map((s) => ({ ...s, id: 's2' })),
+    });
+    expect(values).toMatchObject({ servingSize: '40', servingUnit: 'g', calories: '210' });
   });
 });

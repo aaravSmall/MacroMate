@@ -8,6 +8,7 @@ import { useProfile } from '@/features/account';
 import { useAuth } from '@/features/auth';
 import {
   canDeleteFood,
+  canEditFood,
   canVerifyFood,
   getMyVerification,
   hasMismatchWarning,
@@ -218,8 +219,14 @@ function LogFoodForm({ food, userId }: { food: Food; userId: string }) {
         onPress={handleLog}
         loading={cacheFood.isPending || addLog.isPending}
       />
-      {/* Only user_recipe foods are editable (canEditFood); there's no recipe editor yet, so no
-          other food shows edit controls. */}
+      {/* Only the user's own meals (user_recipe) are editable; products keep their label values. */}
+      {canEditFood(food, userId) ? (
+        <Button
+          title="Edit meal"
+          variant="secondary"
+          onPress={() => router.push({ pathname: '/create-food', params: { edit: food.id } })}
+        />
+      ) : null}
       {canDeleteFood(food, userId) ? (
         <Button
           title="Delete from My Foods"
