@@ -222,14 +222,18 @@ export function mapPurdueItem(json: unknown): ProviderItem | null {
   }
   if (!hasCalories) return null;
 
-  for (const a of body.Allergens ?? []) {
+  // Allergens: a list (even with nothing flagged) means Purdue gave data; no list, null, or an
+  // empty list means it didn't. Stored as [] ("none listed") vs null ("no data").
+  const list = Array.isArray(body.Allergens) ? body.Allergens : [];
+  const allergens: string[] = [];
+  for (const a of list) {
     const name = (a.Name ?? '').trim().toLowerCase();
     if (!name || a.Value !== true) continue;
-    (DIET_TRAITS.has(name) ? food.diet_tags : food.allergens).push(name);
+    (DIET_TRAITS.has(name) ? food.diet_tags : allergens).push(name);
   }
+  food.allergens = list.length > 0 ? allergens.sort() : null;
   if (body.IsVegetarian && !food.diet_tags.includes('vegetarian'))
     food.diet_tags.push('vegetarian');
-  food.allergens.sort();
   food.diet_tags.sort();
 
   return {

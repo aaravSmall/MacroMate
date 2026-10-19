@@ -24,7 +24,7 @@ export {
   type FoodFormValues,
   parseFoodForm,
 } from './logic/foodForm';
-export { allergenNotice, containsLabel } from './logic/allergens';
+export { type AllergenSection, allergenNotice, containsLabel } from './logic/allergens';
 export {
   baseServingLabel,
   canDeleteFood,

@@ -38,6 +38,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Fixed
 
+- **Allergen status on dining foods:** every dining hall food now shows an allergen section with the cross-contact note: the flagged allergens, "No allergens listed by Purdue Dining", or "Purdue Dining didn't provide allergen info for this item". `foods.allergens` now stores NULL for "no data" and `{}` for "none listed" (previously both were `{}`); the Purdue sync maps a missing, null, or empty allergen list to NULL. Checked against Purdue's API: all 482 current dining items include allergen data (323 flag some, 159 list none), so no dining rows changed; non-dining foods, which never had allergen data, are now NULL.
+
 - **Drinks from Open Food Facts:** drinks are now stored per 100 ml with ml portions (the can or bottle, `100 ml`, `1 fl oz`, `1 cup`) instead of per 100 g. Products sold by volume but served by weight, like ice cream tubs, stay per 100 g.
 - **Caching is atomic:** a cached Open Food Facts food and its portions are inserted in one transaction (`insert_food_with_servings`), so a food is never visible without its servings, and simultaneous requests share one row.
 - **Edge Function auth:** `cache-off-food` and `delete-account` share one auth check that verifies the caller's session with `auth.getUser`, since `verify_jwt` alone admitted publishable-key-only requests.

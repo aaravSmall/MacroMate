@@ -131,7 +131,8 @@ Copy for every warning should be warm and specific. It should say what we notice
 ### Allergen data
 
 - **Allergen data may only be used to warn about or flag a food** ("Contains: gluten, soy"). It must **never** be used to label a food safe for an allergy: no "allergen-free", no "safe for you", and no reading "nothing flagged" as "safe". Provider data can be incomplete and doesn't cover cross-contact. Implemented in `src/features/food/logic/allergens.ts`.
-- Wherever provider allergens are shown, the source note goes with them. For dining hall foods: "Allergen info from Purdue Dining. It may not reflect cross-contact; ask dining staff if you have an allergy." This applies to the food page now and to any diet-restriction feature later (those features may hide or flag foods that list an allergen, but never promise safety).
+- **Dining hall foods always show an allergen section with the cross-contact note**, on the food page now and in any diet-restriction feature later. The status says what Purdue Dining reported: "Contains: gluten, soy, wheat", "No allergens listed by Purdue Dining", or "Purdue Dining didn't provide allergen info for this item". It's always followed by "Allergen info from Purdue Dining. It may not reflect cross-contact; ask dining staff if you have an allergy." Stored as `foods.allergens`: flagged list, `{}` (none listed), or NULL (no data). Diet-restriction features may hide or flag foods that list an allergen, but never promise safety.
+- Other foods show allergens only when some are flagged ("Contains: …").
 
 ## Non-goals
 

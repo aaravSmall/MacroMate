@@ -39,6 +39,28 @@ import type { Food, MealType } from '@/types/domain';
 
 const MEAL_OPTIONS = MEAL_LABELS.map((value) => ({ value, label: MEAL_LABEL_NAMES[value] }));
 
+/** Dining foods always show their allergen status and note; others only flagged allergens. */
+function AllergenInfo({ food }: { food: Food }) {
+  const { spacing } = useTheme();
+  const section = allergenNotice(food);
+  if (section) {
+    return (
+      <View
+        style={{ gap: spacing.xxs }}
+        accessible
+        accessibilityLabel={`${section.status}. ${section.note}`}
+      >
+        <Text variant="callout">{section.status}</Text>
+        <Text variant="caption" tone="muted">
+          {section.note}
+        </Text>
+      </View>
+    );
+  }
+  const contains = containsLabel(food);
+  return contains ? <Text variant="callout">{contains}</Text> : null;
+}
+
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -176,16 +198,7 @@ function LogFoodForm({
           </Text>
         ) : null}
         {/* Allergens only ever warn; never present a food as safe (see logic/allergens.ts). */}
-        {containsLabel(food) ? (
-          <View style={{ gap: spacing.xxs }}>
-            <Text variant="callout">{containsLabel(food)}</Text>
-            {allergenNotice(food) ? (
-              <Text variant="caption" tone="muted">
-                {allergenNotice(food)}
-              </Text>
-            ) : null}
-          </View>
-        ) : null}
+        <AllergenInfo food={food} />
         {food.visibility === 'public' && hasMismatchWarning(food) ? (
           <Text variant="callout" tone="accent">
             Some people found this doesn&apos;t match their package. It&apos;s worth checking

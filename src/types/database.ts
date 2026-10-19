@@ -197,7 +197,7 @@ export type Database = {
       };
       foods: {
         Row: {
-          allergens: string[];
+          allergens: string[] | null;
           barcode: string | null;
           base_amount: number;
           base_unit: Database['public']['Enums']['base_unit'];
@@ -229,7 +229,7 @@ export type Database = {
           visibility: Database['public']['Enums']['food_visibility'];
         };
         Insert: {
-          allergens?: string[];
+          allergens?: string[] | null;
           barcode?: string | null;
           base_amount?: number;
           base_unit?: Database['public']['Enums']['base_unit'];
@@ -261,7 +261,7 @@ export type Database = {
           visibility?: Database['public']['Enums']['food_visibility'];
         };
         Update: {
-          allergens?: string[];
+          allergens?: string[] | null;
           barcode?: string | null;
           base_amount?: number;
           base_unit?: Database['public']['Enums']['base_unit'];

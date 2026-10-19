@@ -44,7 +44,8 @@ export type ProviderFoodRow = {
   sodium_mg: number | null;
   cholesterol_mg: number | null;
   micros: Record<string, number>;
-  allergens: string[];
+  /** Flagged allergens; [] = the provider listed none; null = the provider gave no data. */
+  allergens: string[] | null;
   diet_tags: string[];
   ingredients: string | null;
 };

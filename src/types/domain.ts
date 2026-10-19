@@ -57,8 +57,11 @@ export type Food = {
   mismatchCount: number;
   /** Data provider for synced foods (e.g. 'purdue' for Purdue Dining), else null. */
   provider: string | null;
-  /** Allergens the source flags as present (lowercase, e.g. 'gluten'). Empty when unknown. */
-  allergens: string[];
+  /**
+   * Allergens the source flags as present (lowercase, e.g. 'gluten'). [] = the source listed
+   * none; null = the source gave no allergen data. Only ever used to warn (docs/PRODUCT.md).
+   */
+  allergens: string[] | null;
   /** Diet traits the source flags (e.g. 'vegetarian', 'vegan'). */
   dietTags: string[];
 };

@@ -49,6 +49,16 @@ begin
   if (select food_id from public.log_entries where id = log_id) <> id1 then raise exception 'log lost its food'; end if;
   if (select serving_id from public.log_entries where id = log_id) <> serving1 then raise exception 'log lost its serving'; end if;
 
+  -- Allergen status survives the upsert: NULL = no data, '{}' = none listed.
+  id2 := public.upsert_provider_food(food - 'allergens' || '{"provider_item_id": "item-2", "external_id": "test-provider:item-2"}', servings);
+  if (select allergens from public.foods where id = id2) is not null then
+    raise exception 'missing allergen data should be stored as NULL';
+  end if;
+  id2 := public.upsert_provider_food(food || '{"provider_item_id": "item-3", "external_id": "test-provider:item-3", "allergens": []}', servings);
+  if (select allergens from public.foods where id = id2) <> '{}' then
+    raise exception 'an empty allergen list should be stored as {}';
+  end if;
+
   -- Clients can't call the RPC or write menus.
   set local role authenticated;
   begin

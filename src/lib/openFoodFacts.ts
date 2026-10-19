@@ -175,7 +175,7 @@ export function mapOffProduct(product: OffProduct): Food | null {
     verificationCount: 0,
     mismatchCount: 0,
     provider: null,
-    allergens: [],
+    allergens: null,
     dietTags: [],
   };
 }

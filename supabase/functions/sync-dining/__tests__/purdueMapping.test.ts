@@ -114,6 +114,35 @@ describe('mapPurdueItem', () => {
     expect(item?.servings[0]?.label).toBe('1 hot dog');
   });
 
+  describe('allergen status', () => {
+    it('stores flagged allergens when Purdue flags some', () => {
+      expect(mapPurdueItem(fajitas)?.food.allergens).toEqual(['gluten', 'soy', 'wheat']);
+    });
+
+    it('stores [] when Purdue lists allergens but flags none', () => {
+      // The real hot dog payload: all 13 allergen entries present, every one false.
+      expect(hotDog.Allergens.length).toBe(13);
+      expect(hotDog.Allergens.every((a) => !a.Value)).toBe(true);
+      expect(mapPurdueItem(hotDog)?.food.allergens).toEqual([]);
+    });
+
+    it('stores null when Purdue gives no allergen data', () => {
+      // The same real payload without its allergen list (missing, null, or empty).
+      const { Allergens: _omit, ...withoutKey } = hotDog;
+      expect(mapPurdueItem(withoutKey)?.food.allergens).toBeNull();
+      expect(mapPurdueItem({ ...hotDog, Allergens: null })?.food.allergens).toBeNull();
+      expect(mapPurdueItem({ ...hotDog, Allergens: [] })?.food.allergens).toBeNull();
+    });
+
+    it('counts diet traits as data but not as allergens', () => {
+      const veganOnly = {
+        ...hotDog,
+        Allergens: hotDog.Allergens.map((a) => ({ ...a, Value: a.Name === 'Vegan' })),
+      };
+      expect(mapPurdueItem(veganOnly)?.food).toMatchObject({ allergens: [], diet_tags: ['vegan'] });
+    });
+  });
+
   it('returns null without nutrition', () => {
     expect(mapPurdueItem(notReady)).toBeNull();
     expect(
