@@ -1,4 +1,9 @@
-import { appPath, isPasswordResetUrl, parseAuthRedirect } from '@/features/auth/logic/authRedirect';
+import {
+  appPath,
+  isEmailConfirmUrl,
+  isPasswordResetUrl,
+  parseAuthRedirect,
+} from '@/features/auth/logic/authRedirect';
 
 const BUILD = 'calorietracker://reset-password';
 const EXPO_GO = 'exp://192.168.1.5:8081/--/reset-password';
@@ -85,5 +90,23 @@ describe('appPath / isPasswordResetUrl', () => {
     expect(isPasswordResetUrl('calorietracker://today')).toBe(false);
     expect(isPasswordResetUrl('exp://127.0.0.1:8081')).toBe(false);
     expect(isPasswordResetUrl('calorietracker://reset-password-other')).toBe(false);
+  });
+});
+
+describe('isEmailConfirmUrl', () => {
+  it('matches confirm-email links in builds and Expo Go, not other paths', () => {
+    expect(isEmailConfirmUrl('calorietracker://confirm-email#access_token=a&refresh_token=b')).toBe(
+      true,
+    );
+    expect(isEmailConfirmUrl('exp://192.168.1.5:8081/--/confirm-email?code=abc')).toBe(true);
+    expect(isEmailConfirmUrl('calorietracker://reset-password#access_token=a')).toBe(false);
+  });
+
+  it('parses a signup token hash', () => {
+    expect(parseAuthRedirect('calorietracker://confirm-email?token_hash=xyz&type=signup')).toEqual({
+      kind: 'token_hash',
+      tokenHash: 'xyz',
+      type: 'signup',
+    });
   });
 });

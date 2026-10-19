@@ -82,3 +82,8 @@ export function appPath(url: string): string {
 export function isPasswordResetUrl(url: string): boolean {
   return appPath(url) === 'reset-password';
 }
+
+/** Email confirmation links (sign-up) open `confirm-email`. */
+export function isEmailConfirmUrl(url: string): boolean {
+  return appPath(url) === 'confirm-email';
+}

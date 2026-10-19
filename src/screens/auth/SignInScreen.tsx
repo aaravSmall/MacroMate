@@ -17,6 +17,7 @@ export default function SignInScreen() {
   const [errors, setErrors] = useState<{ email?: string | null; password?: string | null }>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [unconfirmedEmail, setUnconfirmedEmail] = useState<string | null>(null);
 
   async function handleSubmit() {
     const loginEmail = resolveLoginEmail(email);
@@ -30,9 +31,10 @@ export default function SignInScreen() {
     if (next.email || next.password) return;
 
     setSubmitting(true);
-    const { error } = await signIn(loginEmail, password);
+    const { error, emailNotConfirmed } = await signIn(loginEmail, password);
     setSubmitting(false);
     if (error) setFormError(error);
+    setUnconfirmedEmail(emailNotConfirmed ? loginEmail : null);
     // On success the root gate redirects automatically.
   }
 
@@ -72,6 +74,11 @@ export default function SignInScreen() {
         onSubmitEditing={handleSubmit}
       />
       {formError ? <Text tone="danger">{formError}</Text> : null}
+      {unconfirmedEmail ? (
+        <Link href={{ pathname: '/check-email', params: { email: unconfirmedEmail } }}>
+          <Text tone="accent">Resend confirmation email</Text>
+        </Link>
+      ) : null}
       <Button title="Sign in" onPress={handleSubmit} loading={submitting} />
       <Link href="/forgot-password">
         <Text tone="accent">Forgot password?</Text>

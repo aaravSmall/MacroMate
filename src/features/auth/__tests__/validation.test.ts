@@ -1,5 +1,6 @@
 import {
   validateEmail,
+  validateNewPassword,
   validatePassword,
   validatePasswordConfirmation,
 } from '@/features/auth/validation';
@@ -37,5 +38,15 @@ describe('validatePasswordConfirmation', () => {
   it('requires matching passwords', () => {
     expect(validatePasswordConfirmation('abcdefgh', 'abcdefgi')).not.toBeNull();
     expect(validatePasswordConfirmation('abcdefgh', 'abcdefgh')).toBeNull();
+  });
+});
+
+describe('validateNewPassword', () => {
+  it('needs 8+ characters with a letter and a number (server: letters_digits)', () => {
+    expect(validateNewPassword('')).toBe('Enter your password.');
+    expect(validateNewPassword('abc12')).toBe('Use at least 8 characters.');
+    expect(validateNewPassword('abcdefgh')).toBe('Include at least one letter and one number.');
+    expect(validateNewPassword('12345678')).toBe('Include at least one letter and one number.');
+    expect(validateNewPassword('abcd1234')).toBeNull();
   });
 });

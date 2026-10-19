@@ -3,11 +3,17 @@ import * as Linking from 'expo-linking';
 
 import { supabase } from '@/lib/supabase';
 
-import { friendlyAuthError, recoveryLinkError } from '../authErrors';
+import {
+  confirmLinkError,
+  friendlyAuthError,
+  isEmailNotConfirmed,
+  recoveryLinkError,
+} from '../authErrors';
 import type { AuthRedirect } from '../logic/authRedirect';
 
 export type AuthResult = { error: string | null };
 export type SignUpResult = AuthResult & { needsEmailConfirmation: boolean };
+export type SignInResult = AuthResult & { emailNotConfirmed: boolean };
 
 export async function getSession(): Promise<Session | null> {
   const { data } = await supabase.auth.getSession();
@@ -31,17 +37,25 @@ async function safely<T extends AuthResult>(run: () => Promise<T>, fallback: Omi
   }
 }
 
-export function signIn(email: string, password: string): Promise<AuthResult> {
-  return safely(async () => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: friendlyAuthError(error) };
-  }, {});
+export function signIn(email: string, password: string): Promise<SignInResult> {
+  return safely<SignInResult>(
+    async () => {
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      return { error: friendlyAuthError(error), emailNotConfirmed: isEmailNotConfirmed(error) };
+    },
+    { emailNotConfirmed: false },
+  );
 }
 
 export function signUp(email: string, password: string): Promise<SignUpResult> {
   return safely<SignUpResult>(
     async () => {
-      const { data, error } = await supabase.auth.signUp({ email, password });
+      // The confirmation link opens confirm-email in the app (AuthProvider signs the user in).
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { emailRedirectTo: Linking.createURL('/confirm-email') },
+      });
       return {
         error: friendlyAuthError(error),
         // With email confirmation on, sign-up succeeds but returns no session.
@@ -50,6 +64,51 @@ export function signUp(email: string, password: string): Promise<SignUpResult> {
     },
     { needsEmailConfirmation: false },
   );
+}
+
+/** Sends the sign-up confirmation email again. Supabase rate-limits this per address. */
+export function resendConfirmation(email: string): Promise<AuthResult> {
+  return safely(async () => {
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email,
+      options: { emailRedirectTo: Linking.createURL('/confirm-email') },
+    });
+    return { error: friendlyAuthError(error) };
+  }, {});
+}
+
+/**
+ * Signs in from an email confirmation link: implicit-flow tokens (setSession), a PKCE code
+ * (exchangeCodeForSession), or a token hash (verifyOtp).
+ */
+export function completeEmailConfirmation(redirect: AuthRedirect): Promise<AuthResult> {
+  return safely(async () => {
+    switch (redirect.kind) {
+      case 'tokens': {
+        const { error } = await supabase.auth.setSession({
+          access_token: redirect.accessToken,
+          refresh_token: redirect.refreshToken,
+        });
+        return { error: error ? confirmLinkError(null) : null };
+      }
+      case 'code': {
+        const { error } = await supabase.auth.exchangeCodeForSession(redirect.code);
+        return { error: error ? confirmLinkError(null) : null };
+      }
+      case 'token_hash': {
+        const { error } = await supabase.auth.verifyOtp({
+          token_hash: redirect.tokenHash,
+          type: redirect.type === 'email' ? 'email' : 'signup',
+        });
+        return { error: error ? confirmLinkError(error.code ?? null) : null };
+      }
+      case 'error':
+        return { error: confirmLinkError(redirect.code) };
+      case 'none':
+        return { error: confirmLinkError(null) };
+    }
+  }, {});
 }
 
 export function signOut(): Promise<AuthResult> {

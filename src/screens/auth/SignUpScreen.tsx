@@ -1,11 +1,11 @@
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useState } from 'react';
 
-import { Button, Card, Screen, Text, TextField } from '@/components/ui';
+import { Button, Screen, Text, TextField } from '@/components/ui';
 import {
   useAuth,
   validateEmail,
-  validatePassword,
+  validateNewPassword,
   validatePasswordConfirmation,
 } from '@/features/auth';
 
@@ -19,12 +19,11 @@ export default function SignUpScreen() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [confirmationSent, setConfirmationSent] = useState(false);
 
   async function handleSubmit() {
     const next: FieldErrors = {
       email: validateEmail(email),
-      password: validatePassword(password),
+      password: validateNewPassword(password),
       confirm: validatePasswordConfirmation(password, confirm),
     };
     setErrors(next);
@@ -35,24 +34,10 @@ export default function SignUpScreen() {
     const result = await signUp(email.trim(), password);
     setSubmitting(false);
     if (result.error) setFormError(result.error);
-    else if (result.needsEmailConfirmation) setConfirmationSent(true);
+    else if (result.needsEmailConfirmation) {
+      router.replace({ pathname: '/check-email', params: { email: email.trim() } });
+    }
     // Otherwise a session exists and the root gate moves on to onboarding.
-  }
-
-  if (confirmationSent) {
-    return (
-      <Screen scroll>
-        <Text variant="title">Check your email</Text>
-        <Card>
-          <Text>
-            We sent a confirmation link to {email.trim()}. Open it on this device, then sign in.
-          </Text>
-        </Card>
-        <Link href="/sign-in">
-          <Text tone="accent">Back to sign in</Text>
-        </Link>
-      </Screen>
-    );
   }
 
   return (

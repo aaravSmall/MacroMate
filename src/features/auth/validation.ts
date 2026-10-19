@@ -18,6 +18,19 @@ export function validatePassword(password: string): string | null {
   return null;
 }
 
+/**
+ * For new passwords (sign-up, reset): at least MIN_PASSWORD_LENGTH characters with a letter and
+ * a number. Matches the server's `password_requirements = "letters_digits"`.
+ */
+export function validateNewPassword(password: string): string | null {
+  const basic = validatePassword(password);
+  if (basic) return basic;
+  if (!/[a-z]/i.test(password) || !/\d/.test(password)) {
+    return 'Include at least one letter and one number.';
+  }
+  return null;
+}
+
 export function validatePasswordConfirmation(password: string, confirm: string): string | null {
   return password === confirm ? null : "Passwords don't match.";
 }

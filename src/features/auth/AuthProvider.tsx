@@ -10,7 +10,7 @@ import {
   useState,
 } from 'react';
 
-import { isPasswordResetUrl, parseAuthRedirect } from './logic/authRedirect';
+import { isEmailConfirmUrl, isPasswordResetUrl, parseAuthRedirect } from './logic/authRedirect';
 import * as authService from './services/authService';
 
 /**
@@ -19,6 +19,9 @@ import * as authService from './services/authService';
  */
 export type PasswordRecovery =
   { status: 'verifying' } | { status: 'ready' } | { status: 'error'; message: string };
+
+/** A sign-up confirmation link being processed. On success the session takes over routing. */
+export type EmailConfirmation = { status: 'verifying' } | { status: 'error'; message: string };
 
 export type AuthContextValue = {
   session: Session | null;
@@ -30,7 +33,9 @@ export type AuthContextValue = {
   signOut: typeof authService.signOut;
   resetPassword: typeof authService.resetPassword;
   updatePassword: typeof authService.updatePassword;
+  resendConfirmation: typeof authService.resendConfirmation;
   recovery: PasswordRecovery | null;
+  emailConfirmation: EmailConfirmation | null;
   /** Ends the reset flow so normal routing resumes. */
   finishRecovery: () => void;
 };
@@ -42,14 +47,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [sessionRestored, setSessionRestored] = useState(false);
   const [initialUrlChecked, setInitialUrlChecked] = useState(false);
   const [recovery, setRecovery] = useState<PasswordRecovery | null>(null);
+  const [emailConfirmation, setEmailConfirmation] = useState<EmailConfirmation | null>(null);
   const handledUrls = useRef(new Set<string>());
 
-  // Password reset links: the URL that launched the app, and any opened while it's running.
+  // Auth email links (password reset, sign-up confirmation): the URL that launched the app, and
+  // any opened while it's running.
   // (getInitialURL + the url event, rather than useLinkingURL, which is null in Expo Go.)
   useEffect(() => {
     let mounted = true;
     const handle = (url: string | null) => {
-      if (!url || handledUrls.current.has(url) || !isPasswordResetUrl(url)) return;
+      if (!url || handledUrls.current.has(url)) return;
+      if (isEmailConfirmUrl(url)) {
+        handledUrls.current.add(url);
+        setEmailConfirmation({ status: 'verifying' });
+        void authService.completeEmailConfirmation(parseAuthRedirect(url)).then((result) => {
+          if (!mounted) return;
+          // Success: the new session routes the user on to onboarding.
+          setEmailConfirmation(result.error ? { status: 'error', message: result.error } : null);
+        });
+        return;
+      }
+      if (!isPasswordResetUrl(url)) return;
       handledUrls.current.add(url);
       setRecovery({ status: 'verifying' });
       void authService.beginPasswordRecovery(parseAuthRedirect(url)).then((result) => {
@@ -108,10 +126,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signOut: authService.signOut,
       resetPassword: authService.resetPassword,
       updatePassword: authService.updatePassword,
+      resendConfirmation: authService.resendConfirmation,
       recovery,
+      emailConfirmation,
       finishRecovery: () => setRecovery(null),
     }),
-    [session, loading, recovery],
+    [session, loading, recovery, emailConfirmation],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

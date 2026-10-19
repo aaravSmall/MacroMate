@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { Button, Card, Screen, Text, TextField } from '@/components/ui';
-import { useAuth, validatePassword, validatePasswordConfirmation } from '@/features/auth';
+import { useAuth, validateNewPassword, validatePasswordConfirmation } from '@/features/auth';
 import { useTheme } from '@/theme';
 
 type FieldErrors = { password?: string | null; confirm?: string | null };
@@ -25,7 +25,7 @@ export default function ResetPasswordScreen() {
 
   async function handleSubmit() {
     const next: FieldErrors = {
-      password: validatePassword(password),
+      password: validateNewPassword(password),
       confirm: validatePasswordConfirmation(password, confirm),
     };
     setErrors(next);
