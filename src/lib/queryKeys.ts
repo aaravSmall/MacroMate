@@ -17,6 +17,7 @@ export const queryKeys = {
     detail: (id: string) => ['logs', 'detail', id] as const,
     totals: (dateKey: string) => ['logs', 'totals', dateKey] as const,
     streak: (timezone: string) => ['logs', 'streak', timezone] as const,
+    longestStreak: () => ['logs', 'longestStreak'] as const,
     streakAll: ['logs', 'streak'] as const,
     loggedDaysAll: ['logs', 'loggedDays'] as const,
     loggedDays: (fromKey: string, toKey: string) => ['logs', 'loggedDays', fromKey, toKey] as const,

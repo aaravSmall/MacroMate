@@ -10,6 +10,7 @@ import {
   addLog,
   deleteLog,
   getCurrentStreak,
+  getLongestStreak,
   getDailyTotals,
   getLog,
   getLoggedDateKeys,
@@ -60,6 +61,11 @@ export function useStreak() {
   });
 }
 
+/** Longest-ever logging streak from the server (`longest_streak`). */
+export function useLongestStreak() {
+  return useQuery({ queryKey: queryKeys.logs.longestStreak(), queryFn: getLongestStreak });
+}
+
 function byLoggedAt(a: LogEntry, b: LogEntry) {
   return a.loggedAt.localeCompare(b.loggedAt);
 }
@@ -69,6 +75,7 @@ function invalidateDay(queryClient: ReturnType<typeof useQueryClient>, dateKey: 
   void queryClient.invalidateQueries({ queryKey: queryKeys.logs.totals(dateKey) });
   void queryClient.invalidateQueries({ queryKey: queryKeys.logs.loggedDaysAll });
   void queryClient.invalidateQueries({ queryKey: queryKeys.logs.streakAll });
+  void queryClient.invalidateQueries({ queryKey: queryKeys.logs.longestStreak() });
 }
 
 /** Adds a log, showing it immediately and rolling back if the save fails. */

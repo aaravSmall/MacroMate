@@ -560,6 +560,8 @@ export type Database = {
         Args: { food: Json; servings: Json };
         Returns: string;
       };
+      longest_streak: { Args: never; Returns: number };
+      longest_streak_from_dates: { Args: { p_days: string[] }; Returns: number };
       share_food: { Args: { food_id: string }; Returns: undefined };
       streak_from_dates: {
         Args: { p_days: string[]; p_today: string };

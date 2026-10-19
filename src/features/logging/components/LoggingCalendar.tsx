@@ -1,5 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Pressable, View } from 'react-native';
+import { useMemo } from 'react';
+import { PanResponder, Pressable, View } from 'react-native';
 
 import { Text } from '@/components/ui';
 import { buildMonthGrid, WEEKDAY_INITIALS } from '@/lib/calendar';
@@ -12,11 +13,16 @@ export type LoggingCalendarProps = {
   loggedDays: ReadonlySet<string>;
   onPrevMonth: () => void;
   onNextMonth: () => void;
+  /** Tapping a day (`YYYY-MM-DD`), e.g. to open that day's log. */
+  onDayPress?: (dateKey: string) => void;
 };
+
+/** Horizontal swipe distance that changes the month. */
+const SWIPE_DISTANCE = 40;
 
 /**
  * Month calendar marking logged days in a single neutral color. It deliberately never colors
- * days by calories (no red/green judgment).
+ * days by calories (no red/green judgment). Swipe or use the arrows to change months.
  */
 export function LoggingCalendar({
   year,
@@ -24,8 +30,22 @@ export function LoggingCalendar({
   loggedDays,
   onPrevMonth,
   onNextMonth,
+  onDayPress,
 }: LoggingCalendarProps) {
   const { colors, spacing } = useTheme();
+  // Claims mostly-horizontal drags only, so vertical scrolling still works.
+  const swipe = useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: (_e, g) =>
+          Math.abs(g.dx) > 12 && Math.abs(g.dx) > Math.abs(g.dy) * 1.5,
+        onPanResponderRelease: (_e, g) => {
+          if (g.dx <= -SWIPE_DISTANCE) onNextMonth();
+          else if (g.dx >= SWIPE_DISTANCE) onPrevMonth();
+        },
+      }),
+    [onPrevMonth, onNextMonth],
+  );
   const todayKey = toDateKey(new Date());
   const title = new Date(year, month, 1).toLocaleDateString('en-US', {
     month: 'long',
@@ -33,7 +53,7 @@ export function LoggingCalendar({
   });
 
   return (
-    <View style={{ gap: spacing.sm }}>
+    <View style={{ gap: spacing.sm }} {...swipe.panHandlers}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Pressable
           accessibilityRole="button"
@@ -70,11 +90,20 @@ export function LoggingCalendar({
             const logged = loggedDays.has(key);
             const isToday = key === todayKey;
             return (
-              <View
+              <Pressable
                 key={d}
-                accessible
+                accessibilityRole={onDayPress ? 'button' : undefined}
                 accessibilityLabel={`${day.toDateString()}${logged ? ', logged' : ''}`}
-                style={{ flex: 1, aspectRatio: 1, alignItems: 'center', justifyContent: 'center' }}
+                accessibilityHint={onDayPress ? "Opens this day's log" : undefined}
+                disabled={!onDayPress}
+                onPress={() => onDayPress?.(key)}
+                style={({ pressed }) => ({
+                  flex: 1,
+                  aspectRatio: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  opacity: pressed ? 0.6 : 1,
+                })}
               >
                 <View
                   style={{
@@ -92,7 +121,7 @@ export function LoggingCalendar({
                     {day.getDate()}
                   </Text>
                 </View>
-              </View>
+              </Pressable>
             );
           })}
         </View>

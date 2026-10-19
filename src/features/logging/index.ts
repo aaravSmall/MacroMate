@@ -8,6 +8,7 @@ export {
   useDeleteLog,
   useLog,
   useLoggedDays,
+  useLongestStreak,
   useStreak,
   useUpdateLog,
 } from './hooks/useLogs';
@@ -21,11 +22,12 @@ export {
   portionNutrition,
   rescaleTotals,
 } from './logic/snapshot';
-export { currentStreak } from './logic/streak';
+export { currentStreak, longestStreak } from './logic/streak';
 export {
   addLog,
   deleteLog,
   getCurrentStreak,
+  getLongestStreak,
   getDailyTotals,
   getLog,
   getLoggedDateKeys,

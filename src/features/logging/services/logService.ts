@@ -122,3 +122,10 @@ export async function getCurrentStreak(timezone: string): Promise<number> {
   if (error) throw error;
   return data;
 }
+
+/** The signed-in user's longest-ever logging streak, from the `longest_streak` RPC. */
+export async function getLongestStreak(): Promise<number> {
+  const { data, error } = await supabase.rpc('longest_streak');
+  if (error) throw error;
+  return data;
+}

@@ -1,4 +1,4 @@
-import { addDays, toDateKey } from '@/lib/dates';
+import { addDays, fromDateKey, toDateKey } from '@/lib/dates';
 
 /**
  * Consecutive days, ending today, with at least one log. If today has no log yet the streak
@@ -16,4 +16,21 @@ export function currentStreak(
     day = addDays(day, -1);
   }
   return streak;
+}
+
+/**
+ * The longest run of consecutive logged days ever. Spec for the `longest_streak` RPC.
+ * Like currentStreak, any logged day counts, whatever the calories.
+ */
+export function longestStreak(loggedDateKeys: ReadonlySet<string>): number {
+  const days = [...loggedDateKeys].sort();
+  let longest = 0;
+  let run = 0;
+  let previous: string | null = null;
+  for (const key of days) {
+    run = previous !== null && toDateKey(addDays(fromDateKey(previous), 1)) === key ? run + 1 : 1;
+    longest = Math.max(longest, run);
+    previous = key;
+  }
+  return longest;
 }

@@ -6,24 +6,44 @@ import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, Text, TextField } from '@/components/ui';
 import { useProfile } from '@/features/account';
 import { lbToKg, useActiveGoal } from '@/features/goals';
-import { LoggingCalendar, useLoggedDays, useStreak } from '@/features/logging';
+import { LoggingCalendar, useLoggedDays, useLongestStreak, useStreak } from '@/features/logging';
 import { useAddWeighIn, useWeighIns, WeightTrendChart } from '@/features/weighins';
 import { toDateKey, toDateKeyInTimeZone } from '@/lib/dates';
 import { formatWeight, parseNumber } from '@/lib/format';
+import { useSelectedDateStore } from '@/store/selectedDateStore';
 import { useTheme } from '@/theme';
 
-/** Consecutive days with a log, ending today or yesterday (computed on the server, no cap). */
+/** Current and longest logging streaks, both computed on the server. Any logged day counts. */
 function StreakCard() {
+  const { spacing } = useTheme();
   const streak = useStreak().data ?? null;
+  const longest = useLongestStreak().data ?? null;
+  const days = (n: number | null) => (n === 1 ? 'day' : 'days');
 
   return (
     <Card>
-      <Text variant="label" tone="muted">
-        Logging streak
-      </Text>
-      <Text variant="display">{streak ?? '–'}</Text>
-      <Text variant="callout" tone="muted">
-        {streak === 1 ? 'day' : 'days'} in a row with at least one log
+      <View style={{ flexDirection: 'row', gap: spacing.lg }}>
+        <View style={{ flex: 1 }}>
+          <Text variant="label" tone="muted">
+            Current streak
+          </Text>
+          <Text variant="display">{streak ?? '–'}</Text>
+          <Text variant="callout" tone="muted">
+            {days(streak)} in a row
+          </Text>
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text variant="label" tone="muted">
+            Longest streak
+          </Text>
+          <Text variant="display">{longest ?? '–'}</Text>
+          <Text variant="callout" tone="muted">
+            {days(longest)}
+          </Text>
+        </View>
+      </View>
+      <Text variant="caption" tone="muted">
+        Days with at least one log
       </Text>
     </Card>
   );
@@ -35,6 +55,7 @@ function CalendarCard() {
   const fromKey = toDateKey(new Date(view.year, view.month, 1));
   const toKey = toDateKey(new Date(view.year, view.month + 1, 1));
   const logged = useLoggedDays(fromKey, toKey);
+  const goToDate = useSelectedDateStore((s) => s.goToDate);
 
   const shift = (delta: number) =>
     setView(({ year, month }) => {
@@ -50,6 +71,10 @@ function CalendarCard() {
         loggedDays={logged.data ?? new Set()}
         onPrevMonth={() => shift(-1)}
         onNextMonth={() => shift(1)}
+        onDayPress={(dateKey) => {
+          goToDate(dateKey);
+          router.navigate('/today');
+        }}
       />
       <QueryStatus error={logged.error} onRetry={() => void logged.refetch()} />
     </Card>

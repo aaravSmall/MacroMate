@@ -8,6 +8,7 @@ type SelectedDateState = {
   goToPreviousDay: () => void;
   goToNextDay: () => void;
   goToToday: () => void;
+  goToDate: (dateKey: string) => void;
 };
 
 /** Which day the Today tab is showing. UI state only. */
@@ -16,6 +17,7 @@ export const useSelectedDateStore = create<SelectedDateState>((set) => ({
   goToPreviousDay: () => set((s) => ({ dateKey: toDateKey(addDays(fromDateKey(s.dateKey), -1)) })),
   goToNextDay: () => set((s) => ({ dateKey: toDateKey(addDays(fromDateKey(s.dateKey), 1)) })),
   goToToday: () => set({ dateKey: toDateKey(new Date()) }),
+  goToDate: (dateKey) => set({ dateKey }),
 }));
 
 /**
