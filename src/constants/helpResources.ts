@@ -1,7 +1,11 @@
 /**
- * Help & resources shown on Account → Help and linked from every CareNotice.
- * TODO(release): verify every phone number, text code, and link before release, and re-check
- * them periodically. Services change numbers and hours.
+ * Help & resources shown on Account → Help and linked from every CareNotice. This is the only
+ * place the list lives; edit it here.
+ *
+ * IMPORTANT: every phone number, text code, hours note, and link MUST be verified against the
+ * organization's official site before public launch, and re-checked periodically. Services change
+ * numbers and hours. Last checked: National Alliance for Eating Disorders number and hours against
+ * allianceforeatingdisorders.com, 2026-10-19.
  */
 
 export type HelpResource = {
@@ -26,21 +30,21 @@ export const HELP_RESOURCES: readonly HelpResource[] = [
     url: 'https://988lifeline.org',
   },
   {
-    id: 'alliance-eating-disorders',
-    name: 'National Alliance for Eating Disorders',
-    description:
-      'A helpline staffed by licensed therapists who can talk through concerns about eating, food, or body image and help you find care.',
-    phone: '1-866-662-1235',
-    text: null,
-    url: 'https://www.allianceforeatingdisorders.com',
-  },
-  {
     id: 'crisis-text-line',
     name: 'Crisis Text Line',
     description: 'Text HOME to 741741 to reach a trained crisis counselor, 24/7 (US).',
     phone: null,
     text: { number: '741741', body: 'HOME' },
     url: 'https://www.crisistextline.org',
+  },
+  {
+    id: 'alliance-eating-disorders',
+    name: 'National Alliance for Eating Disorders',
+    description:
+      'A helpline staffed by licensed therapists who can talk through concerns about eating, food, or body image and help you find care. Monday–Friday, 9am–7pm ET.',
+    phone: '1-866-662-1235',
+    text: null,
+    url: 'https://www.allianceforeatingdisorders.com',
   },
   {
     id: 'your-doctor',
