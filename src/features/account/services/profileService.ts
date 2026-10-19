@@ -19,7 +19,10 @@ export function mapProfileRow(row: Tables<'profiles'>): Profile {
     dietaryRestrictions: row.dietary_restrictions,
     allergies: row.allergies,
     numbersOff: row.numbers_off,
-    habitGoals: row.habit_goals.filter(isHabitGoal),
+    // Tolerates a database without the column yet (migration 20261019140000 not applied).
+    habitGoals: Array.isArray(row.habit_goals)
+      ? row.habit_goals.filter(isHabitGoal)
+      : [...HABIT_GOALS],
     weighInFrequency: row.weigh_in_frequency,
     weighInWeekday: row.weigh_in_weekday,
     weighInReminderTime: row.weigh_in_reminder_time,
