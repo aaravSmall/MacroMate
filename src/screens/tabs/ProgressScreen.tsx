@@ -1,13 +1,13 @@
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, Text, TextField } from '@/components/ui';
 import { useProfile } from '@/features/account';
-import { lbToKg } from '@/features/goals';
+import { lbToKg, useActiveGoal } from '@/features/goals';
 import { LoggingCalendar, useLoggedDays, useStreak } from '@/features/logging';
-import { useAddWeighIn, useWeighIns } from '@/features/weighins';
+import { useAddWeighIn, useWeighIns, WeightTrendChart } from '@/features/weighins';
 import { toDateKey, toDateKeyInTimeZone } from '@/lib/dates';
 import { formatWeight, parseNumber } from '@/lib/format';
 import { useTheme } from '@/theme';
@@ -52,6 +52,31 @@ function CalendarCard() {
         onNextMonth={() => shift(1)}
       />
       <QueryStatus error={logged.error} onRetry={() => void logged.refetch()} />
+    </Card>
+  );
+}
+
+function WeightTrendCard() {
+  const weighIns = useWeighIns();
+  const goal = useActiveGoal().data;
+  const units = useProfile().data?.unitSystem ?? 'imperial';
+  return (
+    <Card>
+      <Text variant="subheading">Weight trend</Text>
+      <QueryStatus
+        loading={weighIns.isPending}
+        error={weighIns.error}
+        onRetry={() => void weighIns.refetch()}
+      />
+      {weighIns.data ? (
+        <WeightTrendChart
+          weighIns={weighIns.data}
+          goalKg={goal?.targetWeightKg ?? null}
+          units={units}
+          // Focuses the weigh-in field below (same params a weigh-in reminder opens with).
+          onAddFirst={() => router.setParams({ focus: 'weighin', t: String(Date.now()) })}
+        />
+      ) : null}
     </Card>
   );
 }
@@ -145,6 +170,7 @@ export default function ProgressScreen() {
       <Text variant="title">Progress</Text>
       <StreakCard />
       <CalendarCard />
+      <WeightTrendCard />
       <WeighInsCard />
     </Screen>
   );

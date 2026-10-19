@@ -1,3 +1,4 @@
+export { WeightTrendChart } from './components/WeightTrendChart';
 export { useAddWeighIn, useWeighIns } from './hooks/useWeighIns';
 export {
   confirmReminders,
@@ -16,3 +17,13 @@ export {
   mapWeighInRow,
   type NewWeighIn,
 } from './services/weighInService';
+export {
+  chartScale,
+  linePath,
+  movingAverage,
+  pointsInRange,
+  TREND_RANGES,
+  TREND_WINDOW_DAYS,
+  type TrendPoint,
+  type TrendRange,
+} from './logic/trend';
