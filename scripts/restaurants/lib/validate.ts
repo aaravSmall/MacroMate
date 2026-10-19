@@ -41,8 +41,33 @@ export function validateItems(items: NormalizedItem[]): {
     if (item.food.calories < 0 || item.food.calories > 5000) {
       item.reasons.push('Calories out of range.');
     }
+    item.reasons.push(...uploadBlockers(item));
     if (item.reasons.length > 0) flagged.push({ ...item, approved: false });
     else ready.push(item);
   }
   return { ready, flagged };
+}
+
+/** A serving label counts as a standard portion when it names one of these units. */
+const STANDARD_UNIT = /\b(\d+(\.\d+)?\s*(g|oz|fl oz|ml|cups?|pieces?|pc))\b|\d(g|ml)\b/i;
+
+/** True when a serving label uses a standard unit: g, oz, fl oz, ml, cups, or pieces. */
+export function isStandardPortion(label: string): boolean {
+  return STANDARD_UNIT.test(label);
+}
+
+/**
+ * Why an item can't be uploaded at all, even if a reviewer approved it: missing calories or
+ * macros, or no serving in a standard unit. Empty when it's fine.
+ */
+export function uploadBlockers(item: NormalizedItem): string[] {
+  const blockers: string[] = [];
+  for (const field of ['calories', 'protein_g', 'carbs_g', 'fat_g'] as const) {
+    const value: unknown = item.food[field];
+    if (typeof value !== 'number' || !Number.isFinite(value)) blockers.push(`Missing ${field}.`);
+  }
+  if (!item.servings.some((s) => isStandardPortion(s.label))) {
+    blockers.push('No serving in a standard unit (g, oz, ml, cups, pieces).');
+  }
+  return blockers;
 }

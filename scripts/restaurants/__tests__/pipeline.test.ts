@@ -4,7 +4,7 @@ import { fiveguys } from '../chains/fiveguys';
 import { wingstop } from '../chains/wingstop';
 import { normalizeRecords, parseServing, parseValue, slug } from '../lib/normalize';
 import { buildColumns, extractRecords, fieldsInLabel } from '../lib/table';
-import { macroMismatch, validateItems } from '../lib/validate';
+import { isStandardPortion, macroMismatch, uploadBlockers, validateItems } from '../lib/validate';
 
 describe('fieldsInLabel', () => {
   it('reads multi-word and combined header labels', () => {
@@ -235,4 +235,43 @@ it('builds columns ignoring allergen headers', () => {
     'sugar_g',
     'protein_g',
   ]);
+});
+
+describe('upload blockers', () => {
+  const item = (servings: string[], food: Partial<Record<string, unknown>> = {}) =>
+    ({
+      food: { calories: 100, protein_g: 5, carbs_g: 10, fat_g: 4, ...food },
+      servings: servings.map((label, i) => ({ label, base_multiplier: 1, is_default: i === 0 })),
+    }) as unknown as Parameters<typeof uploadBlockers>[0];
+
+  it('accepts standard units', () => {
+    for (const label of [
+      '1 wing (39 g)',
+      '4 oz',
+      '2 fl oz',
+      'Regular (600 ml)',
+      '1 cup',
+      '2 pieces (14 g)',
+      '6 pc',
+      '1 Sticks (25g)',
+    ]) {
+      expect(isStandardPortion(label)).toBe(true);
+    }
+  });
+
+  it('rejects portions with no standard unit', () => {
+    expect(isStandardPortion('1 each')).toBe(false);
+    expect(isStandardPortion('Regular')).toBe(false);
+    expect(uploadBlockers(item(['1 each']))).toEqual([
+      'No serving in a standard unit (g, oz, ml, cups, pieces).',
+    ]);
+    expect(uploadBlockers(item(['1 each', '100 g']))).toEqual([]);
+  });
+
+  it('requires calories, protein, carbs, and fat', () => {
+    expect(uploadBlockers(item(['4 oz'], { protein_g: null, fat_g: Number.NaN }))).toEqual([
+      'Missing protein_g.',
+      'Missing fat_g.',
+    ]);
+  });
 });

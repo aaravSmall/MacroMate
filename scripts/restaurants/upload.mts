@@ -3,6 +3,10 @@
  * (source 'restaurant', public, no owner), keyed on (source, external_id) so re-running updates
  * rows instead of duplicating them. Flagged items are skipped unless "approved": true.
  *
+ * Every item must have calories, protein, carbs, and fat and at least one serving in a standard
+ * unit (g, oz, ml, cups, pieces); items that don't are never uploaded, even when approved.
+ * A sample of 10 items per chain is printed before anything is written.
+ *
  * Dry run unless --yes. Needs a service-role/secret key in scripts/restaurants/.env.local
  * (gitignored; never commit it):
  *   SUPABASE_URL=https://<ref>.supabase.co
@@ -17,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 import { createClient } from '@supabase/supabase-js';
 
 import type { NormalizedItem } from './lib/normalize';
+import { uploadBlockers } from './lib/validate';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 
@@ -109,6 +114,20 @@ async function upsertItem(item: NormalizedItem): Promise<'inserted' | 'updated'>
   return 'updated';
 }
 
+/** Prints 10 items spread evenly through the list, so a reviewer can eyeball every section. */
+function printSample(name: string, items: NormalizedItem[]): void {
+  const step = Math.max(1, Math.floor(items.length / 10));
+  const sample = items.filter((_, i) => i % step === 0).slice(0, 10);
+  console.log(`\n${name}: sample of ${sample.length} of ${items.length} items`);
+  for (const { food, servings } of sample) {
+    const serving = servings.find((s) => s.is_default)?.label ?? servings[0]?.label ?? '?';
+    console.log(
+      `  ${food.name.padEnd(48)} ${serving.padEnd(20)} ${String(food.calories).padStart(5)} kcal ` +
+        `P ${food.protein_g}  C ${food.carbs_g}  F ${food.fat_g}`,
+    );
+  }
+}
+
 for (const chain of chains) {
   const file = join(HERE, 'output', `${chain}.json`);
   if (!existsSync(file)) {
@@ -118,7 +137,15 @@ for (const chain of chains) {
   }
   const output = JSON.parse(readFileSync(file, 'utf8')) as Output;
   const approved = output.flagged.filter((f) => f.approved === true);
-  const toUpload = [...output.items, ...approved];
+  const candidates = [...output.items, ...approved];
+  const blocked = candidates
+    .map((item) => ({ item, blockers: uploadBlockers(item) }))
+    .filter((b) => b.blockers.length > 0);
+  for (const { item, blockers } of blocked) {
+    console.log(`  ⊘ ${item.food.name}: ${blockers.join(' ')}`);
+  }
+  const toUpload = candidates.filter((item) => uploadBlockers(item).length === 0);
+  printSample(output.name, toUpload);
   const counts = { inserted: 0, updated: 0, failed: 0 };
   for (const item of toUpload) {
     try {
@@ -131,6 +158,7 @@ for (const chain of chains) {
   const verb = write ? '' : 'would be ';
   console.log(
     `${output.name}: ${counts.inserted} ${verb}inserted, ${counts.updated} ${verb}updated, ${counts.failed} failed; ` +
-      `${output.flagged.length - approved.length} flagged item(s) skipped (set "approved": true to include).`,
+      `${output.flagged.length - approved.length} flagged item(s) skipped (set "approved": true to include), ` +
+      `${blocked.length} blocked (missing macros or no standard portion).`,
   );
 }

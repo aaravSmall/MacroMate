@@ -41,6 +41,10 @@ URL and SHA-256 so a reviewer can tell exactly what was parsed.
 
 ## 3. Upload (only after review)
 
+Before writing, upload prints a sample of 10 items per chain to eyeball, and skips (⊘) any item
+missing calories, protein, carbs, or fat or with no serving in a standard unit (g, oz, ml, cups,
+pieces), even if it was approved.
+
 Create `scripts/restaurants/.env.local` from `.env.local.example`, with the project URL and its
 **secret (service role) key**. That file is gitignored. Never commit the key or use it in the
 app.
@@ -81,7 +85,8 @@ log entries keep their serving link. Nothing is ever duplicated.
    };
    ```
 
-3. List it in `chains/index.ts`, run extract, and review the JSON. If rows come out wrong,
+3. List it in `chains/index.ts`, run extract, and review the JSON. Dry-run the upload, check the
+   printed sample against the PDF, then upload with `--yes`. If rows come out wrong,
    capture a few rows into `__fixtures__/rows.ts` and add a test to `__tests__/pipeline.test.ts`.
 
 ## Current chains
