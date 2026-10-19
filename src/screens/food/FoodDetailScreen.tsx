@@ -13,9 +13,9 @@ import {
   containsLabel,
   canEditFood,
   canVerifyFood,
-  getMyVerification,
   hasMismatchWarning,
   isUncachedOpenFoodFactsResult,
+  LabelCheckCard,
   matchServing,
   PortionGuideSheet,
   ShareFoodSheet,
@@ -25,6 +25,7 @@ import {
   useFood,
   useMyVerification,
   useVerifyFood,
+  VerificationLine,
 } from '@/features/food';
 import {
   MEAL_LABEL_NAMES,
@@ -73,22 +74,6 @@ function Row({ label, value }: { label: string; value: string }) {
       </Text>
     </View>
   );
-}
-
-/** "Does this match your label?" Resolves to the answer, or null if the user skips it. */
-function askLabelMatch(foodName: string): Promise<boolean | null> {
-  return new Promise((resolve) => {
-    Alert.alert(
-      'Does this match your label?',
-      `Compare the calories and macros for ${foodName} with your package. Your answer helps others.`,
-      [
-        { text: 'Not now', style: 'cancel', onPress: () => resolve(null) },
-        { text: "Doesn't match", onPress: () => resolve(false) },
-        { text: 'Matches', onPress: () => resolve(true) },
-      ],
-      { cancelable: true, onDismiss: () => resolve(null) },
-    );
-  });
 }
 
 const MEAL_TYPES: readonly MealType[] = ['breakfast', 'lunch', 'dinner', 'snack'];
@@ -150,17 +135,6 @@ function LogFoodForm({
       portion = matchServing(target.servings, serving);
     }
 
-    if (canVerifyFood(target, userId)) {
-      const previous =
-        target.id === food.id
-          ? myVerification.data
-          : await getMyVerification(target.id).catch(() => null);
-      if (previous === null) {
-        const matches = await askLabelMatch(target.name);
-        if (matches !== null) verifyFood.mutate({ foodId: target.id, matches });
-      }
-    }
-
     const timezone = profile.data?.timezone;
     try {
       await addLog.mutateAsync({
@@ -197,6 +171,7 @@ function LogFoodForm({
       <View style={{ gap: spacing.xxs }}>
         <Text variant="title">{food.name}</Text>
         {food.brand ? <Text tone="muted">{food.brand}</Text> : null}
+        <VerificationLine food={food} showWarning={false} />
         {food.source === 'dining_hall' ? (
           <Text variant="caption" tone="muted">
             Nutrition from {diningProviderLabel(food.provider) ?? 'the dining hall'}
@@ -223,6 +198,14 @@ function LogFoodForm({
             For {valid ? quantity : 1} × {serving?.label}
           </Text>
         </Card>
+      ) : null}
+
+      {verifiable ? (
+        <LabelCheckCard
+          answer={myVerification.data ?? null}
+          pending={verifyFood.isPending}
+          onAnswer={(matches) => verifyFood.mutate({ foodId: food.id, matches })}
+        />
       ) : null}
 
       {food.servings.length > 1 ? (

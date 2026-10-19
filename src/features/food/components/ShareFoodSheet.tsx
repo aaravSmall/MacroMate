@@ -43,7 +43,6 @@ export function ShareFoodSheet({
             Sharing can&apos;t be undone. If you delete your account later, the food stays public
             without your name on it.
           </Text>
-          <Text tone="muted">Other people can mark whether its nutrition matches their label.</Text>
         </View>
         {error ? <Text tone="danger">{error}</Text> : null}
         <View style={{ gap: spacing.sm }}>

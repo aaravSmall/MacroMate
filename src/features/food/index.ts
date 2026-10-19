@@ -1,4 +1,5 @@
-export { FoodResultRow } from './components/FoodResultRow';
+export { FoodResultRow, VerificationLine } from './components/FoodResultRow';
+export { LabelCheckCard } from './components/LabelCheckCard';
 export { PortionGuideSheet, type PortionGuideSheetProps } from './components/PortionGuideSheet';
 export { ShareFoodSheet, type ShareFoodSheetProps } from './components/ShareFoodSheet';
 export {
@@ -37,6 +38,7 @@ export {
   isUncachedOpenFoodFactsResult,
   matchServing,
   needsLabelCheck,
+  verificationSummary,
 } from './logic/foodRules';
 export {
   MIN_SEARCH_LENGTH,

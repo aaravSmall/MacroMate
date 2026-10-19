@@ -8,6 +8,7 @@ import {
   hasMismatchWarning,
   matchServing,
   needsLabelCheck,
+  verificationSummary,
 } from '@/features/food/logic/foodRules';
 
 const me = 'user-me';
@@ -136,7 +137,7 @@ describe('needsLabelCheck', () => {
     expect(needsLabelCheck({ source: 'open_food_facts' })).toBe(true);
     expect(needsLabelCheck({ source: 'user_product' })).toBe(true);
     expect(needsLabelCheck({ source: 'label_scan' })).toBe(true);
-    expect(needsLabelCheck({ source: 'user_recipe' })).toBe(true);
+    expect(needsLabelCheck({ source: 'user_recipe' })).toBe(false);
     expect(needsLabelCheck({ source: 'restaurant' })).toBe(false);
     expect(needsLabelCheck({ source: 'dining_hall' })).toBe(false);
   });
@@ -151,5 +152,33 @@ describe('needsLabelCheck', () => {
         me,
       ),
     ).toBe(true);
+  });
+});
+
+describe('verificationSummary', () => {
+  const food = {
+    id: 'f1',
+    visibility: 'public' as const,
+    source: 'user_product' as const,
+    verificationCount: 24,
+    mismatchCount: 2,
+  };
+
+  it('shows compact counts like review counts', () => {
+    expect(verificationSummary(food)).toEqual({
+      text: '✓ 24 · ✗ 2',
+      accessibilityLabel: "24 people say it matches their label, 2 say it doesn't",
+    });
+    expect(
+      verificationSummary({ ...food, verificationCount: 1, mismatchCount: 1 })?.accessibilityLabel,
+    ).toBe("1 person says it matches their label, 1 says it doesn't");
+  });
+
+  it('shows nothing without votes, for private foods, or for non-label sources', () => {
+    expect(verificationSummary({ ...food, verificationCount: 0, mismatchCount: 0 })).toBeNull();
+    expect(verificationSummary({ ...food, visibility: 'private' })).toBeNull();
+    expect(verificationSummary({ ...food, source: 'restaurant' })).toBeNull();
+    expect(verificationSummary({ ...food, source: 'user_recipe' })).toBeNull();
+    expect(verificationSummary({ ...food, id: 'off:123', source: 'open_food_facts' })).toBeNull();
   });
 });

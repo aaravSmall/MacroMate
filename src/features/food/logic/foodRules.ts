@@ -61,13 +61,13 @@ export function canShareFood(
 
 /**
  * Sources whose foods come from a package label people can compare against: Open Food Facts
- * products and user-uploaded foods. Restaurant and dining hall food has no package label.
+ * products and user-uploaded products. Restaurant and dining hall food has no package label,
+ * and neither do home-cooked meals (user_recipe).
  */
 const LABEL_SOURCES: ReadonlySet<Food['source']> = new Set([
   'open_food_facts',
   'user_product',
   'label_scan',
-  'user_recipe',
 ]);
 
 /** Whether "Does this match your label?" makes sense for this kind of food at all. */
@@ -94,4 +94,28 @@ export function canVerifyFood(
 /** More people said the label doesn't match than said it does. */
 export function hasMismatchWarning(food: Pick<Food, 'verificationCount' | 'mismatchCount'>) {
   return food.mismatchCount > food.verificationCount;
+}
+
+/**
+ * Compact label-check counts, like review counts: "✓ 24 · ✗ 2". Null when there's nothing to
+ * show (not public, not a label food, or no votes yet).
+ */
+export function verificationSummary(
+  food: Pick<Food, 'id' | 'visibility' | 'source' | 'verificationCount' | 'mismatchCount'>,
+): { text: string; accessibilityLabel: string } | null {
+  if (
+    food.visibility !== 'public' ||
+    !needsLabelCheck(food) ||
+    isUncachedOpenFoodFactsResult(food)
+  ) {
+    return null;
+  }
+  const { verificationCount: yes, mismatchCount: no } = food;
+  if (yes === 0 && no === 0) return null;
+  return {
+    text: `✓ ${yes} · ✗ ${no}`,
+    accessibilityLabel:
+      `${yes} ${yes === 1 ? 'person says' : 'people say'} it matches their label, ` +
+      `${no} ${no === 1 ? 'says' : 'say'} it doesn't`,
+  };
 }

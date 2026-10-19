@@ -5,30 +5,25 @@ import { formatKcal } from '@/lib/format';
 import { useTheme } from '@/theme';
 import type { Food } from '@/types/domain';
 
-import {
-  defaultServing,
-  hasMismatchWarning,
-  isUncachedOpenFoodFactsResult,
-} from '../logic/foodRules';
+import { defaultServing, hasMismatchWarning, verificationSummary } from '../logic/foodRules';
 
-/** Label-check counts for public foods; nothing for private or uncached foods. */
-function VerificationLine({ food }: { food: Food }) {
-  if (food.visibility !== 'public' || isUncachedOpenFoodFactsResult(food)) return null;
-  const { verificationCount: yes, mismatchCount: no } = food;
-  if (yes === 0 && no === 0) {
-    return (
-      <Text variant="caption" tone="muted">
-        No label checks yet
-      </Text>
-    );
-  }
+/** Label-check counts ("✓ 24 · ✗ 2") for public label foods that have votes. */
+export function VerificationLine({
+  food,
+  showWarning = true,
+}: {
+  food: Food;
+  /** Also show the "may not match the package" heads-up when most votes say it doesn't. */
+  showWarning?: boolean;
+}) {
+  const summary = verificationSummary(food);
+  if (!summary) return null;
   return (
     <>
-      <Text variant="caption" tone="muted">
-        {yes} {yes === 1 ? 'person says' : 'people say'} it matches their label · {no}{' '}
-        {no === 1 ? 'says' : 'say'} it doesn&apos;t
+      <Text variant="caption" tone="muted" accessibilityLabel={summary.accessibilityLabel}>
+        {summary.text}
       </Text>
-      {hasMismatchWarning(food) ? (
+      {showWarning && hasMismatchWarning(food) ? (
         <Text variant="caption" tone="accent">
           Heads up: this may not match the package. Check it against your label.
         </Text>
