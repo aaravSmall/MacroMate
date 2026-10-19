@@ -11,23 +11,31 @@
 
 Most popular calorie trackers lock their most useful features — barcode/label scanning, macro goals, exercise sync — behind a subscription. Tally exists out of frustration with that. It's built first for my own daily use and as a portfolio project, but it's open to anyone who wants a full-featured tracker without a paywall.
 
+## Screenshots
+
+<!-- Replace these placeholders with real screenshots (docs/screenshots/*.png, ~1290×2796). -->
+
+| Today                            | Add food                  | Progress                                | Help                           |
+| -------------------------------- | ------------------------- | --------------------------------------- | ------------------------------ |
+| _Screenshot: Today summary card_ | _Screenshot: food search_ | _Screenshot: weight trend and calendar_ | _Screenshot: help & resources_ |
+
 ## Features
 
-| Feature                                                                                                            | Status      |
-| ------------------------------------------------------------------------------------------------------------------ | ----------- |
-| Accounts with cloud sync                                                                                           | In progress |
-| Food logging, 3 ways: search the food database, create your own food, or scan a nutrition label photo to auto-fill | In progress |
-| Global food database (Open Food Facts + restaurant nutrition)                                                      | In progress |
-| Private "My Foods", optionally shareable to the global database                                                    | In progress |
-| Timestamped entries with auto-suggested, editable meal labels                                                      | In progress |
-| Calories, protein, carbs, fat + micronutrients from the label                                                      | In progress |
-| Goals for losing, maintaining, or gaining weight                                                                   | In progress |
-| Apple Health exercise sync (burned calories add to your daily budget)                                              | Planned     |
-| Weigh-ins with configurable reminders                                                                              | In progress |
-| Logging streaks                                                                                                    | In progress |
-| Neutral logging calendar                                                                                           | In progress |
-| Optional "numbers off" habit mode                                                                                  | In progress |
-| Help & resources page                                                                                              | In progress |
+| Feature                                                                                             | Status |
+| --------------------------------------------------------------------------------------------------- | ------ |
+| Accounts with cloud sync and email confirmation                                                     | Done   |
+| Food logging three ways: search, create your own food, or scan a nutrition label photo to auto-fill | Done   |
+| Global food database: Open Food Facts, chain restaurant nutrition, and Purdue dining hall menus     | Done   |
+| Private "My Foods", optionally shared to the global database                                        | Done   |
+| Community label checks on shared foods ("✓ 24 · ✗ 2")                                               | Done   |
+| Calories, protein, carbs, fat, plus micronutrients from the label                                   | Done   |
+| Goals for losing, maintaining, or gaining weight, with caring pace warnings                         | Done   |
+| Apple Health workout sync (burned calories add to your daily budget) and refuel prompts             | Done   |
+| Weigh-ins with reminders and a weight trend chart                                                   | Done   |
+| Logging streaks and a neutral logging calendar                                                      | Done   |
+| Optional "numbers off" mode with habit goals                                                        | Done   |
+| Allergy and dietary restriction flags                                                               | Done   |
+| Help & resources page                                                                               | Done   |
 
 Tally does **not** guess calories from a photo of a meal. Label scanning reads the printed nutrition facts panel, which is accurate; meal-photo estimation isn't.
 
@@ -73,6 +81,32 @@ cp .env.example .env   # then fill in your Supabase URL and anon key
 npm run ios            # builds the dev client, installs it in the Simulator, and starts Metro
 ```
 
+### Supabase backend
+
+The app needs a Supabase project (hosted, or local with Docker). Use the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) through `npx supabase`.
+
+**Hosted project**
+
+```bash
+npx supabase login
+npx supabase link --project-ref <your-project-ref>
+npx supabase db push            # apply supabase/migrations/*
+npm run db:types                # regenerate src/types/database.ts from the linked project
+npx supabase functions deploy   # cache-off-food, delete-account, sync-dining
+```
+
+Then put the project URL and publishable (anon) key in `.env` (see [`.env.example`](.env.example), which lists every variable).
+
+**Local stack** (needs Docker)
+
+```bash
+npx supabase start              # prints the local URL and keys for .env
+npx supabase db reset           # rebuild from migrations + supabase/seed.sql (dev demo account)
+npm run db:types:local
+```
+
+Schema, RLS policies, and the migration workflow are documented in [docs/SCHEMA.md](docs/SCHEMA.md). SQL checks live in `supabase/tests/` and run against the linked project with `npx supabase db query --linked -f <file>`. Before inviting real users, work through [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md).
+
 ### Development builds (not Expo Go)
 
 Tally runs in an [Expo development build](https://docs.expo.dev/develop/development-builds/introduction/), a debug build of this app with `expo-dev-client`, not in Expo Go. That lets us use native modules (text recognition, HealthKit, notifications) that Expo Go doesn't include. Native projects (`ios/`, `android/`) are generated from `app.json` (Continuous Native Generation) and are gitignored, so never edit them by hand.
@@ -104,6 +138,10 @@ EAS profiles in [`eas.json`](eas.json): `development` (dev client, internal dist
 | `npm run typecheck`                    | `tsc --noEmit`                                                       |
 | `npm run format`                       | Format the repo with Prettier                                        |
 | `npm test`                             | Jest (jest-expo + React Native Testing Library)                      |
+| `npm run db:types`                     | Regenerate database types from the linked Supabase project           |
+| `npm run restaurants:extract`          | Parse chains' official nutrition PDFs into reviewable JSON           |
+| `npm run restaurants:upload`           | Upsert reviewed restaurant foods (dry run unless `--yes`)            |
+| `npm run demo:clear`                   | List (or with `--confirm`, delete) a test account's logs and foods   |
 
 ## Project structure
 
@@ -133,59 +171,28 @@ src/
 
 ## Roadmap
 
-Checked items exist in bare-bones form; polish comes in later milestones.
-
-**1. Skeleton** ✅ (v0.1.0)
-
-- [x] Expo + TypeScript + Expo Router project
-- [x] Lint, format, typecheck, and test tooling
-- [x] Project docs
-- [x] Tab navigation shell (Today, Add, Progress, Account)
-- [x] Design tokens and UI primitives
-- [x] Supabase client and environment config
-
-**2. Auth & Onboarding**
-
-- [x] Sign up / sign in with Supabase Auth
-- [x] Onboarding survey
-- [x] Initial goal calculation
-
-**3. Logging**
-
-- [x] Today screen: summary card + food timeline
-- [x] Add, edit, and delete entries
-- [x] Auto-suggested meal labels
-
-**4. Food DB**
-
-- [x] Open Food Facts search
-- [ ] Restaurant nutrition data
-- [ ] My Foods (create, edit, optionally share)
-- [ ] Nutrition label photo scan to auto-fill
-
-**5. Goals & Safety**
-
-- [x] Lose / maintain / gain goals with macro targets
-- [x] Pace warnings and the help & resources page
-- [x] Near-goal and under-goal feedback
-
-**6. Exercise sync**
-
-- [ ] Apple Health integration (dev build)
-- [ ] Burned calories added to the daily budget
-
-**7. Progress**
-
-- [ ] Weigh-ins, trends, and reminders
-- [x] Logging streaks
-- [x] Neutral logging calendar
-
-**8. Polish / TestFlight**
-
-- [ ] "Numbers off" habit mode
+- [x] Skeleton: Expo, TypeScript, Expo Router, tooling, design tokens
+- [x] Auth and onboarding, with email confirmation
+- [x] Logging: Today screen, timeline, meal labels
+- [x] Food database: Open Food Facts, restaurants, dining halls, My Foods, label scan, sharing
+- [x] Goals and safety: pace warnings, recommended targets, Help page, end-of-day feedback
+- [x] Exercise: Apple Health sync, refuel prompts
+- [x] Progress: weigh-ins, trend chart, calendar, streaks
+- [x] Numbers-off habit mode, dietary flags
 - [ ] Accessibility and dark mode pass
-- [x] Account deletion
-- [ ] TestFlight release
+- [ ] TestFlight release (see [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md))
+
+## Data sources and licenses
+
+| Source                                                                     | Used for                                                           | License / terms                                                                                                                                                          |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Open Food Facts](https://world.openfoodfacts.org)                         | Packaged food search, barcodes, allergen tags                      | Database: [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Contents: [DbCL 1.0](https://opendatacommons.org/licenses/dbcl/1-0/). Images: CC BY-SA (not used). |
+| Chain restaurants' official nutrition PDFs (Wingstop, Chipotle, Five Guys) | Restaurant foods (`scripts/restaurants/`)                          | Published nutrition facts, used for reference. Brand names and trademarks belong to their owners; Tally isn't affiliated with or endorsed by them.                       |
+| Purdue University Housing & Food Services menus                            | Dining hall foods ([docs/PURDUE_DINING.md](docs/PURDUE_DINING.md)) | Public menu data from Purdue's menus API. Not affiliated with Purdue.                                                                                                    |
+
+**Open Food Facts attribution.** Food data from Open Food Facts is © Open Food Facts contributors and available under the Open Database License. Tally caches OFF products it looks up in its own database; that cached data remains under the ODbL, and any public use of it must keep this attribution and share it under the same license. The app's code is MIT-licensed and separate from the data.
+
+Nutrition values are as published by each source and can be incomplete or out of date. Allergen information is only ever used to warn, never to say a food is safe.
 
 ## Contributing
 

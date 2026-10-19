@@ -52,6 +52,15 @@ npm test            # Jest
 npm run format      # Prettier (or `npm run format:check` to verify only)
 ```
 
+## Secrets and data
+
+- Never commit keys. `.env*` files are gitignored except the `.example` templates; the app only
+  ever gets the public URL and publishable/anon key. The service role key is for local admin
+  scripts and Edge Functions only.
+- Database changes go in a new migration under `supabase/migrations/` (never edit an applied
+  one), with RLS on every table. See [docs/SCHEMA.md](docs/SCHEMA.md).
+- Food data from Open Food Facts is under the ODbL; keep its attribution (see the README).
+
 ## Pull request checklist
 
 - [ ] The PR is focused on one change and links any related issue
