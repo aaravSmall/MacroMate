@@ -37,7 +37,11 @@ export const MAX_RECOMMENDED_LOSS_LB_PER_WEEK = 2;
 export const MAX_RECOMMENDED_GAIN_LB_PER_WEEK = 1;
 
 /**
- * Ending the day within this many calories of the target (either side) counts as near goal.
- * TODO(safety): research-backed value.
+ * Ending the day within this many calories of the target (either side) counts as near goal and
+ * gets a small celebration. More than this below the target gets a gentle nudge instead.
+ * TODO(safety): this threshold should be research-backed; 200 kcal is a starting guess.
  */
-export const NEAR_GOAL_BAND_KCAL = 200;
+export const GOAL_CELEBRATE_RANGE = 200;
+
+/** Local hour (24h) after which today counts as "evening" for end-of-day feedback. */
+export const EVENING_FEEDBACK_HOUR = 19;

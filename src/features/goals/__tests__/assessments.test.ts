@@ -1,4 +1,4 @@
-import { NEAR_GOAL_BAND_KCAL } from '@/constants/safety';
+import { GOAL_CELEBRATE_RANGE } from '@/constants/safety';
 import {
   assessDayStatus,
   assessPace,
@@ -64,7 +64,7 @@ describe('assessPace', () => {
 
 describe('assessDayStatus', () => {
   const target = 2000;
-  const band = NEAR_GOAL_BAND_KCAL;
+  const band = GOAL_CELEBRATE_RANGE;
 
   it('defaults to a 200 kcal band', () => {
     expect(band).toBe(200);

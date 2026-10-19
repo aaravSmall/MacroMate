@@ -1,4 +1,5 @@
 export { CareNotice, type CareNoticeProps } from './components/CareNotice';
+export { DayFeedbackCard } from './components/DayFeedbackCard';
 export {
   NEAR_GOAL_CELEBRATION,
   paceCautionCopy,
@@ -9,6 +10,7 @@ export {
 export {
   assessDayStatus,
   assessPace,
+  endOfDayFeedback,
   type DayFeedback,
   type DayStatus,
   feedbackForDayStatus,
@@ -37,7 +39,7 @@ export {
   weeklyRateInKg,
   weeklyRateInLb,
 } from './logic/units';
-export { SNACK_IDEAS, type SnackIdea } from './snackIdeas';
+export { SNACK_IDEAS, type SnackIdea, snackIdeasFor } from './snackIdeas';
 export { useActiveGoal, useChangeGoal } from './hooks/useGoal';
 export {
   changeGoal,

@@ -1,7 +1,8 @@
 import {
+  EVENING_FEEDBACK_HOUR,
   MAX_RECOMMENDED_GAIN_LB_PER_WEEK,
   MAX_RECOMMENDED_LOSS_LB_PER_WEEK,
-  NEAR_GOAL_BAND_KCAL,
+  GOAL_CELEBRATE_RANGE,
 } from '@/constants/safety';
 import type { GoalType } from '@/types/domain';
 
@@ -43,7 +44,7 @@ export function assessDayStatus(
   target: number,
   {
     isDayComplete = false,
-    band = NEAR_GOAL_BAND_KCAL,
+    band = GOAL_CELEBRATE_RANGE,
   }: { isDayComplete?: boolean; band?: number } = {},
 ): DayStatus {
   const difference = eaten - target;
@@ -68,4 +69,35 @@ export function feedbackForDayStatus(status: DayStatus): DayFeedback {
     case 'in_progress':
       return 'none';
   }
+}
+
+/**
+ * End-of-day feedback for the Today screen. Past days are judged as complete; today only after
+ * EVENING_FEEDBACK_HOUR local time. Days with nothing logged, no target, or numbers-off get none.
+ * Being under target never celebrates (see feedbackForDayStatus).
+ */
+export function endOfDayFeedback({
+  eaten,
+  target,
+  dateKey,
+  todayKey,
+  localHour,
+  hasLogs,
+  numbersOff = false,
+}: {
+  eaten: number;
+  target: number;
+  /** YYYY-MM-DD of the day being viewed. */
+  dateKey: string;
+  /** YYYY-MM-DD of today, local. */
+  todayKey: string;
+  /** 0–23, local. */
+  localHour: number;
+  hasLogs: boolean;
+  numbersOff?: boolean;
+}): DayFeedback {
+  if (!hasLogs || target <= 0 || numbersOff || dateKey > todayKey) return 'none';
+  const isDayComplete = dateKey < todayKey || localHour >= EVENING_FEEDBACK_HOUR;
+  if (!isDayComplete) return 'none';
+  return feedbackForDayStatus(assessDayStatus(eaten, target, { isDayComplete: true }));
 }

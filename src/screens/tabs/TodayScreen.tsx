@@ -15,13 +15,10 @@ import {
   useSyncHealth,
 } from '@/features/exercise';
 import {
-  assessDayStatus,
   CareNotice,
-  feedbackForDayStatus,
-  NEAR_GOAL_CELEBRATION,
+  DayFeedbackCard,
+  endOfDayFeedback,
   refuelCopy,
-  SNACK_IDEAS,
-  UNDER_GOAL_NUDGE,
   useActiveGoal,
 } from '@/features/goals';
 import {
@@ -101,14 +98,21 @@ export default function TodayScreen() {
     target,
   });
 
-  // Feedback only for finished days, and only celebrate landing near the goal.
-  const isPastDay = dateKey < toDateKey(new Date());
-  const feedback =
-    isPastDay && target > 0 && (logs.data?.length ?? 0) > 0 && !numbersOff
-      ? feedbackForDayStatus(
-          assessDayStatus(summary.eaten, summary.budget, { isDayComplete: true }),
-        )
-      : 'none';
+  // Past days, or today after 7pm. Only landing near the goal is celebrated.
+  const now = new Date();
+  const feedback = endOfDayFeedback({
+    eaten: summary.eaten,
+    target: summary.budget,
+    dateKey,
+    todayKey: toDateKey(now),
+    localHour: now.getHours(),
+    hasLogs: (logs.data?.length ?? 0) > 0,
+    numbersOff,
+  });
+  const dietaryPrefs = {
+    allergies: profile.data?.allergies ?? [],
+    restrictions: profile.data?.dietaryRestrictions ?? [],
+  };
 
   const isToday = dateKey === toDateKey(new Date());
   const refuel =
@@ -129,17 +133,7 @@ export default function TodayScreen() {
         itemCount={logs.data?.length ?? 0}
       />
 
-      {feedback === 'celebrate' ? (
-        <CareNotice {...NEAR_GOAL_CELEBRATION} showHelpLink={false} />
-      ) : feedback === 'gentle_nudge' ? (
-        <CareNotice {...UNDER_GOAL_NUDGE} showHelpLink={false}>
-          {SNACK_IDEAS.slice(0, 3).map((idea) => (
-            <Text key={idea.name} variant="callout" tone="muted">
-              • {idea.name} (~{idea.approxCalories} cal)
-            </Text>
-          ))}
-        </CareNotice>
-      ) : null}
+      <DayFeedbackCard feedback={feedback} prefs={dietaryPrefs} />
 
       {refuel ? (
         <CareNotice
