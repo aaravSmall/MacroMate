@@ -2,7 +2,13 @@ import fixture from '../__fixtures__/off-3017620422003.json';
 import iceCreamFlOzFixture from '../__fixtures__/off-076840100477-ice-cream-fl-oz.json';
 import drinkFixture from '../__fixtures__/off-5449000000996-drink.json';
 import iceCreamMlServingFixture from '../__fixtures__/off-8712100849084-ice-cream-ml-serving.json';
-import { isLiquid, mapOffProductToRows, OFF_CODE_PATTERN, type OffProduct } from '../offMapping';
+import {
+  isLiquid,
+  mapOffProductToRows,
+  OFF_CODE_PATTERN,
+  offAllergens,
+  type OffProduct,
+} from '../offMapping';
 
 /** Saved response from GET /api/v2/product/3017620422003.json (Nutella), trimmed to our fields. */
 const nutella: OffProduct = fixture.product;
@@ -31,6 +37,7 @@ describe('mapOffProductToRows', () => {
       sodium_mg: 42.8, // 0.0428 g × 1000
       cholesterol_mg: null,
       micros: {},
+      allergens: null,
     });
   });
 
@@ -221,5 +228,27 @@ describe('liquids', () => {
     expect(isLiquid({ quantity: '33 cl', serving_quantity_unit: 'ml' })).toBe(true);
     expect(isLiquid({ quantity: '500 g', serving_quantity_unit: 'ml' })).toBe(false);
     expect(isLiquid({ quantity: 'Pack of 6' })).toBe(false);
+  });
+});
+
+describe('offAllergens', () => {
+  it('turns OFF tags into allergen names', () => {
+    expect(offAllergens(['en:milk', 'en:tree-nuts', 'fr:gluten'])).toEqual([
+      'milk',
+      'tree nuts',
+      'gluten',
+    ]);
+  });
+
+  it('treats a missing or empty list as no data, never as no allergens', () => {
+    expect(offAllergens(undefined)).toBeNull();
+    expect(offAllergens([])).toBeNull();
+  });
+
+  it('is stored on the food row', () => {
+    expect(
+      mapOffProductToRows(CODE, { ...nutella, allergens_tags: ['en:milk', 'en:nuts'] })?.food
+        .allergens,
+    ).toEqual(['milk', 'nuts']);
   });
 });

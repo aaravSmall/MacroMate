@@ -11,6 +11,7 @@ import {
   canDeleteFood,
   canShareFood,
   containsLabel,
+  DietaryBadge,
   canEditFood,
   canVerifyFood,
   hasMismatchWarning,
@@ -179,6 +180,15 @@ function LogFoodForm({
         ) : null}
         {/* Allergens only ever warn; never present a food as safe (see logic/allergens.ts). */}
         <AllergenInfo food={food} />
+        {profile.data ? (
+          <DietaryBadge
+            food={food}
+            prefs={{
+              allergies: profile.data.allergies,
+              restrictions: profile.data.dietaryRestrictions,
+            }}
+          />
+        ) : null}
         {food.visibility === 'public' && hasMismatchWarning(food) ? (
           <Text variant="callout" tone="accent">
             Some people found this doesn&apos;t match their package. It&apos;s worth checking

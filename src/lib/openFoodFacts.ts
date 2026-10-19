@@ -21,6 +21,7 @@ const FIELDS = [
   'serving_quantity',
   'serving_quantity_unit',
   'nutriments',
+  'allergens_tags',
 ].join(',');
 
 const APP_NAME = Constants.expoConfig?.name ?? 'Tally';
@@ -41,6 +42,7 @@ export type OffProduct = {
   serving_quantity?: number | string;
   serving_quantity_unit?: string;
   nutriments?: OffNutriments;
+  allergens_tags?: string[];
 };
 
 /**
@@ -151,6 +153,23 @@ export function mapOffNutrition(product: OffProduct): OffNutrition | null {
   };
 }
 
+/**
+ * OFF `allergens_tags` ("en:milk", "en:tree-nuts") → allergen names ("milk", "tree nuts"). An
+ * empty or missing list means OFF has no allergen data, not that there are none, so it's null.
+ * Mirrors supabase/functions/cache-off-food/offMapping.ts.
+ */
+export function offAllergens(tags: readonly string[] | undefined): string[] | null {
+  const names = (tags ?? [])
+    .map((t) =>
+      t
+        .replace(/^[a-z]{2}:/, '')
+        .replace(/-/g, ' ')
+        .trim(),
+    )
+    .filter((t) => t !== '');
+  return names.length > 0 ? [...new Set(names)] : null;
+}
+
 /** Maps an OFF product to a Food, or null if it lacks a barcode, name, or calories. */
 export function mapOffProduct(product: OffProduct): Food | null {
   const code = product.code?.trim();
@@ -175,7 +194,7 @@ export function mapOffProduct(product: OffProduct): Food | null {
     verificationCount: 0,
     mismatchCount: 0,
     provider: null,
-    allergens: null,
+    allergens: offAllergens(product.allergens_tags),
     dietTags: [],
   };
 }

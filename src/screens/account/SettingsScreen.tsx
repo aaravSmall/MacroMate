@@ -4,6 +4,7 @@ import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, SegmentedControl, SwitchRow, Text } from '@/components/ui';
 import { useProfile, useUpdateProfile } from '@/features/account';
 import { MEALS_LOGGED_TARGET } from '@/features/goals';
+import { ALLERGY_OPTIONS, DIETARY_RESTRICTION_OPTIONS, OptionCard } from '@/features/onboarding';
 import {
   useHealthConnection,
   useSetHealthConnected,
@@ -53,6 +54,36 @@ function Section({ title, children }: { title: string; children: React.ReactNode
         {title}
       </Text>
       {children}
+    </View>
+  );
+}
+
+function ChipList({
+  options,
+  selected,
+  onChange,
+}: {
+  options: readonly string[];
+  selected: readonly string[];
+  onChange: (next: string[]) => void;
+}) {
+  const { spacing } = useTheme();
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }}>
+      {options.map((option) => {
+        const on = selected.includes(option);
+        return (
+          <OptionCard
+            key={option}
+            title={option}
+            multiple
+            selected={on}
+            onPress={() =>
+              onChange(on ? selected.filter((s) => s !== option) : [...selected, option])
+            }
+          />
+        );
+      })}
     </View>
   );
 }
@@ -180,6 +211,28 @@ export default function SettingsScreen() {
                 })}
               </Section>
             ) : null}
+          </Card>
+
+          <Card>
+            <Text variant="subheading">Diet & allergies</Text>
+            <Text variant="callout" tone="muted">
+              Used to flag foods and tailor suggestions. Food data can be incomplete, so always
+              check labels.
+            </Text>
+            <Section title="Dietary preferences">
+              <ChipList
+                options={DIETARY_RESTRICTION_OPTIONS}
+                selected={profile.data.dietaryRestrictions}
+                onChange={(dietaryRestrictions) => updateProfile.mutate({ dietaryRestrictions })}
+              />
+            </Section>
+            <Section title="Allergies">
+              <ChipList
+                options={ALLERGY_OPTIONS}
+                selected={profile.data.allergies}
+                onChange={(allergies) => updateProfile.mutate({ allergies })}
+              />
+            </Section>
           </Card>
 
           <AppleHealthCard />

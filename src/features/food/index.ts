@@ -1,4 +1,4 @@
-export { FoodResultRow, VerificationLine } from './components/FoodResultRow';
+export { DietaryBadge, FoodResultRow, VerificationLine } from './components/FoodResultRow';
 export { LabelCheckCard } from './components/LabelCheckCard';
 export { PortionGuideSheet, type PortionGuideSheetProps } from './components/PortionGuideSheet';
 export { ShareFoodSheet, type ShareFoodSheetProps } from './components/ShareFoodSheet';

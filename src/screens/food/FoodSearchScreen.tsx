@@ -5,6 +5,7 @@ import { View } from 'react-native';
 
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, EmptyState, Screen, Text, TextField } from '@/components/ui';
+import { useProfile } from '@/features/account';
 import { useAuth } from '@/features/auth';
 import { FoodResultRow, MIN_SEARCH_LENGTH, useFoodSearch } from '@/features/food';
 import { useDebouncedValue } from '@/hooks/useDebouncedValue';
@@ -19,6 +20,11 @@ export default function FoodSearchScreen() {
   const debounced = useDebouncedValue(query.trim(), 350);
   const search = useFoodSearch(debounced);
   const userId = useAuth().user?.id;
+  const profile = useProfile().data;
+  const prefs = {
+    allergies: profile?.allergies ?? [],
+    restrictions: profile?.dietaryRestrictions ?? [],
+  };
 
   const active = debounced.length >= MIN_SEARCH_LENGTH;
   const all = active ? (search.data ?? []) : [];
@@ -61,7 +67,7 @@ export default function FoodSearchScreen() {
             {myMatches.map((food, i) => (
               <View key={food.id}>
                 {i > 0 ? <Divider /> : null}
-                <FoodResultRow food={food} onPress={() => openFood(food)} />
+                <FoodResultRow food={food} prefs={prefs} onPress={() => openFood(food)} />
               </View>
             ))}
           </Card>
@@ -85,7 +91,7 @@ export default function FoodSearchScreen() {
             {results.map((food, i) => (
               <View key={food.id}>
                 {i > 0 ? <Divider /> : null}
-                <FoodResultRow food={food} onPress={() => openFood(food)} />
+                <FoodResultRow food={food} prefs={prefs} onPress={() => openFood(food)} />
               </View>
             ))}
           </Card>

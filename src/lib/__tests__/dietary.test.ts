@@ -1,4 +1,10 @@
-import { dietaryConflicts, ingredientsFromAllergens, withoutConflicts } from '@/lib/dietary';
+import {
+  conflictBadge,
+  dietaryConflicts,
+  foodConflicts,
+  ingredientsFromAllergens,
+  withoutConflicts,
+} from '@/lib/dietary';
 
 describe('ingredientsFromAllergens', () => {
   it('reads Open Food Facts tags and plain names', () => {
@@ -58,5 +64,23 @@ describe('withoutConflicts', () => {
       { id: 2, contains: [] },
     ];
     expect(withoutConflicts(items, { allergies: ['Milk'], restrictions: [] })).toEqual([items[1]]);
+  });
+});
+
+describe('foodConflicts and conflictBadge', () => {
+  const prefs = { allergies: ['Peanuts', 'Milk'], restrictions: ['Vegan'] };
+
+  it('flags foods whose allergens conflict', () => {
+    const conflicts = foodConflicts({ allergens: ['milk', 'soybeans'] }, prefs);
+    expect(conflictBadge(conflicts)).toBe('May contain: Milk · May not fit: Vegan');
+    expect(conflictBadge(foodConflicts({ allergens: ['en:peanuts'] }, prefs))).toBe(
+      'May contain: Peanuts',
+    );
+  });
+
+  it('returns nothing without allergen data (which is not the same as safe)', () => {
+    expect(foodConflicts({ allergens: null }, prefs)).toEqual([]);
+    expect(foodConflicts({ allergens: [] }, prefs)).toEqual([]);
+    expect(conflictBadge([])).toBeNull();
   });
 });

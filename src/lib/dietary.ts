@@ -117,3 +117,27 @@ export function withoutConflicts<T extends { contains: readonly Ingredient[] }>(
 ): T[] {
   return items.filter((item) => dietaryConflicts(item.contains, prefs).length === 0);
 }
+
+/**
+ * The user's allergies and restrictions a food's allergen list conflicts with, for a warning
+ * badge. Empty when there's no conflict OR no data: callers must never treat it as "safe".
+ */
+export function foodConflicts(
+  food: { allergens: readonly string[] | null },
+  prefs: DietaryPrefs,
+): DietaryConflict[] {
+  if (!food.allergens || food.allergens.length === 0) return [];
+  return dietaryConflicts(ingredientsFromAllergens(food.allergens), prefs);
+}
+
+/** "Contains milk (your allergy)"-style badge text, or null with no conflict. */
+export function conflictBadge(conflicts: readonly DietaryConflict[]): string | null {
+  if (conflicts.length === 0) return null;
+  const allergies = conflicts.filter((c) => c.kind === 'allergy').map((c) => c.label);
+  const restrictions = conflicts.filter((c) => c.kind === 'restriction').map((c) => c.label);
+  const parts = [
+    allergies.length > 0 ? `May contain: ${allergies.join(', ')}` : null,
+    restrictions.length > 0 ? `May not fit: ${restrictions.join(', ')}` : null,
+  ].filter((p): p is string => p !== null);
+  return parts.join(' · ');
+}

@@ -23,6 +23,7 @@ export type OffProduct = {
   quantity?: string;
   product_quantity_unit?: string;
   nutriments?: OffNutriments;
+  allergens_tags?: string[];
 };
 
 /** Columns of a `foods` insert row. Verification counts are omitted: a trigger owns them. */
@@ -46,6 +47,8 @@ export type OffFoodRow = {
   sodium_mg: number | null;
   cholesterol_mg: number | null;
   micros: Record<string, number>;
+  /** Null when OFF has no allergen data (never "none"). */
+  allergens: string[] | null;
 };
 
 /** A `food_servings` insert row, minus `food_id` (known only after the food is inserted). */
@@ -71,7 +74,24 @@ export const OFF_FIELDS = [
   'quantity',
   'product_quantity_unit',
   'nutriments',
+  'allergens_tags',
 ].join(',');
+
+/**
+ * OFF `allergens_tags` ("en:milk", "en:tree-nuts") → allergen names ("milk", "tree nuts"). An
+ * empty or missing list means OFF has no allergen data, not that there are none, so it's null.
+ */
+export function offAllergens(tags: readonly string[] | undefined): string[] | null {
+  const names = (tags ?? [])
+    .map((t) =>
+      t
+        .replace(/^[a-z]{2}:/, '')
+        .replace(/-/g, ' ')
+        .trim(),
+    )
+    .filter((t) => t !== '');
+  return names.length > 0 ? [...new Set(names)] : null;
+}
 
 /** 1 oz = 28.3495 g. The column keeps 4 decimals, so Postgres stores 0.2835. */
 const OUNCE_MULTIPLIER = 0.283495;
@@ -160,6 +180,7 @@ export function mapOffProductToRows(
     sodium_mg: optional(mgPer100g(n, 'sodium')),
     cholesterol_mg: optional(mgPer100g(n, 'cholesterol')),
     micros,
+    allergens: offAllergens(product.allergens_tags),
   };
 
   // The product's own serving, only when it's measured in the base unit (g or ml).
