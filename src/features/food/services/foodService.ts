@@ -186,6 +186,15 @@ export async function updateFood(food: Food, input: NewFoodInput): Promise<Food>
   return updated;
 }
 
+/**
+ * Shares one of the user's private foods to the global database. One way: once public it can't
+ * be made private or deleted by its owner, and it stays public if they delete their account.
+ */
+export async function shareFood(id: string): Promise<void> {
+  const { error } = await supabase.rpc('share_food', { food_id: id });
+  if (error) throw error;
+}
+
 /** Deletes one of the user's private foods. Past logs keep their snapshot. */
 export async function deleteFood(id: string): Promise<void> {
   const { error } = await supabase.from('foods').delete().eq('id', id);

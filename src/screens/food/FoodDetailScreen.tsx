@@ -9,6 +9,7 @@ import { useAuth } from '@/features/auth';
 import {
   allergenNotice,
   canDeleteFood,
+  canShareFood,
   containsLabel,
   canEditFood,
   canVerifyFood,
@@ -17,8 +18,10 @@ import {
   isUncachedOpenFoodFactsResult,
   matchServing,
   PortionGuideSheet,
+  ShareFoodSheet,
   useCacheOpenFoodFactsFood,
   useDeleteFood,
+  useShareFood,
   useFood,
   useMyVerification,
   useVerifyFood,
@@ -110,6 +113,8 @@ function LogFoodForm({
   const [guideOpen, setGuideOpen] = useState(false);
   const addLog = useAddLog();
   const deleteFood = useDeleteFood();
+  const shareFood = useShareFood();
+  const [shareOpen, setShareOpen] = useState(false);
   const cacheFood = useCacheOpenFoodFactsFood();
 
   const verifiable = canVerifyFood(food, userId);
@@ -293,6 +298,21 @@ function LogFoodForm({
           onPress={() => router.push({ pathname: '/create-food', params: { edit: food.id } })}
         />
       ) : null}
+      {canShareFood(food, userId) ? (
+        <Button
+          title="Share to public database"
+          variant="secondary"
+          onPress={() => setShareOpen(true)}
+        />
+      ) : null}
+      <ShareFoodSheet
+        visible={shareOpen}
+        foodName={food.name}
+        sharing={shareFood.isPending}
+        error={shareFood.error ? 'We couldn’t share this food. Please try again.' : null}
+        onShare={() => shareFood.mutate(food.id, { onSuccess: () => setShareOpen(false) })}
+        onClose={() => setShareOpen(false)}
+      />
       {canDeleteFood(food, userId) ? (
         <Button
           title="Delete from My Foods"

@@ -9,6 +9,7 @@ import {
   deleteFood,
   getFood,
   searchFoods,
+  shareFood,
   updateFood,
 } from '../services/foodService';
 import type { NewFoodInput } from '../services/mappers';
@@ -69,6 +70,17 @@ export function useUpdateFood() {
       queryClient.setQueryData(queryKeys.foods.detail(food.id), food);
       void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
       void queryClient.invalidateQueries({ queryKey: queryKeys.foods.verification(food.id) });
+    },
+  });
+}
+
+export function useShareFood() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => shareFood(id),
+    onSuccess: (_data, id) => {
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.detail(id) });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.foods.searchAll });
     },
   });
 }

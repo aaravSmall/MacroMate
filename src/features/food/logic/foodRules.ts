@@ -44,6 +44,22 @@ export function canDeleteFood(food: Pick<Food, 'ownerId' | 'visibility'>, userId
 }
 
 /**
+ * Owners can share their own private foods to the global database, one way (RPC share_food).
+ */
+export function canShareFood(
+  food: Pick<Food, 'ownerId' | 'visibility' | 'source'>,
+  userId: string,
+): boolean {
+  return (
+    food.ownerId === userId &&
+    food.visibility === 'private' &&
+    (food.source === 'user_product' ||
+      food.source === 'user_recipe' ||
+      food.source === 'label_scan')
+  );
+}
+
+/**
  * Sources whose foods come from a package label people can compare against: Open Food Facts
  * products and user-uploaded foods. Restaurant and dining hall food has no package label.
  */

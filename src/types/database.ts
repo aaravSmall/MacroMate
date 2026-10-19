@@ -560,6 +560,7 @@ export type Database = {
         Args: { food: Json; servings: Json };
         Returns: string;
       };
+      share_food: { Args: { food_id: string }; Returns: undefined };
       streak_from_dates: {
         Args: { p_days: string[]; p_today: string };
         Returns: number;

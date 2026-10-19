@@ -1,5 +1,6 @@
 export { FoodResultRow } from './components/FoodResultRow';
 export { PortionGuideSheet, type PortionGuideSheetProps } from './components/PortionGuideSheet';
+export { ShareFoodSheet, type ShareFoodSheetProps } from './components/ShareFoodSheet';
 export {
   applicableGuides,
   friendlyQuantity,
@@ -29,6 +30,7 @@ export {
   baseServingLabel,
   canDeleteFood,
   canEditFood,
+  canShareFood,
   canVerifyFood,
   defaultServing,
   hasMismatchWarning,
@@ -44,6 +46,7 @@ export {
   useFood,
   useFoodSearch,
   useMyVerification,
+  useShareFood,
   useUpdateFood,
   useVerifyFood,
 } from './hooks/useFoods';
@@ -55,6 +58,7 @@ export {
   findStoredOpenFoodFactsFood,
   getFood,
   searchFoods,
+  shareFood,
   updateFood,
 } from './services/foodService';
 export { type NewFoodInput } from './services/mappers';

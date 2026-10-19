@@ -2,6 +2,7 @@ import {
   baseServingLabel,
   canDeleteFood,
   canEditFood,
+  canShareFood,
   canVerifyFood,
   defaultServing,
   hasMismatchWarning,
@@ -36,6 +37,23 @@ describe('canEditFood', () => {
     expect(canEditFood({ ownerId: me, source: 'label_scan' }, me)).toBe(false);
     expect(canEditFood({ ownerId: 'other', source: 'user_recipe' }, me)).toBe(false);
     expect(canEditFood({ ownerId: null, source: 'open_food_facts' }, me)).toBe(false);
+  });
+});
+
+describe('canShareFood', () => {
+  it('allows only the owner’s private user-created foods', () => {
+    for (const source of ['user_product', 'user_recipe', 'label_scan'] as const) {
+      expect(canShareFood({ ownerId: me, visibility: 'private', source }, me)).toBe(true);
+    }
+    expect(canShareFood({ ownerId: me, visibility: 'public', source: 'user_recipe' }, me)).toBe(
+      false,
+    );
+    expect(
+      canShareFood({ ownerId: 'other', visibility: 'private', source: 'user_product' }, me),
+    ).toBe(false);
+    expect(canShareFood({ ownerId: me, visibility: 'private', source: 'restaurant' }, me)).toBe(
+      false,
+    );
   });
 });
 
