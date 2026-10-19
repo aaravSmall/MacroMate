@@ -48,4 +48,34 @@ describe('buildGoalChange', () => {
     expect(buildGoalChange({ ...base, profile: { ...base.profile, sex: null } })).toBeNull();
     expect(buildGoalChange({ ...base, weeklyRate: null })).toBeNull();
   });
+
+  describe('daily target and the recommended floor', () => {
+    // Sedentary 50 kg woman losing 2 lb/week: calculated target is well under 1,200.
+    const small: GoalChangeInput = {
+      ...base,
+      profile: { ...base.profile, activityLevel: 'sedentary' },
+      currentWeightKg: 50,
+      weeklyRate: 2,
+    };
+
+    it('clamps a low calculated target to the floor and saves it as the target', () => {
+      const change = buildGoalChange(small);
+      expect(change?.dailyTarget.calculatedTarget).toBeLessThan(1200);
+      expect(change?.dailyTarget.target).toBe(1200);
+      expect(change?.goal.dailyCalorieTarget).toBe(1200);
+      expect(change?.customBelowRecommended).toBe(false);
+    });
+
+    it('allows a custom target below the floor and marks it for the gentle note', () => {
+      const change = buildGoalChange({ ...small, customTarget: 1000 });
+      expect(change?.goal.dailyCalorieTarget).toBe(1000);
+      expect(change?.dailyTarget.target).toBe(1200);
+      expect(change?.customBelowRecommended).toBe(true);
+    });
+
+    it('does not mark custom targets at or above the floor', () => {
+      expect(buildGoalChange({ ...small, customTarget: 1200 })?.customBelowRecommended).toBe(false);
+      expect(buildGoalChange({ ...small, customTarget: 2400 })?.goal.dailyCalorieTarget).toBe(2400);
+    });
+  });
 });

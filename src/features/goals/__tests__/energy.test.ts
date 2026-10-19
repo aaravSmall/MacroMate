@@ -5,7 +5,9 @@ import {
   calculateBMR,
   calculateDailyTarget,
   calculateTDEE,
-  calorieFloorRecommendation,
+  calorieFloorFor,
+  isBelowRecommendedFloor,
+  targetRecommendationCopy,
   KCAL_PER_LB,
 } from '@/features/goals';
 
@@ -192,15 +194,49 @@ describe('calculateDailyTarget', () => {
   });
 });
 
-describe('calorieFloorRecommendation', () => {
-  it('reads as a normal recommendation', () => {
-    expect(calorieFloorRecommendation(1200)).toBe('We recommend at least 1,200 calories a day.');
-    expect(calorieFloorRecommendation(1500)).toBe('We recommend at least 1,500 calories a day.');
+describe('calorieFloorFor', () => {
+  it('uses the sex-specific floor', () => {
+    expect(calorieFloorFor('female')).toBe(1200);
+    expect(calorieFloorFor('male')).toBe(1500);
   });
 
-  it('never sounds like a rule or a block', () => {
-    const copy = calorieFloorRecommendation(1200).toLowerCase();
-    for (const phrase of ["can't", 'cannot', 'not allowed', 'must', 'minimum allowed', 'blocked']) {
+  it('falls back to the higher floor when sex is not set', () => {
+    expect(calorieFloorFor(null)).toBe(1500);
+    expect(calorieFloorFor(undefined)).toBe(1500);
+  });
+});
+
+describe('isBelowRecommendedFloor (manual targets)', () => {
+  it('flags targets under the floor without blocking them', () => {
+    expect(isBelowRecommendedFloor(1100, 'female')).toBe(true);
+    expect(isBelowRecommendedFloor(1200, 'female')).toBe(false);
+    expect(isBelowRecommendedFloor(1400, 'male')).toBe(true);
+    expect(isBelowRecommendedFloor(1400, null)).toBe(true);
+    expect(isBelowRecommendedFloor(1500, null)).toBe(false);
+  });
+});
+
+describe('targetRecommendationCopy', () => {
+  it('reads as a normal recommendation', () => {
+    expect(targetRecommendationCopy(1200)).toBe(
+      'Most people at your goal do well around 1,200 cal.',
+    );
+  });
+
+  it('never mentions a floor, minimum, rule, or limit', () => {
+    const copy = targetRecommendationCopy(1500).toLowerCase();
+    for (const phrase of [
+      'floor',
+      'minimum',
+      'at least',
+      'rule',
+      'limit',
+      "can't",
+      'cannot',
+      'not allowed',
+      'must',
+      'blocked',
+    ]) {
       expect(copy).not.toContain(phrase);
     }
   });

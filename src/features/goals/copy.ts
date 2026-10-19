@@ -6,8 +6,12 @@ import type { GoalType } from '@/types/domain';
 
 const formatKcal = (kcal: number) => Math.round(kcal).toLocaleString('en-US');
 
-export function calorieFloorRecommendation(floor: number): string {
-  return `We recommend at least ${formatKcal(floor)} calories a day.`;
+/**
+ * Shown when someone sets their own target below what we'd recommend. Gentle and non-blocking:
+ * it names the recommended target, never a floor, minimum, or rule.
+ */
+export function targetRecommendationCopy(recommendedKcal: number): string {
+  return `Most people at your goal do well around ${formatKcal(recommendedKcal)} cal.`;
 }
 
 export function paceCautionCopy(goalType: GoalType): { title: string; message: string } {

@@ -4,12 +4,7 @@ import { View } from 'react-native';
 
 import { Button, Card, Divider, Text } from '@/components/ui';
 import { useUpdateProfile } from '@/features/account';
-import {
-  calorieFloorRecommendation,
-  CareNotice,
-  paceCautionCopy,
-  useChangeGoal,
-} from '@/features/goals';
+import { CareNotice, paceCautionCopy, useChangeGoal } from '@/features/goals';
 import {
   buildOnboardingResult,
   OnboardingStepLayout,
@@ -80,12 +75,6 @@ export default function SummaryScreen() {
       <Card>
         <Text variant="display">{formatKcal(dailyTarget.target)}</Text>
         <Text tone="muted">calories a day</Text>
-        {dailyTarget.floorApplied ? (
-          <Text variant="callout">
-            {calorieFloorRecommendation(dailyTarget.floor)} We&apos;ve started your target there,
-            and you can adjust it anytime.
-          </Text>
-        ) : null}
         <View style={{ gap: spacing.xs }}>
           <Divider />
           <Text variant="callout">Protein {formatGrams(macros.proteinG ?? 0)}</Text>

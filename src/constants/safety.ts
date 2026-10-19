@@ -9,13 +9,19 @@
  * Health Publishing, "Calorie counting made easy", and NIH/NHLBI weight-management materials.
  * TODO(safety): verify against current clinical guidance before release.
  *
- * This is surfaced only as a normal recommendation ("We recommend at least X calories a day"),
- * never as an app rule or a block.
+ * A calculated target below it is replaced by it and shown as the normal recommended target.
+ * The UI never mentions a floor, minimum, or rule. Users can still set a lower target themselves.
  */
 export const CALORIE_FLOOR_KCAL = {
   female: 1200,
   male: 1500,
 } as const;
+
+/** Used when sex isn't set: the higher of the two. */
+export const CALORIE_FLOOR_FALLBACK_KCAL = Math.max(
+  CALORIE_FLOOR_KCAL.female,
+  CALORIE_FLOOR_KCAL.male,
+);
 
 /**
  * Losing faster than this shows a caring caution (never a block).

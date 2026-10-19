@@ -1,4 +1,4 @@
-import { CALORIE_FLOOR_KCAL } from '@/constants/safety';
+import { CALORIE_FLOOR_FALLBACK_KCAL, CALORIE_FLOOR_KCAL } from '@/constants/safety';
 import type { ActivityLevel, GoalType, Sex, UnitSystem } from '@/types/domain';
 
 import { inToCm, lbToKg, type WeeklyRate, weeklyRateInLb } from './units';
@@ -69,6 +69,16 @@ export type DailyTarget = {
 
 const roundTo10 = (n: number) => Math.round(n / 10) * 10;
 
+/** The recommended daily minimum for a sex, or the higher one when sex isn't set. */
+export function calorieFloorFor(sex: Sex | null | undefined): number {
+  return sex ? CALORIE_FLOOR_KCAL[sex] : CALORIE_FLOOR_FALLBACK_KCAL;
+}
+
+/** True when a user-chosen target is under the recommended floor. Allowed; only softens copy. */
+export function isBelowRecommendedFloor(target: number, sex: Sex | null | undefined): boolean {
+  return target < calorieFloorFor(sex);
+}
+
 export function calculateDailyTarget({
   profile,
   goalType,
@@ -86,7 +96,7 @@ export function calculateDailyTarget({
   const signed = goalType === 'lose' ? -dailyAdjustment : dailyAdjustment;
 
   const calculatedTarget = roundTo10(tdee + signed);
-  const floor = CALORIE_FLOOR_KCAL[profile.sex];
+  const floor = calorieFloorFor(profile.sex);
   const floorApplied = calculatedTarget < floor;
 
   return {

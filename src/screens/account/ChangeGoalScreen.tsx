@@ -10,6 +10,7 @@ import {
   kgToLb,
   lbToKg,
   paceCautionCopy,
+  targetRecommendationCopy,
   useActiveGoal,
   useChangeGoal,
 } from '@/features/goals';
@@ -73,6 +74,7 @@ function ChangeGoalForm({
     if (kg === null || kg === undefined) return '';
     return String(Math.round((imperial ? kgToLb(kg) : kg) * 10) / 10);
   });
+  const [customTarget, setCustomTarget] = useState('');
 
   const currentWeightKg = useMemo(() => {
     const latest = [...weighIns].sort((a, b) => b.measuredAt.localeCompare(a.measuredAt));
@@ -87,6 +89,7 @@ function ChangeGoalForm({
         goalType,
         weeklyRate,
         targetWeightKg: target === null ? null : imperial ? lbToKg(target) : target,
+        customTarget: parseNumber(customTarget),
       })
     : null;
   const needsPace = goalType === 'lose' || goalType === 'gain';
@@ -147,8 +150,25 @@ function ChangeGoalForm({
           <Text variant="label" tone="muted">
             Your daily target
           </Text>
-          <Text variant="heading">{change.dailyTarget.target.toLocaleString('en-US')} cal</Text>
+          <Text variant="heading">
+            {change.goal.dailyCalorieTarget.toLocaleString('en-US')} cal
+          </Text>
+          {change.customBelowRecommended ? (
+            <Text variant="callout" tone="muted">
+              {targetRecommendationCopy(change.dailyTarget.target)}
+            </Text>
+          ) : null}
         </Card>
+      ) : null}
+
+      {change && !profile.numbersOff ? (
+        <TextField
+          label="Set your own daily target (cal, optional)"
+          value={customTarget}
+          onChangeText={setCustomTarget}
+          keyboardType="number-pad"
+          placeholder={String(change.dailyTarget.target)}
+        />
       ) : null}
 
       {!change && goalType ? (

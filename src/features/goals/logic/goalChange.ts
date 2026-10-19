@@ -2,7 +2,7 @@ import type { ActivityLevel, GoalType, Sex, UnitSystem } from '@/types/domain';
 
 import type { NewGoal } from '../services/goalService';
 import { assessPace, type PaceAssessment } from './assessments';
-import { calculateDailyTarget, type DailyTarget } from './energy';
+import { calculateDailyTarget, type DailyTarget, isBelowRecommendedFloor } from './energy';
 import { defaultMacroTargets } from './macros';
 import { ageFromBirthDate, lbToKg } from './units';
 
@@ -20,10 +20,19 @@ export type GoalChangeInput = {
   /** Per week in the profile's units (lb or kg); ignored for maintain. */
   weeklyRate: number | null;
   targetWeightKg: number | null;
+  /** A daily calorie target the user typed themselves; replaces the recommended one. */
+  customTarget?: number | null;
   now?: Date;
 };
 
-export type GoalChange = { dailyTarget: DailyTarget; pace: PaceAssessment; goal: NewGoal };
+export type GoalChange = {
+  /** The recommended target (already at or above the floor). */
+  dailyTarget: DailyTarget;
+  pace: PaceAssessment;
+  goal: NewGoal;
+  /** The user's own target is under the recommended floor: show the gentle recommendation. */
+  customBelowRecommended: boolean;
+};
 
 const roundTo2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -37,6 +46,7 @@ export function buildGoalChange({
   goalType,
   weeklyRate,
   targetWeightKg,
+  customTarget = null,
   now = new Date(),
 }: GoalChangeInput): GoalChange | null {
   const { sex, birthDate, heightCm, activityLevel, unitSystem } = profile;
@@ -60,9 +70,13 @@ export function buildGoalChange({
     weeklyRate: rate,
   });
 
+  const custom = customTarget !== null && customTarget > 0 ? Math.round(customTarget) : null;
+  const target = custom ?? dailyTarget.target;
+
   return {
     dailyTarget,
     pace: assessPace(rate, goalType),
+    customBelowRecommended: custom !== null && isBelowRecommendedFloor(custom, sex),
     goal: {
       goalType,
       startWeightKg: roundTo2(currentWeightKg),
@@ -70,8 +84,8 @@ export function buildGoalChange({
         goalType === 'maintain' || targetWeightKg === null ? null : roundTo2(targetWeightKg),
       targetBodyFatPct: null,
       paceKgPerWeek: roundTo2(rate.unit === 'kg' ? rate.amount : lbToKg(rate.amount)),
-      dailyCalorieTarget: dailyTarget.target,
-      macroTargets: defaultMacroTargets(dailyTarget.target),
+      dailyCalorieTarget: target,
+      macroTargets: defaultMacroTargets(target),
     },
   };
 }

@@ -1,9 +1,9 @@
 export { CareNotice, type CareNoticeProps } from './components/CareNotice';
 export {
-  calorieFloorRecommendation,
   NEAR_GOAL_CELEBRATION,
   paceCautionCopy,
   refuelCopy,
+  targetRecommendationCopy,
   UNDER_GOAL_NUDGE,
 } from './copy';
 export {
@@ -20,7 +20,9 @@ export {
   calculateBMR,
   calculateDailyTarget,
   calculateTDEE,
+  calorieFloorFor,
   type DailyTarget,
+  isBelowRecommendedFloor,
   KCAL_PER_LB,
 } from './logic/energy';
 export { buildGoalChange, type GoalChange, type GoalChangeInput } from './logic/goalChange';
