@@ -4,8 +4,8 @@ describe('HELP_RESOURCES', () => {
   it('includes the required resources', () => {
     expect(HELP_RESOURCES.map((r) => r.id)).toEqual([
       '988-lifeline',
-      'alliance-eating-disorders',
       'crisis-text-line',
+      'alliance-eating-disorders',
       'your-doctor',
     ]);
   });
