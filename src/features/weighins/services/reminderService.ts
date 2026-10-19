@@ -1,5 +1,6 @@
 import {
   cancelAllLocalNotifications,
+  cancelLocalNotificationsExcept,
   notificationPermission,
   scheduleLocalNotification,
 } from '@/lib/localNotifications';
@@ -10,8 +11,8 @@ import { readReminderState, updateReminderState } from '../reminderState';
 
 /**
  * Replaces the scheduled weigh-in reminders with the next few from the profile's schedule.
- * Cancels everything when reminders are off or notifications aren't allowed. (Weigh-in
- * reminders are the app's only local notifications, so cancelling all is safe.)
+ * Cancels them when reminders are off or notifications aren't allowed. Leaves post-workout
+ * refuel notifications (data.kind 'refuel') alone.
  */
 export async function rescheduleWeighInReminders({
   userId,
@@ -23,7 +24,7 @@ export async function rescheduleWeighInReminders({
   lastWeighInAt: Date | null;
 }): Promise<number> {
   let state = await readReminderState(userId);
-  await cancelAllLocalNotifications();
+  await cancelLocalNotificationsExcept(['refuel']);
   if (!state.enabled || (await notificationPermission()) !== 'granted') return 0;
 
   // A new frequency or weekday starts a new biweekly cycle from today.

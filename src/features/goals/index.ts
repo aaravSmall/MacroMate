@@ -3,7 +3,6 @@ export { DayFeedbackCard } from './components/DayFeedbackCard';
 export {
   NEAR_GOAL_CELEBRATION,
   paceCautionCopy,
-  refuelCopy,
   targetRecommendationCopy,
   UNDER_GOAL_NUDGE,
 } from './copy';

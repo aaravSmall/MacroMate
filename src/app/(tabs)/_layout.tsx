@@ -2,7 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router/js-tabs';
 import { View } from 'react-native';
 
-import { HealthSyncOnForeground } from '@/features/exercise';
+import { HealthSyncOnForeground, RefuelNotificationResponse } from '@/features/exercise';
 import { WeighInReminderSync } from '@/features/weighins';
 import { useTheme } from '@/theme';
 
@@ -13,6 +13,7 @@ export default function TabsLayout() {
   return (
     <>
       <HealthSyncOnForeground />
+      <RefuelNotificationResponse />
       <WeighInReminderSync />
       <Tabs
         screenOptions={{

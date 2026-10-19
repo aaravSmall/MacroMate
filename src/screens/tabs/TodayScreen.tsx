@@ -8,19 +8,14 @@ import { Button, Card, Divider, EmptyState, Screen, Text } from '@/components/ui
 import { useProfile } from '@/features/account';
 import {
   exerciseDurationMin,
+  RefuelCard,
   refuelPromptFor,
   useDayExercise,
   useDismissRefuel,
   useHealthConnection,
   useSyncHealth,
 } from '@/features/exercise';
-import {
-  CareNotice,
-  DayFeedbackCard,
-  endOfDayFeedback,
-  refuelCopy,
-  useActiveGoal,
-} from '@/features/goals';
+import { DayFeedbackCard, endOfDayFeedback, useActiveGoal } from '@/features/goals';
 import {
   computeDailySummary,
   groupByMeal,
@@ -136,16 +131,13 @@ export default function TodayScreen() {
       <DayFeedbackCard feedback={feedback} prefs={dietaryPrefs} />
 
       {refuel ? (
-        <CareNotice
-          {...refuelCopy(refuel.activityType, numbersOff ? null : refuel.activeCalories)}
-          showHelpLink={false}
-        >
-          <Button
-            title="Dismiss"
-            variant="ghost"
-            onPress={() => refuel.externalId && dismissRefuel.mutate(refuel.externalId)}
-          />
-        </CareNotice>
+        <RefuelCard
+          workout={refuel}
+          numbersOff={numbersOff}
+          prefs={dietaryPrefs}
+          onLogFood={() => router.navigate('/add')}
+          onDone={() => refuel.externalId && dismissRefuel.mutate(refuel.externalId)}
+        />
       ) : null}
 
       <Text variant="heading">Food</Text>

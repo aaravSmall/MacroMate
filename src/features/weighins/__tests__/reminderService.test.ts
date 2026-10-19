@@ -12,6 +12,7 @@ import {
 } from '@/features/weighins/services/reminderService';
 import {
   cancelAllLocalNotifications,
+  cancelLocalNotificationsExcept,
   notificationPermission,
   scheduleLocalNotification,
 } from '@/lib/localNotifications';
@@ -19,6 +20,7 @@ import type { Profile } from '@/types/domain';
 
 jest.mock('@/lib/localNotifications', () => ({
   cancelAllLocalNotifications: jest.fn(async () => undefined),
+  cancelLocalNotificationsExcept: jest.fn(async () => undefined),
   notificationPermission: jest.fn(async () => 'granted'),
   scheduleLocalNotification: jest.fn(async () => 'id'),
 }));
@@ -80,7 +82,8 @@ describe('rescheduleWeighInReminders', () => {
       profile,
       lastWeighInAt: null,
     });
-    expect(cancelAllLocalNotifications).toHaveBeenCalledTimes(1);
+    expect(cancelLocalNotificationsExcept).toHaveBeenCalledWith(['refuel']);
+    expect(cancelAllLocalNotifications).not.toHaveBeenCalled();
     expect(count).toBe(REMINDERS_AHEAD);
     expect(scheduleLocalNotification).toHaveBeenCalledTimes(REMINDERS_AHEAD);
     expect(m(scheduleLocalNotification).mock.calls[0]?.[1]).toEqual({
@@ -94,7 +97,7 @@ describe('rescheduleWeighInReminders', () => {
     await expect(
       rescheduleWeighInReminders({ userId: 'user-1', profile, lastWeighInAt: null }),
     ).resolves.toBe(0);
-    expect(cancelAllLocalNotifications).toHaveBeenCalled();
+    expect(cancelLocalNotificationsExcept).toHaveBeenCalledWith(['refuel']);
     expect(scheduleLocalNotification).not.toHaveBeenCalled();
   });
 

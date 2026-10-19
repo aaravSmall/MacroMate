@@ -3,7 +3,12 @@ import { View } from 'react-native';
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, SegmentedControl, SwitchRow, Text } from '@/components/ui';
 import { useProfile, useUpdateProfile } from '@/features/account';
-import { useHealthConnection, useSetHealthConnected, useSyncHealth } from '@/features/exercise';
+import {
+  useHealthConnection,
+  useSetHealthConnected,
+  useSetRefuelNotifications,
+  useSyncHealth,
+} from '@/features/exercise';
 import {
   confirmReminders,
   describeSchedule,
@@ -46,6 +51,7 @@ function AppleHealthCard() {
   const connection = useHealthConnection();
   const setConnected = useSetHealthConnected();
   const sync = useSyncHealth();
+  const setRefuel = useSetRefuelNotifications();
   if (!connection.data) return null;
   const { available, connected, lastSyncAt } = connection.data;
 
@@ -72,6 +78,13 @@ function AppleHealthCard() {
       {available ? (
         connected ? (
           <>
+            <SwitchRow
+              label="Refuel reminders"
+              description="A friendly notification shortly after a workout syncs. Uses your notification permission and never asks on its own."
+              value={connection.data.refuelNotifications}
+              onValueChange={(enabled) => setRefuel.mutate(enabled)}
+              disabled={setRefuel.isPending}
+            />
             <Text variant="caption" tone="muted">
               Disconnecting stops syncing and keeps workouts already added. To remove Tally&apos;s
               access completely, open the Health app → your profile → Apps → Tally.

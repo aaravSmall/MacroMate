@@ -1,15 +1,21 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { router } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
 
 import { useProfile } from '@/features/account';
 import { useAuth } from '@/features/auth';
 import { deviceTimeZone } from '@/lib/dates';
+import {
+  clearLastNotificationResponse,
+  useLastNotificationResponse,
+} from '@/lib/localNotifications';
 import { queryKeys } from '@/lib/queryKeys';
 
 import { healthSync } from '../healthSync';
 import { readHealthSyncState, updateHealthSyncState } from '../healthSyncState';
 import { planExerciseSync, syncWindow } from '../logic/healthSyncPlan';
+import { notifyRecentWorkouts, REFUEL_NOTIFICATION_DATA } from '../services/refuelNotifications';
 import {
   deleteExerciseEntries,
   listHealthEntries,
@@ -41,7 +47,8 @@ export function useHealthConnection() {
  */
 export function useSyncHealth() {
   const { user } = useAuth();
-  const timezone = useProfile().data?.timezone ?? deviceTimeZone();
+  const profile = useProfile().data;
+  const timezone = profile?.timezone ?? deviceTimeZone();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (): Promise<{ synced: number; removed: number } | null> => {
@@ -59,6 +66,17 @@ export function useSyncHealth() {
       await upsertExerciseEntries(plan.upserts);
       await deleteExerciseEntries(plan.deleteIds);
       await updateHealthSyncState(user.id, { lastSyncAt: now.toISOString() });
+      // Best effort: a notification failure never fails the sync.
+      await notifyRecentWorkouts({
+        userId: user.id,
+        workouts,
+        numbersOff: profile?.numbersOff ?? false,
+        prefs: {
+          allergies: profile?.allergies ?? [],
+          restrictions: profile?.dietaryRestrictions ?? [],
+        },
+        now,
+      }).catch(() => 0);
       return { synced: plan.upserts.length, removed: plan.deleteIds.length };
     },
     onSuccess: (result) => {
@@ -96,6 +114,34 @@ export function useSetHealthConnected() {
       if (connected) sync.mutate();
     },
   });
+}
+
+/** Turns post-workout refuel notifications on or off on this device. */
+export function useSetRefuelNotifications() {
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (enabled: boolean) => {
+      if (!user) return;
+      await updateHealthSyncState(user.id, { refuelNotifications: enabled });
+    },
+    onSuccess: () => {
+      if (user)
+        void queryClient.invalidateQueries({ queryKey: queryKeys.health.connection(user.id) });
+    },
+  });
+}
+
+/** Opens Add food when a refuel notification is tapped. */
+export function RefuelNotificationResponse() {
+  const response = useLastNotificationResponse();
+  useEffect(() => {
+    const kind: unknown = response?.notification.request.content.data?.kind;
+    if (kind !== REFUEL_NOTIFICATION_DATA.kind) return;
+    router.navigate(REFUEL_NOTIFICATION_DATA.url);
+    void clearLastNotificationResponse();
+  }, [response]);
+  return null;
 }
 
 /** Marks a workout's refuel prompt as dismissed so it never shows again. */

@@ -132,12 +132,11 @@ export function WeighInReminderSync() {
   useEffect(() => {
     if (!response) return;
     const url = response.notification.request.content.data?.url;
-    if (url === '/progress?focus=weighin') {
-      router.navigate({
-        pathname: '/progress',
-        params: { focus: 'weighin', t: String(Date.now()) },
-      });
-    }
+    if (url !== '/progress?focus=weighin') return;
+    router.navigate({
+      pathname: '/progress',
+      params: { focus: 'weighin', t: String(Date.now()) },
+    });
     void clearLastNotificationResponse();
   }, [response]);
 

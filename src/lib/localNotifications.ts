@@ -66,5 +66,21 @@ export async function cancelAllLocalNotifications(): Promise<void> {
   await Notifications.cancelAllScheduledNotificationsAsync();
 }
 
+/**
+ * Cancels scheduled notifications except those whose `data.kind` is in `keepKinds`, so one
+ * feature can reschedule its own without clearing another's.
+ */
+export async function cancelLocalNotificationsExcept(keepKinds: readonly string[]): Promise<void> {
+  const scheduled = await Notifications.getAllScheduledNotificationsAsync();
+  await Promise.all(
+    scheduled
+      .filter((n) => {
+        const kind: unknown = n.content.data?.kind;
+        return !(typeof kind === 'string' && keepKinds.includes(kind));
+      })
+      .map((n) => Notifications.cancelScheduledNotificationAsync(n.identifier)),
+  );
+}
+
 export const useLastNotificationResponse = Notifications.useLastNotificationResponse;
 export const clearLastNotificationResponse = Notifications.clearLastNotificationResponseAsync;
