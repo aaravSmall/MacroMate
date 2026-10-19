@@ -143,6 +143,25 @@ EAS profiles in [`eas.json`](eas.json): `development` (dev client, internal dist
 | `npm run restaurants:upload`           | Upsert reviewed restaurant foods (dry run unless `--yes`)            |
 | `npm run demo:clear`                   | List (or with `--confirm`, delete) a test account's logs and foods   |
 
+## Releasing (TestFlight)
+
+Production builds run on EAS. The app reads its Supabase URL and key from **EAS environment variables**, not from your local `.env` (which is gitignored and never uploaded). A release build refuses a localhost or LAN Supabase URL.
+
+```bash
+# One time
+npx eas-cli@latest login
+npx eas-cli@latest init                                   # links the project (adds extra.eas.projectId to app.json)
+npx eas-cli@latest env:create --environment production --name EXPO_PUBLIC_SUPABASE_URL --value https://<project-ref>.supabase.co --visibility plaintext
+npx eas-cli@latest env:create --environment production --name EXPO_PUBLIC_SUPABASE_ANON_KEY --value <publishable-key> --visibility plaintext
+npx eas-cli@latest build:version:set --platform ios        # optional: starting build number (EAS manages it remotely)
+
+# Each release: bump expo.version in app.json, then
+npx eas-cli@latest build --profile production --platform ios     # same as npm run build:prod
+npx eas-cli@latest submit --profile production --platform ios --latest   # upload to App Store Connect / TestFlight
+```
+
+Build numbers come from EAS (`appVersionSource: "remote"`, `autoIncrement: true`), so `ios.buildNumber` isn't set in `app.json`. The first `submit` asks you to sign in to App Store Connect and pick or create the app. Work through [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) before inviting external testers.
+
 ## Project structure
 
 All app code lives under `src/` and is imported with the `@/` alias (`@/*` → `src/*`).
@@ -180,7 +199,7 @@ src/
 - [x] Progress: weigh-ins, trend chart, calendar, streaks
 - [x] Numbers-off habit mode, dietary flags
 - [ ] Accessibility and dark mode pass
-- [ ] TestFlight release (see [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md))
+- [ ] TestFlight release (see [Releasing](#releasing-testflight))
 
 ## Data sources and licenses
 

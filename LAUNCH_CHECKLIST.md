@@ -78,6 +78,12 @@ local stack). Tick each one off in the production project.
 
 ## App Store
 
+- [ ] **Replace the placeholder icon and splash.** `assets/expo.icon`, `assets/images/icon.png`,
+      and `assets/images/splash-icon.png` are still the Expo template artwork (correct sizes:
+      1024×1024 icon, splash image 76 pt wide). Fine for internal TestFlight, not for review.
+- [ ] EAS production environment variables set (`EXPO_PUBLIC_SUPABASE_URL`,
+      `EXPO_PUBLIC_SUPABASE_ANON_KEY`); see README → Releasing.
+
 - [ ] Production build points at the production Supabase URL and publishable key via EAS
       environment variables (not the dev `.env`).
 - [ ] Privacy policy URL, and App Privacy answers covering health and fitness data (HealthKit
