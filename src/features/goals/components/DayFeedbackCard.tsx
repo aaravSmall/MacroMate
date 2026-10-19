@@ -19,16 +19,19 @@ import { CareNotice } from './CareNotice';
 export function DayFeedbackCard({
   feedback,
   prefs,
+  celebration = NEAR_GOAL_CELEBRATION,
 }: {
   feedback: DayFeedback;
   prefs: DietaryPrefs;
+  /** Celebration copy; numbers-off mode celebrates habits instead of the calorie goal. */
+  celebration?: { title: string; message: string };
 }) {
   const { colors, spacing } = useTheme();
 
   if (feedback === 'celebrate') {
     return (
       <Celebration>
-        <CareNotice {...NEAR_GOAL_CELEBRATION} showHelpLink={false}>
+        <CareNotice {...celebration} showHelpLink={false}>
           <Ionicons
             name="sparkles"
             size={20}

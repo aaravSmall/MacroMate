@@ -421,6 +421,7 @@ export type Database = {
           birth_date: string | null;
           created_at: string;
           dietary_restrictions: string[];
+          habit_goals: string[];
           display_name: string | null;
           height_cm: number | null;
           id: string;
@@ -440,6 +441,7 @@ export type Database = {
           birth_date?: string | null;
           created_at?: string;
           dietary_restrictions?: string[];
+          habit_goals?: string[];
           display_name?: string | null;
           height_cm?: number | null;
           id: string;
@@ -459,6 +461,7 @@ export type Database = {
           birth_date?: string | null;
           created_at?: string;
           dietary_restrictions?: string[];
+          habit_goals?: string[];
           display_name?: string | null;
           height_cm?: number | null;
           id?: string;

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { QueryStatus } from '@/components/QueryStatus';
 import { Button, Card, Divider, Screen, SegmentedControl, SwitchRow, Text } from '@/components/ui';
 import { useProfile, useUpdateProfile } from '@/features/account';
+import { MEALS_LOGGED_TARGET } from '@/features/goals';
 import {
   useHealthConnection,
   useSetHealthConnected,
@@ -16,7 +17,7 @@ import {
   useSetRemindersEnabled,
 } from '@/features/weighins';
 import { useTheme } from '@/theme';
-import type { UnitSystem, WeighInFrequency } from '@/types/domain';
+import type { HabitGoal, UnitSystem, WeighInFrequency } from '@/types/domain';
 
 const UNIT_OPTIONS: { value: UnitSystem; label: string }[] = [
   { value: 'imperial', label: 'lb / ft' },
@@ -27,6 +28,15 @@ const FREQUENCY_OPTIONS: { value: WeighInFrequency; label: string }[] = [
   { value: 'weekly', label: 'Weekly' },
   { value: 'biweekly', label: 'Every 2 weeks' },
   { value: 'monthly', label: 'Monthly' },
+];
+
+const HABIT_OPTIONS: { value: HabitGoal; label: string; description: string }[] = [
+  { value: 'protein', label: 'Protein', description: 'Reach your daily protein target.' },
+  {
+    value: 'meals_logged',
+    label: 'Meals logged',
+    description: `Log ${MEALS_LOGGED_TARGET} meals a day.`,
+  },
 ];
 
 /** `profiles.weigh_in_weekday`: 0 = Sunday … 6 = Saturday. */
@@ -143,10 +153,33 @@ export default function SettingsScreen() {
             <Divider />
             <SwitchRow
               label="Numbers off"
-              description="Hide calorie numbers and focus on the habit of logging. Your data is still saved."
+              description="Hide calorie numbers and track habits instead. Your data is still saved, and turning this off brings everything back."
               value={profile.data.numbersOff}
               onValueChange={(numbersOff) => updateProfile.mutate({ numbersOff })}
             />
+            {profile.data.numbersOff ? (
+              <Section title="Habits to track">
+                {HABIT_OPTIONS.map((habit) => {
+                  const habits = profile.data?.habitGoals ?? [];
+                  const on = habits.includes(habit.value);
+                  return (
+                    <SwitchRow
+                      key={habit.value}
+                      label={habit.label}
+                      description={habit.description}
+                      value={on}
+                      onValueChange={(enabled) =>
+                        updateProfile.mutate({
+                          habitGoals: enabled
+                            ? [...habits, habit.value]
+                            : habits.filter((h) => h !== habit.value),
+                        })
+                      }
+                    />
+                  );
+                })}
+              </Section>
+            ) : null}
           </Card>
 
           <AppleHealthCard />

@@ -27,6 +27,13 @@ export {
   KCAL_PER_LB,
 } from './logic/energy';
 export { buildGoalChange, type GoalChange, type GoalChangeInput } from './logic/goalChange';
+export {
+  allHabitsMet,
+  HABIT_CELEBRATION,
+  type HabitProgress,
+  habitProgress,
+  MEALS_LOGGED_TARGET,
+} from './logic/habits';
 export { DEFAULT_MACRO_SPLIT, defaultMacroTargets, KCAL_PER_GRAM } from './logic/macros';
 export {
   ageFromBirthDate,

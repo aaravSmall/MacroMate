@@ -135,6 +135,10 @@ export type Goal = {
   startedAt: string;
 };
 
+/** What numbers-off mode tracks instead of calories. */
+export type HabitGoal = 'protein' | 'meals_logged';
+export const HABIT_GOALS: readonly HabitGoal[] = ['protein', 'meals_logged'];
+
 export type Profile = {
   id: string;
   displayName: string | null;
@@ -150,6 +154,8 @@ export type Profile = {
   dietaryRestrictions: string[];
   allergies: string[];
   numbersOff: boolean;
+  /** Habits shown and celebrated in numbers-off mode. */
+  habitGoals: HabitGoal[];
   weighInFrequency: WeighInFrequency;
   /** 0 = Sunday … 6 = Saturday. */
   weighInWeekday: number;

@@ -15,7 +15,14 @@ import {
   useHealthConnection,
   useSyncHealth,
 } from '@/features/exercise';
-import { DayFeedbackCard, endOfDayFeedback, useActiveGoal } from '@/features/goals';
+import {
+  allHabitsMet,
+  DayFeedbackCard,
+  endOfDayFeedback,
+  HABIT_CELEBRATION,
+  habitProgress,
+  useActiveGoal,
+} from '@/features/goals';
 import {
   computeDailySummary,
   groupByMeal,
@@ -93,17 +100,30 @@ export default function TodayScreen() {
     target,
   });
 
+  // Numbers-off: habits replace calorie progress, and meeting them all is what's celebrated.
+  const habits = numbersOff
+    ? habitProgress({
+        habits: profile.data?.habitGoals ?? [],
+        proteinG: summary.macros.proteinG,
+        proteinTargetG: goal.data?.macroTargets.proteinG ?? null,
+        loggedMeals: new Set((logs.data ?? []).map((entry) => entry.meal)),
+      })
+    : [];
+
   // Past days, or today after 7pm. Only landing near the goal is celebrated.
   const now = new Date();
-  const feedback = endOfDayFeedback({
-    eaten: summary.eaten,
-    target: summary.budget,
-    dateKey,
-    todayKey: toDateKey(now),
-    localHour: now.getHours(),
-    hasLogs: (logs.data?.length ?? 0) > 0,
-    numbersOff,
-  });
+  const feedback = numbersOff
+    ? allHabitsMet(habits)
+      ? 'celebrate'
+      : 'none'
+    : endOfDayFeedback({
+        eaten: summary.eaten,
+        target: summary.budget,
+        dateKey,
+        todayKey: toDateKey(now),
+        localHour: now.getHours(),
+        hasLogs: (logs.data?.length ?? 0) > 0,
+      });
   const dietaryPrefs = {
     allergies: profile.data?.allergies ?? [],
     restrictions: profile.data?.dietaryRestrictions ?? [],
@@ -126,9 +146,14 @@ export default function TodayScreen() {
         onToggle={() => setExpanded((e) => !e)}
         numbersOff={numbersOff}
         itemCount={logs.data?.length ?? 0}
+        habits={habits}
       />
 
-      <DayFeedbackCard feedback={feedback} prefs={dietaryPrefs} />
+      <DayFeedbackCard
+        feedback={feedback}
+        prefs={dietaryPrefs}
+        celebration={numbersOff ? HABIT_CELEBRATION : undefined}
+      />
 
       {refuel ? (
         <RefuelCard

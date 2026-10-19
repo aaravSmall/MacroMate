@@ -1,6 +1,9 @@
 import { supabase } from '@/lib/supabase';
 import type { Tables, TablesUpdate } from '@/types/database';
-import type { Profile } from '@/types/domain';
+import { type HabitGoal, HABIT_GOALS, type Profile } from '@/types/domain';
+
+const isHabitGoal = (value: string): value is HabitGoal =>
+  (HABIT_GOALS as readonly string[]).includes(value);
 
 export function mapProfileRow(row: Tables<'profiles'>): Profile {
   return {
@@ -16,6 +19,7 @@ export function mapProfileRow(row: Tables<'profiles'>): Profile {
     dietaryRestrictions: row.dietary_restrictions,
     allergies: row.allergies,
     numbersOff: row.numbers_off,
+    habitGoals: row.habit_goals.filter(isHabitGoal),
     weighInFrequency: row.weigh_in_frequency,
     weighInWeekday: row.weigh_in_weekday,
     weighInReminderTime: row.weigh_in_reminder_time,
@@ -37,6 +41,7 @@ const COLUMNS: { [K in keyof ProfileUpdate]-?: keyof TablesUpdate<'profiles'> } 
   dietaryRestrictions: 'dietary_restrictions',
   allergies: 'allergies',
   numbersOff: 'numbers_off',
+  habitGoals: 'habit_goals',
   weighInFrequency: 'weigh_in_frequency',
   weighInWeekday: 'weigh_in_weekday',
   weighInReminderTime: 'weigh_in_reminder_time',
