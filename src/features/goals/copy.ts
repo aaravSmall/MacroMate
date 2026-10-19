@@ -13,18 +13,19 @@ export function calorieFloorRecommendation(floor: number): string {
 export function paceCautionCopy(goalType: GoalType): { title: string; message: string } {
   if (goalType === 'gain') {
     return {
-      title: 'A quick note on your pace',
+      title: 'A friendly note on your pace',
       message:
-        "Gaining weight this quickly can be hard on your body. It's worth checking in with " +
-        'a doctor or registered dietitian about a pace that works for you.',
+        "We love that you're working toward this. Gaining more than about 1 lb a week can be a " +
+        'lot for your body to adjust to, so it might be worth a quick chat with your doctor or ' +
+        "a dietitian about a pace that feels good. This is your call, and we're here either way.",
     };
   }
   return {
-    title: 'A quick note on your pace',
+    title: 'A friendly note on your pace',
     message:
-      'Losing more than 2 lb a week is faster than most health guidance recommends, and it can ' +
-      "be hard to sustain. You're welcome to keep this pace. We'd also encourage you to talk " +
-      'with a doctor about it.',
+      "We're cheering you on. Losing more than 2 lb a week can be hard on your body and tough " +
+      "to keep up, so it could help to check in with your doctor about it. You're welcome to " +
+      "keep this pace. It's your call, and we're here either way.",
   };
 }
 

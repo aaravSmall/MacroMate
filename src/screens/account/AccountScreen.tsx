@@ -26,6 +26,10 @@ export default function AccountScreen() {
         <Text>{user?.email ?? '—'}</Text>
       </Card>
       <Card>
+        <Link href="/account/goal">
+          <Text>Change goal</Text>
+        </Link>
+        <Divider />
         <Link href="/account/settings">
           <Text>Settings</Text>
         </Link>
