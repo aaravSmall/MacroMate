@@ -1,0 +1,4 @@
+{
+  "extends": "./restaurants/tsconfig.json",
+  "include": ["*.mts"]
+}

@@ -65,7 +65,7 @@
     "ios:rebuild": "expo prebuild --platform ios --clean && expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts/restaurants",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts/restaurants && tsc --noEmit -p scripts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest",
@@ -77,7 +77,8 @@
     "build:preview": "npx eas-cli@latest build --profile preview --platform ios",
     "build:prod": "npx eas-cli@latest build --profile production --platform ios",
     "restaurants:extract": "tsx scripts/restaurants/extract.mts",
-    "restaurants:upload": "tsx scripts/restaurants/upload.mts"
+    "restaurants:upload": "tsx scripts/restaurants/upload.mts",
+    "demo:clear": "tsx scripts/clear-demo-data.mts"
   },
   "private": true,
   "jest": {
