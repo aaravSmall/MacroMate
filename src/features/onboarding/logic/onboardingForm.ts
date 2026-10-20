@@ -104,7 +104,7 @@ export function validateBodyStats(form: OnboardingForm): BodyStatsErrors {
 
   const age = parseNumber(form.age);
   if (age === null || !Number.isInteger(age)) errors.age = 'Enter your age in years.';
-  else if (age < 13 || age > 120) errors.age = 'Tally is for ages 13 and up.';
+  else if (age < 13 || age > 120) errors.age = 'MacroMate is for ages 13 and up.';
 
   const kg = weightInKg(form);
   if (kg === null || kg < 20 || kg > 400) errors.weight = 'Enter your current weight.';

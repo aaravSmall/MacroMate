@@ -17,7 +17,7 @@ import { validateItems } from './lib/validate';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CACHE = join(HERE, '.cache');
 const OUTPUT = join(HERE, 'output');
-const USER_AGENT = 'Tally-restaurant-import/0.1 (https://github.com/aaravSmall/MacroMate)';
+const USER_AGENT = 'MacroMate-restaurant-import/0.1 (https://github.com/aaravSmall/MacroMate)';
 
 async function loadPdf(url: string, chainId: string): Promise<Uint8Array> {
   if (!/^https?:/i.test(url)) return new Uint8Array(readFileSync(resolve(HERE, url)));

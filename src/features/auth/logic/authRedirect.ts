@@ -66,7 +66,7 @@ export function parseAuthRedirect(url: string): AuthRedirect {
 
 /**
  * The route path of an app URL, e.g. `reset-password` for both
- * `calorietracker://reset-password#…` (builds) and `exp://192.168.1.5:8081/--/reset-password`
+ * `macromate://reset-password#…` (builds) and `exp://192.168.1.5:8081/--/reset-password`
  * (Expo Go).
  */
 export function appPath(url: string): string {

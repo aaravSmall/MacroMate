@@ -107,7 +107,7 @@ function AppleHealthCard() {
             minute: '2-digit',
           })}.`
         : 'Connected. Syncing…'
-      : 'Bring in workouts and active energy from your watch and fitness apps. Read-only: Tally never writes to Apple Health.';
+      : 'Bring in workouts and active energy from your watch and fitness apps. Read-only: MacroMate never writes to Apple Health.';
 
   const error = setConnected.error ?? sync.error;
   return (
@@ -127,8 +127,9 @@ function AppleHealthCard() {
               disabled={setRefuel.isPending}
             />
             <Text variant="caption" tone="muted">
-              Disconnecting stops syncing and keeps workouts already added. To remove Tally&apos;s
-              access completely, open the Health app → your profile → Apps → Tally.
+              Disconnecting stops syncing and keeps workouts already added. To remove
+              MacroMate&apos;s access completely, open the Health app → your profile → Apps →
+              MacroMate.
             </Text>
             <Button
               title="Disconnect"

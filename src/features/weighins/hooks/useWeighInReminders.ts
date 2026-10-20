@@ -70,7 +70,7 @@ export function useSetRemindersEnabled() {
       if (!user || !profile) throw new Error('Not signed in.');
       if (enabled && !(await requestNotificationPermission())) {
         throw new Error(
-          'Notifications are off for Tally. You can allow them in iOS Settings → Notifications → Tally.',
+          'Notifications are off for MacroMate. You can allow them in iOS Settings → Notifications → MacroMate.',
         );
       }
       await updateReminderState(user.id, {

@@ -1,8 +1,8 @@
 @AGENTS.md
 
-# Tally — context for Claude Code
+# MacroMate — context for Claude Code
 
-Tally is a free, open-source, iPhone-first calorie tracker. Every feature is free; there is no paywall. "Tally" is a placeholder name, set only in `app.json` → `expo.name`.
+MacroMate is a free, open-source, iPhone-first calorie tracker. Every feature is free; there is no paywall.
 
 Read before feature work: [docs/PRODUCT.md](docs/PRODUCT.md) (decisions, screens, safety rules) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) (layers, state, data flow).
 

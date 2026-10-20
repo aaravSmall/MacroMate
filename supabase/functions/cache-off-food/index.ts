@@ -22,7 +22,7 @@ import {
   type OffProduct,
 } from './offMapping.ts';
 
-const OFF_USER_AGENT = 'Tally/0.1.0 (https://github.com/aaravSmall/MacroMate)';
+const OFF_USER_AGENT = 'MacroMate/0.1.0 (https://github.com/aaravSmall/MacroMate)';
 const FOOD_SELECT = '*, food_servings(*)';
 
 async function findCached(admin: SupabaseClient, code: string) {

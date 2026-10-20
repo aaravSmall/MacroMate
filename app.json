@@ -1,21 +1,21 @@
 {
   "expo": {
-    "name": "Tally",
-    "slug": "calorie-tracker",
+    "name": "MacroMate",
+    "slug": "macromate",
     "version": "0.2.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "calorietracker",
+    "scheme": "macromate",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "bundleIdentifier": "com.aaravsmall.calorietracker",
+      "bundleIdentifier": "com.aaravsmall.macromate",
       "icon": "./assets/expo.icon",
       "config": {
         "usesNonExemptEncryption": false
       }
     },
     "android": {
-      "package": "com.aaravsmall.calorietracker",
+      "package": "com.aaravsmall.macromate",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -45,15 +45,15 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Tally reads the Nutrition Facts panel in a photo you choose, on your device. The photo is never uploaded or saved.",
-          "cameraPermission": "Tally uses the camera to photograph a Nutrition Facts panel and read it on your device. The photo is never uploaded or saved.",
+          "photosPermission": "MacroMate reads the Nutrition Facts panel in a photo you choose, on your device. The photo is never uploaded or saved.",
+          "cameraPermission": "MacroMate uses the camera to photograph a Nutrition Facts panel and read it on your device. The photo is never uploaded or saved.",
           "microphonePermission": false
         }
       ],
       [
         "@kingstinct/react-native-healthkit",
         {
-          "NSHealthShareUsageDescription": "Tally reads your workouts and active energy from Apple Health so the calories you burn can add to your day. Tally never writes to Apple Health.",
+          "NSHealthShareUsageDescription": "MacroMate reads your workouts and active energy from Apple Health so the calories you burn can add to your day. MacroMate never writes to Apple Health.",
           "NSHealthUpdateUsageDescription": false,
           "background": false
         }

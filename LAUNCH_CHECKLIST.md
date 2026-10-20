@@ -8,15 +8,15 @@ local stack). Tick each one off in the production project.
 
 - [ ] **Turn ON email confirmation**: Sign In / Providers → Email → _Confirm email_. The app
       handles the pending state (check-email screen with resend) and the link back in
-      (`calorietracker://confirm-email`).
+      (`macromate://confirm-email`).
 - [ ] **Enable leaked password protection** (HaveIBeenPwned check): Sign In / Providers → Email
       → _Prevent use of leaked passwords_. Requires the Pro plan.
 - [ ] **Password rules**: minimum length **8**, requirements **letters and digits**. These match
       the app's `validateNewPassword` and `config.toml`.
 - [ ] **Secure password change** on (re-authentication needed to change the password).
 - [ ] **URL configuration**: set _Site URL_, and add these to _Redirect URLs_:
-  - `calorietracker://confirm-email`
-  - `calorietracker://reset-password`
+  - `macromate://confirm-email`
+  - `macromate://reset-password`
   - Remove `exp://**` and any localhost entries from production.
 - [ ] **Custom SMTP**: the built-in mailer allows only a few emails per hour and is for testing.
       Configure a real provider (Project Settings → Auth → SMTP), then raise the email rate limit

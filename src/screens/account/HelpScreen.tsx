@@ -55,7 +55,7 @@ export default function HelpScreen() {
         <ResourceCard key={resource.id} resource={resource} />
       ))}
       <Text variant="caption" tone="muted">
-        If you&apos;re in immediate danger, call 911. Tally is not medical advice.
+        If you&apos;re in immediate danger, call 911. MacroMate is not medical advice.
       </Text>
     </Screen>
   );

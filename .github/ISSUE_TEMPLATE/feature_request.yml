@@ -25,5 +25,5 @@ body:
       label: Design principles
       description: See docs/PRODUCT.md.
       options:
-        - label: This fits Tally's design principles (free for everyone, never celebrates undereating, no red/green judgment, caring rather than blocking).
+        - label: This fits MacroMate's design principles (free for everyone, never celebrates undereating, no red/green judgment, caring rather than blocking).
           required: true

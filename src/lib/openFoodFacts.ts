@@ -24,7 +24,7 @@ const FIELDS = [
   'allergens_tags',
 ].join(',');
 
-const APP_NAME = Constants.expoConfig?.name ?? 'Tally';
+const APP_NAME = Constants.expoConfig?.name ?? 'MacroMate';
 const APP_VERSION = Constants.expoConfig?.version ?? '0.0.0';
 export const OFF_USER_AGENT = `${APP_NAME}/${APP_VERSION} (https://github.com/aaravSmall/MacroMate)`;
 

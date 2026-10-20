@@ -85,7 +85,7 @@ Saved responses (trimmed) are the test fixtures:
 
 ## Mapping (`providers/purdueMapping.ts`)
 
-| Purdue                                                                                                     | Tally                                                                                            |
+| Purdue                                                                                                     | MacroMate                                                                                        |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | item `ID`                                                                                                  | `foods.provider = 'purdue'`, `provider_item_id`, `external_id = purdue:<ID>`                     |
 | `Name`                                                                                                     | `foods.name`; brand `Purdue Dining`; `source = 'dining_hall'`, public, no owner                  |
@@ -113,7 +113,7 @@ Each Purdue item is **one public food reused across days and locations**. Daily 
   fresh 3-day window is ~480 items, so the first sync takes two runs; daily runs after that
   fetch only new items and finish in ~15 s. Menus with unfetched items are merged (no
   deletions) until complete.
-- **Politeness:** one request at a time, 300 ms between requests, User-Agent `Tally/0.1
+- **Politeness:** one request at a time, 300 ms between requests, User-Agent `MacroMate/0.1
 (calorie tracker; daily menu sync; https://github.com/aaravSmall/MacroMate)`, retries on
   429/5xx with exponential backoff (1 s, 2 s, 4 s).
 - **Menu changes:** rows no longer on a menu are removed from `dining_menu_items`; foods are

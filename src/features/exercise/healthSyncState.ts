@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
- * Per-device Apple Health sync state, per user: whether they connected Health in Tally, when
+ * Per-device Apple Health sync state, per user: whether they connected Health in MacroMate, when
  * the last sync ran, and which refuel prompts they dismissed. Health data itself lives in
  * exercise_entries; this is only bookkeeping.
  */

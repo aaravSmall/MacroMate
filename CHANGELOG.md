@@ -24,6 +24,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- Renamed the app from Tally to MacroMate (display name, bundle ID com.aaravsmall.macromate, URL scheme macromate://).
+
 - **Label checks** only appear for foods that come from a package label (Open Food Facts and foods people add). Restaurant foods join dining hall foods in skipping the "Does this match your label?" prompt.
 - **Serving edits are recipe-only:** database policies now let owners edit or delete servings only on their own meals (`user_recipe`); products keep their label values. Deleting a private product still removes its servings. `supabase/tests/food_servings_rls_test.sql` checks it.
 - **Allergens on dining foods:** the food page lists flagged allergens with "Allergen info from Purdue Dining. It may not reflect cross-contact; ask dining staff if you have an allergy." Allergen data is only ever used to warn, never to call a food safe (docs/PRODUCT.md).

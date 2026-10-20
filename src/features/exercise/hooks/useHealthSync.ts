@@ -43,7 +43,7 @@ export function useHealthConnection() {
 /**
  * Reads workouts from Health since the last sync and mirrors them into exercise_entries:
  * upserts by (user_id, external_id) and removes ones deleted in Health within the window.
- * Does nothing unless the user connected Health in Tally.
+ * Does nothing unless the user connected Health in MacroMate.
  */
 export function useSyncHealth() {
   const { user } = useAuth();

@@ -1,6 +1,6 @@
 # Database schema
 
-Tally's data lives in Supabase Postgres. The schema is defined by migrations in [`supabase/migrations/`](../supabase/migrations/). This doc is a readable summary; the SQL is the source of truth, and [`src/types/database.ts`](../src/types/database.ts) (generated with `npm run db:types`) is the source of truth for column names in app code.
+MacroMate's data lives in Supabase Postgres. The schema is defined by migrations in [`supabase/migrations/`](../supabase/migrations/). This doc is a readable summary; the SQL is the source of truth, and [`src/types/database.ts`](../src/types/database.ts) (generated with `npm run db:types`) is the source of truth for column names in app code.
 
 ## ER diagram
 

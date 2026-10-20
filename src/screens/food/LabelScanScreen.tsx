@@ -32,9 +32,9 @@ export default function LabelScanScreen() {
 
       <Card>
         <Text variant="callout" tone="muted">
-          Tally reads the printed label only. It won&apos;t guess calories from a photo of a meal,
-          because those estimates aren&apos;t reliable. The photo is read on your device and is
-          never uploaded or saved.
+          MacroMate reads the printed label only. It won&apos;t guess calories from a photo of a
+          meal, because those estimates aren&apos;t reliable. The photo is read on your device and
+          is never uploaded or saved.
         </Text>
       </Card>
 

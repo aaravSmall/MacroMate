@@ -5,7 +5,7 @@ export default function WelcomeScreen() {
   return (
     <OnboardingStepLayout
       step="welcome"
-      title="Welcome to Tally"
+      title="Welcome to MacroMate"
       description="A free calorie tracker with every feature included."
       continueLabel="Get started"
     >
@@ -16,7 +16,7 @@ export default function WelcomeScreen() {
         </Text>
       </Card>
       <Text variant="caption" tone="muted">
-        Tally is not medical advice. Talk to a doctor or registered dietitian before making big
+        MacroMate is not medical advice. Talk to a doctor or registered dietitian before making big
         changes to your diet or weight.
       </Text>
     </OnboardingStepLayout>

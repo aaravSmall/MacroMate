@@ -1,6 +1,6 @@
-# Contributing to Tally
+# Contributing to MacroMate
 
-Thanks for your interest! Tally is a free, open-source calorie tracker, and contributions of all sizes are welcome — bug reports, docs fixes, and features.
+Thanks for your interest! MacroMate is a free, open-source calorie tracker, and contributions of all sizes are welcome — bug reports, docs fixes, and features.
 
 Before starting on a larger change, please open an issue to discuss it. Read [docs/PRODUCT.md](docs/PRODUCT.md) (especially the design principles and safety rules) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) first.
 

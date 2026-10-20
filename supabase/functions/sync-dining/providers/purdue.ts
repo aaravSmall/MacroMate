@@ -13,7 +13,7 @@ import type { DiningProvider } from './types.ts';
 
 const BASE = 'https://api.hfs.purdue.edu/menus/v2';
 const USER_AGENT =
-  'Tally/0.1 (calorie tracker; daily menu sync; https://github.com/aaravSmall/MacroMate)';
+  'MacroMate/0.1 (calorie tracker; daily menu sync; https://github.com/aaravSmall/MacroMate)';
 
 export function createPurdueProvider(fetchImpl: typeof fetch = fetch): DiningProvider {
   const http = createPoliteFetcher({ userAgent: USER_AGENT, delayMs: 300, retries: 3, fetchImpl });

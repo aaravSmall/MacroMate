@@ -1,6 +1,6 @@
 # Architecture
 
-Tally is an Expo / React Native app written in strict TypeScript, backed by Supabase (Postgres + Auth). This doc covers how code is layered, where state lives, and where the important rules are enforced.
+MacroMate is an Expo / React Native app written in strict TypeScript, backed by Supabase (Postgres + Auth). This doc covers how code is layered, where state lives, and where the important rules are enforced.
 
 ## Runtime
 
