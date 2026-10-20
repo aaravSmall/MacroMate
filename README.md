@@ -1,15 +1,13 @@
-# Tally
+# MacroMate
 
 [![CI](https://github.com/aaravSmall/MacroMate/actions/workflows/ci.yml/badge.svg)](https://github.com/aaravSmall/MacroMate/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **A free, open-source calorie tracker — every feature free, no paywall.**
 
-> "Tally" is a placeholder name. The display name lives in one place: `expo.name` in [`app.json`](app.json).
-
 ## Why
 
-Most popular calorie trackers lock their most useful features — barcode/label scanning, macro goals, exercise sync — behind a subscription. Tally exists out of frustration with that. It's built first for my own daily use and as a portfolio project, but it's open to anyone who wants a full-featured tracker without a paywall.
+Most popular calorie trackers lock their most useful features — barcode/label scanning, macro goals, exercise sync — behind a subscription. MacroMate exists out of frustration with that. It's built first for my own daily use and as a portfolio project, but it's open to anyone who wants a full-featured tracker without a paywall.
 
 ## Screenshots
 
@@ -37,7 +35,7 @@ Most popular calorie trackers lock their most useful features — barcode/label 
 | Allergy and dietary restriction flags                                                               | Done   |
 | Help & resources page                                                                               | Done   |
 
-Tally does **not** guess calories from a photo of a meal. Label scanning reads the printed nutrition facts panel, which is accurate; meal-photo estimation isn't.
+MacroMate does **not** guess calories from a photo of a meal. Label scanning reads the printed nutrition facts panel, which is accurate; meal-photo estimation isn't.
 
 ## Design principles
 
@@ -109,14 +107,14 @@ Schema, RLS policies, and the migration workflow are documented in [docs/SCHEMA.
 
 ### Development builds (not Expo Go)
 
-Tally runs in an [Expo development build](https://docs.expo.dev/develop/development-builds/introduction/), a debug build of this app with `expo-dev-client`, not in Expo Go. That lets us use native modules (text recognition, HealthKit, notifications) that Expo Go doesn't include. Native projects (`ios/`, `android/`) are generated from `app.json` (Continuous Native Generation) and are gitignored, so never edit them by hand.
+MacroMate runs in an [Expo development build](https://docs.expo.dev/develop/development-builds/introduction/), a debug build of this app with `expo-dev-client`, not in Expo Go. That lets us use native modules (text recognition, HealthKit, notifications) that Expo Go doesn't include. Native projects (`ios/`, `android/`) are generated from `app.json` (Continuous Native Generation) and are gitignored, so never edit them by hand.
 
-| Where                         | First time / after native changes                                       | Day to day                                       |
-| ----------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------ |
-| iOS Simulator (local)         | `npm run ios` (`npx expo run:ios`)                                      | `npm start`, then open the installed Tally app   |
-| iPhone over USB (local)       | `npm run ios:device` (`npx expo run:ios --device`); needs signing       | `npm start`; the phone and Mac on the same Wi-Fi |
-| iPhone, built in the cloud    | `npm run build:dev` (EAS, `development` profile), install from the link | `npm start`                                      |
-| Simulator, built in the cloud | `npm run build:dev:sim` (EAS, `development-simulator` profile)          | `npm start`                                      |
+| Where                         | First time / after native changes                                       | Day to day                                         |
+| ----------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------- |
+| iOS Simulator (local)         | `npm run ios` (`npx expo run:ios`)                                      | `npm start`, then open the installed MacroMate app |
+| iPhone over USB (local)       | `npm run ios:device` (`npx expo run:ios --device`); needs signing       | `npm start`; the phone and Mac on the same Wi-Fi   |
+| iPhone, built in the cloud    | `npm run build:dev` (EAS, `development` profile), install from the link | `npm start`                                        |
+| Simulator, built in the cloud | `npm run build:dev:sim` (EAS, `development-simulator` profile)          | `npm start`                                        |
 
 **After adding a package with native code or changing native config in `app.json` (permissions, plugins, entitlements), run `npm run ios:rebuild`.** It regenerates `ios/` and then builds. Plain `npm run ios` reuses an existing `ios/` folder and won't pick up config plugin changes. EAS builds always start fresh. JavaScript-only changes just need Metro (`npm start`).
 
@@ -206,10 +204,10 @@ src/
 | Source                                                                     | Used for                                                           | License / terms                                                                                                                                                          |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Open Food Facts](https://world.openfoodfacts.org)                         | Packaged food search, barcodes, allergen tags                      | Database: [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Contents: [DbCL 1.0](https://opendatacommons.org/licenses/dbcl/1-0/). Images: CC BY-SA (not used). |
-| Chain restaurants' official nutrition PDFs (Wingstop, Chipotle, Five Guys) | Restaurant foods (`scripts/restaurants/`)                          | Published nutrition facts, used for reference. Brand names and trademarks belong to their owners; Tally isn't affiliated with or endorsed by them.                       |
+| Chain restaurants' official nutrition PDFs (Wingstop, Chipotle, Five Guys) | Restaurant foods (`scripts/restaurants/`)                          | Published nutrition facts, used for reference. Brand names and trademarks belong to their owners; MacroMate isn't affiliated with or endorsed by them.                   |
 | Purdue University Housing & Food Services menus                            | Dining hall foods ([docs/PURDUE_DINING.md](docs/PURDUE_DINING.md)) | Public menu data from Purdue's menus API. Not affiliated with Purdue.                                                                                                    |
 
-**Open Food Facts attribution.** Food data from Open Food Facts is © Open Food Facts contributors and available under the Open Database License. Tally caches OFF products it looks up in its own database; that cached data remains under the ODbL, and any public use of it must keep this attribution and share it under the same license. The app's code is MIT-licensed and separate from the data.
+**Open Food Facts attribution.** Food data from Open Food Facts is © Open Food Facts contributors and available under the Open Database License. MacroMate caches OFF products it looks up in its own database; that cached data remains under the ODbL, and any public use of it must keep this attribution and share it under the same license. The app's code is MIT-licensed and separate from the data.
 
 Nutrition values are as published by each source and can be incomplete or out of date. Allergen information is only ever used to warn, never to say a food is safe.
 
@@ -223,4 +221,4 @@ Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Disclaimer
 
-Tally is not medical advice. Talk to a doctor or registered dietitian before making significant changes to your diet or weight.
+MacroMate is not medical advice. Talk to a doctor or registered dietitian before making significant changes to your diet or weight.
